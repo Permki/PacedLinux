@@ -474,6 +474,7 @@ static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 	skb_shinfo(skb)->pace_offload_rtt = ca->curr_rtt;
 	skb_shinfo(skb)->pace_offload_cwnd_size = ca->last_cwnd;
 	printk(KERN_INFO "modified sk_shinfo. Values are:\nPace_offload: %d\nPace_rtt: %d\nPace_cwnd: %d\n", skb_shinfo(skb)->pace_offload, skb_shinfo(skb)->pace_offload_rtt, skb_shinfo(skb)->pace_offload_cwnd_size);
+	printk(KERN_INFO "modified direct. Values are:\nPace_offload: %d\nPace_rtt: %d\nPace_cwnd: %d\n", 1, ca->curr_rtt, ca->last_cwnd);
 }
 
 static struct tcp_congestion_ops cubictcp __read_mostly = {
