@@ -465,7 +465,7 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 	
 	struct bictcp *ca = inet_csk_ca(sk);
-	struct tcp_sock *tp = tcp_sk(sk)
+	struct tcp_sock *tp = tcp_sk(sk);
 //Do something to shared mem
 //skb_shared:
 	//__u8		pace_offload;
