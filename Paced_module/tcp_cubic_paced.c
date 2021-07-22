@@ -474,7 +474,7 @@ static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 	skb_shinfo(skb)->pace_offload = 1;
 	skb_shinfo(skb)->pace_offload_rtt = ca->delay_min;
 	skb_shinfo(skb)->pace_offload_rtt = ca->tcp_cwnd;
-	printk(KERN_INFO "tp-sock. srtt_us: %d",tp->srtt_us);
+	printk(KERN_INFO "tp-sock. srtt_us: %d, snd_cwnd: %d",tp->srtt_us, tp->snd_cwnd);
 	printk(KERN_INFO "modified sk_shinfo. Values are:\nPace_offload: %d\nPace_rtt: %d\nPace_cwnd: %d\n", skb_shinfo(skb)->pace_offload, skb_shinfo(skb)->pace_offload_rtt, skb_shinfo(skb)->pace_offload_cwnd_size);
 	printk(KERN_INFO "modified direct. Values are:\nPace_offload: %d\nPace_rtt: %d\nPace_cwnd: %d\n", 1, ca->curr_rtt, ca->last_cwnd);
 }
