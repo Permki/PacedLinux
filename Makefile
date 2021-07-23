@@ -16,3 +16,5 @@ bashload:
 bashsave:
 	cp /home/permagnekirkhus/Desktop/.bashrc .bashrc
 
+tools:
+	sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
