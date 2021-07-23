@@ -10,3 +10,9 @@ insert:
 	cp ModifiedFiles/tcp_output.c linux-hwe-5.8-5.8.0/net/ipv4/tcp_output.c
 	cp ModifiedFiles/skbuff.h linux-hwe-5.8-5.8.0/include/linux/skbuff.h
 
+bashload:
+	cp .bashrc /home/permagnekirkhus/.bashrc
+
+bashsave:
+	cp /home/permagnekirkhus/Desktop/.bashrc .bashrc
+
