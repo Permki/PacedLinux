@@ -469,7 +469,8 @@ static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 	skb_shinfo(skb)->pace_offload = 1;
 	skb_shinfo(skb)->pace_offload_rtt = tp->srtt_us;
 	skb_shinfo(skb)->pace_offload_cwnd_size = tp->snd_cwnd;
-	printk(KERN_INFO "rtt_us: %d, snd_cwnd: %d",tp->srtt_us, tp->snd_cwnd);
+	printk(KERN_INFO "rtt_us: %d, snd_cwnd: %d, len: %d, data_len: %d\n",tp->srtt_us, tp->snd_cwnd, skb->len, skb->data_len);
+
 }
 
 static struct tcp_congestion_ops cubictcp __read_mostly = {
