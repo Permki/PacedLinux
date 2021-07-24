@@ -462,14 +462,18 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 *
 */
 
-static void test_offload(const struct sock *sk, struct sk_buff *skb){
+static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 	
-       	struct tcp_sock *tp = tcp_sk(sk);
-
+	struct bictcp *ca = inet_csk_ca(sk);
+//Do something to shared mem
+//skb_shared:
+	//__u8		pace_offload;
+	//__u8		pace_offload_rtt;
+	//__u8		pace_offload_cwnd_size;
 	skb_shinfo(skb)->pace_offload = 1;
-	skb_shinfo(skb)->pace_offload_rtt = tp->srtt_us;
-	skb_shinfo(skb)->pace_offload_cwnd_size = tp->snd_cwnd;
-	printk(KERN_INFO "rtt_us: %d, snd_cwnd: %d, len: %d, data_len: %d\n",tp->srtt_us, tp->snd_cwnd, skb->len, skb->data_len);
+	skb_shinfo(skb)->pace_offload_rtt = ca->curr_rtt;
+	skb_shinfo(skb)->pace_offload_cwnd_size = ca->last_cwnd;
+	printk(KERN_INFO "modified sk_shinfo. Values are:\nPace_offload: %d\nPace_rtt: %d\nPace_cwnd: %d\n", skb_shinfo(skb)->pace_offload, skb_shinfo(skb)->pace_offload_rtt, skb_shinfo(skb)->pace_offload_cwnd_size);
 }
 
 static struct tcp_congestion_ops cubictcp __read_mostly = {
@@ -480,9 +484,9 @@ static struct tcp_congestion_ops cubictcp __read_mostly = {
 	.undo_cwnd	= tcp_reno_undo_cwnd,
 	.cwnd_event	= bictcp_cwnd_event,
 	.pkts_acked     = bictcp_acked,
-	.pace_offload = test_offload,
+	.pace_offload = bictcp_pace_offload,
 	.owner		= THIS_MODULE,
-	.name		= "test_module",
+	.name		= "cubic_paced",
 };
 
 static int __init cubictcp_register(void)

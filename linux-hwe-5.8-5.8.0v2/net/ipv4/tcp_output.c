@@ -1237,6 +1237,10 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 
 	tcp_add_tx_delay(skb, tp);
 
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload) {
+		inet_csk(sk)->icsk_ca_ops->pace_offload(sk, skb);
+	}
+
 	err = icsk->icsk_af_ops->queue_xmit(sk, skb, &inet->cork.fl);
 
 	if (unlikely(err > 0)) {

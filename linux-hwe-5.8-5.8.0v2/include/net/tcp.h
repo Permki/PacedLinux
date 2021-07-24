@@ -1086,6 +1086,10 @@ struct tcp_congestion_ops {
 	 * after all the ca_state processing. (optional)
 	 */
 	void (*cong_control)(struct sock *sk, const struct rate_sample *rs);
+	
+	/* modify sk_buff for offloading pacing (optional)*/
+	void (*pace_offload)(const struct sock *sk, struct sk_buff *skb); 
+	
 	/* get info for inet_diag (optional) */
 	size_t (*get_info)(struct sock *sk, u32 ext, int *attr,
 			   union tcp_cc_info *info);
