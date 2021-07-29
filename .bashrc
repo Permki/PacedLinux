@@ -121,7 +121,7 @@ alias ccversion='sysctl net.ipv4.tcp_available_congestion_control'
 alias bashrc='emacs ~/.bashrc &'
 alias loadcc='sudo sysctl -p'
 alias ownconfig='cp -v /boot/config-$(uname -r) .config'
-
+alias ccchange='sudo emacs /etc/sysctl.conf'
 
 function lgit() {
     git add --all

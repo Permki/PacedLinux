@@ -469,7 +469,7 @@ static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 	skb_shinfo(skb)->pace_offload = 1;
 	skb_shinfo(skb)->pace_offload_rtt = tp->srtt_us;
 	skb_shinfo(skb)->pace_offload_cwnd_size = tp->snd_cwnd;
-	printk(KERN_INFO "rtt_us: %d, snd_cwnd: %d, len: %d, data_len: %d\n",tp->srtt_us, tp->snd_cwnd, skb->len, skb->data_len);
+	printk(KERN_INFO "rtt_us: %d\t, snd_cwnd: %d,\tdata_len: %d,\t TSO-size: %d\t, TSO-segs: %d\n", skb_shinfo(skb)->pace_offload_rtt, skb_shinfo(skb)->pace_offload_cwnd_size, skb->data_len, skb_shinfo(skb)->gso_size, skb_shinfo(skb)->gso_segs);
 
 }
 
