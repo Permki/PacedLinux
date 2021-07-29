@@ -122,6 +122,8 @@ alias bashrc='emacs ~/.bashrc &'
 alias loadcc='sudo sysctl -p'
 alias ownconfig='cp -v /boot/config-$(uname -r) .config'
 alias ccchange='sudo emacs /etc/sysctl.conf'
+alias getksource='apt-get source linux-image-unsigned-$(uname -r)'
+#apt-get source linux-image-unsigned-5.8.0-63-generic
 
 function lgit() {
     git add --all
