@@ -59,7 +59,7 @@ static u32 cube_rtt_scale __read_mostly;
 static u32 beta_scale __read_mostly;
 static u64 cube_factor __read_mostly;
 
-static int tso_defer_size = 0;
+static u32 tso_defer_size = 0;
 
 /* Note parameters that are used for precomputing scale factors are read-only */
 module_param(fast_convergence, int, 0644);
@@ -475,7 +475,7 @@ static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 /*  Called in tcp_tso_should_defer. Used to manually adjust max TSO send rate. Standard tcp = 1ms.
 * 	Adjust by modifying parameters in /sys/module/tcp_cubic_paced/parameters/tso_defer_size
 */
-static s32 bictcp_tso_defer_size(){
+static u32 bictcp_tso_defer_size(){
 	return tso_defer_size;
 }
 

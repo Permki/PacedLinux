@@ -1090,7 +1090,7 @@ struct tcp_congestion_ops {
 	/* modify sk_buff for offloading pacing (optional)*/
 	void (*pace_offload)(const struct sock *sk, struct sk_buff *skb);
   	/* adjust delta-comp for tcp_tso_should_defer to use larger slots than 1ms*/
-	s32 (*tso_defer_size)();
+	u32 (*tso_defer_size)(void);
 	
 	/* get info for inet_diag (optional) */
 	size_t (*get_info)(struct sock *sk, u32 ext, int *attr,

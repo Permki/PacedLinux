@@ -1237,6 +1237,10 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 
 	tcp_add_tx_delay(skb, tp);
 
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload) {
+		inet_csk(sk)->icsk_ca_ops->pace_offload(sk, skb);
+	}
+
 	err = icsk->icsk_af_ops->queue_xmit(sk, skb, &inet->cork.fl);
 
 	if (unlikely(err > 0)) {
@@ -2011,6 +2015,7 @@ static bool tcp_tso_should_defer(struct sock *sk, struct sk_buff *skb,
 	struct sk_buff *head;
 	int win_divisor;
 	s64 delta;
+	int tso_defer_limit;
 
 	if (icsk->icsk_ca_state >= TCP_CA_Recovery)
 		goto send_now;
@@ -2020,8 +2025,14 @@ static bool tcp_tso_should_defer(struct sock *sk, struct sk_buff *skb,
 	 * Note that tp->tcp_wstamp_ns can be in the future if we have
 	 * packets waiting in a qdisc or device for EDT delivery.
 	 */
+
 	delta = tp->tcp_clock_cache - tp->tcp_wstamp_ns - NSEC_PER_MSEC;
-	if (delta > 0)
+	
+	if (inet_csk(sk)->icsk_ca_ops->tso_defer_size) {
+		tso_defer_limit = inet_csk(sk)->icsk_ca_ops->tso_defer_size();
+	} else tso_defer_limit = 0;
+
+	if (delta > tso_defer_limit)
 		goto send_now;
 
 	in_flight = tcp_packets_in_flight(tp);
