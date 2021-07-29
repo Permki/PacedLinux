@@ -488,7 +488,7 @@ static struct tcp_congestion_ops cubictcp __read_mostly = {
 	.cwnd_event	= bictcp_cwnd_event,
 	.pkts_acked     = bictcp_acked,
 	.pace_offload = bictcp_pace_offload,
-	.tso_defer_check = bictcp_tso_defer_size,
+	.tso_defer_size = bictcp_tso_defer_size,
 	.owner		= THIS_MODULE,
 	.name		= "cubic_paced",
 };
