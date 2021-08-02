@@ -1,1 +1,1 @@
-cmd_/home/permagnekirkhus/Desktop/PacedLinux/PacedCubicModule/modules.order := {   echo /home/permagnekirkhus/Desktop/PacedLinux/PacedCubicModule/tcp_cubic_paced.ko; :; } | awk '!x[$$0]++' - > /home/permagnekirkhus/Desktop/PacedLinux/PacedCubicModule/modules.order
+cmd_/home/permagnekirkhus/Desktop/PacedLinux/NewPacedCubicModule/modules.order := {   echo /home/permagnekirkhus/Desktop/PacedLinux/NewPacedCubicModule/tcp_cubic_paced.ko; :; } | awk '!x[$$0]++' - > /home/permagnekirkhus/Desktop/PacedLinux/NewPacedCubicModule/modules.order

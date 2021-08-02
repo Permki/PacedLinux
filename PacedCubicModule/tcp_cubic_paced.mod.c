@@ -27,12 +27,12 @@ static const struct modversion_info ____versions[]
 __used __section(__versions) = {
 	{ 0xf654425, "module_layout" },
 	{ 0x658dec53, "param_ops_int" },
-	{ 0xb91451a5, "tcp_reno_undo_cwnd" },
-	{ 0xf0f736e4, "tcp_unregister_congestion_control" },
-	{ 0x807c4a8d, "tcp_register_congestion_control" },
-	{ 0x46793187, "tcp_cong_avoid_ai" },
+	{ 0x50b8a407, "tcp_reno_undo_cwnd" },
+	{ 0xfa2de51b, "tcp_unregister_congestion_control" },
+	{ 0x47665993, "tcp_register_congestion_control" },
+	{ 0xcd730a6a, "tcp_cong_avoid_ai" },
 	{ 0x7f02188f, "__msecs_to_jiffies" },
-	{ 0xe1df4fb0, "tcp_slow_start" },
+	{ 0xdd47795b, "tcp_slow_start" },
 	{ 0xc4f0da12, "ktime_get_with_offset" },
 	{ 0x15ba50a6, "jiffies" },
 	{ 0xc5850110, "printk" },
@@ -42,4 +42,4 @@ __used __section(__versions) = {
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "ED8A56CDB22E70B21F54F52");
+MODULE_INFO(srcversion, "9747EC28D9D40C430F9F246");

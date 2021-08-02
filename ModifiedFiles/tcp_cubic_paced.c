@@ -59,6 +59,8 @@ static u32 cube_rtt_scale __read_mostly;
 static u32 beta_scale __read_mostly;
 static u64 cube_factor __read_mostly;
 
+static u32 tso_defer_size = 0;
+
 /* Note parameters that are used for precomputing scale factors are read-only */
 module_param(fast_convergence, int, 0644);
 MODULE_PARM_DESC(fast_convergence, "turn on/off fast convergence");
@@ -456,24 +458,25 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 }
 
 
-/* Called by tcp_output.c
-*
-*
-*
-*/
+/* 	Called by tcp_output.c before xmit
+*	Set rate in skb_shinfo for use in pace offload by SmartNICs */
 
 static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 	
-	struct bictcp *ca = inet_csk_ca(sk);
-//Do something to shared mem
-//skb_shared:
-	//__u8		pace_offload;
-	//__u8		pace_offload_rtt;
-	//__u8		pace_offload_cwnd_size;
+       	struct tcp_sock *tp = tcp_sk(sk);
+
 	skb_shinfo(skb)->pace_offload = 1;
-	skb_shinfo(skb)->pace_offload_rtt = ca->curr_rtt;
-	skb_shinfo(skb)->pace_offload_cwnd_size = ca->last_cwnd;
-	printk(KERN_INFO "modified sk_shinfo. Values are:\nPace_offload: %d\nPace_rtt: %d\nPace_cwnd: %d\n", skb_shinfo(skb)->pace_offload, skb_shinfo(skb)->pace_offload_rtt, skb_shinfo(skb)->pace_offload_cwnd_size);
+	skb_shinfo(skb)->pace_offload_rtt = tp->srtt_us;
+	skb_shinfo(skb)->pace_offload_cwnd_size = tp->snd_cwnd;
+	printk(KERN_INFO "rtt_us: %d\t, snd_cwnd: %d,\tdata_len: %d,\t TSO-size: %d\t, TSO-segs: %d\n", skb_shinfo(skb)->pace_offload_rtt, skb_shinfo(skb)->pace_offload_cwnd_size, skb->data_len, skb_shinfo(skb)->gso_size, skb_shinfo(skb)->gso_segs);
+
+}
+
+/*  Called in tcp_tso_should_defer. Used to manually adjust max TSO send rate. Standard tcp = 1ms.
+* 	Adjust by modifying parameters in /sys/module/tcp_cubic_paced/parameters/tso_defer_size
+*/
+static u32 bictcp_tso_defer_size(){
+	return tso_defer_size;
 }
 
 static struct tcp_congestion_ops cubictcp __read_mostly = {
@@ -485,6 +488,7 @@ static struct tcp_congestion_ops cubictcp __read_mostly = {
 	.cwnd_event	= bictcp_cwnd_event,
 	.pkts_acked     = bictcp_acked,
 	.pace_offload = bictcp_pace_offload,
+	.tso_defer_size = bictcp_tso_defer_size,
 	.owner		= THIS_MODULE,
 	.name		= "cubic_paced",
 };

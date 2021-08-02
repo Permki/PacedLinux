@@ -59,7 +59,13 @@ static u32 cube_rtt_scale __read_mostly;
 static u32 beta_scale __read_mostly;
 static u64 cube_factor __read_mostly;
 
+static int tso_defer_size __read_mostly = 0;
+
 /* Note parameters that are used for precomputing scale factors are read-only */
+
+
+module_param(tso_defer_size, int, 0644);
+MODULE_PARM_DESC(tso_defer_size, "set limit (ms) for tso_defer. Defalut 0");
 module_param(fast_convergence, int, 0644);
 MODULE_PARM_DESC(fast_convergence, "turn on/off fast convergence");
 module_param(beta, int, 0644);
@@ -456,11 +462,8 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 }
 
 
-/* Called by tcp_output.c
-*
-*
-*
-*/
+/* 	Called by tcp_output.c before xmit
+*	Set rate in skb_shinfo for use in pace offload by SmartNICs */
 
 static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 	
@@ -473,6 +476,14 @@ static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb){
 
 }
 
+/*  Called in tcp_tso_should_defer. Used to manually adjust max TSO send rate. Standard tcp = 1ms.
+* 	Adjust by modifying parameters in /sys/module/tcp_cubic_paced/parameters/tso_defer_size
+*/
+static u32 bictcp_tso_defer_size(void){
+  printk(KERN_INFO "defer_size = %d\n", tso_defer_size);
+  return (u32)tso_defer_size;
+}
+
 static struct tcp_congestion_ops cubictcp __read_mostly = {
 	.init		= bictcp_init,
 	.ssthresh	= bictcp_recalc_ssthresh,
@@ -482,6 +493,7 @@ static struct tcp_congestion_ops cubictcp __read_mostly = {
 	.cwnd_event	= bictcp_cwnd_event,
 	.pkts_acked     = bictcp_acked,
 	.pace_offload = bictcp_pace_offload,
+	.tso_defer_size = bictcp_tso_defer_size,
 	.owner		= THIS_MODULE,
 	.name		= "cubic_paced",
 };
