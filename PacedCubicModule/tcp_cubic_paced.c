@@ -484,6 +484,14 @@ static u32 bictcp_tso_defer_size(void){
   return (u32)tso_defer_size;
 }
 
+/* override sysctl_tcp_min_tso_segs */
+static u32 bictcp_min_tso_segs(struct sock *sk)
+{
+  //printk(KERN_INFO "sk->sk_pacing_rate = %d\n", sk->sk_pacing_rate);
+	//return sk->sk_pacing_rate < (bbr_min_tso_rate >> 3) ? 1 : 2;
+	return 1;
+}
+
 static struct tcp_congestion_ops cubictcp __read_mostly = {
 	.init		= bictcp_init,
 	.ssthresh	= bictcp_recalc_ssthresh,
@@ -493,7 +501,8 @@ static struct tcp_congestion_ops cubictcp __read_mostly = {
 	.cwnd_event	= bictcp_cwnd_event,
 	.pkts_acked     = bictcp_acked,
 	.pace_offload = bictcp_pace_offload,
-	.tso_defer_size = bictcp_tso_defer_size,
+	//.tso_defer_size = bictcp_tso_defer_size,
+	//.min_tso_segs	= bictcp_min_tso_segs,
 	.owner		= THIS_MODULE,
 	.name		= "cubic_paced",
 };

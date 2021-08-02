@@ -1,1 +1,0 @@
-cmd_/home/permagnekirkhus/Desktop/PacedLinux/NewPacedCubicModule/Module.symvers := sed 's/ko$$/o/' /home/permagnekirkhus/Desktop/PacedLinux/NewPacedCubicModule/modules.order | scripts/mod/modpost -m -a   -o /home/permagnekirkhus/Desktop/PacedLinux/NewPacedCubicModule/Module.symvers -e -i Module.symvers   -T -
