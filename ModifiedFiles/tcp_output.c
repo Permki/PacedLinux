@@ -601,11 +601,13 @@ static void tcp_options_write(__be32 *ptr, struct tcp_sock *tp,
 		u8 *p = (u8 *)ptr;
 		*p++ = TCPOPT_PACED;
 		*p++ = (u8)PACEOPTS_SIZE;
-		*(u32 *)p = pace_offload(sk, skb);
+		long srtt_ns = tp->srtt_us * 1000;
+		*(u32 *)p = (u32)(srtt_ns / tp->snd_cwnd);
+		//*(u32 *)p = inet_csk((struct sock *)tp)->icsk_ca_ops->pace_offload(tp);
+		ptr = (u32 *)p;
+		ptr++;
+		//do we need to increment ptr here?
 	}
-	ptr = p;
-	ptr++;
-	//do we need to increment ptr here?
 }
 
 static void smc_set_option(const struct tcp_sock *tp,
@@ -1295,6 +1297,13 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 	}
 
 	tcp_options_write((__be32 *)(th + 1), tp, &opts);
+
+	/* For PACE testing only */
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload)
+	{
+		inet_csk(sk)->icsk_ca_ops->pace_offload(tp, skb);
+	}
+
 	skb_shinfo(skb)->gso_type = sk->sk_gso_type;
 	if (likely(!(tcb->tcp_flags & TCPHDR_SYN)))
 	{

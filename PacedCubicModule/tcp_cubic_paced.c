@@ -539,16 +539,54 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 }
 
 /* 	Called by tcp_output.c before xmit
-*	Set rate in skb_shinfo for use in pace offload by SmartNICs */
+*	Calculate rate for use in pace offload by SmartNICs */
 
-static void bictcp_pace_offload(const struct sock *sk, struct sk_buff *skb)
+static void bictcp_pace_offload(struct tcp_sock *tp, struct sk_buff *skb)
 {
-
-	struct tcp_sock *tp = tcp_sk(sk);
 	long srtt_ns = tp->srtt_us * 1000;
-	u32 rate = srtt_ns / tp->snd_cwnd;
-	printk(KERN_INFO "rtt_ns: %ld\t, snd_cwnd: %d,\tdata_len: %d,\t TSO-size: %d\t, TSO-segs: %d\t RATE: %d\n", srtt_ns,
+	return (u32)(srtt_ns / tp->snd_cwnd);
+	printk(KERN_INFO "BICTCP_PACE_OFFLOAD. rtt_ns: %ld\t, snd_cwnd: %d,\tdata_len: %d,\t TSO-size: %d\t, TSO-segs: %d\t RATE: %d\n", srtt_ns,
 		   tp->snd_cwnd, skb->data_len, skb_shinfo(skb)->gso_size, skb_shinfo(skb)->gso_segs, rate);
+
+	unsigned char *user_data; /* TCP data begin pointer */
+	unsigned char *tail;	  /* TCP data end pointer */
+	unsigned char *it;		  /* TCP data iterator */
+	struct iphdr *iph;		  /* IPv4 header */
+	struct tcphdr *tcph;	  /* TCP header */
+	u16 sport, dport;		  /* Source and destination ports */
+	u32 saddr, daddr;		  /* Source and destination addresses */
+	iph = ip_hdr(skb);		  /* get IP header */
+
+	tcph = tcp_hdr(skb); /* get TCP header */
+
+	/* Convert network endianness to host endiannes */
+	saddr = ntohl(iph->saddr);
+	daddr = ntohl(iph->daddr);
+	sport = ntohs(tcph->source);
+	dport = ntohs(tcph->dest);
+
+	/* Calculate pointers for begin and end of TCP packet data */
+	user_data = (unsigned char *)((unsigned char *)tcph + (tcph->doff * 4));
+	tail = skb_tail_pointer(skb);
+
+	/* ----- Print all needed information from received TCP packet ------ */
+
+	/* Print packet route */
+	printk("print_tcp: %pI4h:%d -> %pI4h:%d\n", &saddr, sport,
+		   &daddr, dport);
+
+	/* Print TCP packet data (payload) */
+	printk("print_tcp: data:\n");
+	for (it = user_data; it != tail; ++it)
+	{
+		char c = *(char *)it;
+
+		//if (c == '\0')
+		//	break;
+
+		printk(KERN_CONT "%c", c);
+	}
+	printk("\n\n");
 }
 
 static struct tcp_congestion_ops cubictcp __read_mostly = {
