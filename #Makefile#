@@ -1,0 +1,17 @@
+
+KERNEL :=linux-hwe-5.8-5.8.0
+
+insert:
+	cp ModifiedFiles/tcp_cubic_paced.c $(KERNEL)/net/ipv4/tcp_cubic_paced.c 
+	cp ModifiedFiles/tcp.h $(KERNEL)/include/net/tcp.h
+	cp ModifiedFiles/tcp_output.c $(KERNEL)/net/ipv4/tcp_output.c
+
+bashload:
+	cp .bashrc /home/permagnekirkhus/.bashrc
+
+bashsave:
+	cp /home/permagnekirkhus/.bashrc .bashrc
+
+tools:
+	sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
+#P8cBENz5YNgdB7w
