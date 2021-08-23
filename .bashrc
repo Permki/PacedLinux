@@ -115,7 +115,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
+alias installtools="sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison"
 alias tracings="cd /sys/kernel/debug/tracing/events/"
 alias ccversion='sysctl net.ipv4.tcp_available_congestion_control'
 alias bashrc='emacs ~/.bashrc &'
