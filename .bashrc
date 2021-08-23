@@ -122,9 +122,11 @@ alias bashrc='emacs ~/.bashrc &'
 alias loadcc='sudo sysctl -p'
 alias ownconfig='cp -v /boot/config-$(uname -r) .config'
 alias ccchange='sudo emacs /etc/sysctl.conf'
-alias getksource='apt-get source linux-image-unsigned-$(uname -r)'
-#apt-get source linux-image-unsigned-5.8.0-63-generic
+#alias getsource='apt-get source linux-image-unsigned-$(uname -r)'
+alias getsource='apt-get source linux-image-unsigned-5.8.0-63-generic'
 
+alias defer='echo 1 | sudo tee /sys/module/tcp_cubic_paced/parameters/tso_defer_size'
+alias resetdefer='echo 0 | sudo tee /sys/module/tcp_cubic_paced/parameters/tso_defer_size'
 function lgit() {
     git add --all
     git commit -am "$1"

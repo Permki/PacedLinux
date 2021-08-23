@@ -515,13 +515,8 @@ struct skb_shared_info {
 	unsigned short	gso_size;
 	/* Warning: this field is not always filled in (UFO)! */
 	unsigned short	gso_segs;
-	__u8		pace_offload;
-	__u8		pace_offload_rtt;
-	__u8		pace_offload_cwnd_size;
-
 	struct sk_buff	*frag_list;
 	struct skb_shared_hwtstamps hwtstamps;
-	
 	unsigned int	gso_type;
 	u32		tskey;
 
