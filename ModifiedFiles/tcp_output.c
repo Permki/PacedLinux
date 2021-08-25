@@ -596,14 +596,13 @@ static void tcp_options_write(__be32 *ptr, struct tcp_sock *tp,
 
 	mptcp_options_write(ptr, opts);
 
-	if (opts->added_opt_len > 0)
+	if (opts->added_opt_len > 0 &&  inet_csk((struct sock*)tp)->icsk_ca_ops->pace_offload)
 	{
 		u8 *p = (u8 *)ptr;
 		*p++ = TCPOPT_PACED;
 		*p++ = (u8)PACEOPTS_SIZE;
 		long srtt_ns = tp->srtt_us * 1000;
 		*(u32 *)p = (u32)(srtt_ns / tp->snd_cwnd);
-		//*(u32 *)p = inet_csk((struct sock *)tp)->icsk_ca_ops->pace_offload(tp);
 		ptr = (u32 *)p;
 		ptr++;
 		//do we need to increment ptr here?
@@ -1230,14 +1229,13 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 	}
 
 	/******************************************************************/
-	unsigned int added_length = 0;
 
 	if (inet_csk(sk)->icsk_ca_ops->pace_offload)
 	{
-		added_length = PACEOPTS_SIZE;
+		tcp_options_size += PACEOPTS_SIZE;
 		opts.added_opt_len += PACEOPTS_SIZE;
 	}
-	tcp_options_size += added_length;
+	
 	/******************************************************************/
 
 	tcp_header_size = tcp_options_size + sizeof(struct tcphdr);
