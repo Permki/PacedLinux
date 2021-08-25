@@ -187,6 +187,8 @@ void tcp_time_wait(struct sock *sk, int state, int timeo);
 #define TCPOPT_MPTCP		30	/* Multipath TCP (RFC6824) */
 #define TCPOPT_FASTOPEN		34	/* Fast open (RFC7413) */
 #define TCPOPT_EXP		254	/* Experimental */
+#define TCPOPT_PACED 200   /* Used for Netronome Pace Offloading Experimental */
+#define PACEOPTS_SIZE 6    /* Fixed size for opts used in Pace Offloading. | kind | len | u32 delayval |*/
 /* Magic number to be after the option value for sharing TCP
  * experimental options. See draft-ietf-tcpm-experimental-options-00.txt
  */
@@ -1090,6 +1092,8 @@ struct tcp_congestion_ops {
 	 * after all the ca_state processing. (optional)
 	 */
 	void (*cong_control)(struct sock *sk, const struct rate_sample *rs);
+	/* used for print or optional calculations for offloading pacing (optional)*/
+    void (*pace_offload)(struct tcp_sock *tp, struct sk_buff *skb);
 	/* get info for inet_diag (optional) */
 	size_t (*get_info)(struct sock *sk, u32 ext, int *attr,
 			   union tcp_cc_info *info);

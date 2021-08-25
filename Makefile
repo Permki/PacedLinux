@@ -1,5 +1,5 @@
 
-KERNEL :=linux-hwe-5.8-5.8.0
+KERNEL :=linux-hwe-5.11-5.11.0
 
 insert:
 	cp ModifiedFiles/tcp_cubic_paced.c $(KERNEL)/net/ipv4/tcp_cubic_paced.c 

@@ -436,6 +436,7 @@ struct tcp_out_options {
 	u16 options;		/* bit field of OPTION_* */
 	u16 mss;		/* 0 to disable */
 	u8 ws;			/* window scale, 0 to disable */
+	u8 added_opt_len;	/* added length due to paceoffload opt */
 	u8 num_sack_blocks;	/* number of SACK blocks to include */
 	u8 hash_size;		/* bytes in hash_location */
 	u8 bpf_opt_len;		/* length of BPF hdr option */
@@ -703,6 +704,26 @@ static void tcp_options_write(__be32 *ptr, struct tcp_sock *tp,
 	smc_options_write(ptr, &options);
 
 	mptcp_options_write(ptr, tp, opts);
+
+	/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+	/******************************************************************/
+	if (tp == NULL)
+		return;
+
+	if (opts->added_opt_len > 0 && inet_csk((struct sock *)tp)->icsk_ca_ops->pace_offload)
+	{
+		u8 *p = (u8 *)ptr;
+		*p++ = TCPOPT_PACED;
+		*p++ = (u8)PACEOPTS_SIZE;
+		long srtt_ns = tp->srtt_us * 1000;
+		*(u32 *)p = (u32)(srtt_ns / tp->snd_cwnd);
+		ptr = (u32 *)p;
+		ptr++;
+		//do we need to increment ptr here?
+	}
+	/******************************************************************/
+
+
 }
 
 static void smc_set_option(const struct tcp_sock *tp,
@@ -1295,6 +1316,17 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 		if (tcp_skb_pcount(skb) > 1)
 			tcb->tcp_flags |= TCPHDR_PSH;
 	}
+
+	/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+	/******************************************************************/
+
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload && (tcp_options_size + PACEOPTS_SIZE <= 40))
+	{
+		opts.added_opt_len += PACEOPTS_SIZE;
+		tcp_options_size += PACEOPTS_SIZE;
+	}
+	/******************************************************************/
+
 	tcp_header_size = tcp_options_size + sizeof(struct tcphdr);
 
 	/* if no packet is in qdisc/device queue, then allow XPS to select
@@ -1371,6 +1403,14 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 
 	/* BPF prog is the last one writing header option */
 	bpf_skops_write_hdr_opt(sk, skb, NULL, NULL, 0, &opts);
+
+	/**********************************************************************/
+
+	/* For PACE testing only */
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload)
+		inet_csk(sk)->icsk_ca_ops->pace_offload(tp, skb);
+
+	/**********************************************************************/
 
 	INDIRECT_CALL_INET(icsk->icsk_af_ops->send_check,
 			   tcp_v6_send_check, tcp_v4_send_check,
@@ -1839,6 +1879,14 @@ unsigned int tcp_current_mss(struct sock *sk)
 
 	header_len = tcp_established_options(sk, NULL, &opts, &md5) +
 		     sizeof(struct tcphdr);
+	/****************************************************************/
+	/* Experimental for Netronome SmartNIC offloading */
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload)
+		header_len += PACEOPTS_SIZE;
+
+	/****************************************************************/
+
+
 	/* The mss_cache is sized based on tp->tcp_header_len, which assumes
 	 * some common options. If this is an odd packet (because we have SACK
 	 * blocks etc) then our calculated header_len will be different, and
