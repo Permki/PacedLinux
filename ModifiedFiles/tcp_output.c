@@ -597,6 +597,9 @@ static void tcp_options_write(__be32 *ptr, struct tcp_sock *tp,
 
 	mptcp_options_write(ptr, opts);
 
+	if (tp==NULL)
+		return;
+
 	if (opts->added_opt_len > 0 &&  inet_csk((struct sock*)tp)->icsk_ca_ops->pace_offload)
 	{
 		u8 *p = (u8 *)ptr;
@@ -608,7 +611,7 @@ static void tcp_options_write(__be32 *ptr, struct tcp_sock *tp,
 		ptr++;
 		//do we need to increment ptr here?
 	}
-=======
+	
     u16 options = opts->options; /* mungable copy */
 
     if (unlikely(OPTION_MD5 & options))
