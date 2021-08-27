@@ -25,7 +25,6 @@
 #include <linux/skbuff.h>
 #include <linux/kref.h>
 #include <linux/ktime.h>
-#include <linux/indirect_call_wrapper.h>
 
 #include <net/inet_connection_sock.h>
 #include <net/inet_timewait_sock.h>
@@ -187,8 +186,14 @@ void tcp_time_wait(struct sock *sk, int state, int timeo);
 #define TCPOPT_MPTCP		30	/* Multipath TCP (RFC6824) */
 #define TCPOPT_FASTOPEN		34	/* Fast open (RFC7413) */
 #define TCPOPT_EXP		254	/* Experimental */
+
+/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+/******************************************************************/
 #define TCPOPT_PACED 200   /* Used for Netronome Pace Offloading Experimental */
 #define PACEOPTS_SIZE 6    /* Fixed size for opts used in Pace Offloading. | kind | len | u32 delayval |*/
+/******************************************************************/
+
+
 /* Magic number to be after the option value for sharing TCP
  * experimental options. See draft-ietf-tcpm-experimental-options-00.txt
  */
@@ -324,7 +329,6 @@ void tcp_shutdown(struct sock *sk, int how);
 int tcp_v4_early_demux(struct sk_buff *skb);
 int tcp_v4_rcv(struct sk_buff *skb);
 
-void tcp_remove_empty_skb(struct sock *sk, struct sk_buff *skb);
 int tcp_v4_tw_remember_stamp(struct inet_timewait_sock *tw);
 int tcp_sendmsg(struct sock *sk, struct msghdr *msg, size_t size);
 int tcp_sendmsg_locked(struct sock *sk, struct msghdr *msg, size_t size);
@@ -332,8 +336,6 @@ int tcp_sendpage(struct sock *sk, struct page *page, int offset, size_t size,
 		 int flags);
 int tcp_sendpage_locked(struct sock *sk, struct page *page, int offset,
 			size_t size, int flags);
-struct sk_buff *tcp_build_frag(struct sock *sk, int size_goal, int flags,
-			       struct page *page, int offset, size_t *size);
 ssize_t do_tcp_sendpages(struct sock *sk, struct page *page, int offset,
 		 size_t size, int flags);
 int tcp_send_mss(struct sock *sk, int *size_goal, int flags);
@@ -391,28 +393,30 @@ struct sock *tcp_check_req(struct sock *sk, struct sk_buff *skb,
 int tcp_child_process(struct sock *parent, struct sock *child,
 		      struct sk_buff *skb);
 void tcp_enter_loss(struct sock *sk);
-void tcp_cwnd_reduction(struct sock *sk, int newly_acked_sacked, int newly_lost, int flag);
+void tcp_cwnd_reduction(struct sock *sk, int newly_acked_sacked, int flag);
 void tcp_clear_retrans(struct tcp_sock *tp);
 void tcp_update_metrics(struct sock *sk);
 void tcp_init_metrics(struct sock *sk);
 void tcp_metrics_init(void);
 bool tcp_peer_is_proven(struct request_sock *req, struct dst_entry *dst);
-void __tcp_close(struct sock *sk, long timeout);
 void tcp_close(struct sock *sk, long timeout);
 void tcp_init_sock(struct sock *sk);
-void tcp_init_transfer(struct sock *sk, int bpf_op, struct sk_buff *skb);
+void tcp_init_transfer(struct sock *sk, int bpf_op);
 __poll_t tcp_poll(struct file *file, struct socket *sock,
 		      struct poll_table_struct *wait);
 int tcp_getsockopt(struct sock *sk, int level, int optname,
 		   char __user *optval, int __user *optlen);
-int tcp_setsockopt(struct sock *sk, int level, int optname, sockptr_t optval,
-		   unsigned int optlen);
+int tcp_setsockopt(struct sock *sk, int level, int optname,
+		   char __user *optval, unsigned int optlen);
+int compat_tcp_getsockopt(struct sock *sk, int level, int optname,
+			  char __user *optval, int __user *optlen);
+int compat_tcp_setsockopt(struct sock *sk, int level, int optname,
+			  char __user *optval, unsigned int optlen);
 void tcp_set_keepalive(struct sock *sk, int val);
 void tcp_syn_ack_timeout(const struct request_sock *req);
 int tcp_recvmsg(struct sock *sk, struct msghdr *msg, size_t len, int nonblock,
 		int flags, int *addr_len);
 int tcp_set_rcvlowat(struct sock *sk, int val);
-int tcp_set_window_clamp(struct sock *sk, int val);
 void tcp_data_ready(struct sock *sk);
 #ifdef CONFIG_MMU
 int tcp_mmap(struct file *file, struct socket *sock,
@@ -462,8 +466,7 @@ enum tcp_synack_type {
 struct sk_buff *tcp_make_synack(const struct sock *sk, struct dst_entry *dst,
 				struct request_sock *req,
 				struct tcp_fastopen_cookie *foc,
-				enum tcp_synack_type synack_type,
-				struct sk_buff *syn_skb);
+				enum tcp_synack_type synack_type);
 int tcp_disconnect(struct sock *sk, int flags);
 
 void tcp_finish_connect(struct sock *sk, struct sk_buff *skb);
@@ -477,8 +480,6 @@ struct sock *tcp_get_cookie_sock(struct sock *sk, struct sk_buff *skb,
 int __cookie_v4_check(const struct iphdr *iph, const struct tcphdr *th,
 		      u32 cookie);
 struct sock *cookie_v4_check(struct sock *sk, struct sk_buff *skb);
-struct request_sock *cookie_tcp_reqsk_alloc(const struct request_sock_ops *ops,
-					    struct sock *sk, struct sk_buff *skb);
 #ifdef CONFIG_SYN_COOKIES
 
 /* Syncookies use a monotonic timer which increments every 60 seconds.
@@ -613,7 +614,7 @@ void tcp_skb_collapse_tstamp(struct sk_buff *skb,
 /* tcp_input.c */
 void tcp_rearm_rto(struct sock *sk);
 void tcp_synack_rtt_meas(struct sock *sk, struct request_sock *req);
-void tcp_reset(struct sock *sk, struct sk_buff *skb);
+void tcp_reset(struct sock *sk);
 void tcp_skb_mark_lost_uncond_verify(struct tcp_sock *tp, struct sk_buff *skb);
 void tcp_fin(struct sock *sk);
 
@@ -708,7 +709,7 @@ static inline void tcp_fast_path_check(struct sock *sk)
 static inline u32 tcp_rto_min(struct sock *sk)
 {
 	const struct dst_entry *dst = __sk_dst_get(sk);
-	u32 rto_min = inet_csk(sk)->icsk_rto_min;
+	u32 rto_min = TCP_RTO_MIN;
 
 	if (dst && dst_metric_locked(dst, RTAX_RTO_MIN))
 		rto_min = dst_metric_rtt(dst, RTAX_RTO_MIN);
@@ -914,8 +915,6 @@ static inline void tcp_skb_bpf_redirect_clear(struct sk_buff *skb)
 	TCP_SKB_CB(skb)->bpf.sk_redir = NULL;
 }
 
-extern const struct inet_connection_sock_af_ops ipv4_specific;
-
 #if IS_ENABLED(CONFIG_IPV6)
 /* This is the variant of inet6_iif() that must be used by TCP,
  * as TCP moves IP6CB into a different location in skb->cb[]
@@ -941,14 +940,17 @@ static inline int tcp_v6_sdif(const struct sk_buff *skb)
 #endif
 	return 0;
 }
-
-extern const struct inet_connection_sock_af_ops ipv6_specific;
-
-INDIRECT_CALLABLE_DECLARE(void tcp_v6_send_check(struct sock *sk, struct sk_buff *skb));
-INDIRECT_CALLABLE_DECLARE(int tcp_v6_rcv(struct sk_buff *skb));
-INDIRECT_CALLABLE_DECLARE(void tcp_v6_early_demux(struct sk_buff *skb));
-
 #endif
+
+static inline bool inet_exact_dif_match(struct net *net, struct sk_buff *skb)
+{
+#if IS_ENABLED(CONFIG_NET_L3_MASTER_DEV)
+	if (!net->ipv4.sysctl_tcp_l3mdev_accept &&
+	    skb && ipv4_l3mdev_skb(IPCB(skb)->flags))
+		return true;
+#endif
+	return false;
+}
 
 /* TCP_SKB_CB reference means this can not be used from early demux */
 static inline int tcp_v4_sdif(struct sk_buff *skb)
@@ -1088,12 +1090,17 @@ struct tcp_congestion_ops {
 	u32 (*min_tso_segs)(struct sock *sk);
 	/* returns the multiplier used in tcp_sndbuf_expand (optional) */
 	u32 (*sndbuf_expand)(struct sock *sk);
+	
+	/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+	/******************************************************************/
+	/* used for print or optional calculations for offloading pacing (optional)*/
+    void (*pace_offload)(struct tcp_sock *tp, struct sk_buff *skb);
+	/******************************************************************/
+	
 	/* call when packets are delivered to update cwnd and pacing rate,
 	 * after all the ca_state processing. (optional)
 	 */
 	void (*cong_control)(struct sock *sk, const struct rate_sample *rs);
-	/* used for print or optional calculations for offloading pacing (optional)*/
-    void (*pace_offload)(struct tcp_sock *tp, struct sk_buff *skb);
 	/* get info for inet_diag (optional) */
 	size_t (*get_info)(struct sock *sk, u32 ext, int *attr,
 			   union tcp_cc_info *info);
@@ -1114,7 +1121,7 @@ void tcp_get_available_congestion_control(char *buf, size_t len);
 void tcp_get_allowed_congestion_control(char *buf, size_t len);
 int tcp_set_allowed_congestion_control(char *allowed);
 int tcp_set_congestion_control(struct sock *sk, const char *name, bool load,
-			       bool cap_net_admin);
+			       bool reinit, bool cap_net_admin);
 u32 tcp_slow_start(struct tcp_sock *tp, u32 acked);
 void tcp_cong_avoid_ai(struct tcp_sock *tp, u32 w, u32 acked);
 
@@ -1331,9 +1338,7 @@ static inline unsigned long tcp_probe0_base(const struct sock *sk)
 static inline unsigned long tcp_probe0_when(const struct sock *sk,
 					    unsigned long max_when)
 {
-	u8 backoff = min_t(u8, ilog2(TCP_RTO_MAX / TCP_RTO_MIN) + 1,
-			   inet_csk(sk)->icsk_backoff);
-	u64 when = (u64)tcp_probe0_base(sk) << backoff;
+	u64 when = (u64)tcp_probe0_base(sk) << inet_csk(sk)->icsk_backoff;
 
 	return (unsigned long)min_t(u64, when, max_when);
 }
@@ -1425,8 +1430,6 @@ static inline int tcp_full_space(const struct sock *sk)
 {
 	return tcp_win_from_space(sk, READ_ONCE(sk->sk_rcvbuf));
 }
-
-void tcp_cleanup_rbuf(struct sock *sk, int copied);
 
 /* We provision sk_rcvbuf around 200% of sk_rcvlowat.
  * If 87.5 % (7/8) of the space has been consumed, we want to override
@@ -1955,7 +1958,6 @@ struct tcp_iter_state {
 	struct seq_net_private	p;
 	enum tcp_seq_states	state;
 	struct sock		*syn_wait_sk;
-	struct tcp_seq_afinfo	*bpf_seq_afinfo;
 	int			bucket, offset, sbucket, num;
 	loff_t			last_pos;
 };
@@ -1968,10 +1970,6 @@ void tcp_v4_destroy_sock(struct sock *sk);
 struct sk_buff *tcp_gso_segment(struct sk_buff *skb,
 				netdev_features_t features);
 struct sk_buff *tcp_gro_receive(struct list_head *head, struct sk_buff *skb);
-INDIRECT_CALLABLE_DECLARE(int tcp4_gro_complete(struct sk_buff *skb, int thoff));
-INDIRECT_CALLABLE_DECLARE(struct sk_buff *tcp4_gro_receive(struct list_head *head, struct sk_buff *skb));
-INDIRECT_CALLABLE_DECLARE(int tcp6_gro_complete(struct sk_buff *skb, int thoff));
-INDIRECT_CALLABLE_DECLARE(struct sk_buff *tcp6_gro_receive(struct list_head *head, struct sk_buff *skb));
 int tcp_gro_complete(struct sk_buff *skb);
 
 void __tcp_v4_send_check(struct sk_buff *skb, __be32 saddr, __be32 daddr);
@@ -1982,7 +1980,18 @@ static inline u32 tcp_notsent_lowat(const struct tcp_sock *tp)
 	return tp->notsent_lowat ?: net->ipv4.sysctl_tcp_notsent_lowat;
 }
 
-bool tcp_stream_memory_free(const struct sock *sk, int wake);
+/* @wake is one when sk_stream_write_space() calls us.
+ * This sends EPOLLOUT only if notsent_bytes is half the limit.
+ * This mimics the strategy used in sock_def_write_space().
+ */
+static inline bool tcp_stream_memory_free(const struct sock *sk, int wake)
+{
+	const struct tcp_sock *tp = tcp_sk(sk);
+	u32 notsent_bytes = READ_ONCE(tp->write_seq) -
+			    READ_ONCE(tp->snd_nxt);
+
+	return (notsent_bytes << wake) < tcp_notsent_lowat(tp);
+}
 
 #ifdef CONFIG_PROC_FS
 int tcp4_proc_init(void);
@@ -2005,7 +2014,7 @@ struct tcp_sock_af_ops {
 					 const struct sk_buff *skb);
 	int		(*md5_parse)(struct sock *sk,
 				     int optname,
-				     sockptr_t optval,
+				     char __user *optval,
 				     int optlen);
 #endif
 };
@@ -2020,21 +2029,21 @@ struct tcp_request_sock_ops {
 					  const struct sock *sk,
 					  const struct sk_buff *skb);
 #endif
+	void (*init_req)(struct request_sock *req,
+			 const struct sock *sk_listener,
+			 struct sk_buff *skb);
 #ifdef CONFIG_SYN_COOKIES
 	__u32 (*cookie_init_seq)(const struct sk_buff *skb,
 				 __u16 *mss);
 #endif
-	struct dst_entry *(*route_req)(const struct sock *sk,
-				       struct sk_buff *skb,
-				       struct flowi *fl,
-				       struct request_sock *req);
+	struct dst_entry *(*route_req)(const struct sock *sk, struct flowi *fl,
+				       const struct request_sock *req);
 	u32 (*init_seq)(const struct sk_buff *skb);
 	u32 (*init_ts_off)(const struct net *net, const struct sk_buff *skb);
 	int (*send_synack)(const struct sock *sk, struct dst_entry *dst,
 			   struct flowi *fl, struct request_sock *req,
 			   struct tcp_fastopen_cookie *foc,
-			   enum tcp_synack_type synack_type,
-			   struct sk_buff *syn_skb);
+			   enum tcp_synack_type synack_type);
 };
 
 extern const struct tcp_request_sock_ops tcp_request_sock_ipv4_ops;
@@ -2231,22 +2240,6 @@ int tcp_bpf_sendmsg_redir(struct sock *sk, struct sk_msg *msg, u32 bytes,
 int __tcp_bpf_recvmsg(struct sock *sk, struct sk_psock *psock,
 		      struct msghdr *msg, int len, int flags);
 #endif /* CONFIG_NET_SOCK_MSG */
-
-#ifdef CONFIG_CGROUP_BPF
-static inline void bpf_skops_init_skb(struct bpf_sock_ops_kern *skops,
-				      struct sk_buff *skb,
-				      unsigned int end_offset)
-{
-	skops->skb = skb;
-	skops->skb_data_end = skb->data + end_offset;
-}
-#else
-static inline void bpf_skops_init_skb(struct bpf_sock_ops_kern *skops,
-				      struct sk_buff *skb,
-				      unsigned int end_offset)
-{
-}
-#endif
 
 /* Call BPF_SOCK_OPS program that returns an int. If the return value
  * is < 0, then the BPF op failed (for example if the loaded BPF

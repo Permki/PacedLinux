@@ -479,6 +479,8 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 		hystart_update(sk, delay);
 }
 
+/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+/******************************************************************/
 
 /* 	Called by tcp_output.c before xmit
 *	Calculate rate for use in pace offload by SmartNICs */
@@ -531,6 +533,7 @@ static void bictcp_pace_offload(struct tcp_sock *tp, struct sk_buff *skb)
 	printk("\n\n");
 }
 
+/******************************************************************/
 
 static struct tcp_congestion_ops cubictcp __read_mostly = {
 	.init		= bictcp_init,
