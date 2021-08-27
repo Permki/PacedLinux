@@ -14,5 +14,8 @@ bashsave:
 
 tools:
 	sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
+	
+language:
+	gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'no+mac')]"
 #P8cBENz5YNgdB7w
 #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
