@@ -1,5 +1,5 @@
 
-KERNEL :=linux-hwe-5.11-5.11.0
+KERNEL :=linux-hwe-5.8-5.8.0
 USER := $(whoami)
 
 insert:
