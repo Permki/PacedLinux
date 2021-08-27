@@ -1,5 +1,6 @@
 
 KERNEL :=linux-hwe-5.11-5.11.0
+USER := $(whoami)
 
 insert:
 	cp ModifiedFiles/tcp_cubic_paced.c $(KERNEL)/net/ipv4/tcp_cubic_paced.c 
@@ -7,14 +8,19 @@ insert:
 	cp ModifiedFiles/tcp_output.c $(KERNEL)/net/ipv4/tcp_output.c
 
 bashload:
-	cp .bashrc /home/permagnekirkhus/.bashrc
+	cp .bashrc ${HOME}/.bashrc
+bashrefresh:
+	source ~/.bashrc
 
 bashsave:
-	cp /home/permagnekirkhus/.bashrc .bashrc
+	cp /home/$(USER)/.bashrc .bashrc
 
 tools:
 	sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
-	
+
+sources:
+	sudo emacs /etc/apt/sources.list
+
 language:
 	gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'no+mac')]"
 #P8cBENz5YNgdB7w
