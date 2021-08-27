@@ -9,8 +9,7 @@ insert:
 
 bashload:
 	cp .bashrc ${HOME}/.bashrc
-bashrefresh:
-	source ~/.bashrc
+	echo "source ~/.bashrc"
 
 bashsave:
 	cp /home/$(USER)/.bashrc .bashrc
