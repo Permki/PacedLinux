@@ -487,8 +487,8 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 
 static void bictcp_pace_offload(struct tcp_sock *tp, struct sk_buff *skb)
 {
-  return;
 	long srtt_ns = tp->srtt_us * 1000;
+	return;
 	u32 rate = (u32)(srtt_ns / tp->snd_cwnd);
 	printk(KERN_INFO "BICTCP_PACE_OFFLOAD. rtt_ns: %ld\t, snd_cwnd: %d,\tdata_len: %d,\t TSO-size: %d\t, TSO-segs: %d\t RATE: %d\n", srtt_ns,
 		   tp->snd_cwnd, skb->data_len, skb_shinfo(skb)->gso_size, skb_shinfo(skb)->gso_segs, rate);
