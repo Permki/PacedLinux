@@ -1,0 +1,162 @@
+Format: 1.0
+Source: linux-5.8.18
+Binary: linux-image-5.8.18 linux-libc-dev linux-headers-5.8.18 linux-image-5.8.18-dbg
+Architecture: amd64 source
+Version: 5.8.18-1
+Checksums-Md5:
+ c614cd47b0b73ec076c2eea0f7e768bf 1248 linux-5.8.18_5.8.18-1.dsc
+ 1a844e02e497f1fb4052cb12f30f5ca4 8031136 linux-headers-5.8.18_5.8.18-1_amd64.deb
+ b216cbf6f4971054b6416d1a7f5a764a 133000180 linux-image-5.8.18-dbg_5.8.18-1_amd64.deb
+ 3741d84b4d8bd0454ed48554b243354b 65591580 linux-image-5.8.18_5.8.18-1_amd64.deb
+ 04a56a7104ae622e3f3ca9ddcb7dc53f 1115460 linux-libc-dev_5.8.18-1_amd64.deb
+Checksums-Sha1:
+ 04822810f5cdd0e490961e3cb297d603e55aa59a 1248 linux-5.8.18_5.8.18-1.dsc
+ 7c8dfdd12d18a678e8ea41443bb9bd262203f066 8031136 linux-headers-5.8.18_5.8.18-1_amd64.deb
+ f2dbd334f5403c2fd08be43174e38d39be6abb4b 133000180 linux-image-5.8.18-dbg_5.8.18-1_amd64.deb
+ 2504a6278960fce7bc41eabf5f886a70e6178421 65591580 linux-image-5.8.18_5.8.18-1_amd64.deb
+ d64ee1de4fe48a8a44cb068a6cbae28959fc638d 1115460 linux-libc-dev_5.8.18-1_amd64.deb
+Checksums-Sha256:
+ f3410d112c5fe2d3c758193c78a0037990aa8f789964aca02de99435ea8a2cd8 1248 linux-5.8.18_5.8.18-1.dsc
+ a43241b18243fe985357a04f0cc60c5186422df9fb3fb7c3f7764edc13c6e1d8 8031136 linux-headers-5.8.18_5.8.18-1_amd64.deb
+ 42dc4b35d2daf0cda0b39730e6e56a8867b3bbaf6d039cec665e233d75f8a246 133000180 linux-image-5.8.18-dbg_5.8.18-1_amd64.deb
+ 5a1a0193def551088f30bb0e482541e338601b81756cd1f9288bffd68f60d207 65591580 linux-image-5.8.18_5.8.18-1_amd64.deb
+ 636eabfff90b2cd21743223b944ea570cb55e0653eafda39b4237273625f0e26 1115460 linux-libc-dev_5.8.18-1_amd64.deb
+Build-Origin: Ubuntu
+Build-Architecture: amd64
+Build-Date: Fri, 27 Aug 2021 22:13:13 +0200
+Build-Tainted-By:
+ merged-usr-via-symlinks
+Installed-Build-Depends:
+ base-files (= 11ubuntu5.3),
+ base-passwd (= 3.5.47),
+ bash (= 5.0-6ubuntu1.1),
+ bc (= 1.07.1-2build1),
+ binutils (= 2.34-6ubuntu1.1),
+ binutils-common (= 2.34-6ubuntu1.1),
+ binutils-x86-64-linux-gnu (= 2.34-6ubuntu1.1),
+ bison (= 2:3.5.1+dfsg-1),
+ bsdutils (= 1:2.34-0.1ubuntu9.1),
+ build-essential (= 12.8ubuntu1.1),
+ bzip2 (= 1.0.8-2),
+ coreutils (= 8.30-3ubuntu2),
+ cpio (= 2.13+dfsg-2),
+ cpp (= 4:9.3.0-1ubuntu2),
+ cpp-9 (= 9.3.0-17ubuntu1~20.04),
+ dash (= 0.5.10.2-6),
+ debconf (= 1.5.73),
+ debianutils (= 4.9.1),
+ diffutils (= 1:3.7-3),
+ dpkg (= 1.19.7ubuntu3),
+ dpkg-dev (= 1.19.7ubuntu3),
+ findutils (= 4.7.0-1ubuntu1),
+ flex (= 2.6.4-6.2),
+ g++ (= 4:9.3.0-1ubuntu2),
+ g++-9 (= 9.3.0-17ubuntu1~20.04),
+ gcc (= 4:9.3.0-1ubuntu2),
+ gcc-10-base (= 10.3.0-1ubuntu1~20.04),
+ gcc-9 (= 9.3.0-17ubuntu1~20.04),
+ gcc-9-base (= 9.3.0-17ubuntu1~20.04),
+ grep (= 3.4-1),
+ gzip (= 1.10-0ubuntu4),
+ hostname (= 3.23),
+ init-system-helpers (= 1.57),
+ install-info (= 6.7.0.dfsg.2-5),
+ kmod (= 27-1ubuntu2),
+ libacl1 (= 2.2.53-6),
+ libasan5 (= 9.3.0-17ubuntu1~20.04),
+ libatomic1 (= 10.3.0-1ubuntu1~20.04),
+ libattr1 (= 1:2.4.48-5),
+ libaudit-common (= 1:2.8.5-2ubuntu6),
+ libaudit1 (= 1:2.8.5-2ubuntu6),
+ libbinutils (= 2.34-6ubuntu1.1),
+ libblkid1 (= 2.34-0.1ubuntu9.1),
+ libbz2-1.0 (= 1.0.8-2),
+ libc-bin (= 2.31-0ubuntu9.2),
+ libc-dev-bin (= 2.31-0ubuntu9.2),
+ libc6 (= 2.31-0ubuntu9.2),
+ libc6-dev (= 2.31-0ubuntu9.2),
+ libcap-ng0 (= 0.7.9-2.1build1),
+ libcc1-0 (= 10.3.0-1ubuntu1~20.04),
+ libcrypt-dev (= 1:4.4.10-10ubuntu4),
+ libcrypt1 (= 1:4.4.10-10ubuntu4),
+ libctf-nobfd0 (= 2.34-6ubuntu1.1),
+ libctf0 (= 2.34-6ubuntu1.1),
+ libdb5.3 (= 5.3.28+dfsg1-0.6ubuntu2),
+ libdebconfclient0 (= 0.251ubuntu1),
+ libdpkg-perl (= 1.19.7ubuntu3),
+ libgcc-9-dev (= 9.3.0-17ubuntu1~20.04),
+ libgcc-s1 (= 10.3.0-1ubuntu1~20.04),
+ libgcrypt20 (= 1.8.5-5ubuntu1),
+ libgdbm-compat4 (= 1.18.1-5),
+ libgdbm6 (= 1.18.1-5),
+ libgmp10 (= 2:6.2.0+dfsg-4),
+ libgomp1 (= 10.3.0-1ubuntu1~20.04),
+ libgpg-error0 (= 1.37-1),
+ libisl22 (= 0.22.1-1),
+ libitm1 (= 10.3.0-1ubuntu1~20.04),
+ libkmod2 (= 27-1ubuntu2),
+ liblsan0 (= 10.3.0-1ubuntu1~20.04),
+ liblz4-1 (= 1.9.2-2ubuntu0.20.04.1),
+ liblzma5 (= 5.2.4-1ubuntu1),
+ libmount1 (= 2.34-0.1ubuntu9.1),
+ libmpc3 (= 1.1.0-1),
+ libmpfr6 (= 4.0.2-1),
+ libpam-modules (= 1.3.1-5ubuntu4.2),
+ libpam-modules-bin (= 1.3.1-5ubuntu4.2),
+ libpam-runtime (= 1.3.1-5ubuntu4.2),
+ libpam0g (= 1.3.1-5ubuntu4.2),
+ libpcre2-8-0 (= 10.34-7),
+ libpcre3 (= 2:8.39-12build1),
+ libperl5.30 (= 5.30.0-9ubuntu0.2),
+ libpopt0 (= 1.16-14),
+ libquadmath0 (= 10.3.0-1ubuntu1~20.04),
+ libreadline8 (= 8.0-4),
+ libselinux1 (= 3.0-1build2),
+ libsigsegv2 (= 2.12-2),
+ libsmartcols1 (= 2.34-0.1ubuntu9.1),
+ libssl-dev (= 1.1.1f-1ubuntu2.8),
+ libssl1.1 (= 1.1.1f-1ubuntu2.8),
+ libstdc++-9-dev (= 9.3.0-17ubuntu1~20.04),
+ libstdc++6 (= 10.3.0-1ubuntu1~20.04),
+ libsystemd0 (= 245.4-4ubuntu3.11),
+ libtinfo6 (= 6.2-0ubuntu2),
+ libtsan0 (= 10.3.0-1ubuntu1~20.04),
+ libubsan1 (= 10.3.0-1ubuntu1~20.04),
+ libudev1 (= 245.4-4ubuntu3.11),
+ libuuid1 (= 2.34-0.1ubuntu9.1),
+ libzstd1 (= 1.4.4+dfsg-3ubuntu0.1),
+ linux-libc-dev (= 5.4.0-80.90),
+ login (= 1:4.8.1-1ubuntu5.20.04),
+ lsb-base (= 11.1.0ubuntu2),
+ m4 (= 1.4.18-4),
+ make (= 4.2.1-1.2),
+ mawk (= 1.3.4.20200120-2),
+ ncurses-base (= 6.2-0ubuntu2),
+ ncurses-bin (= 6.2-0ubuntu2),
+ patch (= 2.7.6-6),
+ perl (= 5.30.0-9ubuntu0.2),
+ perl-base (= 5.30.0-9ubuntu0.2),
+ perl-modules-5.30 (= 5.30.0-9ubuntu0.2),
+ readline-common (= 8.0-4),
+ rsync (= 3.1.3-8),
+ sed (= 4.7-1),
+ sysvinit-utils (= 2.96-2.1ubuntu1),
+ tar (= 1.30+dfsg-7ubuntu0.20.04.1),
+ util-linux (= 2.34-0.1ubuntu9.1),
+ xz-utils (= 5.2.4-1ubuntu1),
+ zlib1g (= 1:1.2.11.dfsg-2ubuntu1.2)
+Environment:
+ AR="ar"
+ AWK="awk"
+ CC="gcc"
+ CPP="gcc -E"
+ DEB_BUILD_OPTIONS="parallel=4"
+ LANG="en_US.UTF-8"
+ LC_COLLATE="C"
+ LC_NUMERIC="C"
+ LD="ld"
+ LEX="flex"
+ MAKE="make"
+ MAKEFLAGS="rR -j4 --jobserver-auth=3,4 --no-print-directory -- INSTALL_MOD_STRIP=1"
+ SOURCE_DATE_EPOCH="1630090803"
+ YACC="bison"

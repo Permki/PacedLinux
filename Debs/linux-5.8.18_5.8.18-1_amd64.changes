@@ -1,0 +1,46 @@
+Format: 1.8
+Date: Fri, 27 Aug 2021 21:00:03 +0200
+Source: linux-5.8.18
+Binary: linux-headers-5.8.18 linux-image-5.8.18 linux-image-5.8.18-dbg linux-libc-dev
+Architecture: source amd64
+Version: 5.8.18-1
+Distribution: focal
+Urgency: low
+Maintainer: root <root@parallels-Parallels-Virtual-Platform>
+Changed-By: root <root@parallels-Parallels-Virtual-Platform>
+Description:
+ linux-headers-5.8.18 - Linux kernel headers for 5.8.18 on amd64
+ linux-image-5.8.18 - Linux kernel, version 5.8.18
+ linux-image-5.8.18-dbg - Linux kernel debugging symbols for 5.8.18
+ linux-libc-dev - Linux support headers for userspace development
+Changes:
+ linux-5.8.18 (5.8.18-1) focal; urgency=low
+ .
+   * Custom built Linux kernel.
+Checksums-Sha1:
+ 04822810f5cdd0e490961e3cb297d603e55aa59a 1248 linux-5.8.18_5.8.18-1.dsc
+ 5e291e0e14b9056639270b1b5bcef7a8114f589b 186558703 linux-5.8.18_5.8.18.orig.tar.gz
+ 5e0921157151b252191b3b6b5491e45965cfeecf 7197963 linux-5.8.18_5.8.18-1.diff.gz
+ 73bf4eeeb341f3f019749bff9eebc42b7bafca3e 5728 linux-5.8.18_5.8.18-1_amd64.buildinfo
+ 7c8dfdd12d18a678e8ea41443bb9bd262203f066 8031136 linux-headers-5.8.18_5.8.18-1_amd64.deb
+ f2dbd334f5403c2fd08be43174e38d39be6abb4b 133000180 linux-image-5.8.18-dbg_5.8.18-1_amd64.deb
+ 2504a6278960fce7bc41eabf5f886a70e6178421 65591580 linux-image-5.8.18_5.8.18-1_amd64.deb
+ d64ee1de4fe48a8a44cb068a6cbae28959fc638d 1115460 linux-libc-dev_5.8.18-1_amd64.deb
+Checksums-Sha256:
+ f3410d112c5fe2d3c758193c78a0037990aa8f789964aca02de99435ea8a2cd8 1248 linux-5.8.18_5.8.18-1.dsc
+ 160057234dc2e9d8cf4c3bb571010be1c7a56ef1eb8ee4683be3ca21829d382a 186558703 linux-5.8.18_5.8.18.orig.tar.gz
+ d1344be1c3b53c4d714fa929583119cc1d7afcf9e652dd07eb40a637dba2112c 7197963 linux-5.8.18_5.8.18-1.diff.gz
+ 4827835bd1fc4e719174bef1e7e5d3992164a46c2b97592df937873bcc378749 5728 linux-5.8.18_5.8.18-1_amd64.buildinfo
+ a43241b18243fe985357a04f0cc60c5186422df9fb3fb7c3f7764edc13c6e1d8 8031136 linux-headers-5.8.18_5.8.18-1_amd64.deb
+ 42dc4b35d2daf0cda0b39730e6e56a8867b3bbaf6d039cec665e233d75f8a246 133000180 linux-image-5.8.18-dbg_5.8.18-1_amd64.deb
+ 5a1a0193def551088f30bb0e482541e338601b81756cd1f9288bffd68f60d207 65591580 linux-image-5.8.18_5.8.18-1_amd64.deb
+ 636eabfff90b2cd21743223b944ea570cb55e0653eafda39b4237273625f0e26 1115460 linux-libc-dev_5.8.18-1_amd64.deb
+Files:
+ c614cd47b0b73ec076c2eea0f7e768bf 1248 kernel optional linux-5.8.18_5.8.18-1.dsc
+ 9bd02905f07f5e366935e30848d8a975 186558703 kernel optional linux-5.8.18_5.8.18.orig.tar.gz
+ fd831771bc97591463b3ebd0a0102126 7197963 kernel optional linux-5.8.18_5.8.18-1.diff.gz
+ 648c629d8f8e54a99fbd15787d7c5e8c 5728 kernel optional linux-5.8.18_5.8.18-1_amd64.buildinfo
+ 1a844e02e497f1fb4052cb12f30f5ca4 8031136 kernel optional linux-headers-5.8.18_5.8.18-1_amd64.deb
+ b216cbf6f4971054b6416d1a7f5a764a 133000180 debug optional linux-image-5.8.18-dbg_5.8.18-1_amd64.deb
+ 3741d84b4d8bd0454ed48554b243354b 65591580 kernel optional linux-image-5.8.18_5.8.18-1_amd64.deb
+ 04a56a7104ae622e3f3ca9ddcb7dc53f 1115460 devel optional linux-libc-dev_5.8.18-1_amd64.deb
