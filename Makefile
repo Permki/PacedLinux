@@ -24,3 +24,4 @@ language:
 	gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'no+mac')]"
 #P8cBENz5YNgdB7w
 #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
+#P8cBENz5YNgdB7w
