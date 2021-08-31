@@ -123,9 +123,10 @@ alias loadcc='sudo sysctl -p'
 alias ownconfig='cp -v /boot/config-$(uname -r) .config'
 alias ccchange='sudo emacs /etc/sysctl.conf'
 alias getsource='apt-get source linux-image-unsigned-$(uname -r)'
-#alias getsource='apt-get source linux-image-unsigned-5.8.0-63-generic'
+alias getsourceold='apt-get source linux-image-unsigned-5.8.0-63-generic'
 alias defer='echo 1 | sudo tee /sys/module/tcp_cubic_paced/parameters/tso_defer_size'
 alias resetdefer='echo 0 | sudo tee /sys/module/tcp_cubic_paced/parameters/tso_defer_size'
+alias open="xdg-open"
 function lgit() {
     git add --all
     git commit -am "$1"
