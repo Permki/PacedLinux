@@ -1,5 +1,5 @@
 
-KERNEL :=linux-hwe-5.8-5.8.0
+KERNEL :=linux-4.15
 USER := $(whoami)
 MODS := ModifiedFiles
 
