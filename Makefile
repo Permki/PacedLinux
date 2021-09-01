@@ -22,3 +22,6 @@ sources:
 language:
 	gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'no+mac')]"
 
+compile:
+	make deb-pkg -j4 INSTALL_MOD_STRIP=1
+
