@@ -186,6 +186,15 @@ void tcp_time_wait(struct sock *sk, int state, int timeo);
 #define TCPOPT_MD5SIG		19	/* MD5 Signature (RFC2385) */
 #define TCPOPT_FASTOPEN		34	/* Fast open (RFC7413) */
 #define TCPOPT_EXP		254	/* Experimental */
+
+/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+/******************************************************************/
+/* Used for Netronome Pace Offloading Experimental */
+#define TCPOPT_PACED 200   
+/* Fixed size for opts used in Pace Offloading. | kind | len | u32 delayval |*/
+#define PACEOPTS_SIZE sizeof(u32)+sizeof(u8)+sizeof(u8)    	
+/******************************************************************/
+
 /* Magic number to be after the option value for sharing TCP
  * experimental options. See draft-ietf-tcpm-experimental-options-00.txt
  */
@@ -998,6 +1007,13 @@ struct tcp_congestion_ops {
 	u32 (*tso_segs_goal)(struct sock *sk);
 	/* returns the multiplier used in tcp_sndbuf_expand (optional) */
 	u32 (*sndbuf_expand)(struct sock *sk);
+
+	/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+	/******************************************************************/
+	/* used for optional print or calculations for offloading pacing */
+    u32 (*pace_offload)(struct tcp_sock *tp);
+	/******************************************************************/
+
 	/* call when packets are delivered to update cwnd and pacing rate,
 	 * after all the ca_state processing. (optional)
 	 */
