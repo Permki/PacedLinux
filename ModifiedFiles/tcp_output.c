@@ -1089,7 +1089,7 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 	{
 		//whatif tcp_options_size + PACEOPTS_SIZE > 40 ?
 		tcp_options_size += TCPOLEN_PACEOFFLOAD_ALIGNED;
-	}
+	} else printk(KERN_INFO "options_size > 40. options_size = %d and TCPOLEN_PACEOFFLOAD_ALIGNED = %d\n", tcp_options_size, TCPOLEN_PACEOFFLOAD_ALIGNED;
 	/******************************************************************/
 	
 	tcp_header_size = tcp_options_size + sizeof(struct tcphdr);
