@@ -1,0 +1,541 @@
+Source: linux-hwe
+Section: devel
+Priority: optional
+Maintainer: Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>
+Standards-Version: 3.9.4.0
+Build-Depends:
+ debhelper (>= 9),
+ dh-systemd,
+ cpio,
+ kernel-wedge,
+ kmod <!stage1>,
+ makedumpfile [amd64 i386] <!stage1>,
+ libelf-dev <!stage1>,
+ libnewt-dev <!stage1>,
+ libiberty-dev <!stage1>,
+ default-jdk-headless <!stage1>,
+ java-common <!stage1>,
+ rsync <!stage1>,
+ libdw-dev <!stage1>,
+ libpci-dev <!stage1>,
+ pkg-config <!stage1>,
+ flex <!stage1>,
+ bison <!stage1>,
+ libunwind8-dev [amd64 arm64 armhf i386 ppc64el] <!stage1>,
+ liblzma-dev <!stage1>,
+ openssl <!stage1>,
+ libssl-dev <!stage1>,
+ libaudit-dev <!stage1>,
+ bc <!stage1>,
+ python-dev <!stage1>,
+ gawk <!stage1>,
+ libudev-dev <!stage1>,
+ autoconf <!stage1>,
+ automake <!stage1>,
+ libtool <!stage1>,
+ uuid-dev <!stage1>,
+ binutils-dev <!stage1>,
+ libnuma-dev [amd64 arm64 i386 ppc64el] <!stage1>,
+ dkms <!stage1>,
+ curl <!stage1>,
+Build-Depends-Indep:
+ xmlto <!stage1>,
+ docbook-utils <!stage1>,
+ ghostscript <!stage1>,
+ transfig <!stage1>,
+ bzip2 <!stage1>,
+ sharutils <!stage1>,
+ asciidoc <!stage1>,
+ python-sphinx <!stage1>,
+ python-sphinx-rtd-theme <!stage1>,
+Vcs-Git: git://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/xenial -b hwe
+XS-Testsuite: autopkgtest
+#XS-Testsuite-Depends: gcc-4.7 binutils
+
+Package: linux-source-4.15.0
+Build-Profiles: <!stage1>
+Architecture: all
+Section: devel
+Priority: optional
+Provides: linux-source, linux-source-3
+Depends: ${misc:Depends}, binutils, bzip2, coreutils
+Recommends: libc-dev, gcc, make
+Suggests: libncurses-dev | ncurses-dev, kernel-package, libqt3-dev
+Description: Linux kernel source for version 4.15.0 with Ubuntu patches
+ This package provides the source code for the Linux kernel version
+ 4.15.0.
+ .
+ This package is mainly meant for other packages to use, in order to build
+ custom flavours.
+ .
+ If you wish to use this package to create a custom Linux kernel, then it
+ is suggested that you investigate the package kernel-package, which has
+ been designed to ease the task of creating kernel image packages.
+ .
+ If you are simply trying to build third-party modules for your kernel,
+ you do not want this package. Install the appropriate linux-headers
+ package instead.
+
+Package: linux-headers-4.15.0-142
+Build-Profiles: <!stage1>
+Architecture: all
+Multi-Arch: foreign
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, coreutils
+Description: Header files related to Linux kernel version 4.15.0
+ This package provides kernel header files for version 4.15.0, for sites
+ that want the latest kernel headers. Please read
+ /usr/share/doc/linux-hwe-headers-4.15.0-142/debian.README.gz for details
+
+Package: linux-hwe-tools-4.15.0-142
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}, linux-tools-common
+Description: Linux kernel version specific tools for version 4.15.0-142
+ This package provides the architecture dependant parts for kernel
+ version locked tools (such as perf and x86_energy_perf_policy) for
+ version 4.15.0-142 on
+ 64 bit x86.
+ You probably want to install linux-tools-4.15.0-142-<flavour>.
+
+Package: linux-hwe-cloud-tools-4.15.0-142
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}, linux-cloud-tools-common
+Description: Linux kernel version specific cloud tools for version 4.15.0-142
+ This package provides the architecture dependant parts for kernel
+ version locked tools for cloud tools for version 4.15.0-142 on
+ 64 bit x86.
+ You probably want to install linux-cloud-tools-4.15.0-142-<flavour>.
+
+
+Package: linux-image-unsigned-4.15.0-142-generic
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Section: kernel
+Priority: optional
+Provides: linux-image, fuse-module, aufs-dkms, kvm-api-4, redhat-cluster-modules, ivtv-modules, virtualbox-guest-modules [i386 amd64 x32]${linux:rprovides}
+Depends: ${misc:Depends}, ${shlibs:Depends}, kmod, linux-base (>= 4.5ubuntu1~16.04.1), linux-modules-4.15.0-142-generic
+Recommends: grub-pc [i386 amd64 x32] | grub-efi-amd64 [amd64 x32] | grub-efi-ia32 [i386 amd64 x32] | grub [i386 amd64 x32] | lilo [i386 amd64 x32] | flash-kernel [armhf arm64] | grub-ieee1275 [ppc64el], initramfs-tools | linux-initramfs-tool
+Breaks: flash-kernel (<< 3.0~rc.4ubuntu62.2) [arm64], s390-tools (<< 1.34.0-0ubuntu8.6) [s390x]
+Conflicts: linux-image-4.15.0-142-generic
+Suggests: fdutils, linux-hwe-tools, linux-headers-4.15.0-142-generic
+Description: Linux kernel image for version 4.15.0 on 64 bit x86 SMP
+ This package contains the unsigned Linux kernel image for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ Supports Generic processors.
+ .
+ Geared toward desktop and server systems.
+ .
+ You likely do not want to install this package directly. Instead, install
+ the linux-generic meta-package, which will ensure that upgrades work
+ correctly, and that supporting packages are also installed.
+
+Package: linux-modules-4.15.0-142-generic
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Section: kernel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Linux kernel extra modules for version 4.15.0 on 64 bit x86 SMP
+ Contains the corresponding System.map file, the modules built by the
+ packager, and scripts that try to ensure that the system is not left in an
+ unbootable state after an update.
+ .
+ Supports Generic processors.
+ .
+ Geared toward desktop and server systems.
+ .
+ You likely do not want to install this package directly. Instead, install
+ the linux-generic meta-package, which will ensure that upgrades work
+ correctly, and that supporting packages are also installed.
+
+Package: linux-modules-extra-4.15.0-142-generic
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Section: kernel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}, linux-image-4.15.0-142-generic | linux-image-unsigned-4.15.0-142-generic, crda | wireless-crda
+Description: Linux kernel extra modules for version 4.15.0 on 64 bit x86 SMP
+ This package contains the Linux kernel extra modules for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ Also includes the corresponding System.map file, the modules built by the
+ packager, and scripts that try to ensure that the system is not left in an
+ unbootable state after an update.
+ .
+ Supports Generic processors.
+ .
+ Geared toward desktop and server systems.
+ .
+ You likely do not want to install this package directly. Instead, install
+ the linux-generic meta-package, which will ensure that upgrades work
+ correctly, and that supporting packages are also installed.
+
+Package: linux-headers-4.15.0-142-generic
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, linux-headers-4.15.0-142, ${shlibs:Depends}
+Provides: linux-headers, linux-headers-3.0
+Description: Linux kernel headers for version 4.15.0 on 64 bit x86 SMP
+ This package provides kernel header files for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ This is for sites that want the latest kernel headers.  Please read
+ /usr/share/doc/linux-headers-4.15.0-142/debian.README.gz for details.
+
+Package: linux-image-unsigned-4.15.0-142-generic-dbgsym
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}
+Provides: linux-debug
+Description: Linux kernel debug image for version 4.15.0 on 64 bit x86 SMP
+ This package provides a unsigned kernel debug image for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ This is for sites that wish to debug the kernel.
+ .
+ The kernel image contained in this package is NOT meant to boot from. It
+ is uncompressed, and unstripped. This package also includes the
+ unstripped modules.
+
+Package: linux-tools-4.15.0-142-generic
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, linux-hwe-tools-4.15.0-142
+Description: Linux kernel version specific tools for version 4.15.0-142
+ This package provides the architecture dependant parts for kernel
+ version locked tools (such as perf and x86_energy_perf_policy) for
+ version 4.15.0-142 on
+ 64 bit x86.
+
+Package: linux-cloud-tools-4.15.0-142-generic
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, linux-hwe-cloud-tools-4.15.0-142
+Description: Linux kernel version specific cloud tools for version 4.15.0-142
+ This package provides the architecture dependant parts for kernel
+ version locked tools for cloud for version 4.15.0-142 on
+ 64 bit x86.
+
+Package: linux-hwe-udebs-generic
+Build-Profiles: <!stage1>
+XC-Package-Type: udeb
+Section: debian-installer
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Depends: ${udeb:Depends}
+Description: Metapackage depending on kernel udebs
+ This package depends on the all udebs that the kernel build generated,
+ for easier version and migration tracking.
+
+
+Package: linux-buildinfo-4.15.0-142-generic
+Build-Profiles: <!stage1>
+Architecture: i386 amd64 armhf arm64 ppc64el s390x
+Section: kernel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Built-Using: ${linux:BuiltUsing}
+Description: Linux kernel buildinfo for version 4.15.0 on 64 bit x86 SMP
+ This package contains the Linux kernel buildinfo for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ You likely do not want to install this package.
+
+Package: linux-image-unsigned-4.15.0-142-generic-lpae
+Build-Profiles: <!stage1>
+Architecture: armhf
+Section: kernel
+Priority: optional
+Provides: linux-image, fuse-module, aufs-dkms, kvm-api-4, redhat-cluster-modules, ivtv-modules${linux:rprovides}
+Depends: ${misc:Depends}, ${shlibs:Depends}, kmod, linux-base (>= 4.5ubuntu1~16.04.1), linux-modules-4.15.0-142-generic-lpae
+Recommends: flash-kernel [armhf], initramfs-tools | linux-initramfs-tool
+Breaks: flash-kernel (<< 3.0~rc.4ubuntu62.2) [arm64], s390-tools (<< 1.34.0-0ubuntu8.6) [s390x]
+Conflicts: linux-image-4.15.0-142-generic-lpae
+Suggests: fdutils, linux-hwe-tools, linux-headers-4.15.0-142-generic-lpae
+Description: Linux kernel image for version 4.15.0 on 64 bit x86 SMP
+ This package contains the unsigned Linux kernel image for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ Supports Generic LPAE processors.
+ .
+ Geared toward desktop and server systems.
+ .
+ You likely do not want to install this package directly. Instead, install
+ the linux-generic-lpae meta-package, which will ensure that upgrades work
+ correctly, and that supporting packages are also installed.
+
+Package: linux-modules-4.15.0-142-generic-lpae
+Build-Profiles: <!stage1>
+Architecture: armhf
+Section: kernel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Linux kernel extra modules for version 4.15.0 on 64 bit x86 SMP
+ Contains the corresponding System.map file, the modules built by the
+ packager, and scripts that try to ensure that the system is not left in an
+ unbootable state after an update.
+ .
+ Supports Generic LPAE processors.
+ .
+ Geared toward desktop and server systems.
+ .
+ You likely do not want to install this package directly. Instead, install
+ the linux-generic-lpae meta-package, which will ensure that upgrades work
+ correctly, and that supporting packages are also installed.
+
+Package: linux-modules-extra-4.15.0-142-generic-lpae
+Build-Profiles: <!stage1>
+Architecture: armhf
+Section: kernel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}, linux-image-4.15.0-142-generic-lpae | linux-image-unsigned-4.15.0-142-generic-lpae, crda | wireless-crda
+Description: Linux kernel extra modules for version 4.15.0 on 64 bit x86 SMP
+ This package contains the Linux kernel extra modules for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ Also includes the corresponding System.map file, the modules built by the
+ packager, and scripts that try to ensure that the system is not left in an
+ unbootable state after an update.
+ .
+ Supports Generic LPAE processors.
+ .
+ Geared toward desktop and server systems.
+ .
+ You likely do not want to install this package directly. Instead, install
+ the linux-generic-lpae meta-package, which will ensure that upgrades work
+ correctly, and that supporting packages are also installed.
+
+Package: linux-headers-4.15.0-142-generic-lpae
+Build-Profiles: <!stage1>
+Architecture: armhf
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, linux-headers-4.15.0-142, ${shlibs:Depends}
+Provides: linux-headers, linux-headers-3.0
+Description: Linux kernel headers for version 4.15.0 on 64 bit x86 SMP
+ This package provides kernel header files for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ This is for sites that want the latest kernel headers.  Please read
+ /usr/share/doc/linux-headers-4.15.0-142/debian.README.gz for details.
+
+Package: linux-image-unsigned-4.15.0-142-generic-lpae-dbgsym
+Build-Profiles: <!stage1>
+Architecture: armhf
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}
+Provides: linux-debug
+Description: Linux kernel debug image for version 4.15.0 on 64 bit x86 SMP
+ This package provides a unsigned kernel debug image for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ This is for sites that wish to debug the kernel.
+ .
+ The kernel image contained in this package is NOT meant to boot from. It
+ is uncompressed, and unstripped. This package also includes the
+ unstripped modules.
+
+Package: linux-tools-4.15.0-142-generic-lpae
+Build-Profiles: <!stage1>
+Architecture: armhf
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, linux-hwe-tools-4.15.0-142
+Description: Linux kernel version specific tools for version 4.15.0-142
+ This package provides the architecture dependant parts for kernel
+ version locked tools (such as perf and x86_energy_perf_policy) for
+ version 4.15.0-142 on
+ 64 bit x86.
+
+Package: linux-cloud-tools-4.15.0-142-generic-lpae
+Build-Profiles: <!stage1>
+Architecture: armhf
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, linux-hwe-cloud-tools-4.15.0-142
+Description: Linux kernel version specific cloud tools for version 4.15.0-142
+ This package provides the architecture dependant parts for kernel
+ version locked tools for cloud for version 4.15.0-142 on
+ 64 bit x86.
+
+Package: linux-hwe-udebs-generic-lpae
+Build-Profiles: <!stage1>
+XC-Package-Type: udeb
+Section: debian-installer
+Architecture: armhf
+Depends: ${udeb:Depends}
+Description: Metapackage depending on kernel udebs
+ This package depends on the all udebs that the kernel build generated,
+ for easier version and migration tracking.
+
+
+Package: linux-buildinfo-4.15.0-142-generic-lpae
+Build-Profiles: <!stage1>
+Architecture: armhf
+Section: kernel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Built-Using: ${linux:BuiltUsing}
+Description: Linux kernel buildinfo for version 4.15.0 on 64 bit x86 SMP
+ This package contains the Linux kernel buildinfo for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ You likely do not want to install this package.
+
+Package: linux-image-unsigned-4.15.0-142-lowlatency
+Build-Profiles: <!stage1>
+Architecture: i386 amd64
+Section: kernel
+Priority: optional
+Provides: linux-image, fuse-module, aufs-dkms, kvm-api-4, redhat-cluster-modules, ivtv-modules, virtualbox-guest-modules [i386 amd64 x32]${linux:rprovides}
+Depends: ${misc:Depends}, ${shlibs:Depends}, kmod, linux-base (>= 4.5ubuntu1~16.04.1), linux-modules-4.15.0-142-lowlatency
+Recommends: grub-pc [i386 amd64 x32] | grub-efi-amd64 [amd64 x32] | grub-efi-ia32 [i386 amd64 x32] | grub [i386 amd64 x32] | lilo [i386 amd64 x32] | flash-kernel [armhf arm64], initramfs-tools | linux-initramfs-tool
+Breaks: flash-kernel (<< 3.0~rc.4ubuntu62.2) [arm64], s390-tools (<< 1.34.0-0ubuntu8.6) [s390x]
+Conflicts: linux-image-4.15.0-142-lowlatency
+Suggests: fdutils, linux-hwe-tools, linux-headers-4.15.0-142-lowlatency
+Description: Linux kernel image for version 4.15.0 on 64 bit x86 SMP
+ This package contains the unsigned Linux kernel image for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ Supports Lowlatency processors.
+ .
+ Geared toward desktop and server systems.
+ .
+ You likely do not want to install this package directly. Instead, install
+ the linux-lowlatency meta-package, which will ensure that upgrades work
+ correctly, and that supporting packages are also installed.
+
+Package: linux-modules-4.15.0-142-lowlatency
+Build-Profiles: <!stage1>
+Architecture: i386 amd64
+Section: kernel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Linux kernel extra modules for version 4.15.0 on 64 bit x86 SMP
+ Contains the corresponding System.map file, the modules built by the
+ packager, and scripts that try to ensure that the system is not left in an
+ unbootable state after an update.
+ .
+ Supports Lowlatency processors.
+ .
+ Geared toward desktop and server systems.
+ .
+ You likely do not want to install this package directly. Instead, install
+ the linux-lowlatency meta-package, which will ensure that upgrades work
+ correctly, and that supporting packages are also installed.
+
+Package: linux-modules-extra-4.15.0-142-lowlatency
+Build-Profiles: <!stage1>
+Architecture: i386 amd64
+Section: kernel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}, linux-image-4.15.0-142-lowlatency | linux-image-unsigned-4.15.0-142-lowlatency, crda | wireless-crda
+Description: Linux kernel extra modules for version 4.15.0 on 64 bit x86 SMP
+ This package contains the Linux kernel extra modules for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ Also includes the corresponding System.map file, the modules built by the
+ packager, and scripts that try to ensure that the system is not left in an
+ unbootable state after an update.
+ .
+ Supports Lowlatency processors.
+ .
+ Geared toward desktop and server systems.
+ .
+ You likely do not want to install this package directly. Instead, install
+ the linux-lowlatency meta-package, which will ensure that upgrades work
+ correctly, and that supporting packages are also installed.
+
+Package: linux-headers-4.15.0-142-lowlatency
+Build-Profiles: <!stage1>
+Architecture: i386 amd64
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, linux-headers-4.15.0-142, ${shlibs:Depends}
+Provides: linux-headers, linux-headers-3.0
+Description: Linux kernel headers for version 4.15.0 on 64 bit x86 SMP
+ This package provides kernel header files for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ This is for sites that want the latest kernel headers.  Please read
+ /usr/share/doc/linux-headers-4.15.0-142/debian.README.gz for details.
+
+Package: linux-image-unsigned-4.15.0-142-lowlatency-dbgsym
+Build-Profiles: <!stage1>
+Architecture: i386 amd64
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}
+Provides: linux-debug
+Description: Linux kernel debug image for version 4.15.0 on 64 bit x86 SMP
+ This package provides a unsigned kernel debug image for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ This is for sites that wish to debug the kernel.
+ .
+ The kernel image contained in this package is NOT meant to boot from. It
+ is uncompressed, and unstripped. This package also includes the
+ unstripped modules.
+
+Package: linux-tools-4.15.0-142-lowlatency
+Build-Profiles: <!stage1>
+Architecture: i386 amd64
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, linux-hwe-tools-4.15.0-142
+Description: Linux kernel version specific tools for version 4.15.0-142
+ This package provides the architecture dependant parts for kernel
+ version locked tools (such as perf and x86_energy_perf_policy) for
+ version 4.15.0-142 on
+ 64 bit x86.
+
+Package: linux-cloud-tools-4.15.0-142-lowlatency
+Build-Profiles: <!stage1>
+Architecture: i386 amd64
+Section: devel
+Priority: optional
+Depends: ${misc:Depends}, linux-hwe-cloud-tools-4.15.0-142
+Description: Linux kernel version specific cloud tools for version 4.15.0-142
+ This package provides the architecture dependant parts for kernel
+ version locked tools for cloud for version 4.15.0-142 on
+ 64 bit x86.
+
+Package: linux-hwe-udebs-lowlatency
+Build-Profiles: <!stage1>
+XC-Package-Type: udeb
+Section: debian-installer
+Architecture: i386 amd64
+Depends: ${udeb:Depends}
+Description: Metapackage depending on kernel udebs
+ This package depends on the all udebs that the kernel build generated,
+ for easier version and migration tracking.
+
+
+Package: linux-buildinfo-4.15.0-142-lowlatency
+Build-Profiles: <!stage1>
+Architecture: i386 amd64
+Section: kernel
+Priority: optional
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Built-Using: ${linux:BuiltUsing}
+Description: Linux kernel buildinfo for version 4.15.0 on 64 bit x86 SMP
+ This package contains the Linux kernel buildinfo for version 4.15.0 on
+ 64 bit x86 SMP.
+ .
+ You likely do not want to install this package.
