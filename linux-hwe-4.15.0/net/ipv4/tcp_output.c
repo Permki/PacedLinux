@@ -537,10 +537,8 @@ static void tcp_options_write(__be32 *ptr, struct tcp_sock *tp,
 
 	if (inet_csk((struct sock *)tp)->icsk_ca_ops->pace_offload)
 	{
-		u8 *p = (u8 *)ptr;
-		*p++ = (u8)TCPOPT_PACED;
-		*p++ = (u8)PACEOPTS_SIZE;
-		ptr = (u32 *)p;
+		*ptr++ = htonl((TCPOPT_NOP << 24) | (TCPOPT_NOP << 16) |
+			       (TCPOPT_PACEOFFLOAD << 8) | TCPOLEN_PACEOFFLOAD);
 		*ptr++ = inet_csk((struct sock *)tp)->icsk_ca_ops->pace_offload(tp);
 	}
 	/******************************************************************/
@@ -1087,10 +1085,10 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 	/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
 	/******************************************************************/
 
-	if (inet_csk(sk)->icsk_ca_ops->pace_offload)
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload && (tcp_options_size + TCPOLEN_PACEOFFLOAD_ALIGNED <= 40))
 	{
 		//whatif tcp_options_size + PACEOPTS_SIZE > 40 ?
-		tcp_options_size += PACEOPTS_SIZE;
+		tcp_options_size += TCPOLEN_PACEOFFLOAD_ALIGNED;
 	}
 	/******************************************************************/
 	
@@ -1645,7 +1643,7 @@ unsigned int tcp_current_mss(struct sock *sk)
 	/* Experimental for Netronome SmartNIC offloading */
 	
 	if (inet_csk(sk)->icsk_ca_ops->pace_offload)
-		header_len += PACEOPTS_SIZE;
+		header_len += TCPOLEN_PACEOFFLOAD_ALIGNED;
 	
 	/****************************************************************/
 
