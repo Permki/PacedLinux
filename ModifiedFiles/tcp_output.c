@@ -392,6 +392,12 @@ static inline bool tcp_urg_mode(const struct tcp_sock *tp)
 #define OPTION_TS		(1 << 1)
 #define OPTION_MD5		(1 << 2)
 #define OPTION_WSCALE		(1 << 3)
+/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+/******************************************************************/
+/* Used for Netronome Pace Offloading Experimental */	
+#define OPTION_PACE_OFFLOAD		(1 << 4)
+/******************************************************************/
+
 #define OPTION_FAST_OPEN_COOKIE	(1 << 8)
 #define OPTION_SMC		(1 << 9)
 
@@ -534,8 +540,8 @@ static void tcp_options_write(__be32 *ptr, struct tcp_sock *tp,
 	/******************************************************************/
 	if (tp == NULL)
 		return;
-
-	if (inet_csk((struct sock *)tp)->icsk_ca_ops->pace_offload)
+	/* Use unlikely? */
+	if (unlikely(OPTION_PACE_OFFLOAD & options)) {
 	{
 		*ptr++ = htonl((TCPOPT_NOP << 24) | (TCPOPT_NOP << 16) |
 			       (TCPOPT_PACEOFFLOAD << 8) | TCPOLEN_PACEOFFLOAD);
@@ -754,6 +760,21 @@ static unsigned int tcp_established_options(struct sock *sk, struct sk_buff *skb
 			size += TCPOLEN_SACK_BASE_ALIGNED +
 				opts->num_sack_blocks * TCPOLEN_SACK_PERBLOCK;
 	}
+
+	/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+	/******************************************************************/
+	/* Used for Netronome Pace Offloading Experimental */
+	/* Should consider using likely for optimization */
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload){ 
+		const unsigned int remaining = MAX_TCP_OPTION_SPACE - size;
+		if (remaining >= TCPOLEN_PACEOFFLOAD_ALIGNED){
+			size += TCPOLEN_PACEOFFLOAD_ALIGNED;
+			opts->options |= OPTION_PACE_OFFLOAD;
+		} else {
+	    	printk(KERN_INFO "options_size + TPOLEN_PACEOFFLOAD_ALIGNED > remaining. Not able to offload. options_size = %d\n", tcp_options_size);
+		}
+	}
+	/******************************************************************/
 
 	return size;
 }
@@ -1081,20 +1102,6 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 	else
 		tcp_options_size = tcp_established_options(sk, skb, &opts,
 							   &md5);
-	
-
-		/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
-	/******************************************************************/
-
-	if (inet_csk(sk)->icsk_ca_ops->pace_offload){
-		if ((tcp_options_size + TCPOLEN_PACEOFFLOAD_ALIGNED <= 40)){
-			tcp_options_size += TCPOLEN_PACEOFFLOAD_ALIGNED;
-		} else {
-	    	printk(KERN_INFO "options_size + TPOLEN_PACEOFFLOAD_ALIGNED > 40. options_size = %d\n", tcp_options_size);
-		}
-	}
-	/******************************************************************/
-	
 	tcp_header_size = tcp_options_size + sizeof(struct tcphdr);
 
 	/* if no packet is in qdisc/device queue, then allow XPS to select
@@ -1640,16 +1647,6 @@ unsigned int tcp_current_mss(struct sock *sk)
 
 	header_len = tcp_established_options(sk, NULL, &opts, &md5) +
 		     sizeof(struct tcphdr);
-
-	
-	/****************************************************************/
-	/* Experimental for Netronome SmartNIC offloading */
-	
-	if (inet_csk(sk)->icsk_ca_ops->pace_offload)
-		header_len += TCPOLEN_PACEOFFLOAD_ALIGNED;
-	
-	/****************************************************************/
-
 	
 	/* The mss_cache is sized based on tp->tcp_header_len, which assumes
 	 * some common options. If this is an odd packet (because we have SACK
