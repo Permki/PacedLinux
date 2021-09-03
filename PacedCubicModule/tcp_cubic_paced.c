@@ -465,11 +465,8 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 
 static u32 bictcp_pace_offload(struct tcp_sock *tp)
 {
-<<<<<<< HEAD
-	return tp->srtt_us * 1000/tp->snd_cwnd;
-=======
+  // return tp->srtt_us * 1000/tp->snd_cwnd;
   return 65535;//tp->srtt_us * 1000/tp->snd_cwnd;
->>>>>>> 168a56824d640892efe893f31e25fe9563fdc3db
 }
 
 /******************************************************************/
