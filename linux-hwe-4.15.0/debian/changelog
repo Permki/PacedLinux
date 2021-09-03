@@ -1,5 +1,0 @@
-linux-4.15.18 (4.15.18-1) xenial; urgency=low
-
-  * Custom built Linux kernel.
-
- -- Anonymous <root@ubuntu>  Thu, 02 Sep 2021 19:49:48 +0200
