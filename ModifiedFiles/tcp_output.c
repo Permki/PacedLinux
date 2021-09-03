@@ -541,7 +541,7 @@ static void tcp_options_write(__be32 *ptr, struct tcp_sock *tp,
 	if (tp == NULL)
 		return;
 	/* Use unlikely? */
-	if (unlikely(OPTION_PACE_OFFLOAD & options)) {
+	if (unlikely(OPTION_PACE_OFFLOAD & options))
 	{
 		*ptr++ = htonl((TCPOPT_NOP << 24) | (TCPOPT_NOP << 16) |
 			       (TCPOPT_PACEOFFLOAD << 8) | TCPOLEN_PACEOFFLOAD);
@@ -771,7 +771,7 @@ static unsigned int tcp_established_options(struct sock *sk, struct sk_buff *skb
 			size += TCPOLEN_PACEOFFLOAD_ALIGNED;
 			opts->options |= OPTION_PACE_OFFLOAD;
 		} else {
-	    	printk(KERN_INFO "options_size + TPOLEN_PACEOFFLOAD_ALIGNED > remaining. Not able to offload. options_size = %d\n", tcp_options_size);
+	    	printk(KERN_INFO "options_size + TPOLEN_PACEOFFLOAD_ALIGNED > remaining. Not able to offload. options_size = %d\n", size);
 		}
 	}
 	/******************************************************************/
