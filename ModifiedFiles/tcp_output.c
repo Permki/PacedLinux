@@ -1082,14 +1082,17 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 		tcp_options_size = tcp_established_options(sk, skb, &opts,
 							   &md5);
 	
-	/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+
+		/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
 	/******************************************************************/
 
-	if (inet_csk(sk)->icsk_ca_ops->pace_offload && (tcp_options_size + TCPOLEN_PACEOFFLOAD_ALIGNED <= 40))
-	{
-		//whatif tcp_options_size + PACEOPTS_SIZE > 40 ?
-		tcp_options_size += TCPOLEN_PACEOFFLOAD_ALIGNED;
-	} else printk(KERN_INFO "options_size > 40. options_size = %d and TCPOLEN_PACEOFFLOAD_ALIGNED = %d\n", tcp_options_size, TCPOLEN_PACEOFFLOAD_ALIGNED;
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload){
+		if ((tcp_options_size + TCPOLEN_PACEOFFLOAD_ALIGNED <= 40)){
+			tcp_options_size += TCPOLEN_PACEOFFLOAD_ALIGNED;
+		} else {
+	    	printk(KERN_INFO "options_size + TPOLEN_PACEOFFLOAD_ALIGNED > 40. options_size = %d\n", tcp_options_size);
+		}
+	}
 	/******************************************************************/
 	
 	tcp_header_size = tcp_options_size + sizeof(struct tcphdr);

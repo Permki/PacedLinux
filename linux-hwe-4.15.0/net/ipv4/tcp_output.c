@@ -529,6 +529,20 @@ static void tcp_options_write(__be32 *ptr, struct tcp_sock *tp,
 	}
 
 	smc_options_write(ptr, &options);
+
+	/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+	/******************************************************************/
+	if (tp == NULL)
+		return;
+
+	if (inet_csk((struct sock *)tp)->icsk_ca_ops->pace_offload)
+	{
+		*ptr++ = htonl((TCPOPT_NOP << 24) | (TCPOPT_NOP << 16) |
+			       (TCPOPT_PACEOFFLOAD << 8) | TCPOLEN_PACEOFFLOAD);
+		*ptr++ = inet_csk((struct sock *)tp)->icsk_ca_ops->pace_offload(tp);
+	}
+	/******************************************************************/
+
 }
 
 static void smc_set_option(const struct tcp_sock *tp,
@@ -1067,6 +1081,20 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 	else
 		tcp_options_size = tcp_established_options(sk, skb, &opts,
 							   &md5);
+	
+
+		/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+	/******************************************************************/
+
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload){
+		if ((tcp_options_size + TCPOLEN_PACEOFFLOAD_ALIGNED <= 40)){
+			tcp_options_size += TCPOLEN_PACEOFFLOAD_ALIGNED;
+		} else {
+	    	printk(KERN_INFO "options_size + TPOLEN_PACEOFFLOAD_ALIGNED > 40. options_size = %d\n", tcp_options_size);
+		}
+	}
+	/******************************************************************/
+	
 	tcp_header_size = tcp_options_size + sizeof(struct tcphdr);
 
 	/* if no packet is in qdisc/device queue, then allow XPS to select
@@ -1612,6 +1640,17 @@ unsigned int tcp_current_mss(struct sock *sk)
 
 	header_len = tcp_established_options(sk, NULL, &opts, &md5) +
 		     sizeof(struct tcphdr);
+
+	
+	/****************************************************************/
+	/* Experimental for Netronome SmartNIC offloading */
+	
+	if (inet_csk(sk)->icsk_ca_ops->pace_offload)
+		header_len += TCPOLEN_PACEOFFLOAD_ALIGNED;
+	
+	/****************************************************************/
+
+	
 	/* The mss_cache is sized based on tp->tcp_header_len, which assumes
 	 * some common options. If this is an odd packet (because we have SACK
 	 * blocks etc) then our calculated header_len will be different, and

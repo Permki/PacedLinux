@@ -186,6 +186,13 @@ void tcp_time_wait(struct sock *sk, int state, int timeo);
 #define TCPOPT_MD5SIG		19	/* MD5 Signature (RFC2385) */
 #define TCPOPT_FASTOPEN		34	/* Fast open (RFC7413) */
 #define TCPOPT_EXP		254	/* Experimental */
+
+/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+/******************************************************************/
+/* Used for Netronome Pace Offloading Experimental */
+#define TCPOPT_PACEOFFLOAD 200   
+/******************************************************************/
+
 /* Magic number to be after the option value for sharing TCP
  * experimental options. See draft-ietf-tcpm-experimental-options-00.txt
  */
@@ -205,6 +212,12 @@ void tcp_time_wait(struct sock *sk, int state, int timeo);
 #define TCPOLEN_EXP_FASTOPEN_BASE  4
 #define TCPOLEN_EXP_SMC_BASE   6
 
+/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+/******************************************************************/
+/* Used for Netronome Pace Offloading Experimental */
+#define TCPOLEN_PACEOFFLOAD	   6
+/******************************************************************/
+
 /* But this is what stacks really send out. */
 #define TCPOLEN_TSTAMP_ALIGNED		12
 #define TCPOLEN_WSCALE_ALIGNED		4
@@ -215,6 +228,12 @@ void tcp_time_wait(struct sock *sk, int state, int timeo);
 #define TCPOLEN_MD5SIG_ALIGNED		20
 #define TCPOLEN_MSS_ALIGNED		4
 #define TCPOLEN_EXP_SMC_BASE_ALIGNED	8
+
+/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+/******************************************************************/
+/* Used for Netronome Pace Offloading Experimental */
+#define TCPOLEN_PACEOFFLOAD_ALIGNED	8
+/******************************************************************/
 
 /* Flags in tp->nonagle */
 #define TCP_NAGLE_OFF		1	/* Nagle's algo is disabled */
@@ -998,6 +1017,13 @@ struct tcp_congestion_ops {
 	u32 (*tso_segs_goal)(struct sock *sk);
 	/* returns the multiplier used in tcp_sndbuf_expand (optional) */
 	u32 (*sndbuf_expand)(struct sock *sk);
+
+	/* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
+	/******************************************************************/
+	/* used for optional print or calculations for offloading pacing */
+    u32 (*pace_offload)(struct tcp_sock *tp);
+	/******************************************************************/
+
 	/* call when packets are delivered to update cwnd and pacing rate,
 	 * after all the ca_state processing. (optional)
 	 */
