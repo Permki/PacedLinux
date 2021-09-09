@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;32m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -71,6 +71,15 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+function lgit() {
+    git add --all
+    git commit -am "$1"
+    git push
+}
+
+
+
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -115,6 +124,16 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+LS_COLORS=$LS_COLORS:'di=4;32:' ; export LS_COLORS
+alias runcard='sudo /opt/netronome/bin/ovs-ctl start'
+alias stopcard='sudo /opt/netronome/bin/ovs-ctl stop'
+alias netronomeboot="sudo grub-reboot NetronomeBoot"
+
+
+# Netronome SDK
+PATH=$PATH:/opt/netronome/bin
+export PATH
+
 alias installtools="sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison"
 alias tracings="cd /sys/kernel/debug/tracing/events/"
 alias ccversion='sysctl net.ipv4.tcp_available_congestion_control'
@@ -132,3 +151,6 @@ function lgit() {
     git commit -am "$1"
     git push
 }
+
+alias nboot="sudo grub-reboot NetronomeBootCustom4.15 && sudo reboot now"
+alias pboot="sudo grub-reboot PCIeBoot && sudo reboot now"
