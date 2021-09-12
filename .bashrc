@@ -152,5 +152,10 @@ function lgit() {
     git push
 }
 
-alias nboot="sudo grub-reboot NetronomeBootCustom4.15 && sudo reboot now"
+function nboot(){
+        apt-get install agilio-nfp-driver-dkms
+        sudo grub-reboot NetronomeBootCustom4.15
+        sudo reboot now
+}
+
 alias pboot="sudo grub-reboot PCIeBoot && sudo reboot now"
