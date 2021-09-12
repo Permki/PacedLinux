@@ -158,4 +158,6 @@ function nboot(){
         sudo reboot now
 }
 
+alias s6install="~/software/nfp-sdk-6-rte-v6.1.0.1-preview-Ubuntu-Release-r2750-2018-10-10-ubuntu.binary/sdk6_rte_install.sh install"
+
 alias pboot="sudo grub-reboot PCIeBoot && sudo reboot now"
