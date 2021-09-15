@@ -157,7 +157,18 @@ function nnboot(){
         sudo grub-reboot NetronomeBootCustom4.15
         sudo reboot now
 }
+
+function nnboot(){
+        apt-get install agilio-nfp-driver-dkms
+        sudo grub-reboot NetronomeBootCustom4.15
+        sudo reboot now
+}
 alias nboot="sudo grub-reboot NetronomeBootCustom4.15 && sudo reboot now"
 alias s6install="~/software/nfp-sdk-6-rte-v6.1.0.1-preview-Ubuntu-Release-r2750-2018-10-10-ubuntu.binary/sdk6_rte_install.sh install"
-
 alias pboot="sudo grub-reboot PCIeBoot && sudo reboot now"
+
+
+function serverstart(){
+    sudo systemctl start nfp-sdk6-rte
+    sudo systemctl start nfp-hwdbg-srv
+}
