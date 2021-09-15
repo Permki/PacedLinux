@@ -11,7 +11,7 @@ bashload:
 	cp .bashrc ${HOME}/.bashrc
 
 bashsave:
-	cp /home/$(USER)/.bashrc .bashrc
+	cp ${HOME}/.bashrc .bashrc
 
 tools:
 	sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
