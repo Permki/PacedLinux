@@ -172,3 +172,12 @@ function serverstart(){
     sudo systemctl start nfp-sdk6-rte
     sudo systemctl start nfp-hwdbg-srv
 }
+
+function serverstop(){
+    sudo systemctl stop nfp-sdk6-rte
+    sudo systemctl stop nfp-hwdbg-srv
+}
+
+
+
+
