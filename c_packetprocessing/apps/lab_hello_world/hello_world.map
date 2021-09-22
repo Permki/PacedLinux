@@ -1,0 +1,13 @@
+Memory Map file: /home/permki/dev/c_packetprocessing/apps/lab_hello_world/hello_world.map
+Date: Thu Sep  9 00:22:28 2021
+
+nfld version: 6.1.0.1-preview,  NFFW: /home/permki/dev/c_packetprocessing/apps/lab_hello_world/hello_world.fw
+
+Address       Region     ByteSize        Symbol
+===================================================
+0x0000000000800000    i24.emem      108            	.mip
+0x0000000000000000    i32.ctm       704            	i32.me0.ctm_40$tls
+0x00000000000002c0    i32.ctm       704            	i32.me1.ctm_40$tls
+
+ImportVar			Uninitialized Value
+===================================================

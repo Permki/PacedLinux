@@ -1,0 +1,475 @@
++version:  1/1/2010
++switches:
+
++comp_ver Version:      6.1.0.1-preview
++Build number: 3243
++Build date:   Oct  9 2018 at 17:06:42
+
++compinfo: nfcc -Fo/home/permki/dev/c_packetprocessing/apps/lab5/ -Fe/home/
++compinfo: permki/dev/c_packetprocessing/apps/lab5/stats_obj.list -W3 -chip
++compinfo:  nfp-4xxx-b0 -Qspill=7 -Qnn_mode=1 -Qno_decl_volatile -single_dr
++compinfo: am_signal -Qnctx_mode=8 -I. -I/home/permki/dev/c_packetprocessin
++compinfo: g/microc/include -I/home/permki/dev/c_packetprocessing/microc/li
++compinfo: b
+
+.chip_id nfp-4xxx-b0 0x10 0x10
+
+.%declare_resource "..brary/include/nfp_chipres.h" 110 emem0_queues global 0x400
+.%declare_resource "..brary/include/nfp_chipres.h" 121 emem1_queues global 0x400
+.%declare_resource "..brary/include/nfp_chipres.h" 162 cls_rings island 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 181 cls_apsignals island 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 197 cls_apfilters island 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 366 pcie0_cpp2pcie_bars global 0x8
+.%declare_resource "..brary/include/nfp_chipres.h" 367 pcie0_dma_cfg_regs global 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 369 pcie0_topci_hi global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 370 pcie0_topci_med global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 371 pcie0_topci_lo global 0x80
+.%declare_resource "..brary/include/nfp_chipres.h" 372 pcie0_frompci_hi global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 373 pcie0_frompci_med global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 374 pcie0_frompci_lo global 0x80
+.%declare_resource "..brary/include/nfp_chipres.h" 378 pcie1_cpp2pcie_bars global 0x8
+.%declare_resource "..brary/include/nfp_chipres.h" 379 pcie1_dma_cfg_regs global 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 381 pcie1_topci_hi global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 382 pcie1_topci_med global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 383 pcie1_topci_lo global 0x80
+.%declare_resource "..brary/include/nfp_chipres.h" 384 pcie1_frompci_hi global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 385 pcie1_frompci_med global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 386 pcie1_frompci_lo global 0x80
+
+.%bigendian
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+
+.%indirect_ref_mode nfp6000
+.%third_party_addressing 40bit
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+.%init_nn_mode --
+.%neighbor_usage  0x0
+.%resource CAM        0
+.%resource CRC        0
+.%resource T_INDEX    0
+.%resource BYTE_INDEX 0
+
+.%init_reg @A95 0x200
+.%init_reg @A111 0x1000
+.%init_reg @A127 0x100
+.%init_reg @B127 0x100
+:_clear_mac_stats_8#	51
+:_main#	0
+:_read_mac_stats_8#	13
+:l_32#	11
+:l_34#	12
+:l_4#	3
+:l_4495#	16
+:l_4496#	58
+:l_4497#	55
+:l_4498#	54
+:l_4499#	3
+:l_4500#	5
+:l_51#	18
+:l_53#	23
+:l_56#	38
+:l_57#	39
+:start#	0
+*a0 gpr_a_rel 00
+*a1 gpr_a_rel 01
+*a2 gpr_a_rel 02
+*a3 gpr_a_rel 03
+*a4 gpr_a_rel 04
+*a5 gpr_a_rel 05
+*a6 gpr_a_rel 06
+*a7 gpr_a_rel 07
+*a8 gpr_a_rel 08
+*a9 gpr_a_rel 09
+*a10 gpr_a_rel 0A
+*a11 gpr_a_rel 0B
+*a12 gpr_a_rel 0C
+*a13 gpr_a_rel 0D
+*a14 gpr_a_rel 0E
+*a15 gpr_a_rel 0F
+*b0 gpr_b_rel 00
+*b1 gpr_b_rel 01
+*b2 gpr_b_rel 02
+*b3 gpr_b_rel 03
+*b4 gpr_b_rel 04
+*b5 gpr_b_rel 05
+*b6 gpr_b_rel 06
+*b7 gpr_b_rel 07
+*b8 gpr_b_rel 08
+*b9 gpr_b_rel 09
+*b10 gpr_b_rel 0A
+*b11 gpr_b_rel 0B
+*b12 gpr_b_rel 0C
+*b13 gpr_b_rel 0D
+*b14 gpr_b_rel 0E
+*b15 gpr_b_rel 0F
+*$0 xfer_rel 000 1 both 0 0
+*$1 xfer_rel 001 1 both 0 0
+*$2 xfer_rel 002 1 both 0 0
+*$3 xfer_rel 003 1 both 0 0
+*$4 xfer_rel 004 1 both 0 0
+*$5 xfer_rel 005 1 both 0 0
+*$6 xfer_rel 006 1 both 0 0
+*$7 xfer_rel 007 1 both 0 0
+*$8 xfer_rel 008 1 both 0 0
+*$9 xfer_rel 009 1 both 0 0
+*$10 xfer_rel 00A 1 both 0 0
+*$11 xfer_rel 00B 1 both 0 0
+*$12 xfer_rel 00C 1 both 0 0
+*$13 xfer_rel 00D 1 both 0 0
+*$14 xfer_rel 00E 1 both 0 0
+*$15 xfer_rel 00F 1 both 0 0
+*$16 xfer_rel 010 1 both 0 0
+*$17 xfer_rel 011 1 both 0 0
+*$18 xfer_rel 012 1 both 0 0
+*$19 xfer_rel 013 1 both 0 0
+*$20 xfer_rel 014 1 both 0 0
+*$21 xfer_rel 015 1 both 0 0
+*$22 xfer_rel 016 1 both 0 0
+*$23 xfer_rel 017 1 both 0 0
+*$24 xfer_rel 018 1 both 0 0
+*$25 xfer_rel 019 1 both 0 0
+*$26 xfer_rel 01A 1 both 0 0
+*$27 xfer_rel 01B 1 both 0 0
+*$28 xfer_rel 01C 1 both 0 0
+*$29 xfer_rel 01D 1 both 0 0
+*$30 xfer_rel 01E 1 both 0 0
+*$31 xfer_rel 01F 1 both 0 0
+*n$0 neighbor_rel 000
+*n$1 neighbor_rel 001
+*n$2 neighbor_rel 002
+*n$3 neighbor_rel 003
+*n$4 neighbor_rel 004
+*n$5 neighbor_rel 005
+*n$6 neighbor_rel 006
+*n$7 neighbor_rel 007
+*n$8 neighbor_rel 008
+*n$9 neighbor_rel 009
+*n$10 neighbor_rel 00A
+*n$11 neighbor_rel 00B
+*n$12 neighbor_rel 00C
+*n$13 neighbor_rel 00D
+*n$14 neighbor_rel 00E
+*n$15 neighbor_rel 00F
+*@b127 gpr_b_abs FF
+*@a127 gpr_a_abs 7F
+*@a111 gpr_a_abs 6F
+*@a95 gpr_a_abs 5F
+.%import_expr common_code 0 <40:40:13,34:22:0> &bp 11 +
+.0 00D802C00031 common_code
+	.%line 102 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:507 0 11
+/******/    if (ctx()==0)
+_main#:
+	br!=ctx[0, l_32#]
+.%import_expr common_code 1 <40:40:13,34:22:0> &bp 51 +
+.1 00D80CD08038 common_code
+	.%line 104 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:507 1 51
+/******/        clear_mac_stats(0x0000);
+	br[_clear_mac_stats_8#], defer[1]
+.%import_expr common_code 2 <27:20:8,17:10:0> &bp 3 +
+.2 00F0000C0C01 common_code
+	.%line 104 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:507 0
+	load_addr[a1, l_4499#]
+.%import_expr common_code 3 <40:40:13,34:22:0> &bp 13 +
+.3 00D803508038 common_code
+	.%line 107 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:507 1 13
+/******/  	read_mac_stats(8, 0x0000);
+l_4499#:
+l_4#:
+	br[_read_mac_stats_8#], defer[1]
+.%import_expr common_code 4 <27:20:8,17:10:0> &bp 5 +
+.4 00F0000C1401 common_code
+	.%line 107 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:507 0
+	load_addr[a1, l_4500#]
+.5 00FC0C000000 common_code
+	.%line 109 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:510 1
+/******/  	sleep(8192);
+l_4500#:
+	local_csr_rd[timestamp_low]
+.6 00F000000300 common_code
+	.%line 109 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:510 0
+	immed[b0, 0, <<0]
+.7 00A0C00000DF common_code
+	.%line 109 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:509 0
+	alu[a0, b0, +, @a95]
+.%import_expr common_code 8 <40:40:13,34:22:0> &bp 3 +
+.8 00E000E40002 common_code
+	.%line 109 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:508 2 3
+	ctx_arb[s1], all, br[l_4#], defer[2]
+.9 00FC07EC0701 common_code
+	.%line 109 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:512 1
+	local_csr_wr[active_future_count_signal, 1]
+.10 00FC05EC0000 common_code
+	.%line 109 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:511 0
+	local_csr_wr[active_ctx_future_count, a0]
+.11 00E000010000 common_code
+	.%line 113 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:507 0
+/******/          ctx_arb[kill]
+l_32#:
+	ctx_arb[kill]
+.%import_expr common_code 12 <40:40:13,34:22:0> &bp 12 +
+.12 00D803008038 common_code
+	.%line 113 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:507 0 12
+l_34#:
+	br[l_34#]
+.13 00F000001300 common_code
+	.%line 30 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  {
+_read_mac_stats_8#:
+	immed[b4, 0, <<0]
+.14 00F000000F00 common_code
+	.%line 38 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/    for (hydra=0; hydra<2; hydra++) {
+	immed[b3, 0, <<0]
+.15 00F000000B00 common_code
+	.%line 39 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/      for (port=0; port<12; port++) {
+	immed[b2, 0, <<0]
+.16 008140000E00 common_code
+	.%line 41 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 1
+/******/        address_base_shift_8 = (address_base_shift_8 + ((hydra*0x1000)>>8) +
+l_4495#:
+	alu_shf[a0, --, B, b3, <<12]
+.17 008C80280100 common_code
+	.%line 41 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:505 0
+	asr[a2, a0, >>8]
+.18 008180000A00 common_code
+	.%line 41 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 1
+l_51#:
+	alu_shf[a0, --, B, b2, <<8]
+.19 009C80080100 common_code
+	.%line 41 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:505 0
+	asr[b0, a0, >>8]
+.20 00B0C00000EF common_code
+	.%line 41 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+	alu[b0, b0, +, @a111]
+.21 00B0C0100002 common_code
+	.%line 41 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+	alu[b1, b0, +, a2]
+.22 00F0000C0003 common_code
+	.%line 43 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/        for (offset=0; offset<256; offset+=32) {
+	immed[a3, 0, <<0]
+.23 040416000403 common_code
+	.%line 45 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  	  nbi[ read, rdata[0], address_base_shift_8,<<8,offset, 4 ],\
+l_53#:
+	nbi[read, $0, b1, <<8, a3, 4], ctx_swap[s1]
+.24 00A018060000 common_code
+	.%line 48 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  	wdata[0] = rdata[0];
+	alu[$0, --, B, $0]
+.25 00A018160400 common_code
+	.%line 48 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+	alu[$1, --, B, $1]
+.26 00A018260800 common_code
+	.%line 49 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  	wdata[1] = rdata[1];
+	alu[$2, --, B, $2]
+.27 00A018360C00 common_code
+	.%line 49 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+	alu[$3, --, B, $3]
+.28 00A018461000 common_code
+	.%line 50 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  	wdata[2] = rdata[2];
+	alu[$4, --, B, $4]
+.29 00A070000003 common_code
+	.%line 52 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  	if (offset==0) {
+	alu[--, --, B, a3]
+.%import_expr common_code 30 <40:40:13,34:22:0> &bp 38 +
+.30 00D809B08121 common_code
+	.%line 52 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 3 38
+	bne[l_56#], defer[3]
+.31 00A018561400 common_code
+	.%line 50 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:505 2
+/******/  	wdata[2] = rdata[2];
+	alu[$5, --, B, $5]
+.32 00A018661800 common_code
+	.%line 51 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:505 1
+/******/  	wdata[3] = rdata[3];
+	alu[$6, --, B, $6]
+.33 00A018761C00 common_code
+	.%line 51 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:505 0
+	alu[$7, --, B, $7]
+.34 00A0800C2003 common_code
+	.%line 54 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  	  offset_p_8 = offset+8;
+	alu[a0, a3, +, 8]
+.35 106402041303 common_code
+	.%line 56 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  	    cls[ add64, wdata[0], cls_address, offset, 2 ];
+	cls[add64, $0, b4, a3, 2]
+.36 10641A201000 common_code
+	.%line 57 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  	    cls[ add, wdata[1], cls_address, offset_p_8, 6 ],   \
+	cls[add, $2, b4, a0, 6], ctx_swap[s1]
+.%import_expr common_code 37 <40:40:13,34:22:0> &bp 39 +
+.37 00D809C08038 common_code
+	.%line 57 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0 39
+	br[l_57#]
+.38 10641E001003 common_code
+	.%line 62 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/  	    cls[ add, wdata[0], cls_address, offset, 8 ],   \
+l_56#:
+	cls[add, $0, b4, a3, 8], ctx_swap[s1]
+.39 00A0803C8003 common_code
+	.%line 43 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/        for (offset=0; offset<256; offset+=32) {
+l_57#:
+	alu[a3, a3, +, 32]
+.40 00AAB003FC03 common_code
+	.%line 43 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+	alu[--, a3, -, @b127]
+.%import_expr common_code 41 <40:40:13,34:22:0> &bp 23 +
+.41 00D805C08129 common_code
+	.%line 43 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0 23
+	blt[l_53#]
+.42 00B0C0200B01 common_code
+	.%line 39 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/      for (port=0; port<12; port++) {
+	alu[b2, b2, +, 1]
+.43 00AAF0000B0C common_code
+	.%line 39 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+	alu[--, b2, -, 12]
+.%import_expr common_code 44 <40:40:13,34:22:0> &bp 18 +
+.44 00D804908129 common_code
+	.%line 39 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 1 18
+	blt[l_51#], defer[1]
+.45 00B0C04010FF common_code
+	.%line 67 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:505 0
+/******/        cls_address += 256;
+	alu[b4, b4, +, @a127]
+.46 00B0C0300F01 common_code
+	.%line 38 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+/******/    for (hydra=0; hydra<2; hydra++) {
+	alu[b3, b3, +, 1]
+.47 00AAF0000F02 common_code
+	.%line 38 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0
+	alu[--, b3, -, 2]
+.%import_expr common_code 48 <40:40:13,34:22:0> &bp 16 +
+.48 00D804108129 common_code
+	.%line 38 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 1 16
+	blt[l_4495#], defer[1]
+.49 00F000000B00 common_code
+	.%line 38 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:505 0
+	immed[b2, 0, <<0]
+.50 00E8000C0001 common_code
+	.%line 70 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:505 0 0 A1
+/******/  }
+	rtn[a1]
+.51 00F0000C0003 common_code
+	.%line 73 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/  {
+_clear_mac_stats_8#:
+	immed[a3, 0, <<0]
+.52 00F0000C0002 common_code
+	.%line 81 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/    for (hydra=0; hydra<2; hydra++) {
+	immed[a2, 0, <<0]
+.53 00F000000700 common_code
+	.%line 82 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/      for (port=0; port<12; port++) {
+	immed[b1, 0, <<0]
+.54 00F000000300 common_code
+	.%line 83 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/        for (offset=0; offset<256; offset+=32) {
+l_4498#:
+	immed[b0, 0, <<0]
+.55 00F0000C0180 common_code
+	.%line 84 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/  	wdata[0] = 0;
+l_4497#:
+	immed[$0, 0, <<0]
+.56 00F0000C0181 common_code
+	.%line 84 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+	immed[$1, 0, <<0]
+.57 00F0000C0182 common_code
+	.%line 85 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/  	wdata[1] = 0;
+	immed[$2, 0, <<0]
+.58 00F0000C0183 common_code
+	.%line 85 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+l_4496#:
+	immed[$3, 0, <<0]
+.59 00F0000C0184 common_code
+	.%line 86 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/  	wdata[2] = 0;
+	immed[$4, 0, <<0]
+.60 00F0000C0185 common_code
+	.%line 86 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+	immed[$5, 0, <<0]
+.61 10611E000203 common_code
+	.%line 89 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 2
+/******/  	  cls[ write, wdata[0], cls_address, offset, 8 ], \
+	cls[write, $0, a3, b0, 8], ctx_swap[s1], defer[2]
+.62 00F0000C0186 common_code
+	.%line 87 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:506 1
+/******/  	wdata[3] = 0;
+	immed[$6, 0, <<0]
+.63 00F0000C0187 common_code
+	.%line 87 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:506 0
+	immed[$7, 0, <<0]
+.64 00B0C0000320 common_code
+	.%line 83 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/        for (offset=0; offset<256; offset+=32) {
+	alu[b0, b0, +, 32]
+.65 00AAF00000FF common_code
+	.%line 83 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+	alu[--, b0, -, @a127]
+.%import_expr common_code 66 <40:40:13,34:22:0> &bp 58 +
+.66 00D80EB08129 common_code
+	.%line 83 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 3 58
+	blt[l_4496#], defer[3]
+.67 00F0000C0180 common_code
+	.%line 83 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:506 2
+	immed[$0, 0, <<0]
+.68 00F0000C0181 common_code
+	.%line 83 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:506 1
+	immed[$1, 0, <<0]
+.69 00F0000C0182 common_code
+	.%line 83 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:506 0
+	immed[$2, 0, <<0]
+.70 00B0C0100701 common_code
+	.%line 82 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/      for (port=0; port<12; port++) {
+	alu[b1, b1, +, 1]
+.71 00AAF000070C common_code
+	.%line 82 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+	alu[--, b1, -, 12]
+.%import_expr common_code 72 <40:40:13,34:22:0> &bp 55 +
+.72 00D80DE08129 common_code
+	.%line 82 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 2 55
+	blt[l_4497#], defer[2]
+.73 00A08033FC03 common_code
+	.%line 93 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:506 1
+/******/        cls_address += 256;
+	alu[a3, a3, +, @b127]
+.74 00F000000300 common_code
+	.%line 82 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:506 0
+/******/      for (port=0; port<12; port++) {
+	immed[b0, 0, <<0]
+.75 00A0802C0402 common_code
+	.%line 81 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+/******/    for (hydra=0; hydra<2; hydra++) {
+	alu[a2, a2, +, 1]
+.76 00AAB00C0802 common_code
+	.%line 81 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0
+	alu[--, a2, -, 2]
+.%import_expr common_code 77 <40:40:13,34:22:0> &bp 54 +
+.77 00D80D908129 common_code
+	.%line 81 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 1 54
+	blt[l_4498#], defer[1]
+.78 00F000000700 common_code
+	.%line 81 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 0 fiid:506 0
+	immed[b1, 0, <<0]
+.79 00E8000C0001 common_code
+	.%line 96 "/home/permki/dev/c_packetprocessing/apps/lab5/mac_stats.c" 1 fiid:506 0 0 A1
+/******/  }
+	rtn[a1]
++ucode_end
