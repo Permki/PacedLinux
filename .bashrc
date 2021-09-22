@@ -182,5 +182,7 @@ alias psend="sudo tcpreplay -i enp5s0np0 Desktop/udp_v2.pcap"
 alias shark="sudo tshark -x -i enp5s0np0"
 alias dump="sudo tcpdump -i enp5s0np0 -s 0"
 
+alias searchword="grep -rnw . -e"
+alias searchfile="grep -iRl"
 
 
