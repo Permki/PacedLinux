@@ -1,5 +1,5 @@
 
-KERNEL :=linux-4.15.0
+KERNEL :=linux
 USER := $(whoami)
 MODS := ModifiedFiles
 

@@ -403,8 +403,6 @@ static void hystart_update(struct sock *sk, u32 delay)
 
 	if (hystart_detect & HYSTART_DELAY) {
 		/* obtain the minimum delay of more than sampling packets */
-		if (ca->curr_rtt > delay)
-			ca->curr_rtt = delay;
 		if (ca->sample_cnt < HYSTART_MIN_SAMPLES) {
 			if (ca->curr_rtt == 0 || ca->curr_rtt > delay)
 				ca->curr_rtt = delay;
@@ -457,6 +455,7 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 }
 
 
+
 /* EXPERIMENTAL PACEOFFLOAD NETRONOME AGILIO */
 /******************************************************************/
 
@@ -465,12 +464,10 @@ static void bictcp_acked(struct sock *sk, const struct ack_sample *sample)
 
 static u32 bictcp_pace_offload(struct tcp_sock *tp)
 {
-  // return tp->srtt_us * 1000/tp->snd_cwnd;
-  return htonl(0xbeefbabe);//tp->srtt_us * 1000/tp->snd_cwnd;
+	return tp->srtt_us * 1000/tp->snd_cwnd;
 }
 
 /******************************************************************/
-
 
 
 
