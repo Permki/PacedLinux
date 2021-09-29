@@ -134,39 +134,12 @@ alias netronomeboot="sudo grub-reboot NetronomeBoot"
 PATH=$PATH:/opt/netronome/bin
 export PATH
 
-alias installtools="sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison"
-alias tracings="cd /sys/kernel/debug/tracing/events/"
-alias ccversion='sysctl net.ipv4.tcp_available_congestion_control'
-alias bashrc='emacs ~/.bashrc &'
-alias loadcc='sudo sysctl -p'
-alias ownconfig='cp -v /boot/config-$(uname -r) .config'
-alias ccchange='sudo emacs /etc/sysctl.conf'
-alias getsource='apt-get source linux-image-unsigned-$(uname -r)'
-alias getsourcecustom='apt-get source linux-image-unsigned-4.15.0-72-generic'
-alias defer='echo 1 | sudo tee /sys/module/tcp_cubic_paced/parameters/tso_defer_size'
-alias resetdefer='echo 0 | sudo tee /sys/module/tcp_cubic_paced/parameters/tso_defer_size'
-alias open="xdg-open"
+
 function lgit() {
     git add --all
     git commit -am "$1"
     git push
 }
-
-function nnboot(){
-        apt-get install agilio-nfp-driver-dkms
-        sudo grub-reboot NetronomeBootCustom4.15
-        sudo reboot now
-}
-
-function nnboot(){
-        apt-get install agilio-nfp-driver-dkms
-        sudo grub-reboot NetronomeBootCustom4.15
-        sudo reboot now
-}
-alias nboot="sudo grub-reboot NetronomeBootCustom4.15 && sudo reboot now"
-alias s6install="~/software/nfp-sdk-6-rte-v6.1.0.1-preview-Ubuntu-Release-r2750-2018-10-10-ubuntu.binary/sdk6_rte_install.sh install"
-alias pboot="sudo grub-reboot PCIeBoot && sudo reboot now"
-
 
 function serverstart(){
     sudo systemctl start nfp-sdk6-rte
@@ -178,11 +151,37 @@ function serverstop(){
     sudo systemctl stop nfp-hwdbg-srv
 }
 
-alias psend="sudo tcpreplay -i enp5s0np0 Desktop/udp_v2.pcap"
+# INSTALLS #
+alias agilio="apt-get install agilio-nfp-driver-dkms"
+
+# KERNEL COMPILE #
+alias installtools="sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison"
+alias ownconfig='cp -v /boot/config-$(uname -r) .config'
+alias getsource='apt-get source linux-image-unsigned-$(uname -r)'
+alias getsourcecustom='apt-get source linux-image-unsigned-4.15.0-72-generic'
+
+# CONGESTION CONTROL #
+alias ccchange='sudo emacs /etc/sysctl.conf'
+alias loadcc='sudo sysctl -p'
+alias ccversion='sysctl net.ipv4.tcp_available_congestion_control'
+alias defer='echo 1 | sudo tee /sys/module/tcp_cubic_paced/parameters/tso_defer_size'
+alias resetdefer='echo 0 | sudo tee /sys/module/tcp_cubic_paced/parameters/tso_defer_size'
+
+# BASH && MISC #
+alias bashrc='emacs ~/.bashrc &'
+alias open="xdg-open"
+alias searchword="grep -rnw . -e"
+alias searchfile="grep -iRl"
+
+# BOOTS #
+alias nboot="sudo grub-reboot Netronome_4.15 && sudo reboot now"
+alias pboot="sudo grub-reboot Netronome_4.20 && sudo reboot now"
+
+# PINGS AND DUMPS #
+alias superping="sudo hping3 -i enp5s0np0 10.1.1.1 --fast"
+alias psend="sudo tcpreplay -i enp5s0np0 /home/permki/Desktop/udp_v2.pcap"
 alias shark="sudo tshark -x -i enp5s0np0"
 alias dump="sudo tcpdump -i enp5s0np0 -s 0"
 
-alias searchword="grep -rnw . -e"
-alias searchfile="grep -iRl"
 
 
