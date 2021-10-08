@@ -1,0 +1,510 @@
++version:  1/1/2010
++switches:
+
++comp_ver Version:      6.1.0.1-preview
++Build number: 3243
++Build date:   Oct  9 2018 at 17:06:42
+
++compinfo: nfcc -Fo/home/permki/PacedLinux/c_packetprocessing/apps/lab5/ -F
++compinfo: e/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_obj.l
++compinfo: ist -W3 -chip nfp-4xxx-b0 -Qspill=7 -Qnn_mode=1 -Qno_decl_volati
++compinfo: le -single_dram_signal -Qnctx_mode=8 -I. -I/home/permki/PacedLin
++compinfo: ux/c_packetprocessing/microc/include -I/home/permki/PacedLinux/c
++compinfo: _packetprocessing/microc/lib -FIconfig.h
+
+.chip_id nfp-4xxx-b0 0x10 0x10
+
+.%declare_resource "..brary/include/nfp_chipres.h" 110 emem0_queues global 0x400
+.%declare_resource "..brary/include/nfp_chipres.h" 121 emem1_queues global 0x400
+.%declare_resource "..brary/include/nfp_chipres.h" 162 cls_rings island 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 181 cls_apsignals island 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 197 cls_apfilters island 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 366 pcie0_cpp2pcie_bars global 0x8
+.%declare_resource "..brary/include/nfp_chipres.h" 367 pcie0_dma_cfg_regs global 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 369 pcie0_topci_hi global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 370 pcie0_topci_med global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 371 pcie0_topci_lo global 0x80
+.%declare_resource "..brary/include/nfp_chipres.h" 372 pcie0_frompci_hi global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 373 pcie0_frompci_med global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 374 pcie0_frompci_lo global 0x80
+.%declare_resource "..brary/include/nfp_chipres.h" 378 pcie1_cpp2pcie_bars global 0x8
+.%declare_resource "..brary/include/nfp_chipres.h" 379 pcie1_dma_cfg_regs global 0x10
+.%declare_resource "..brary/include/nfp_chipres.h" 381 pcie1_topci_hi global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 382 pcie1_topci_med global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 383 pcie1_topci_lo global 0x80
+.%declare_resource "..brary/include/nfp_chipres.h" 384 pcie1_frompci_hi global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 385 pcie1_frompci_med global 0x40
+.%declare_resource "..brary/include/nfp_chipres.h" 386 pcie1_frompci_lo global 0x80
+
+.%bigendian
+
+.%num_contexts 8
+.%ctx_range 0 7
+
+
+.%indirect_ref_mode nfp6000
+.%third_party_addressing 40bit
+.%local_mem0_mode rel
+.%local_mem1_mode rel
+.%local_mem2_mode rel
+.%local_mem3_mode rel
+.%init_nn_mode --
+.%neighbor_usage  0x0
+.%resource CAM        0
+.%resource CRC        0
+.%resource T_INDEX    0
+.%resource BYTE_INDEX 0
+
+.%init_reg A10 0x80000040
+.%init_reg A9 0x0
+.%init_reg B9 0x3F0
+.%init_reg A8 0x7F8
+.%init_reg B8 0x3FFF
+.%init_reg B7 0x3FF
+.%init_reg @A127 0x80000
+.%init_reg @A95 0x8000
+.%init_reg @A111 0x3FFF
+:_main#	0
+:_receive_packet#	17
+:_send_packet#	53
+:_timing_loop#	34
+:l_383#	36
+:l_5067#	0
+:l_5068#	2
+:l_5069#	11
+:l_5070#	13
+:l_5071#	15
+:start#	0
+*a0 gpr_a_rel 00
+*a1 gpr_a_rel 01
+*a2 gpr_a_rel 02
+*a3 gpr_a_rel 03
+*a4 gpr_a_rel 04
+*a5 gpr_a_rel 05
+*a6 gpr_a_rel 06
+*a7 gpr_a_rel 07
+*a8 gpr_a_rel 08
+*a9 gpr_a_rel 09
+*a10 gpr_a_rel 0A
+*a11 gpr_a_rel 0B
+*a12 gpr_a_rel 0C
+*a13 gpr_a_rel 0D
+*a14 gpr_a_rel 0E
+*a15 gpr_a_rel 0F
+*b0 gpr_b_rel 00
+*b1 gpr_b_rel 01
+*b2 gpr_b_rel 02
+*b3 gpr_b_rel 03
+*b4 gpr_b_rel 04
+*b5 gpr_b_rel 05
+*b6 gpr_b_rel 06
+*b7 gpr_b_rel 07
+*b8 gpr_b_rel 08
+*b9 gpr_b_rel 09
+*b10 gpr_b_rel 0A
+*b11 gpr_b_rel 0B
+*b12 gpr_b_rel 0C
+*b13 gpr_b_rel 0D
+*b14 gpr_b_rel 0E
+*b15 gpr_b_rel 0F
+*$0 xfer_rel 000 1 both 0 0
+*$1 xfer_rel 001 1 both 0 0
+*$2 xfer_rel 002 1 both 0 0
+*$3 xfer_rel 003 1 both 0 0
+*$4 xfer_rel 004 1 both 0 0
+*$5 xfer_rel 005 1 both 0 0
+*$6 xfer_rel 006 1 both 0 0
+*$7 xfer_rel 007 1 both 0 0
+*$8 xfer_rel 008 1 both 0 0
+*$9 xfer_rel 009 1 both 0 0
+*$10 xfer_rel 00A 1 both 0 0
+*$11 xfer_rel 00B 1 both 0 0
+*$12 xfer_rel 00C 1 both 0 0
+*$13 xfer_rel 00D 1 both 0 0
+*$14 xfer_rel 00E 1 both 0 0
+*$15 xfer_rel 00F 1 both 0 0
+*$16 xfer_rel 010 1 both 0 0
+*$17 xfer_rel 011 1 both 0 0
+*$18 xfer_rel 012 1 both 0 0
+*$19 xfer_rel 013 1 both 0 0
+*$20 xfer_rel 014 1 both 0 0
+*$21 xfer_rel 015 1 both 0 0
+*$22 xfer_rel 016 1 both 0 0
+*$23 xfer_rel 017 1 both 0 0
+*$24 xfer_rel 018 1 both 0 0
+*$25 xfer_rel 019 1 both 0 0
+*$26 xfer_rel 01A 1 both 0 0
+*$27 xfer_rel 01B 1 both 0 0
+*$28 xfer_rel 01C 1 both 0 0
+*$29 xfer_rel 01D 1 both 0 0
+*$30 xfer_rel 01E 1 both 0 0
+*$31 xfer_rel 01F 1 both 0 0
+*n$0 neighbor_rel 000
+*n$1 neighbor_rel 001
+*n$2 neighbor_rel 002
+*n$3 neighbor_rel 003
+*n$4 neighbor_rel 004
+*n$5 neighbor_rel 005
+*n$6 neighbor_rel 006
+*n$7 neighbor_rel 007
+*n$8 neighbor_rel 008
+*n$9 neighbor_rel 009
+*n$10 neighbor_rel 00A
+*n$11 neighbor_rel 00B
+*n$12 neighbor_rel 00C
+*n$13 neighbor_rel 00D
+*n$14 neighbor_rel 00E
+*n$15 neighbor_rel 00F
+*@a111 gpr_a_abs 6F
+*@a95 gpr_a_abs 5F
+*@a127 gpr_a_abs 7F
+.%import_expr common_code 0 <40:40:13,34:22:0> &bp 17 +
+.0 00D804508038 common_code
+	.%line 165 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 1 17
+/******/  		pkt_hdr = receive_packet(&pkt_rxed, sizeof(pkt_rxed));
+_main#:
+l_5067#:
+	br[_receive_packet#], defer[1]
+.%import_expr common_code 1 <27:20:8,7:0:0> &bp 2 +
+.1 00F000000702 common_code
+	.%line 165 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:574 0
+	load_addr[b1, l_5068#]
+.2 00B0801CD800 common_code
+	.%line 167 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 0
+/******/  		if (pkt_hdr->tcp_hdr.off > MIN_TCP_HEADER_LEN) {
+l_5068#:
+	alu[b1, a0, +, 54]
+.3 00A8C0000300 common_code
+	.%line 167 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 0
+	alu[a0, b0, +carry, 0]
+.4 008080080200 common_code
+	.%line 167 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 0
+	alu_shf[a0, --, B, a0, <<24]
+.5 004316040400 common_code
+	.%line 167 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 0
+	mem[read8, $0, a0, <<8, b1, 4], ctx_swap[s1]
+.6 0081C0020100 common_code
+	.%line 167 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 0
+	alu_shf[a0, --, B, $0, >>28]
+.7 00AAB00C1400 common_code
+	.%line 167 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 0
+	alu[--, a0, -, 5]
+.%import_expr common_code 8 <40:40:13,34:22:0> &bp 0 +
+.8 00D80000812A common_code
+	.%line 167 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 0 0
+	ble[l_5067#]
+.%import_expr common_code 9 <40:40:13,34:22:0> &bp 53 +
+.9 00D80D508038 common_code
+	.%line 169 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 1 53
+/******/  			send_packet(&pkt_rxed.nbi_meta, pkt_hdr);
+	br[_send_packet#], defer[1]
+.%import_expr common_code 10 <27:20:8,7:0:0> &bp 11 +
+.10 00F00000170B common_code
+	.%line 169 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:574 0
+	load_addr[b5, l_5069#]
+.%import_expr common_code 11 <40:40:13,34:22:0> &bp 34 +
+.11 00D808908038 common_code
+	.%line 170 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 1 34
+/******/  			timing_loop(1000);
+l_5069#:
+	br[_timing_loop#], defer[1]
+.%import_expr common_code 12 <27:20:8,7:0:0> &bp 13 +
+.12 00F00000030D common_code
+	.%line 170 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:574 0
+	load_addr[b0, l_5070#]
+.%import_expr common_code 13 <40:40:13,34:22:0> &bp 53 +
+.13 00D80D508038 common_code
+	.%line 171 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 1 53
+/******/  			send_packet(&pkt_rxed.nbi_meta, pkt_hdr);
+l_5070#:
+	br[_send_packet#], defer[1]
+.%import_expr common_code 14 <27:20:8,7:0:0> &bp 15 +
+.14 00F00000170F common_code
+	.%line 171 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:574 0
+	load_addr[b5, l_5071#]
+.15 00F0000C0300 common_code
+	.%line 171 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 0
+l_5071#:
+	nop
+.%import_expr common_code 16 <40:40:13,34:22:0> &bp 0 +
+.16 00D800008038 common_code
+	.%line 171 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:574 0 0
+	br[l_5067#]
+.17 10511A0C8009 common_code
+	.%line 92 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:580 0
+/******/  	pkt_nbi_recv(&pkt_rxed_in, sizeof(pkt_rxed->nbi_meta));
+_receive_packet#:
+	mem[packet_add_thread, $0, a9, 0, 6], ctx_swap[s1]
+.18 0081A0120100 common_code
+	.%line 96 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:573 0
+/******/  	island   = pkt_rxed->nbi_meta.pkt_info.isl;
+	alu_shf[a1, --, B, $0, >>26]
+.19 009500381D80 common_code
+	.%line 97 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:573 0
+/******/  	pnum     = pkt_rxed->nbi_meta.pkt_info.pnum;
+	alu_shf[b3, b7, AND, $0, >>16]
+.20 00C001180001 common_code
+	.%line 98 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:577 0
+/******/  	pkt_hdr  = pkt_ctm_ptr40(island, pnum, pkt_off);
+	ld_field_w_clr[b0, 0001, a1, >>0]
+.21 00BA40000380 common_code
+	.%line 98 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:577 0
+	alu[b0, b0, OR, 128]
+.22 009B00300E0A common_code
+	.%line 98 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:577 0
+	alu_shf[b3, a10, OR, b3, <<16]
+.23 009000000000 common_code
+	.%line 98 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:573 0
+	alu_shf[b0, --, B, b0, <<0]
+.24 00AA00000F00 common_code
+	.%line 98 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:573 0
+	alu[a0, 0, OR, b3]
+.25 00BA00000300 common_code
+	.%line 98 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:573 0
+	alu[b0, 0, OR, b0]
+.26 009080380300 common_code
+	.%line 100 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:576 0
+/******/  	mem_read32(&(pkt_rxed_in.pkt_hdr), pkt_hdr, sizeof(pkt_rxed_in.pkt_hdr));
+	dbl_shf[b3, b0, a0, >>8]
+.27 0094803C0EFF common_code
+	.%line 100 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:576 0
+	alu_shf[b3, b3, AND, 255, <<24]
+.28 0081B206B200 common_code
+	.%line 100 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:576 1
+	alu_shf[--, --, B, 204, <<5]
+.29 065C12600C00 common_code
+	.%line 100 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:576 0
+	mem[read32, $6, b3, <<8, a0, 26], ctx_swap[s1], indirect_ref
+.30 00E800300700 common_code
+	.%line 104 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:573 3 0 B1
+/******/  	return pkt_hdr;
+	rtn[b1], defer[3]
+.31 00A000460000 common_code
+	.%line 93 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:573 2
+/******/  	pkt_rxed->nbi_meta = pkt_rxed_in.nbi_meta;
+	alu[a4, --, B, $0]
+.32 00A000360800 common_code
+	.%line 93 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:573 1
+	alu[a3, --, B, $2]
+.33 00B000261000 common_code
+	.%line 93 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:573 0
+	alu[b2, --, B, $4]
+.34 00F00A800FA8 common_code
+	.%line 147 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:570 0
+/******/  	long period = microsecs*633 ;
+_timing_loop#:
+	immed[b3, 43176, <<0]
+.35 00F440000F09 common_code
+	.%line 147 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:570 0
+	immed_w1[b3, 9]
+.36 00FC0C000000 common_code
+	.%line 150 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:608 1
+/******/  		sleep(MAX_SLEEP_TIME);
+l_383#:
+	local_csr_rd[timestamp_low]
+.37 00F000000700 common_code
+	.%line 150 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:608 0
+	immed[b1, 0, <<0]
+.38 00A0C00004DF common_code
+	.%line 150 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:607 0
+	alu[a0, b1, +, @a95]
+.39 00E000200002 common_code
+	.%line 150 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:606 2
+	ctx_arb[s1], all, defer[2]
+.40 00FC07EC0701 common_code
+	.%line 150 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:610 1
+	local_csr_wr[active_future_count_signal, 1]
+.41 00FC05EC0000 common_code
+	.%line 150 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:609 0
+	local_csr_wr[active_ctx_future_count, a0]
+.42 00BAC0300CFF common_code
+	.%line 151 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:570 0
+/******/  		period -= MAX_SLEEP_TIME;
+	alu[b3, b3, -, @a127]
+.43 00AAF0000CFF common_code
+	.%line 149 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:570 0
+/******/  	while (period > MAX_SLEEP_TIME){
+	alu[--, b3, -, @a127]
+.%import_expr common_code 44 <40:40:13,34:22:0> &bp 36 +
+.44 00D80900812B common_code
+	.%line 149 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:570 0 36
+	bgt[l_383#]
+.45 00FC0C000000 common_code
+	.%line 153 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:603 1
+/******/  	sleep(period);
+	local_csr_rd[timestamp_low]
+.46 00F000000700 common_code
+	.%line 153 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:603 0
+	immed[b1, 0, <<0]
+.47 008040000D00 common_code
+	.%line 153 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:602 0
+	alu_shf[a0, --, B, b3, >>4]
+.48 00A080000400 common_code
+	.%line 153 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:602 0
+	alu[a0, a0, +, b1]
+.49 00E000200002 common_code
+	.%line 153 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:601 2
+	ctx_arb[s1], all, defer[2]
+.50 00FC07EC0701 common_code
+	.%line 153 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:605 1
+	local_csr_wr[active_future_count_signal, 1]
+.51 00FC05EC0000 common_code
+	.%line 153 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:604 0
+	local_csr_wr[active_ctx_future_count, a0]
+.52 00E800000300 common_code
+	.%line 155 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:570 0 0 B0
+/******/  }
+	rtn[b0]
+.53 0081A0180104 common_code
+	.%line 118 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+/******/  	island = nbi_meta->pkt_info.isl;
+_send_packet#:
+	alu_shf[a1, --, B, a4, >>26]
+.54 008500081D04 common_code
+	.%line 119 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+/******/  	pnum   = nbi_meta->pkt_info.pnum;
+	alu_shf[a0, b7, AND, a4, >>16]
+.55 00C001180401 common_code
+	.%line 120 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+/******/  	pbuf   = pkt_ctm_ptr40(island, pnum, 0);
+	ld_field_w_clr[b1, 0001, a1, >>0]
+.56 00AA40100780 common_code
+	.%line 120 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:600 0
+	alu[a1, b1, OR, 128]
+.57 008100580200 common_code
+	.%line 120 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+	alu_shf[a5, --, B, a0, <<16]
+.58 008A10208605 common_code
+	.%line 120 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:600 0
+	alu_shf[a2, a5, OR, 1, <<31]
+.59 009000380001 common_code
+	.%line 120 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+	alu_shf[b3, --, B, a1, <<0]
+.60 00AA406C0002 common_code
+	.%line 120 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+	alu[a6, 0, OR, a2]
+.61 00AA00700F00 common_code
+	.%line 120 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+	alu[a7, 0, OR, b3]
+.62 008400082004 common_code
+	.%line 121 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+/******/  	plen   = nbi_meta->pkt_info.len - MAC_PREPEND_BYTES;
+	alu_shf[a0, b8, AND, a4, >>0]
+.63 00BA803C1000 common_code
+	.%line 121 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+	alu[b3, a0, -, 4]
+.64 00F40C0C0180 common_code
+	.%line 127 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:594 0
+/******/  	pkt_mac_egress_cmd_write(pbuf, pkt_off, 1, 1); // Write data to make the packet MAC egress generate L3 and L4 checksums
+	immed[$0, 49152, <<16]
+.65 00B0806D0006 common_code
+	.%line 127 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:594 0
+	alu[b6, a6, +, 64]
+.66 00A8801C0007 common_code
+	.%line 127 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:594 0
+	alu[a1, a7, +carry, 0]
+.67 008080001B01 common_code
+	.%line 127 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:599 0
+	dbl_shf[a0, a1, b6, >>8]
+.68 00848017FE00 common_code
+	.%line 127 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:599 0
+	alu_shf[a1, a0, AND, 255, <<24]
+.69 005F10001A01 common_code
+	.%line 127 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:599 2
+	mem[write32, $0, a1, <<8, b6, 1], ctx_swap[s1], defer[2]
+.70 009550000908 common_code
+	.%line 125 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:572 1
+/******/  	q_dst  = PORT_TO_CHANNEL(nbi_meta->port);
+	alu_shf[b0, a8, AND, b2, >>21]
+.71 00C003100002 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:572 0
+/******/  	pkt_nbi_send(island,
+	ld_field_w_clr[a2, 0011, b0, >>0]
+.72 00F0000C0181 common_code
+	.%line 129 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:586 0
+/******/  	msi = pkt_msd_write(pbuf, pkt_off); // Write a packet modification script of NULL
+	immed[$1, 0, <<0]
+.73 00B0806CE006 common_code
+	.%line 129 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:586 0
+	alu[b6, a6, +, 56]
+.74 00A8800C0007 common_code
+	.%line 129 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:586 0
+	alu[a0, a7, +carry, 0]
+.75 009080401B00 common_code
+	.%line 129 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:591 0
+	dbl_shf[b4, a0, b6, >>8]
+.76 0084801C12FF common_code
+	.%line 129 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:591 0
+	alu_shf[a1, b4, AND, 255, <<24]
+.77 004110001A01 common_code
+	.%line 129 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:591 2
+	mem[write, $0, a1, <<8, b6, 1], ctx_swap[s1], defer[2]
+.78 00F4080C1980 common_code
+	.%line 129 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:586 1
+	immed[$0, 32774, <<16]
+.79 009100080103 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:572 0
+/******/  	pkt_nbi_send(island,
+	alu_shf[b0, --, B, a3, >>16]
+.80 008480189D03 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0
+	alu_shf[a1, 7, AND, a3, >>8]
+.81 00FC04400000 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:583 1
+	local_csr_rd[active_ctx_sts]
+.82 00F0000C0000 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:583 0
+	immed[a0, 0, <<0]
+.83 009550482500 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:582 0
+	alu_shf[b4, b9, AND, a0, >>21]
+.84 00843008BD00 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:582 0
+	alu_shf[a0, 15, AND, a0, >>3]
+.85 00AA40001000 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:582 0
+	alu[a0, b4, OR, a0]
+.86 00A4000C0400 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu[a0, a0, AND, 1]
+.87 00AA000C0800 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu[a0, a0, OR, 2]
+.88 0080C0080200 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu_shf[a0, --, B, a0, <<20]
+.89 008A80000600 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu_shf[a0, a0, OR, b1, <<24]
+.90 00B0C0100F44 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu[b1, b3, +, 68]
+.91 00BA40100405 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu[b1, b1, OR, a5]
+.92 00B4400000EF common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu[b0, b0, AND, @a111]
+.93 009B00000201 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu_shf[b0, a1, OR, b0, <<16]
+.94 00FC19200300 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:584 0
+	local_csr_wr[cmd_indirect_ref_0, b0]
+.95 00B400001C02 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu[b0, a2, AND, b7]
+.96 009B000402AB common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 0
+	alu_shf[b0, 203, OR, b0, <<16]
+.97 008B72080223 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:581 1
+	alu_shf[--, b0, OR, 3, <<9]
+.98 020700040700 common_code
+	.%line 130 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 0 fiid:581 0
+	nbi[packet_ready_unicast, --, a0, <<8, b1], indirect_ref
+.99 00E800001700 common_code
+	.%line 139 "/home/permki/PacedLinux/c_packetprocessing/apps/lab5/wire_main.c" 1 fiid:572 0 0 B5
+/******/  }
+	rtn[b5]
++ucode_end
