@@ -1,19 +1,10 @@
 #!/usr/bin/env bash
 
-echo "sudo dpkg --add-architecture i386 "
-sudo dpkg --add-architecture i386 
+echo "sudo apt-get --purge remove wine-stable"
+sudo apt-get --purge remove wine-stable
 
-echo "wget -nc https://dl.winehq.org/wine-builds/winehq.key"
-wget -nc https://dl.winehq.org/wine-builds/winehq.key
+echo "sudo apt-get --purge remove wine-development"
+sudo apt-get --purge remove wine-development
 
-echo "sudo apt-key add winehq.key"
-sudo apt-key add winehq.key
-
-echo "sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'"
-sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
-
-echo "sudo apt update"
-sudo apt update
-
-echo "sudo apt install --install-recommends winehq-stable"
-sudo apt install --install-recommends winehq-stable
+echo "sudo apt install wine-stable "
+sudo apt install wine-stable
