@@ -1,0 +1,68 @@
+.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%arg x 0 x_280_V$4b7
+.%arg y 0 y_280_V$4b8
+.%var result 0 result_280 LIX
+.%scope end
+.%var BLM_NBI8_BLQ0_EMU_QD_BASE 1 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_Q_BASE 3 _BLM_NBI8_BLQ0_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_QD_BASE 4 _BLM_NBI8_BLQ1_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_Q_BASE 5 _BLM_NBI8_BLQ1_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_QD_BASE 6 _BLM_NBI8_BLQ2_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_Q_BASE 7 _BLM_NBI8_BLQ2_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_QD_BASE 8 _BLM_NBI8_BLQ3_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
+.%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
+.%var parrep 12 _parrep SEX
+.%scope function handle_ingress_flow_encap_tbl _handle_ingress_flow_encap_tbl "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_ctlflow.c" 12 43
+.%arg _pif_parrep 13 _pif_parrep_282_V$4bb
+.%arg actbuf 14 actbuf_282_V$4bc
+.%arg actbuf_off 0 actbuf_off_282_V$4bd
+.%arg actlen 15 actlen_282_V$4be
+.%arg state 15 state_282_V$4bf
+.%var action_id 16 action_id_282 LIX
+.%var ret 16 ret_282 LIX
+.%var next_state 16 next_state_282 LIX
+.%scope block 21 26
+.%var result 17 result_283 LIX
+.%scope end
+.%scope end
+.%scope function pif_ctlflow_ingress_flow _pif_ctlflow_ingress_flow "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_ctlflow.c" 47 72
+.%arg start_state 15 start_state_285_V$4c9
+.%arg _pif_parrep 13 _pif_parrep_285_V$4ca
+.%arg actbuf 14 actbuf_285_V$4cb
+.%arg actbuf_off 0 actbuf_off_285_V$4cc
+.%var actlen 16 actlen_285 LIX
+.%var totlen 16 totlen_285 LIX
+.%var ret 16 ret_285 LIX
+.%var pif_ctlflow_state_ingress_flow 16 pif_ctlflow_state_ingress_flow_285 LIX
+.%scope end
+.%scope function pif_ctlflow_egress_flow _pif_ctlflow_egress_flow "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_ctlflow.c" 75 78
+.%arg start_state 15 start_state_289_V$4d4
+.%arg _pif_parrep 13 _pif_parrep_289_V$4d5
+.%arg actbuf 14 actbuf_289_V$4d6
+.%arg actbuf_off 0 actbuf_off_289_V$4d7
+.%scope end
+.%type U4
+.%type A16 2
+.%type U1
+.%type A32768 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A41943040 2
+.%type A10485760 2
+.%type A48 0
+.%type P6 0
+.%type P3 0
+.%type P2 16
+.%type I4
+.%type S8 pif_lookup_result{
+action_id 0 18;
+action_len 4 18;
+}
+.%type I4

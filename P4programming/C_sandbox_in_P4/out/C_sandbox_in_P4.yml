@@ -1,0 +1,178 @@
+##########################################
+# Header instance definitions            #
+##########################################
+
+"eth" :
+    type : header
+    fields : 
+        - "dst" : 48
+        - "src" : 48
+        - "etype" : 16
+
+"xlan" :
+    type : header
+    fields : 
+        - "tag" : 32
+        - "etype" : 16
+
+"standard_metadata" :
+    type : metadata
+    fields : 
+        - "ingress_port" : 10
+        - "packet_length" : 14
+        - "egress_spec" : 16
+        - "egress_port" : 16
+        - "egress_instance" : 10
+        - "instance_type" : 4
+        - "clone_spec" : 32
+        - "parser_error_location" : 8
+        - "parser_status" : 3
+        - "_padding" : 7
+
+##########################################
+# Register definitions                   #
+##########################################
+
+"encap_counter" :
+    type : register
+    class : "global"
+    instance_count : 1
+    fields : 
+        - "value_packets" : 64
+    counts : 
+        - "packets" : "value_packets"
+
+##########################################
+# Parse states                           #
+##########################################
+
+"start" :
+    type : parse_state
+    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_lineno : 24
+
+"eth_parse" :
+    type : parse_state
+    extracts :
+        - "eth"
+    select_value :
+        - "eth.etype"
+    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_lineno : 30
+
+"xlan_parse" :
+    type : parse_state
+    extracts :
+        - "xlan"
+    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_lineno : 39
+
+##########################################
+# Parser                                 #
+##########################################
+
+parser :
+    type : parser
+    format : dot
+    start_state : "start"
+    implementation : >-
+        digraph {
+            start -> eth_parse [value="default", mask="none", order="0"]
+            eth_parse -> xlan_parse [value="0x9999", mask="none", order="0"]
+            eth_parse -> encap_tbl [value="default", mask="none", order="1"]
+            xlan_parse -> encap_tbl [value="default", mask="none", order="0"]
+        }
+
+##########################################
+# Action sets                            #
+##########################################
+
+"encap_act" :
+    type : action
+    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_lineno : 76
+    parameter_list :
+        - "prt" : 16
+        - "tag" : 32
+    implementation : >-
+        modify_field(standard_metadata.egress_spec, prt);
+        add_header(xlan);
+        modify_field(xlan.tag, tag);
+        modify_field(xlan.etype, eth.etype);
+        modify_field(eth.etype, 0x9999);
+        count(encap_counter.value_packets, 0);
+
+"xlan_encap" :
+    type : action
+    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_lineno : 85
+    parameter_list :
+        - "tag" : 32
+    implementation : >-
+        add_header(xlan);
+        modify_field(xlan.tag, tag);
+        modify_field(xlan.etype, eth.etype);
+        modify_field(eth.etype, 0x9999);
+
+"drop_act" :
+    type : action
+    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_lineno : 60
+    implementation : >-
+        drop();
+
+##########################################
+# Ingress and Egress tables              #
+##########################################
+
+"encap_tbl":
+    type : table
+    match_on : 
+        "standard_metadata.ingress_port" : "exact"
+    allowed_actions : 
+        - "encap_act"
+        - "drop_act"
+    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_lineno : 50
+
+##########################################
+# Ingress conditionals sets              #
+##########################################
+
+##########################################
+# Ingress control flow                   #
+##########################################
+
+ingress_flow:
+    type : control_flow
+    doc : "control flow for ingress"
+    format : dot
+    start_state : "encap_tbl"
+    implementation : >-
+        digraph {
+            encap_tbl -> exit_control_flow [action = always]
+        }
+
+##########################################
+# Processor layout                       #
+##########################################
+
+layout:
+    type : processor_layout
+    format : list
+    implementation :
+        - parser
+        - ingress
+
+##########################################
+# Source info                            #
+##########################################
+
+source_info :
+    type : source_info
+    date : "2021/10/11 13:36:16"
+    p4_version : "1.0"
+    source_files : 
+        - 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    output_file : 'C_sandbox_in_P4.yml'
+

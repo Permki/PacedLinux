@@ -1,0 +1,163 @@
+.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%arg x 0 x_387_V$580
+.%arg y 0 y_387_V$581
+.%var result 0 result_387 LIX
+.%scope end
+.%var nfp_cls_autopush_user_event 1 _nfp_cls_autopush_user_event SEX
+.%var nfp_cls_autopush_user_event_status 2 _nfp_cls_autopush_user_event_status SEX
+.%var BLM_NBI8_BLQ0_EMU_QD_BASE 3 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_Q_BASE 5 _BLM_NBI8_BLQ0_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_QD_BASE 6 _BLM_NBI8_BLQ1_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_Q_BASE 7 _BLM_NBI8_BLQ1_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_QD_BASE 8 _BLM_NBI8_BLQ2_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_Q_BASE 9 _BLM_NBI8_BLQ2_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_QD_BASE 10 _BLM_NBI8_BLQ3_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_Q_BASE 11 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 12 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
+.%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 13 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
+.%var pif_register_encap_counter 14 _pif_register_encap_counter SEX
+.%var pkt_clone_destination 16 _pkt_clone_destination SEX
+.%var pif_act_stats 18 _pif_act_stats SEX
+.%scope function pif_action_exec_op _pif_action_exec_op "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_actions.c" 160 184
+.%arg parrep 19 parrep_412_V$584
+.%arg _actdata 20 _actdata_412_V$585
+.%var opdata 21 opdata_412 LIX
+.%var ret 24 ret_412 LIX
+.%scope end
+.%scope function pif_action_exec_encap_act _pif_action_exec_encap_act "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_actions.c" 20 114
+.%arg _pif_parrep 19 _pif_parrep_395_V$5ad
+.%arg _pif_actdatabuf 20 _pif_actdatabuf_395_V$5ae
+.%arg _pif_debug 0 _pif_debug_395_V$5af
+.%var _pif_return 24 _pif_return_395 LIX
+.%var _pif_act_data 25 _pif_act_data_395 LIX
+.%var _pif_ctldata 29 _pif_ctldata_395 LIX
+.%var standard_metadata 31 standard_metadata_395 LIX
+.%var xlan 33 xlan_395 LIX
+.%var eth 35 eth_395 LIX
+.%scope block 29 51
+.%var temp0 0 temp0_396 LIX
+.%var temp1 0 temp1_396 LIX
+.%scope end
+.%scope block 103 111
+.%var _pif_index 0 _pif_index_407 LIX
+.%scope block 107 110
+.%var _pif_hdrptr 37 _pif_hdrptr_408 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope function pif_action_exec_drop_act _pif_action_exec_drop_act "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_actions.c" 116 158
+.%arg _pif_parrep 19 _pif_parrep_409_V$5d3
+.%arg _pif_actdatabuf 20 _pif_actdatabuf_409_V$5d4
+.%arg _pif_debug 0 _pif_debug_409_V$5d5
+.%var _pif_return 24 _pif_return_409 LIX
+.%var _pif_act_data 38 _pif_act_data_409 LIX
+.%var _pif_ctldata 29 _pif_ctldata_409 LIX
+.%scope block 122 144
+.%var temp0 0 temp0_410 LIX
+.%var temp1 0 temp1_410 LIX
+.%scope end
+.%scope end
+.%type U4
+.%type S4 {
+__reserved_16 0:16:16 0;
+source 0:4:12 0;
+type 0:0:4 0;
+}
+.%type S4 {
+__reserved_21 0:21:11 0;
+overflow 0:20:1 0;
+hwm 0:16:4 0;
+__reserved_12 0:12:4 0;
+read 0:8:4 0;
+__reserved_4 0:4:4 0;
+write 0:0:4 0;
+}
+.%type A16 4
+.%type U1
+.%type A32768 4
+.%type A16 4
+.%type A2048 4
+.%type A16 4
+.%type A2048 4
+.%type A16 4
+.%type A2048 4
+.%type A41943040 4
+.%type A10485760 4
+.%type A8 15
+.%type S8 pif_header_encap_counter{
+value_packets 0:0:32 0;
+__value_packets_1 4:0:32 0;
+}
+.%type S16 pkt_clone_destination{
+ctm_pkt_num 0 0;
+mu_ptr 8 17;
+}
+.%type U8
+.%type A16 17
+.%type P6 0
+.%type P2 0
+.%type P2 22
+.%type S4 pif_action_opdata{
+__unnamed 0 23;
+val32 0 0;
+}
+.%type S4 {
+reserved0 0:24:8 24;
+action_id 0:16:8 24;
+dbg_flags 0:8:8 24;
+actdata_cnt 0:0:8 24;
+}
+.%type I4
+.%type P2 26
+.%type S16 pif_action_actiondata_encap_act{
+tag 0 0;
+__pif_rule_no 4 0;
+__pif_table_no 8 0;
+__pif_padding 12 27;
+prt 14 28;
+}
+.%type A2 4
+.%type U2
+.%type P6 30
+.%type S4 pif_parrep_ctldata{
+valid 0:31:1 0;
+t0_valid 0:30:1 0;
+t0_dirty 0:29:1 0;
+t0_orig_len 0:28:1 0;
+t1_valid 0:27:1 0;
+t1_dirty 0:26:1 0;
+t1_orig_len 0:25:1 0;
+}
+.%type P6 32
+.%type S16 pif_header_standard_metadata{
+clone_spec 0:0:32 0;
+egress_spec 4:16:16 0;
+egress_port 4:0:16 0;
+packet_length 8:18:14 0;
+egress_instance 8:8:10 0;
+parser_error_location 8:0:8 0;
+ingress_port 12:22:10 0;
+instance_type 12:18:4 0;
+parser_status 12:15:3 0;
+_padding_0 12:0:15 0;
+}
+.%type P6 34
+.%type S8 pif_header_xlan{
+tag 0:0:32 0;
+etype 4:16:16 0;
+}
+.%type P6 36
+.%type S16 pif_header_eth{
+dst 0:0:32 0;
+__dst_1 4:16:16 0;
+src 4:0:16 0;
+__src_1 8:0:32 0;
+etype 12:16:16 0;
+}
+.%type P3 15
+.%type P2 39
+.%type S8 pif_action_actiondata_drop_act{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}

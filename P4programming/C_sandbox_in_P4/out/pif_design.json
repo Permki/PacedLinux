@@ -1,0 +1,257 @@
+{
+    "generic": {
+        "tables_info": {
+            "encap_tbl": {
+                "max_entries": 65536, 
+                "allowed_actions": [
+                    "encap_act", 
+                    "drop_act"
+                ], 
+                "name": "encap_tbl"
+            }
+        }, 
+        "action_info": {
+            "encap_act": {
+                "name": "encap_act", 
+                "action_data": {
+                    "prt": {
+                        "size": 16
+                    }, 
+                    "tag": {
+                        "size": 32
+                    }, 
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "drop_act": {
+                "name": "drop_act", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }
+        }
+    }, 
+    "vendor": {
+        "register_info": {
+            "encap_counter": {
+                "count": 1, 
+                "layout": [
+                    {
+                        "layout": [
+                            {
+                                "width": 32, 
+                                "lmbitoff": 0, 
+                                "name": "value_packets", 
+                                "fldbitoff": 32
+                            }, 
+                            {
+                                "width": 32, 
+                                "lmbitoff": 32, 
+                                "name": "__value_packets_1", 
+                                "fldbitoff": 0
+                            }
+                        ], 
+                        "name": "value_packets", 
+                        "lmoff": 0, 
+                        "width": 64, 
+                        "cname": "value_packets", 
+                        "attributes": {}
+                    }
+                ], 
+                "name": "encap_counter", 
+                "rtsym": "_pif_register_encap_counter", 
+                "table_size": -1, 
+                "table": null, 
+                "hidden": 0, 
+                "szlw": 2, 
+                "class": "global"
+            }
+        }, 
+        "backend_source_info": {
+            "date": "2021/10/11 13:36:16", 
+            "source_files": "C_sandbox_in_P4.yml"
+        }, 
+        "counters_info": {
+            "encap_counter_packets": {
+                "field": "value_packets", 
+                "register": "encap_counter", 
+                "type": "packets"
+            }
+        }, 
+        "meter_info": {}, 
+        "frontend_source_info": {
+            "date": "2021/10/11 13:36:16", 
+            "source_files": [
+                "Z:\\home\\permki\\PacedLinux\\P4programming\\C_sandbox_in_P4\\p4_main.p4"
+            ]
+        }, 
+        "tables_info": {
+            "encap_tbl": {
+                "name": "encap_tbl", 
+                "constant_default": false, 
+                "matches": [
+                    {
+                        "field": "standard_metadata.ingress_port", 
+                        "type": "exact", 
+                        "class": "field", 
+                        "lm_layout": [
+                            {
+                                "width": 10, 
+                                "fldbitoff": 0, 
+                                "name": "ingress_port", 
+                                "lmbitoff": 342
+                            }
+                        ]
+                    }
+                ], 
+                "allowed_actions": [
+                    "encap_act", 
+                    "drop_act"
+                ], 
+                "id": 0, 
+                "max_entries": 65536, 
+                "data_shift": 5, 
+                "rtsym": "_pif_actiondata_table_0_encap_tbl", 
+                "data_size": 32
+            }
+        }, 
+        "action_info": {
+            "encap_act": {
+                "timeoutno_field": "", 
+                "name": "encap_act", 
+                "action_data": {
+                    "prt": {
+                        "size": 16
+                    }, 
+                    "tag": {
+                        "size": 32
+                    }, 
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "tag", 
+                        "name": "tag", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "prt", 
+                        "name": "prt", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 2, 
+                        "pad_type": "uint16_t", 
+                        "split": false, 
+                        "size": 16
+                    }, 
+                    {
+                        "pad_cnt": 2, 
+                        "pad_type": "uint8_t", 
+                        "actiondata": null, 
+                        "name": "__pif_padding", 
+                        "split": false, 
+                        "doc": "padding", 
+                        "pad_szbytes": 1, 
+                        "size": 8
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 0, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "drop_act": {
+                "timeoutno_field": "", 
+                "name": "drop_act", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 1, 
+                "tableno_field": "__pif_table_no"
+            }
+        }, 
+        "multicast": {
+            "table_rtsym": "_pif_mcast_table", 
+            "group_count": 16, 
+            "group_size": 16
+        }, 
+        "custom_errors": {}, 
+        "build_uuid": [
+            1536845823, 
+            2872394890, 
+            714609132, 
+            899601664
+        ], 
+        "digests_info": {}, 
+        "parser_value_set_info": {}
+    }
+}

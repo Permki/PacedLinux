@@ -1,0 +1,109 @@
+.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%arg x 0 x_325_V$4ce
+.%arg y 0 y_325_V$4cf
+.%var result 0 result_325 LIX
+.%scope end
+.%var BLM_NBI8_BLQ0_EMU_QD_BASE 1 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_Q_BASE 3 _BLM_NBI8_BLQ0_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_QD_BASE 4 _BLM_NBI8_BLQ1_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_Q_BASE 5 _BLM_NBI8_BLQ1_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_QD_BASE 6 _BLM_NBI8_BLQ2_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_Q_BASE 7 _BLM_NBI8_BLQ2_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_QD_BASE 8 _BLM_NBI8_BLQ3_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
+.%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
+.%scope function pif_mem_meter _pif_mem_meter "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 19 36
+.%arg mval 12 mval_327_V$4d2
+.%arg addr 13 addr_327_V$4d3
+.%arg colour 15 colour_327_V$4d4
+.%arg rfc 15 rfc_327_V$4d5
+.%var meter_sig 16 meter_sig_327 LIX
+.%var high_addr 0 high_addr_327 LIX
+.%var low_addr 0 low_addr_327 LIX
+.%scope end
+.%scope function mult32_oflow0 _mult32_oflow0 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 42 61
+.%arg v0 0 v0_328_V$4db
+.%arg v1 0 v1_328_V$4dc
+.%var result 0 result_328 LIX
+.%var result_hi 0 result_hi_328 LIX
+.%scope end
+.%scope function update_meter_timers _update_meter_timers "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 64 167
+.%arg meter 17 meter_329_V$4e0
+.%var ctime 21 ctime_329 LIX
+.%var ctime_upper 0 ctime_upper_329 LIX
+.%var ptime_upper 0 ptime_upper_329 LIX
+.%var ctime_lower 0 ctime_lower_329 LIX
+.%var ptime_lower 0 ptime_lower_329 LIX
+.%var tdelta 0 tdelta_329 LIX
+.%var shift 2 shift_329 LIX
+.%var mdata_rd 18 mdata_rd_329 LIR
+.%var mdata_wr 22 mdata_wr_329 LIW
+.%scope block 117 150
+.%var Pdelta 0 Pdelta_333 LIX
+.%var Cdelta 0 Cdelta_333 LIX
+.%var newP 0 newP_333 LIX
+.%var newC 0 newC_333 LIX
+.%scope end
+.%scope block 154 166
+.%var val 0 val_338 LIW
+.%var tmr_addr 23 tmr_addr_338 LIX
+.%scope end
+.%scope end
+.%scope function pif_meter_execute _pif_meter_execute "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 173 206
+.%arg meter 17 meter_339_V$510
+.%arg colour_in 15 colour_in_339_V$511
+.%arg tick 15 tick_339_V$512
+.%var xval32 0 xval32_339 LIX
+.%var offset 23 offset_339 LIX
+.%scope end
+.%type U4
+.%type A16 2
+.%type U1
+.%type A32768 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A41943040 2
+.%type A10485760 2
+.%type P2 0
+.%type P3 14
+.%type U4
+.%type I4
+.%type S8 SIGNAL_PAIR{
+even 0 15;
+odd 4 15;
+}
+.%type P3 18
+.%type S32 pif_meter_data{
+bucket_P 0 0;
+bucket_C 4 0;
+__unnamed 8 19;
+last_update_low 12 0;
+PBS 16 0;
+PIR 20 0;
+config 24 0;
+reserved_word 28 0;
+}
+.%type S4 {
+__unnamed 0 20;
+last_update_high_shft 0 0;
+}
+.%type S4 last_update_high_enc{
+locked 0:31:1 0;
+reserved 0:29:2 0;
+cfg_shift 0:24:5 0;
+last_update_upper 0:0:24 0;
+}
+.%type U8
+.%type S16 pif_meter_data_wr{
+bucket_P 0 0;
+bucket_C 4 0;
+last_update_high_shft 8 0;
+last_update_low 12 0;
+}
+.%type P3 2
