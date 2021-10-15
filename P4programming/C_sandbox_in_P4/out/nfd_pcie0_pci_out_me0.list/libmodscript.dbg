@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __modscript_write ___modscript_write "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\modscript\libmodscript.c" 64 109
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __modscript_write ___modscript_write "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\modscript\libmodscript.c" 64 109
 .%arg pbuf 0 pbuf_193_V$1c3
 .%arg off 2 off_193_V$1c4
 .%arg pwrite 3 pwrite_193_V$1c5
@@ -16,7 +16,7 @@
 .%var nfp_cls_autopush_user_event 14 _nfp_cls_autopush_user_event SEX
 .%var nfp_cls_autopush_user_event_status 15 _nfp_cls_autopush_user_event_status SEX
 .%var modscript_tbl 16 _modscript_tbl SEX
-.%scope function modscript_write _modscript_write "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\modscript\libmodscript.c" 112 124
+.%scope function modscript_write _modscript_write "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\modscript\libmodscript.c" 112 124
 .%arg pbuf 0 pbuf_196_V$217
 .%arg off 2 off_196_V$218
 .%var wr_sig 10 wr_sig_196 LIX

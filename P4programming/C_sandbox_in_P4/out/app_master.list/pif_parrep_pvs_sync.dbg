@@ -1,14 +1,14 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_241 LIX
 .%scope end
-.%scope function __hashmap_lock_release ___hashmap_lock_release "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\include\hashmap.h" 103 122
+.%scope function __hashmap_lock_release ___hashmap_lock_release "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\include\hashmap.h" 103 122
 .%arg lock 1 lock_255_V$252
 .%var ind 6 ind_255 LIX
 .%var addr_hi 0 addr_hi_255 LIX
 .%var addr_lo 0 addr_lo_255 LIX
 .%scope end
-.%scope function pif_value_set_scan_configs _pif_value_set_scan_configs "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_parrep_pvs_sync.c" 6 8
+.%scope function pif_value_set_scan_configs _pif_value_set_scan_configs "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_parrep_pvs_sync.c" 6 8
 .%scope end
 .%type U4
 .%type P2 2

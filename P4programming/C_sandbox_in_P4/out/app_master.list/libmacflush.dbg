@@ -1,12 +1,12 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_96 LIX
 .%scope end
 .%var nfp_cls_autopush_user_event 1 _nfp_cls_autopush_user_event SEX
 .%var nfp_cls_autopush_user_event_status 2 _nfp_cls_autopush_user_event_status SEX
 .%var pause_counts 3 _pause_counts SEX
 .%var last_mac_arb_cmd 4 _last_mac_arb_cmd SEX
-.%scope function mac_set_port_paused _mac_set_port_paused "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 118 207
+.%scope function mac_set_port_paused _mac_set_port_paused "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 118 207
 .%arg port 0 port_99_V$be
 .%var addr_hi_base 0 addr_hi_base_99 LIX
 .%var addr_hi 0 addr_hi_99 LIX
@@ -23,7 +23,7 @@
 .%var sig5 9 sig5_99 LIX
 .%var sig6 9 sig6_99 LIX
 .%scope end
-.%scope function mac_clr_port_paused _mac_clr_port_paused "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 214 303
+.%scope function mac_clr_port_paused _mac_clr_port_paused "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 214 303
 .%arg port 0 port_100_V$cf
 .%var addr_hi_base 0 addr_hi_base_100 LIX
 .%var addr_hi 0 addr_hi_100 LIX
@@ -40,7 +40,7 @@
 .%var sig5 9 sig5_100 LIX
 .%var sig6 9 sig6_100 LIX
 .%scope end
-.%scope function mac_flush_port_if_paused _mac_flush_port_if_paused "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 329 475
+.%scope function mac_flush_port_if_paused _mac_flush_port_if_paused "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 329 475
 .%arg nbi 5 nbi_101_V$de
 .%arg core 5 core_101_V$df
 .%arg seg 5 seg_101_V$e0
@@ -73,14 +73,14 @@
 .%var off 0 off_111 LIX
 .%scope end
 .%scope end
-.%scope function mac_poll_nbi_ports _mac_poll_nbi_ports "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 481 502
+.%scope function mac_poll_nbi_ports _mac_poll_nbi_ports "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 481 502
 .%arg nbi 5 nbi_113_V$fb
 .%arg active_ports_bitmap 0 active_ports_bitmap_113_V$fc
 .%var port 0 port_113 LIX
 .%var core 5 core_113 LIX
 .%var seg 5 seg_113 LIX
 .%scope end
-.%scope function mac_poll _mac_poll "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 509 548
+.%scope function mac_poll _mac_poll "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflush.c" 509 548
 .%scope block 511 547
 .%var active_ports 0 active_ports_118 LIX
 .%var xfr_active_ports_nbi0 0 xfr_active_ports_nbi0_118 LIR

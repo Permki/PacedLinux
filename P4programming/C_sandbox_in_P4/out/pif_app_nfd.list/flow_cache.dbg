@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
 .%var fc_lock_cache_base 1 _fc_lock_cache_base SEX
@@ -20,24 +20,24 @@
 .%var fc_stats_version_updated 0 _fc_stats_version_updated SEX
 .%var fc_stats_overflow 0 _fc_stats_overflow SEX
 .%var fc_stats_ring_empty 0 _fc_stats_ring_empty SEX
-.%scope function fc_check_version_update _fc_check_version_update "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 297 308
+.%scope function fc_check_version_update _fc_check_version_update "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 297 308
 .%arg rule_version 0 rule_version_392_V$351
 .%arg in_version 0 in_version_392_V$352
 .%var diff 0 diff_392 LIX
 .%scope end
-.%scope function fc_update_bucket_ts_and_stats_first_entry _fc_update_bucket_ts_and_stats_first_entry "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 556 593
+.%scope function fc_update_bucket_ts_and_stats_first_entry _fc_update_bucket_ts_and_stats_first_entry "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 556 593
 .%arg bucket_ptr 6 bucket_ptr_405_V$355
 .%arg timeout 0 timeout_405_V$356
 .%var sig_1 7 sig_1_405 LIX
 .%var sig_2 7 sig_2_405 LIX
 .%var value 8 value_405 LIW
 .%scope end
-.%scope function fc_update_entry_ts_and_stats _fc_update_entry_ts_and_stats "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 742 756
+.%scope function fc_update_entry_ts_and_stats _fc_update_entry_ts_and_stats "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 742 756
 .%arg entry_ptr 9 entry_ptr_412_V$35b
 .%arg timeout 0 timeout_412_V$35c
 .%var expiry 0 expiry_412 LIW
 .%scope end
-.%scope function fc_update_entry_ts_and_stats_version _fc_update_entry_ts_and_stats_version "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 763 783
+.%scope function fc_update_entry_ts_and_stats_version _fc_update_entry_ts_and_stats_version "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 763 783
 .%arg entry_ptr 9 entry_ptr_413_V$35e
 .%arg timeout 0 timeout_413_V$35f
 .%arg version 0 version_413_V$360
@@ -46,7 +46,7 @@
 .%var sig1 7 sig1_413 LIX
 .%var sig2 7 sig2_413 LIX
 .%scope end
-.%scope function fc_allocate_entry _fc_allocate_entry "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 905 946
+.%scope function fc_allocate_entry _fc_allocate_entry "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 905 946
 .%arg free_cache_ptr 10 free_cache_ptr_416_V$365
 .%arg entry_mu 0 entry_mu_416_V$366
 .%arg ring_number 0 ring_number_416_V$367
@@ -54,7 +54,7 @@
 .%var entry_idx 0 entry_idx_420 LIX
 .%scope end
 .%scope end
-.%scope function fc_global_init _fc_global_init "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 314 370
+.%scope function fc_global_init _fc_global_init "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 314 370
 .%var free_base_ptr0 6 free_base_ptr0_393 LIX
 .%var i 0 i_393 LIX
 .%var j 0 j_393 LIX
@@ -64,11 +64,11 @@
 .%var sig_2 7 sig_2_393 LIX
 .%var sig_3 7 sig_3_393 LIX
 .%scope end
-.%scope function fc_me_init _fc_me_init "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 373 428
+.%scope function fc_me_init _fc_me_init "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 373 428
 .%var i 0 i_396 LIX
 .%var j 0 j_396 LIX
 .%scope end
-.%scope function fc_populate_free_cache _fc_populate_free_cache "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 433 492
+.%scope function fc_populate_free_cache _fc_populate_free_cache "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 433 492
 .%arg free_cache_ptr 10 free_cache_ptr_398_V$378
 .%arg ring_mu 0 ring_mu_398_V$379
 .%arg ring_number 0 ring_number_398_V$37a
@@ -79,14 +79,14 @@
 .%var entry 13 entry_402 LIX
 .%scope end
 .%scope end
-.%scope function fc_get_entry_from_free_cache _fc_get_entry_from_free_cache "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 502 547
+.%scope function fc_get_entry_from_free_cache _fc_get_entry_from_free_cache "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 502 547
 .%arg free_cache_ptr 10 free_cache_ptr_403_V$38c
 .%var cache_offset 0 cache_offset_403 LIX
 .%var cache_addr 0 cache_addr_403 LIX
 .%var entry_idx 0 entry_idx_403 LIX
 .%var lm_entry 13 lm_entry_403 LIX
 .%scope end
-.%scope function fc_update_bucket_ts_and_stats _fc_update_bucket_ts_and_stats "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 601 732
+.%scope function fc_update_bucket_ts_and_stats _fc_update_bucket_ts_and_stats "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 601 732
 .%arg bucket_ptr 6 bucket_ptr_406_V$39e
 .%arg cam_idx 0 cam_idx_406_V$39f
 .%arg timeout 0 timeout_406_V$3a0
@@ -95,7 +95,7 @@
 .%var value 16 value_406 LIW
 .%var timestamp 0 timestamp_406 LIX
 .%scope end
-.%scope function fc_write_entry_ptr_in_bucket _fc_write_entry_ptr_in_bucket "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 789 896
+.%scope function fc_write_entry_ptr_in_bucket _fc_write_entry_ptr_in_bucket "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 789 896
 .%arg cam_bucket_ptr 17 cam_bucket_ptr_414_V$3a6
 .%arg cam_index 0 cam_index_414_V$3a7
 .%arg entry_idx 0 entry_idx_414_V$3a8
@@ -103,7 +103,7 @@
 .%var sig_1 7 sig_1_414 LIX
 .%var sig_2 7 sig_2_414 LIX
 .%scope end
-.%scope function fc_write_entry _fc_write_entry "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 955 1001
+.%scope function fc_write_entry _fc_write_entry "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 955 1001
 .%arg in_key_addr 27 in_key_addr_422_V$4c7
 .%arg in_key_len 0 in_key_len_422_V$4c8
 .%arg in_version 0 in_version_422_V$4c9
@@ -116,7 +116,7 @@
 .%var i 0 i_422 LIX
 .%var sig 7 sig_422 LIX
 .%scope end
-.%scope function fc_lookup_payload_addr_with_base_addr _fc_lookup_payload_addr_with_base_addr "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 1011 1039
+.%scope function fc_lookup_payload_addr_with_base_addr _fc_lookup_payload_addr_with_base_addr "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 1011 1039
 .%arg entry_ptr 6 entry_ptr_424_V$4e3
 .%arg in_key_len 0 in_key_len_424_V$4e4
 .%arg in_key_addr 27 in_key_addr_424_V$4e5
@@ -126,7 +126,7 @@
 .%var i 0 i_424 LIX
 .%var rd_key 35 rd_key_424 LIR
 .%scope end
-.%scope function fc_exact_lookup_and_learn _fc_exact_lookup_and_learn "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 1044 2550
+.%scope function fc_exact_lookup_and_learn _fc_exact_lookup_and_learn "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache.c" 1044 2550
 .%arg in_key_addr 27 in_key_addr_427_V$4ed
 .%arg in_key_len 0 in_key_len_427_V$4ee
 .%arg in_pkt_len 0 in_pkt_len_427_V$4ef

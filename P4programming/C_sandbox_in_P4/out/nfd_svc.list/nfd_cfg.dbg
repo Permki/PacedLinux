@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
 .%var BLM_NBI8_BLQ0_EMU_QD_BASE 1 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
@@ -12,22 +12,22 @@
 .%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
 .%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
-.%scope function nfd_cfg_bar_base _nfd_cfg_bar_base "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg.h" 273 319
+.%scope function nfd_cfg_bar_base _nfd_cfg_bar_base "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg.h" 273 319
 .%arg isl 0 isl_149_V$60
 .%arg vid 0 vid_149_V$61
 .%var bar_base 12 bar_base_149 LIX
 .%scope end
-.%scope function nfd_cfg_init_cfg_msg _nfd_cfg_init_cfg_msg "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 37 42
+.%scope function nfd_cfg_init_cfg_msg _nfd_cfg_init_cfg_msg "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 37 42
 .%arg cfg_sig 13 cfg_sig_158_V$66
 .%arg cfg_msg 15 cfg_msg_158_V$67
 .%scope end
-.%scope function send_interthread_sig _send_interthread_sig "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 45 56
+.%scope function send_interthread_sig _send_interthread_sig "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 45 56
 .%arg dst_me 0 dst_me_159_V$72
 .%arg ctx 0 ctx_159_V$73
 .%arg sig_no 0 sig_no_159_V$74
 .%var addr 0 addr_159 LIX
 .%scope end
-.%scope function nfd_cfg_check_cfg_msg _nfd_cfg_check_cfg_msg "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 59 86
+.%scope function nfd_cfg_check_cfg_msg _nfd_cfg_check_cfg_msg "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 59 86
 .%arg cfg_msg 15 cfg_msg_160_V$76
 .%arg cfg_sig 13 cfg_sig_160_V$77
 .%arg rnum 0 rnum_160_V$78
@@ -37,14 +37,14 @@
 .%var ring_addr 0 ring_addr_161 LIX
 .%scope end
 .%scope end
-.%scope function _nfd_flr_ack_pf __nfd_flr_ack_pf "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 97 118
+.%scope function _nfd_flr_ack_pf __nfd_flr_ack_pf "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 97 118
 .%arg pcie_isl 0 pcie_isl_164_V$9c
 .%var flr_data 0 flr_data_164 LIW
 .%var flr_addr 0 flr_addr_164 LIX
 .%var atomic_data 0 atomic_data_164 LIX
 .%var atomic_addr 19 atomic_addr_164 LIX
 .%scope end
-.%scope function _nfd_flr_ack_vf __nfd_flr_ack_vf "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 130 156
+.%scope function _nfd_flr_ack_vf __nfd_flr_ack_vf "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 130 156
 .%arg pcie_isl 0 pcie_isl_165_V$a2
 .%arg vf 0 vf_165_V$a3
 .%var flr_data 0 flr_data_165 LIX
@@ -52,7 +52,7 @@
 .%var atomic_data 0 atomic_data_165 LIW
 .%var atomic_addr 19 atomic_addr_165 LIX
 .%scope end
-.%scope function nfd_cfg_app_complete_cfg_msg _nfd_cfg_app_complete_cfg_msg "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 160 215
+.%scope function nfd_cfg_app_complete_cfg_msg _nfd_cfg_app_complete_cfg_msg "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 160 215
 .%arg pcie_isl 0 pcie_isl_166_V$a8
 .%arg cfg_msg 15 cfg_msg_166_V$a9
 .%arg isl_base 20 isl_base_166_V$aa
@@ -64,7 +64,7 @@
 .%var write_sig 14 write_sig_166 LIX
 .%var nfd_isl_master 0 nfd_isl_master_166 LIX
 .%scope end
-.%scope function nfd_cfg_complete_cfg_msg _nfd_cfg_complete_cfg_msg "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 219 247
+.%scope function nfd_cfg_complete_cfg_msg _nfd_cfg_complete_cfg_msg "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\shared\nfd_cfg.c" 219 247
 .%arg cfg_msg 15 cfg_msg_173_V$da
 .%arg cfg_sig 13 cfg_sig_173_V$db
 .%arg cfg_sig_remote 23 cfg_sig_remote_173_V$dc

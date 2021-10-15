@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_280_V$4b7
 .%arg y 0 y_280_V$4b8
 .%var result 0 result_280 LIX
@@ -15,7 +15,7 @@
 .%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
 .%var parrep 12 _parrep SEX
-.%scope function handle_ingress_flow_encap_tbl _handle_ingress_flow_encap_tbl "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_ctlflow.c" 12 43
+.%scope function handle_ingress_flow_encap_tbl _handle_ingress_flow_encap_tbl "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_ctlflow.c" 12 43
 .%arg _pif_parrep 13 _pif_parrep_282_V$4bb
 .%arg actbuf 14 actbuf_282_V$4bc
 .%arg actbuf_off 0 actbuf_off_282_V$4bd
@@ -28,7 +28,7 @@
 .%var result 17 result_283 LIX
 .%scope end
 .%scope end
-.%scope function pif_ctlflow_ingress_flow _pif_ctlflow_ingress_flow "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_ctlflow.c" 47 72
+.%scope function pif_ctlflow_ingress_flow _pif_ctlflow_ingress_flow "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_ctlflow.c" 47 72
 .%arg start_state 15 start_state_285_V$4c9
 .%arg _pif_parrep 13 _pif_parrep_285_V$4ca
 .%arg actbuf 14 actbuf_285_V$4cb
@@ -38,7 +38,7 @@
 .%var ret 16 ret_285 LIX
 .%var pif_ctlflow_state_ingress_flow 16 pif_ctlflow_state_ingress_flow_285 LIX
 .%scope end
-.%scope function pif_ctlflow_egress_flow _pif_ctlflow_egress_flow "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_ctlflow.c" 75 78
+.%scope function pif_ctlflow_egress_flow _pif_ctlflow_egress_flow "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_ctlflow.c" 75 78
 .%arg start_state 15 start_state_289_V$4d4
 .%arg _pif_parrep 13 _pif_parrep_289_V$4d5
 .%arg actbuf 14 actbuf_289_V$4d6

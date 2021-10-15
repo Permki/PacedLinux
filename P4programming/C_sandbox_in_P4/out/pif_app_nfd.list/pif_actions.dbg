@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_387_V$580
 .%arg y 0 y_387_V$581
 .%var result 0 result_387 LIX
@@ -19,13 +19,13 @@
 .%var pif_register_encap_counter 14 _pif_register_encap_counter SEX
 .%var pkt_clone_destination 16 _pkt_clone_destination SEX
 .%var pif_act_stats 18 _pif_act_stats SEX
-.%scope function pif_action_exec_op _pif_action_exec_op "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_actions.c" 160 184
+.%scope function pif_action_exec_op _pif_action_exec_op "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_actions.c" 160 184
 .%arg parrep 19 parrep_412_V$584
 .%arg _actdata 20 _actdata_412_V$585
 .%var opdata 21 opdata_412 LIX
 .%var ret 24 ret_412 LIX
 .%scope end
-.%scope function pif_action_exec_encap_act _pif_action_exec_encap_act "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_actions.c" 20 114
+.%scope function pif_action_exec_encap_act _pif_action_exec_encap_act "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_actions.c" 20 114
 .%arg _pif_parrep 19 _pif_parrep_395_V$5ad
 .%arg _pif_actdatabuf 20 _pif_actdatabuf_395_V$5ae
 .%arg _pif_debug 0 _pif_debug_395_V$5af
@@ -46,7 +46,7 @@
 .%scope end
 .%scope end
 .%scope end
-.%scope function pif_action_exec_drop_act _pif_action_exec_drop_act "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_actions.c" 116 158
+.%scope function pif_action_exec_drop_act _pif_action_exec_drop_act "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_actions.c" 116 158
 .%arg _pif_parrep 19 _pif_parrep_409_V$5d3
 .%arg _pif_actdatabuf 20 _pif_actdatabuf_409_V$5d4
 .%arg _pif_debug 0 _pif_debug_409_V$5d5

@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function xpb_read_multiple _xpb_read_multiple "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\mac_time.c" 44 49
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function xpb_read_multiple _xpb_read_multiple "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\mac_time.c" 44 49
 .%arg xfer 0 xfer_80_V$23
 .%arg addr 1 addr_80_V$24
 .%arg count 2 count_80_V$25
@@ -8,7 +8,7 @@
 .%var mac_time_mult 1 _mac_time_mult SEX
 .%var mac_time_rshift 1 _mac_time_rshift SEX
 .%var mac_time 3 _mac_time SEX
-.%scope function mac_time_update _mac_time_update "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\mac_time.c" 51 114
+.%scope function mac_time_update _mac_time_update "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\mac_time.c" 51 114
 .%var mactime_xfer 5 mactime_xfer_81 LIR
 .%var mactime_xfer_again 6 mactime_xfer_again_81 LIR
 .%var time_reg_xfer 3 time_reg_xfer_81 LIW

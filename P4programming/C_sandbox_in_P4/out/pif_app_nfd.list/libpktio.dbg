@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
 .%var nfp_cls_autopush_user_event 1 _nfp_cls_autopush_user_event SEX
@@ -16,35 +16,35 @@
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 13 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
 .%var ctm_credits 14 _ctm_credits SEX
 .%var pkt 15 _pkt SEX
-.%scope function compute_ctm_size _compute_ctm_size "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 241 297
+.%scope function compute_ctm_size _compute_ctm_size "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 241 297
 .%arg rxd 24 rxd_465_V$68e
 .%var len 0 len_465 LIX
 .%var x 0 x_465 LIX
 .%scope end
-.%scope function drop_packet _drop_packet "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 302 329
+.%scope function drop_packet _drop_packet "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 302 329
 .%arg gmeta 37 gmeta_466_V$6cb
 .%scope end
-.%scope function pktio_rx_wire_issue _pktio_rx_wire_issue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 360 365
+.%scope function pktio_rx_wire_issue _pktio_rx_wire_issue "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 360 365
 .%arg nbi_meta 42 nbi_meta_468_V$6cc
 .%arg nbi_meta_size 0 nbi_meta_size_468_V$6cd
 .%arg sync 44 sync_468_V$6ce
 .%arg sig 45 sig_468_V$6cf
 .%scope end
-.%scope function pktio_rx_wire_process _pktio_rx_wire_process "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 368 457
+.%scope function pktio_rx_wire_process _pktio_rx_wire_process "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 368 457
 .%arg nbi_meta 42 nbi_meta_469_V$6d0
 .%var nbi_rxd 24 nbi_rxd_469 LIX
 .%scope end
-.%scope function pktio_rx_wire _pktio_rx_wire "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 460 468
+.%scope function pktio_rx_wire _pktio_rx_wire "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 460 468
 .%var sig 46 sig_481 LIX
 .%var nbi_rxd 25 nbi_rxd_481 LIR
 .%scope end
-.%scope function pktio_rx_host_issue _pktio_rx_host_issue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 473 494
+.%scope function pktio_rx_host_issue _pktio_rx_host_issue "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 473 494
 .%arg nfd_rxd 47 nfd_rxd_482_V$ad9
 .%arg sync 44 sync_482_V$ada
 .%arg sig 45 sig_482_V$adb
 .%var ctm_pnum 0 ctm_pnum_482 LIX
 .%scope end
-.%scope function pktio_rx_host_process _pktio_rx_host_process "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 497 616
+.%scope function pktio_rx_host_process _pktio_rx_host_process "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 497 616
 .%arg nfd_rxd 47 nfd_rxd_484_V$ae0
 .%arg ctm_pnum 46 ctm_pnum_484_V$ae1
 .%var i 51 i_484 LIX
@@ -55,19 +55,19 @@
 .%var ctm_ptr 58 ctm_ptr_484 LIX
 .%var mu_ptr 58 mu_ptr_484 LIX
 .%scope end
-.%scope function pktio_rx_host _pktio_rx_host "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 619 628
+.%scope function pktio_rx_host _pktio_rx_host "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 619 628
 .%var sig 46 sig_490 LIX
 .%var nfd_rxd 48 nfd_rxd_490 LIR
 .%var ctm_pnum 46 ctm_pnum_490 LIX
 .%scope end
-.%scope function pktio_rx_wq _pktio_rx_wq "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 632 645
+.%scope function pktio_rx_wq _pktio_rx_wq "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 632 645
 .%arg ring_num 46 ring_num_491_V$bab
 .%arg ring_addr 0 ring_addr_491_V$bac
 .%var xph 59 xph_491 LIR
 .%var xpm 15 xpm_491 LIR
 .%var p 58 p_491 LIX
 .%scope end
-.%scope function pktio_tx_with_meta _pktio_tx_with_meta "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 648 876
+.%scope function pktio_tx_with_meta _pktio_tx_with_meta "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 648 876
 .%arg app_nfd_flags 51 app_nfd_flags_492_V$bd8
 .%arg meta_len 51 meta_len_492_V$bd9
 .%var ctm_ptr 58 ctm_ptr_492 LIX
@@ -105,14 +105,14 @@
 .%scope end
 .%scope end
 .%scope end
-.%scope function pktio_tx _pktio_tx "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 879 882
+.%scope function pktio_tx _pktio_tx "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 879 882
 .%scope end
-.%scope function pktio_tx_drop _pktio_tx_drop "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 885 902
+.%scope function pktio_tx_drop _pktio_tx_drop "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 885 902
 .%var gmeta 66 gmeta_513 LIW
 .%scope end
-.%scope function pktio_rx_init _pktio_rx_init "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 905 910
+.%scope function pktio_rx_init _pktio_rx_init "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 905 910
 .%scope end
-.%scope function pktio_tx_init _pktio_tx_init "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 914 923
+.%scope function pktio_tx_init _pktio_tx_init "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pktio\libpktio.c" 914 923
 .%scope end
 .%type U4
 .%type S4 {

@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function mem2cls_lwcopy _mem2cls_lwcopy "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_memops.c" 36 71
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function mem2cls_lwcopy _mem2cls_lwcopy "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_memops.c" 36 71
 .%arg pktdata 0 pktdata_136_V$b9
 .%arg cls_ptr 2 cls_ptr_136_V$ba
 .%arg cls_len_lw 4 cls_len_lw_136_V$bb
@@ -12,7 +12,7 @@
 .%scope end
 .%var nfp_cls_autopush_user_event 7 _nfp_cls_autopush_user_event SEX
 .%var nfp_cls_autopush_user_event_status 8 _nfp_cls_autopush_user_event_status SEX
-.%scope function cls2cls_lwcopy _cls2cls_lwcopy "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_memops.c" 75 111
+.%scope function cls2cls_lwcopy _cls2cls_lwcopy "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_memops.c" 75 111
 .%arg cls_in 2 cls_in_138_V$c4
 .%arg cls_out 2 cls_out_138_V$c5
 .%arg cls_len_lw 4 cls_len_lw_138_V$c6
@@ -23,7 +23,7 @@
 .%var xfr_lw 3 xfr_lw_138 LIX
 .%var rem_lw 3 rem_lw_138 LIX
 .%scope end
-.%scope function mem2lmem_bcopy _mem2lmem_bcopy "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_memops.c" 9 32
+.%scope function mem2lmem_bcopy _mem2lmem_bcopy "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_memops.c" 9 32
 .%arg pktdata 0 pktdata_134_V$cf
 .%arg lm_ptr 11 lm_ptr_134_V$d0
 .%arg lm_off_b 4 lm_off_b_134_V$d1

@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_307_V$5c1
 .%arg y 0 y_307_V$5c2
 .%var result 0 result_307 LIX
@@ -17,7 +17,7 @@
 .%var pkt 12 _pkt SEX
 .%var pif_pkt_info_spec 21 _pif_pkt_info_spec SEX
 .%var pif_counter_OFFSET_TOO_LARGE_SHIFT 25 _pif_counter_OFFSET_TOO_LARGE_SHIFT SEX
-.%scope function handle_tier_0 _handle_tier_0 "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_deparse.c" 14 44
+.%scope function handle_tier_0 _handle_tier_0 "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_deparse.c" 14 44
 .%arg parrep 26 parrep_354_V$5c5
 .%arg pktinfo 27 pktinfo_354_V$5c6
 .%arg pkt_byteoff 28 pkt_byteoff_354_V$5c7
@@ -26,7 +26,7 @@
 .%var orig_len 0 orig_len_354 LIX
 .%var curr_len 0 curr_len_354 LIX
 .%scope end
-.%scope function handle_tier_1 _handle_tier_1 "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_deparse.c" 46 113
+.%scope function handle_tier_1 _handle_tier_1 "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_deparse.c" 46 113
 .%arg parrep 26 parrep_358_V$5cd
 .%arg pktinfo 27 pktinfo_358_V$5ce
 .%arg pkt_byteoff 28 pkt_byteoff_358_V$5cf
@@ -43,7 +43,7 @@
 .%var space_needed 29 space_needed_362 LIX
 .%scope end
 .%scope end
-.%scope function pif_deparse _pif_deparse "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_deparse.c" 115 158
+.%scope function pif_deparse _pif_deparse "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_deparse.c" 115 158
 .%arg parrep 26 parrep_366_V$5fb
 .%arg pktinfo 27 pktinfo_366_V$5fc
 .%var pkt_byteoff 0 pkt_byteoff_366 LIX

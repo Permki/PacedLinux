@@ -1,8 +1,8 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
-.%scope function mem_write_atomic_with_bytemask _mem_write_atomic_with_bytemask "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\standardlibrary\_c\mem_atomic_indirect.c" 15 54
+.%scope function mem_write_atomic_with_bytemask _mem_write_atomic_with_bytemask "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\standardlibrary\_c\mem_atomic_indirect.c" 15 54
 .%arg data 1 data_133_V$223
 .%arg addr 3 addr_133_V$224
 .%arg size 0 size_133_V$225

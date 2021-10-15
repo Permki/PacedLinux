@@ -1,0 +1,68 @@
+.%scope file "C:\users\permki\Desktop\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\users\permki\Desktop\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%arg x 0 x_276_V$4b1
+.%arg y 0 y_276_V$4b2
+.%var result 0 result_276 LIX
+.%scope end
+.%var BLM_NBI8_BLQ0_EMU_QD_BASE 1 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_Q_BASE 3 _BLM_NBI8_BLQ0_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_QD_BASE 4 _BLM_NBI8_BLQ1_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_Q_BASE 5 _BLM_NBI8_BLQ1_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_QD_BASE 6 _BLM_NBI8_BLQ2_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_Q_BASE 7 _BLM_NBI8_BLQ2_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_QD_BASE 8 _BLM_NBI8_BLQ3_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
+.%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
+.%var parrep 12 _parrep SEX
+.%scope function handle_ingress_flow_encap_tbl _handle_ingress_flow_encap_tbl "C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\out\pif_ctlflow.c" 12 43
+.%arg _pif_parrep 13 _pif_parrep_278_V$4b5
+.%arg actbuf 14 actbuf_278_V$4b6
+.%arg actbuf_off 0 actbuf_off_278_V$4b7
+.%arg actlen 15 actlen_278_V$4b8
+.%arg state 15 state_278_V$4b9
+.%var action_id 16 action_id_278 LIX
+.%var ret 16 ret_278 LIX
+.%var next_state 16 next_state_278 LIX
+.%scope block 21 26
+.%var result 17 result_279 LIX
+.%scope end
+.%scope end
+.%scope function pif_ctlflow_ingress_flow _pif_ctlflow_ingress_flow "C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\out\pif_ctlflow.c" 47 72
+.%arg start_state 15 start_state_281_V$4c3
+.%arg _pif_parrep 13 _pif_parrep_281_V$4c4
+.%arg actbuf 14 actbuf_281_V$4c5
+.%arg actbuf_off 0 actbuf_off_281_V$4c6
+.%var actlen 16 actlen_281 LIX
+.%var totlen 16 totlen_281 LIX
+.%var ret 16 ret_281 LIX
+.%var pif_ctlflow_state_ingress_flow 16 pif_ctlflow_state_ingress_flow_281 LIX
+.%scope end
+.%scope function pif_ctlflow_egress_flow _pif_ctlflow_egress_flow "C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\out\pif_ctlflow.c" 75 78
+.%arg start_state 15 start_state_285_V$4ce
+.%arg _pif_parrep 13 _pif_parrep_285_V$4cf
+.%arg actbuf 14 actbuf_285_V$4d0
+.%arg actbuf_off 0 actbuf_off_285_V$4d1
+.%scope end
+.%type U4
+.%type A16 2
+.%type U1
+.%type A32768 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A41943040 2
+.%type A10485760 2
+.%type A40 0
+.%type P6 0
+.%type P3 0
+.%type P2 16
+.%type I4
+.%type S8 pif_lookup_result{
+action_id 0 18;
+action_len 4 18;
+}
+.%type I4

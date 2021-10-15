@@ -1,24 +1,24 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
-.%scope function pkt_ctm_ptr40 _pkt_ctm_ptr40 "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 64 74
+.%scope function pkt_ctm_ptr40 _pkt_ctm_ptr40 "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 64 74
 .%arg isl 1 isl_245_V$314
 .%arg pnum 0 pnum_245_V$315
 .%arg off 0 off_245_V$316
 .%var lo 0 lo_245 LIX
 .%var hi 0 hi_245 LIX
 .%scope end
-.%scope function pkt_ctm_ptr32 _pkt_ctm_ptr32 "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 93 96
+.%scope function pkt_ctm_ptr32 _pkt_ctm_ptr32 "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 93 96
 .%arg pnum 0 pnum_246_V$31a
 .%arg off 0 off_246_V$31b
 .%scope end
-.%scope function pkt_csum_read _pkt_csum_read "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 100 114
+.%scope function pkt_csum_read _pkt_csum_read "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 100 114
 .%arg src_buf 2 src_buf_247_V$31d
 .%arg off 4 off_247_V$31e
 .%var ret 0 ret_247 LIX
 .%scope end
-.%scope function __pkt_status_read ___pkt_status_read "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 117 153
+.%scope function __pkt_status_read ___pkt_status_read "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 117 153
 .%arg isl 1 isl_250_V$325
 .%arg pnum 0 pnum_250_V$326
 .%arg pkt_status 5 pkt_status_250_V$327
@@ -29,27 +29,27 @@
 .%var addr_hi 0 addr_hi_255 LIX
 .%scope end
 .%scope end
-.%scope function pkt_status_read _pkt_status_read "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 156 162
+.%scope function pkt_status_read _pkt_status_read "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 156 162
 .%arg isl 1 isl_256_V$332
 .%arg pnum 0 pnum_256_V$333
 .%arg pkt_status 5 pkt_status_256_V$334
 .%var add_thread_sig 4 add_thread_sig_256 LIX
 .%scope end
-.%scope function pkt_ctm_data_size _pkt_ctm_data_size "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 166 183
+.%scope function pkt_ctm_data_size _pkt_ctm_data_size "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 166 183
 .%arg pkt_len 0 pkt_len_257_V$336
 .%arg pkt_offset 0 pkt_offset_257_V$337
 .%arg ctm_buf_size 10 ctm_buf_size_257_V$338
 .%var tbytes 0 tbytes_257 LIX
 .%var ret 0 ret_257 LIX
 .%scope end
-.%scope function pkt_emem_data_size _pkt_emem_data_size "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 187 204
+.%scope function pkt_emem_data_size _pkt_emem_data_size "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 187 204
 .%arg pkt_len 0 pkt_len_258_V$33c
 .%arg pkt_offset 0 pkt_offset_258_V$33d
 .%arg ctm_buf_size 10 ctm_buf_size_258_V$33e
 .%var tbytes 0 tbytes_258 LIX
 .%var ret 0 ret_258 LIX
 .%scope end
-.%scope function __pkt_mac_egress_cmd_write ___pkt_mac_egress_cmd_write "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 208 223
+.%scope function __pkt_mac_egress_cmd_write ___pkt_mac_egress_cmd_write "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 208 223
 .%arg pbuf 11 pbuf_259_V$342
 .%arg off 1 off_259_V$343
 .%arg l3_csum_ins 4 l3_csum_ins_259_V$344
@@ -58,7 +58,7 @@
 .%arg sync 8 sync_259_V$347
 .%arg sig 9 sig_259_V$348
 .%scope end
-.%scope function pkt_mac_egress_cmd_write _pkt_mac_egress_cmd_write "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 227 236
+.%scope function pkt_mac_egress_cmd_write _pkt_mac_egress_cmd_write "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 227 236
 .%arg pbuf 11 pbuf_260_V$349
 .%arg off 1 off_260_V$34a
 .%arg l3_csum_ins 4 l3_csum_ins_260_V$34b
@@ -66,7 +66,7 @@
 .%var sig 4 sig_260 LIX
 .%var cmd 0 cmd_260 LIW
 .%scope end
-.%scope function __pkt_msd_write ___pkt_msd_write "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 239 284
+.%scope function __pkt_msd_write ___pkt_msd_write "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 239 284
 .%arg pbuf 11 pbuf_261_V$34f
 .%arg off 1 off_261_V$350
 .%arg xms 13 xms_261_V$351
@@ -78,13 +78,13 @@
 .%var ms_off 1 ms_off_263 LIX
 .%scope end
 .%scope end
-.%scope function pkt_msd_write _pkt_msd_write "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 288 294
+.%scope function pkt_msd_write _pkt_msd_write "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 288 294
 .%arg pbuf 11 pbuf_264_V$35c
 .%arg off 1 off_264_V$35d
 .%var sig 4 sig_264 LIX
 .%var ms 16 ms_264 LIW
 .%scope end
-.%scope function __pkt_nbi_recv_with_hdrs ___pkt_nbi_recv_with_hdrs "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 298 317
+.%scope function __pkt_nbi_recv_with_hdrs ___pkt_nbi_recv_with_hdrs "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 298 317
 .%arg meta 17 meta_265_V$367
 .%arg msize 0 msize_265_V$368
 .%arg off 0 off_265_V$369
@@ -93,23 +93,23 @@
 .%var addr 0 addr_265 LIX
 .%var count 0 count_265 LIX
 .%scope end
-.%scope function pkt_nbi_recv_with_hdrs _pkt_nbi_recv_with_hdrs "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 321 325
+.%scope function pkt_nbi_recv_with_hdrs _pkt_nbi_recv_with_hdrs "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 321 325
 .%arg meta 17 meta_273_V$378
 .%arg msize 0 msize_273_V$379
 .%arg off 0 off_273_V$37a
 .%var add_thread_sig 4 add_thread_sig_273 LIX
 .%scope end
-.%scope function __pkt_nbi_recv ___pkt_nbi_recv "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 329 332
+.%scope function __pkt_nbi_recv ___pkt_nbi_recv "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 329 332
 .%arg meta 17 meta_274_V$37c
 .%arg msize 0 msize_274_V$37d
 .%arg sync 8 sync_274_V$37e
 .%arg sig 9 sig_274_V$37f
 .%scope end
-.%scope function pkt_nbi_recv _pkt_nbi_recv "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 336 339
+.%scope function pkt_nbi_recv _pkt_nbi_recv "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 336 339
 .%arg meta 17 meta_275_V$380
 .%arg msize 0 msize_275_V$381
 .%scope end
-.%scope function pkt_nbi_send _pkt_nbi_send "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 343 386
+.%scope function pkt_nbi_send _pkt_nbi_send "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 343 386
 .%arg isl 1 isl_276_V$382
 .%arg pnum 0 pnum_276_V$383
 .%arg msi 18 msi_276_V$384
@@ -124,7 +124,7 @@
 .%var csr0 19 csr0_276 LIX
 .%var palu 22 palu_276 LIX
 .%scope end
-.%scope function pkt_nbi_send_dont_free _pkt_nbi_send_dont_free "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 390 434
+.%scope function pkt_nbi_send_dont_free _pkt_nbi_send_dont_free "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 390 434
 .%arg isl 1 isl_277_V$3a4
 .%arg pnum 0 pnum_277_V$3a5
 .%arg msi 18 msi_277_V$3a6
@@ -139,7 +139,7 @@
 .%var csr0 19 csr0_277 LIX
 .%var palu 22 palu_277 LIX
 .%scope end
-.%scope function pkt_nbi_drop_seq _pkt_nbi_drop_seq "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 438 479
+.%scope function pkt_nbi_drop_seq _pkt_nbi_drop_seq "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 438 479
 .%arg isl 1 isl_278_V$3c6
 .%arg pnum 0 pnum_278_V$3c7
 .%arg msi 18 msi_278_V$3c8
@@ -154,12 +154,12 @@
 .%var csr0 19 csr0_278 LIX
 .%var palu 22 palu_278 LIX
 .%scope end
-.%scope function pkt_ctm_free _pkt_ctm_free "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 482 490
+.%scope function pkt_ctm_free _pkt_ctm_free "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 482 490
 .%arg isl 0 isl_279_V$3e8
 .%arg pnum 0 pnum_279_V$3e9
 .%var addr_hi 0 addr_hi_279 LIX
 .%scope end
-.%scope function pkt_ctm_alloc _pkt_ctm_alloc "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 493 536
+.%scope function pkt_ctm_alloc _pkt_ctm_alloc "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 493 536
 .%arg credits 25 credits_280_V$3eb
 .%arg isl 1 isl_280_V$3ec
 .%arg size 10 size_280_V$3ed
@@ -174,12 +174,12 @@
 .%var sig_cls 4 sig_cls_280 LIX
 .%var pnum 0 pnum_280 LIX
 .%scope end
-.%scope function pkt_ctm_init_credits _pkt_ctm_init_credits "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 539 544
+.%scope function pkt_ctm_init_credits _pkt_ctm_init_credits "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 539 544
 .%arg credits 25 credits_284_V$402
 .%arg pkt_credits 0 pkt_credits_284_V$403
 .%arg buf_credits 0 buf_credits_284_V$404
 .%scope end
-.%scope function pkt_ctm_poll_pe_credit _pkt_ctm_poll_pe_credit "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 547 565
+.%scope function pkt_ctm_poll_pe_credit _pkt_ctm_poll_pe_credit "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 547 565
 .%arg credits 25 credits_285_V$409
 .%var pe_res 30 pe_res_285 LIR
 .%var credits_update 26 credits_update_285 LIX
@@ -187,7 +187,7 @@
 .%var sig_cls 4 sig_cls_285 LIX
 .%var master 0 master_285 LIX
 .%scope end
-.%scope function pkt_ctm_get_credits _pkt_ctm_get_credits "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 568 613
+.%scope function pkt_ctm_get_credits _pkt_ctm_get_credits "c:\NFP_SDK_6.1.0-preview\components\flowenv\me\lib\pkt\libpkt.c" 568 613
 .%arg credits 25 credits_287_V$417
 .%arg pkt_credits 0 pkt_credits_287_V$418
 .%arg buf_credits 0 buf_credits_287_V$419

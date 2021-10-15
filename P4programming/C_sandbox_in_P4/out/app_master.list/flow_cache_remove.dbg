@@ -1,10 +1,10 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
 .%var fc_timeout_err_free_entry_zero 1 _fc_timeout_err_free_entry_zero SEX
 .%var fc_timeout_err_ovf_hash_value_zero 2 _fc_timeout_err_ovf_hash_value_zero SEX
-.%scope function fc_copy_entry _fc_copy_entry "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 45 154
+.%scope function fc_copy_entry _fc_copy_entry "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 45 154
 .%arg src_ptr 3 src_ptr_302_V$2d2
 .%arg dest_ptr 3 dest_ptr_302_V$2d3
 .%var xfer_write 4 xfer_write_302 LIW
@@ -13,7 +13,7 @@
 .%var entry_fields 7 entry_fields_302 LIX
 .%var length 0 length_302 LIX
 .%scope end
-.%scope function fc_copy_payload _fc_copy_payload "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 157 203
+.%scope function fc_copy_payload _fc_copy_payload "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 157 203
 .%arg src_ptr 3 src_ptr_307_V$2e8
 .%arg dest_ptr 3 dest_ptr_307_V$2e9
 .%var payload_copied 0 payload_copied_307 LIX
@@ -21,7 +21,7 @@
 .%var xfer_read 10 xfer_read_307 LIR
 .%var sig 6 sig_307 LIX
 .%scope end
-.%scope function fc_process_overflow_list_cam_entry1 _fc_process_overflow_list_cam_entry1 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 221 680
+.%scope function fc_process_overflow_list_cam_entry1 _fc_process_overflow_list_cam_entry1 "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 221 680
 .%arg bucket_base_ptr 3 bucket_base_ptr_310_V$2f0
 .%arg entry_base_ptr 3 entry_base_ptr_310_V$2f1
 .%arg payload_base_ptr 3 payload_base_ptr_310_V$2f2
@@ -73,7 +73,7 @@
 .%scope end
 .%scope end
 .%scope end
-.%scope function fc_process_overflow_list_cam_entry_2_3_4 _fc_process_overflow_list_cam_entry_2_3_4 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 695 1085
+.%scope function fc_process_overflow_list_cam_entry_2_3_4 _fc_process_overflow_list_cam_entry_2_3_4 "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 695 1085
 .%arg entry_base_ptr 3 entry_base_ptr_337_V$3d0
 .%arg cam_read_address 3 cam_read_address_337_V$3d1
 .%arg ovf_head_idx 0 ovf_head_idx_337_V$3d2
@@ -108,7 +108,7 @@
 .%scope end
 .%scope end
 .%scope end
-.%scope function fc_remove_flow_cam_entry_1 _fc_remove_flow_cam_entry_1 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 1093 1575
+.%scope function fc_remove_flow_cam_entry_1 _fc_remove_flow_cam_entry_1 "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 1093 1575
 .%arg bucket_base_ptr 3 bucket_base_ptr_359_V$564
 .%arg entry_base_ptr 3 entry_base_ptr_359_V$565
 .%arg payload_base_ptr 3 payload_base_ptr_359_V$566
@@ -164,7 +164,7 @@
 .%scope end
 .%scope end
 .%scope end
-.%scope function fc_remove_flow_cam_entry_2_3_4_ovf_head _fc_remove_flow_cam_entry_2_3_4_ovf_head "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 1581 2395
+.%scope function fc_remove_flow_cam_entry_2_3_4_ovf_head _fc_remove_flow_cam_entry_2_3_4_ovf_head "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 1581 2395
 .%arg bucket_base_ptr 3 bucket_base_ptr_393_V$6b4
 .%arg entry_base_ptr 3 entry_base_ptr_393_V$6b5
 .%arg lock 11 lock_393_V$6b6
@@ -210,7 +210,7 @@
 .%scope end
 .%scope end
 .%scope end
-.%scope function fc_remove_flow_cam_entry_2_3_4_ovf _fc_remove_flow_cam_entry_2_3_4_ovf "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 2401 2594
+.%scope function fc_remove_flow_cam_entry_2_3_4_ovf _fc_remove_flow_cam_entry_2_3_4_ovf "c:\NFP_SDK_6.1.0-preview\p4\components\flowcache\me\lib\flowcache\_c\flow_cache_remove.c" 2401 2594
 .%arg bucket_base_ptr 3 bucket_base_ptr_434_V$88f
 .%arg entry_base_ptr 3 entry_base_ptr_434_V$890
 .%arg entry_idx_to_remove 0 entry_idx_to_remove_434_V$891

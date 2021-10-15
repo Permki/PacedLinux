@@ -1,0 +1,194 @@
+.%scope file "C:\users\permki\Desktop\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\users\permki\Desktop\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%var reg 0 reg_241 LIX
+.%scope end
+.%var BLM_NBI8_BLQ0_EMU_QD_BASE 1 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_Q_BASE 3 _BLM_NBI8_BLQ0_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_QD_BASE 4 _BLM_NBI8_BLQ1_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_Q_BASE 5 _BLM_NBI8_BLQ1_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_QD_BASE 6 _BLM_NBI8_BLQ2_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_Q_BASE 7 _BLM_NBI8_BLQ2_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_QD_BASE 8 _BLM_NBI8_BLQ3_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
+.%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
+.%var pkt 12 _pkt SEX
+.%var pif_pkt_info_spec 21 _pif_pkt_info_spec SEX
+.%scope function __hashmap_lock_release ___hashmap_lock_release "C:\users\permki\Desktop\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\include\hashmap.h" 103 122
+.%arg lock 25 lock_255_V$718
+.%var ind 30 ind_255 LIX
+.%var addr_hi 0 addr_hi_255 LIX
+.%var addr_lo 0 addr_lo_255 LIX
+.%scope end
+.%scope function mem2lmem_copy _mem2lmem_copy "C:\users\permki\Desktop\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_memops.h" 15 89
+.%arg pktdata 33 pktdata_261_V$731
+.%arg lm_ptr 34 lm_ptr_261_V$732
+.%arg off_lw 35 off_lw_261_V$733
+.%arg len_lw 35 len_lw_261_V$734
+.%var sig 35 sig_261 LIX
+.%var read_xfer 36 read_xfer_261 LIR
+.%var i 0 i_261 LIX
+.%var tocopy 0 tocopy_261 LIX
+.%var chunk_lw 0 chunk_lw_261 LIX
+.%var off 0 off_261 LIX
+.%var copied 0 copied_261 LIX
+.%scope end
+.%scope function multiply_24x8 _multiply_24x8 "C:\users\permki\Desktop\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%arg x 0 x_458_V$73d
+.%arg y 0 y_458_V$73e
+.%var result 0 result_458 LIX
+.%scope end
+.%scope function pif_parrep_extract _pif_parrep_extract "C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\out\pif_parrep.c" 8 77
+.%arg _pif_parrep 34 _pif_parrep_460_V$741
+.%arg _pif_parrep_pktdata 33 _pif_parrep_pktdata_460_V$742
+.%arg _pif_parrep_pktlen 0 _pif_parrep_pktlen_460_V$743
+.%arg _pif_parrep_fk_ptr 34 _pif_parrep_fk_ptr_460_V$744
+.%arg _pif_parrep_fk_len 37 _pif_parrep_fk_len_460_V$745
+.%var _pif_ctldata 38 _pif_ctldata_460 LIX
+.%var pkt_info 40 pkt_info_460 LIX
+.%var _pif_read_xbuf_off 0 _pif_read_xbuf_off_460 LIX
+.%var _pif_parrep_pktoff 0 _pif_parrep_pktoff_460 LIX
+.%var _pif_parrep_state 35 _pif_parrep_state_460 LIX
+.%var _pif_parrep_error 35 _pif_parrep_error_460 LIX
+.%var i 35 i_460 LIX
+.%scope block 23 30
+.%var _pif_ctldata 38 _pif_ctldata_461 LIX
+.%scope end
+.%scope block 32 64
+.%var _pif_ctldata 38 _pif_ctldata_462 LIX
+.%var eth 41 eth_462 LIX
+.%scope block 44 61
+.%var _pif_parrep_hdrsz 0 _pif_parrep_hdrsz_464 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope function pif_parrep_exceptions _pif_parrep_exceptions "C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\out\pif_parrep.c" 80 83
+.%arg _pif_parrep 34 _pif_parrep_469_V$756
+.%arg _pif_pe_error 35 _pif_pe_error_469_V$757
+.%arg _pif_parrep_fk_ptr 34 _pif_parrep_fk_ptr_469_V$758
+.%arg _pif_parrep_fk_len 37 _pif_parrep_fk_len_469_V$759
+.%scope end
+.%type U4
+.%type A16 2
+.%type U1
+.%type A32768 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A41943040 2
+.%type A10485760 2
+.%type S28 pktio_meta{
+__unnamed 0 13;
+}
+.%type S28 {
+__unnamed 0 14;
+__raw 0 20;
+}
+.%type S28 {
+p_nbi 0 15;
+p_ctm_size 8:30:2 0;
+p_orig_len 8:16:14 0;
+p_offset 8:0:16 0;
+p_src 12:16:16 0;
+p_dst 12:0:16 0;
+p_seq 16:16:16 0;
+p_ro_ctx 16:11:5 0;
+p_is_gro_seq 16:10:1 0;
+p_rx_ipv4_csum_ok 16:9:1 0;
+p_rx_ipv4_csum_present 16:8:1 0;
+p_rx_l4_csum_ok 16:7:1 0;
+p_rx_l4_csum_present 16:6:1 0;
+p_rx_l4_tcp 16:5:1 0;
+p_rx_mac_matched 16:4:1 0;
+p_tunnel 16:3:1 0;
+resv4 16:0:3 0;
+__unnamed 20 19;
+p_vlan 24:16:16 0;
+resv3 24:0:16 0;
+}
+.%type S8 nbi_meta_pkt_info{
+__unnamed 0 16;
+}
+.%type S8 {
+__unnamed 0 17;
+__raw 0 18;
+}
+.%type S8 {
+isl 0:26:6 0;
+pnum 0:16:10 0;
+bls 0:14:2 0;
+len 0:0:14 0;
+split 4:31:1 0;
+resv0 4:29:2 0;
+muptr 4:0:29 0;
+}
+.%type A8 0
+.%type S4 {
+p_timestamp 0:0:32 0;
+}
+.%type A28 0
+.%type S8 pif_pkt_specific{
+__unnamed 0 22;
+}
+.%type S8 {
+__unnamed 0 23;
+_raw 0 24;
+}
+.%type S8 {
+resv3 0:24:8 0;
+trunc_len 0:10:14 0;
+pkt_pl_off 0:0:10 0;
+calc_fld_bmsk 4 0;
+}
+.%type A8 0
+.%type P2 26
+.%type S10 {
+addr 0 27;
+state 8 29;
+}
+.%type P3 28
+.%type U4
+.%type U2
+.%type S4 nfp_mecsr_prev_alu{
+__unnamed 0 31;
+}
+.%type S4 {
+__unnamed 0 32;
+__raw 0 0;
+}
+.%type S4 {
+data16 0:16:16 0;
+res 0:15:1 0;
+ov_sig_ctx 0:14:1 0;
+ov_sig_num 0:13:1 0;
+length 0:8:5 0;
+ov_len 0:7:1 0;
+ov_bm_csr 0:6:1 0;
+ove_data 0:3:3 0;
+ove_master 0:1:2 0;
+ov_sm 0:0:1 0;
+}
+.%type P3 2
+.%type P6 0
+.%type I4
+.%type A32 0
+.%type P2 0
+.%type P6 39
+.%type S4 pif_parrep_ctldata{
+valid 0:31:1 0;
+t0_valid 0:30:1 0;
+t0_dirty 0:29:1 0;
+t0_orig_len 0:28:1 0;
+}
+.%type P2 12
+.%type P6 42
+.%type S16 pif_header_eth{
+dst 0:0:32 0;
+__dst_1 4:16:16 0;
+src 4:0:16 0;
+__src_1 8:0:32 0;
+etype 12:16:16 0;
+}

@@ -48,7 +48,7 @@
 
 "start" :
     type : parse_state
-    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
     src_lineno : 24
 
 "eth_parse" :
@@ -57,14 +57,14 @@
         - "eth"
     select_value :
         - "eth.etype"
-    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
     src_lineno : 30
 
 "xlan_parse" :
     type : parse_state
     extracts :
         - "xlan"
-    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
     src_lineno : 39
 
 ##########################################
@@ -89,7 +89,7 @@ parser :
 
 "encap_act" :
     type : action
-    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
     src_lineno : 76
     parameter_list :
         - "prt" : 16
@@ -104,7 +104,7 @@ parser :
 
 "xlan_encap" :
     type : action
-    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
     src_lineno : 85
     parameter_list :
         - "tag" : 32
@@ -116,7 +116,7 @@ parser :
 
 "drop_act" :
     type : action
-    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
     src_lineno : 60
     implementation : >-
         drop();
@@ -132,7 +132,7 @@ parser :
     allowed_actions : 
         - "encap_act"
         - "drop_act"
-    src_filename : 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
     src_lineno : 50
 
 ##########################################
@@ -170,9 +170,9 @@ layout:
 
 source_info :
     type : source_info
-    date : "2021/10/11 13:36:16"
+    date : "2021/10/15 10:19:51"
     p4_version : "1.0"
     source_files : 
-        - 'Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
+        - 'C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4'
     output_file : 'C_sandbox_in_P4.yml'
 

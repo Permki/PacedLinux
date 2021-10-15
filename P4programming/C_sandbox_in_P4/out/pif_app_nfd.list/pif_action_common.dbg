@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_422_V$6dc
 .%arg y 0 y_422_V$6dd
 .%var result 0 result_422 LIX
@@ -14,7 +14,7 @@
 .%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
 .%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
-.%scope function get_actdata _get_actdata "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_action_common.c" 17 46
+.%scope function get_actdata _get_actdata "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_action_common.c" 17 46
 .%arg xfer_buf 12 xfer_buf_424_V$6e0
 .%arg actbuf 13 actbuf_424_V$6e1
 .%arg act_len 0 act_len_424_V$6e2
@@ -23,7 +23,7 @@
 .%var alen 0 alen_424 LIX
 .%var act_op 15 act_op_424 LIX
 .%scope end
-.%scope function pif_action_execute _pif_action_execute "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_action_common.c" 49 78
+.%scope function pif_action_execute _pif_action_execute "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_action_common.c" 49 78
 .%arg parrep 18 parrep_426_V$6f4
 .%arg actbuf 13 actbuf_426_V$6f5
 .%arg actbufoff 0 actbufoff_426_V$6f6

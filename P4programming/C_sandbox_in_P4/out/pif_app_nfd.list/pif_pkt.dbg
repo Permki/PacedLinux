@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_327_V$57d
 .%arg y 0 y_327_V$57e
 .%var result 0 result_327 LIX
@@ -17,7 +17,7 @@
 .%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 12 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 13 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
 .%var pkt 14 _pkt SEX
-.%scope function pif_pkt_write_header _pif_pkt_write_header "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 15 122
+.%scope function pif_pkt_write_header _pif_pkt_write_header "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 15 122
 .%arg pktoff 0 pktoff_329_V$581
 .%arg lmem 23 lmem_329_V$582
 .%arg lmoff 0 lmoff_329_V$583
@@ -37,7 +37,7 @@
 .%var to_write 24 to_write_332 LIX
 .%scope end
 .%scope end
-.%scope function pif_pkt_write_vheader _pif_pkt_write_vheader "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 126 188
+.%scope function pif_pkt_write_vheader _pif_pkt_write_vheader "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 126 188
 .%arg pktoff 0 pktoff_334_V$593
 .%arg lmptr 23 lmptr_334_V$594
 .%arg lmsz 0 lmsz_334_V$595
@@ -54,7 +54,7 @@
 .%var xfr_lw 0 xfr_lw_334 LIX
 .%var rem_b 0 rem_b_334 LIX
 .%scope end
-.%scope function pif_pkt_free_space _pif_pkt_free_space "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 191 292
+.%scope function pif_pkt_free_space _pif_pkt_free_space "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 191 292
 .%arg pktoff 0 pktoff_339_V$5a4
 .%arg hdrlen 0 hdrlen_339_V$5a5
 .%var sig 24 sig_339 LIX
@@ -70,7 +70,7 @@
 .%var i 0 i_339 LIX
 .%var chunk 0 chunk_339 LIX
 .%scope end
-.%scope function pif_pkt_move_pkt_up _pif_pkt_move_pkt_up "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 296 396
+.%scope function pif_pkt_move_pkt_up _pif_pkt_move_pkt_up "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 296 396
 .%arg pktoff 0 pktoff_345_V$5b4
 .%arg removelen 0 removelen_345_V$5b5
 .%var sig 24 sig_345 LIX
@@ -86,7 +86,7 @@
 .%var i 0 i_345 LIX
 .%var chunk 0 chunk_345 LIX
 .%scope end
-.%scope function pif_pkt_insert_header _pif_pkt_insert_header "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 399 436
+.%scope function pif_pkt_insert_header _pif_pkt_insert_header "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 399 436
 .%arg copylen 0 copylen_351_V$5c4
 .%arg hdrlen 0 hdrlen_351_V$5c5
 .%var sig 24 sig_351 LIX
@@ -97,7 +97,7 @@
 .%var chunk 0 chunk_351 LIX
 .%var bytes_copied 0 bytes_copied_351 LIX
 .%scope end
-.%scope function pif_pkt_remove_header _pif_pkt_remove_header "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 438 476
+.%scope function pif_pkt_remove_header _pif_pkt_remove_header "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 438 476
 .%arg copylen 0 copylen_353_V$5cf
 .%arg hdrlen 0 hdrlen_353_V$5d0
 .%var sig 24 sig_353 LIX
@@ -109,7 +109,7 @@
 .%var bytes_copied 0 bytes_copied_353 LIX
 .%var offset 24 offset_353 LIX
 .%scope end
-.%scope function pif_pkt_make_space _pif_pkt_make_space "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 479 608
+.%scope function pif_pkt_make_space _pif_pkt_make_space "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 479 608
 .%arg pktoff 0 pktoff_355_V$5db
 .%arg hdrlen 0 hdrlen_355_V$5dc
 .%var sig 24 sig_355 LIX
@@ -132,7 +132,7 @@
 .%var mem_ptr 26 mem_ptr_358 LIX
 .%scope end
 .%scope end
-.%scope function pif_pkt_dma_packet_down _pif_pkt_dma_packet_down "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 610 727
+.%scope function pif_pkt_dma_packet_down _pif_pkt_dma_packet_down "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 610 727
 .%arg insertlen 0 insertlen_361_V$5f0
 .%var pkt_len_padded 0 pkt_len_padded_361 LIX
 .%var pkt_len_plus_insertlen 0 pkt_len_plus_insertlen_361 LIX

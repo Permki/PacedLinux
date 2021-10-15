@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
 .%var nfp_cls_autopush_user_event 1 _nfp_cls_autopush_user_event SEX
@@ -16,7 +16,7 @@
 .%var BLM_NBI8_BLQ3_EMU_Q_BASE 13 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
 .%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 14 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 15 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
-.%scope function cls_ring_setup _cls_ring_setup "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 37 62
+.%scope function cls_ring_setup _cls_ring_setup "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 37 62
 .%arg rnum 0 rnum_199_V$50e
 .%arg base 16 base_199_V$50f
 .%arg size 0 size_199_V$510
@@ -27,16 +27,16 @@
 .%var s1 19 s1_199 LIX
 .%var s2 19 s2_199 LIX
 .%scope end
-.%scope function cls_state_test _cls_state_test "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 66 79
+.%scope function cls_state_test _cls_state_test "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 66 79
 .%arg rstate 19 rstate_204_V$51f
 .%var full 19 full_204 LIX
 .%scope end
-.%scope function cls_state_test2 _cls_state_test2 "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 83 98
+.%scope function cls_state_test2 _cls_state_test2 "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 83 98
 .%arg rstate1 19 rstate1_206_V$524
 .%arg rstate2 19 rstate2_206_V$525
 .%var full 19 full_206 LIX
 .%scope end
-.%scope function cls_ring_put _cls_ring_put "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 102 126
+.%scope function cls_ring_put _cls_ring_put "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 102 126
 .%arg rnum 0 rnum_209_V$52b
 .%arg data 20 data_209_V$52c
 .%arg size 0 size_209_V$52d
@@ -45,7 +45,7 @@
 .%var count 0 count_209 LIX
 .%var ring_addr 0 ring_addr_209 LIX
 .%scope end
-.%scope function cls_ring_get _cls_ring_get "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 130 154
+.%scope function cls_ring_get _cls_ring_get "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/cls_ring.c" 130 154
 .%arg rnum 0 rnum_217_V$538
 .%arg data 22 data_217_V$539
 .%arg size 0 size_217_V$53a
@@ -54,7 +54,7 @@
 .%var count 0 count_217 LIX
 .%var ring_addr 0 ring_addr_217 LIX
 .%scope end
-.%scope function ctm_ring_setup _ctm_ring_setup "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ctm_ring.c" 31 71
+.%scope function ctm_ring_setup _ctm_ring_setup "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ctm_ring.c" 31 71
 .%arg rnum 0 rnum_246_V$540
 .%arg base 23 base_246_V$541
 .%arg size 0 size_246_V$542
@@ -69,7 +69,7 @@
 .%var s3 19 s3_246 LIX
 .%var s4 19 s4_246 LIX
 .%scope end
-.%scope function ctm_ring_put _ctm_ring_put "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ctm_ring.c" 75 99
+.%scope function ctm_ring_put _ctm_ring_put "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ctm_ring.c" 75 99
 .%arg isl 0 isl_251_V$561
 .%arg rnum 0 rnum_251_V$562
 .%arg data 20 data_251_V$563
@@ -79,7 +79,7 @@
 .%var count 0 count_251 LIX
 .%var ring_addr 0 ring_addr_251 LIX
 .%scope end
-.%scope function ctm_ring_get _ctm_ring_get "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ctm_ring.c" 103 127
+.%scope function ctm_ring_get _ctm_ring_get "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ctm_ring.c" 103 127
 .%arg isl 0 isl_259_V$569
 .%arg rnum 0 rnum_259_V$56a
 .%arg data 22 data_259_V$56b
@@ -89,7 +89,7 @@
 .%var count 0 count_259 LIX
 .%var ring_addr 0 ring_addr_259 LIX
 .%scope end
-.%scope function dma_seqn_ap_setup _dma_seqn_ap_setup "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 40 90
+.%scope function dma_seqn_ap_setup _dma_seqn_ap_setup "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 40 90
 .%arg filter_num 0 filter_num_354_V$571
 .%arg ap_num 0 ap_num_354_V$572
 .%arg type 0 type_354_V$573
@@ -104,17 +104,17 @@
 .%var pcie_provider 0 pcie_provider_354 LIX
 .%var event_match 0 event_match_354 LIX
 .%scope end
-.%scope function dma_seqn_advance _dma_seqn_advance "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 94 101
+.%scope function dma_seqn_advance _dma_seqn_advance "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 94 101
 .%arg xfer 27 xfer_359_V$59e
 .%arg compl 37 compl_359_V$59f
 .%var seqn_inc 0 seqn_inc_359 LIX
 .%scope end
-.%scope function dma_seqn_advance_save _dma_seqn_advance_save "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 106 113
+.%scope function dma_seqn_advance_save _dma_seqn_advance_save "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 106 113
 .%arg xfer 27 xfer_360_V$5a1
 .%arg compl 37 compl_360_V$5a2
 .%arg seqn_inc 37 seqn_inc_360_V$5a3
 .%scope end
-.%scope function dma_seqn_set_event _dma_seqn_set_event "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 118 131
+.%scope function dma_seqn_set_event _dma_seqn_set_event "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 118 131
 .%arg cmd 38 cmd_361_V$5a4
 .%arg type 0 type_361_V$5a5
 .%arg ext_type 0 ext_type_361_V$5a6
@@ -122,83 +122,83 @@
 .%var dma_mode 0 dma_mode_361 LIX
 .%var cmd_ptr 39 cmd_ptr_361 LIX
 .%scope end
-.%scope function dma_seqn_init_event _dma_seqn_init_event "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 135 147
+.%scope function dma_seqn_init_event _dma_seqn_init_event "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 135 147
 .%arg type 0 type_362_V$5c8
 .%arg ext_type 0 ext_type_362_V$5c9
 .%var event 0 event_362 LIX
 .%scope end
-.%scope function dma_seqn_set_seqn _dma_seqn_set_seqn "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 151 159
+.%scope function dma_seqn_set_seqn _dma_seqn_set_seqn "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/dma_seqn.c" 151 159
 .%arg cpp_hi_part 0 cpp_hi_part_365_V$5cc
 .%arg source 0 source_365_V$5cd
 .%var event 0 event_365 LIX
 .%scope end
-.%scope function nn_ring_empty _nn_ring_empty "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/utils/nn_ring.h" 59 62
+.%scope function nn_ring_empty _nn_ring_empty "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/utils/nn_ring.h" 59 62
 .%scope end
-.%scope function nn_ring_full _nn_ring_full "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/utils/nn_ring.h" 73 76
+.%scope function nn_ring_full _nn_ring_full "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/utils/nn_ring.h" 73 76
 .%scope end
-.%scope function nn_ring_put _nn_ring_put "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/nn_ring.c" 28 31
+.%scope function nn_ring_put _nn_ring_put "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/nn_ring.c" 28 31
 .%arg val 0 val_392_V$5d2
 .%scope end
-.%scope function nn_ring_get _nn_ring_get "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/nn_ring.c" 35 42
+.%scope function nn_ring_get _nn_ring_get "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/nn_ring.c" 35 42
 .%var result 0 result_393 LIX
 .%scope end
-.%scope function nn_ring_read _nn_ring_read "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/nn_ring.c" 45 52
+.%scope function nn_ring_read _nn_ring_read "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/nn_ring.c" 45 52
 .%var result 0 result_394 LIX
 .%scope end
-.%scope function reorder_start _reorder_start "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 30 44
+.%scope function reorder_start _reorder_start "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 30 44
 .%arg start_ctx 0 start_ctx_402_V$5d7
 .%arg sig 21 sig_402_V$5d8
 .%var val 0 val_402 LIX
 .%scope end
-.%scope function reorder_done _reorder_done "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 48 73
+.%scope function reorder_done _reorder_done "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 48 73
 .%arg start_ctx 0 start_ctx_404_V$5db
 .%arg end_ctx 0 end_ctx_404_V$5dc
 .%arg sig 21 sig_404_V$5dd
 .%var val 0 val_404 LIX
 .%scope end
-.%scope function reorder_get_next_ctx _reorder_get_next_ctx "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 77 88
+.%scope function reorder_get_next_ctx _reorder_get_next_ctx "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 77 88
 .%arg start_ctx 0 start_ctx_409_V$5e0
 .%arg end_ctx 0 end_ctx_409_V$5e1
 .%var val 0 val_409 LIX
 .%scope end
-.%scope function reorder_done_opt _reorder_done_opt "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 92 103
+.%scope function reorder_done_opt _reorder_done_opt "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 92 103
 .%arg next_ctx 44 next_ctx_412_V$5e4
 .%arg sig 21 sig_412_V$5e5
 .%var val 0 val_412 LIX
 .%scope end
-.%scope function reorder_self _reorder_self "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 107 117
+.%scope function reorder_self _reorder_self "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 107 117
 .%arg sig 21 sig_413_V$5e7
 .%var val 0 val_413 LIX
 .%var ctx 0 ctx_413 LIX
 .%scope end
-.%scope function reorder_future_sig _reorder_future_sig "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 121 131
+.%scope function reorder_future_sig _reorder_future_sig "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 121 131
 .%arg sig 21 sig_414_V$5ea
 .%arg cycles 0 cycles_414_V$5eb
 .%var sig_num 0 sig_num_414 LIX
 .%var tslo 0 tslo_414 LIX
 .%scope end
-.%scope function reorder_test_swap _reorder_test_swap "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 135 142
+.%scope function reorder_test_swap _reorder_test_swap "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/ordering.c" 135 142
 .%arg sig 21 sig_415_V$5ee
 .%scope end
-.%scope function bf_compress_quad _bf_compress_quad "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 47 57
+.%scope function bf_compress_quad _bf_compress_quad "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 47 57
 .%arg x 0 x_455_V$5ef
 .%arg off 19 off_455_V$5f0
 .%scope end
-.%scope function select_queue _select_queue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 64 110
+.%scope function select_queue _select_queue "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 64 110
 .%arg queue 37 queue_457_V$5f4
 .%arg bmsk 45 bmsk_457_V$5f5
 .%var bmsk_cp 0 bmsk_cp_457 LIX
 .%var queue_cp 0 queue_cp_457 LIX
 .%scope end
-.%scope function clear_queue _clear_queue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 113 120
+.%scope function clear_queue _clear_queue "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 113 120
 .%arg queue 37 queue_467_V$645
 .%arg bmsk 45 bmsk_467_V$646
 .%scope end
-.%scope function set_queue _set_queue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 123 130
+.%scope function set_queue _set_queue "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 123 130
 .%arg queue 37 queue_470_V$64f
 .%arg bmsk 45 bmsk_470_V$650
 .%scope end
-.%scope function init_qc_queues _init_qc_queues "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 133 150
+.%scope function init_qc_queues _init_qc_queues "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 133 150
 .%arg pcie_isl 0 pcie_isl_473_V$659
 .%arg cfg 47 cfg_473_V$65a
 .%arg start_queue 0 start_queue_473_V$65b
@@ -207,7 +207,7 @@
 .%var queue 0 queue_473 LIX
 .%var end_queue 0 end_queue_473 LIX
 .%scope end
-.%scope function init_bitmask_filters _init_bitmask_filters "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 175 209
+.%scope function init_bitmask_filters _init_bitmask_filters "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 175 209
 .%arg xfers 52 xfers_478_V$664
 .%arg s0 54 s0_478_V$665
 .%arg s1 54 s1_478_V$666
@@ -227,10 +227,10 @@
 .%var ctx 0 ctx_478 LIX
 .%var pcie_provider 0 pcie_provider_478 LIX
 .%scope end
-.%scope function init_bitmasks _init_bitmasks "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 212 218
+.%scope function init_bitmasks _init_bitmasks "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 212 218
 .%arg bmsk 55 bmsk_489_V$711
 .%scope end
-.%scope function check_bitmask_filters _check_bitmask_filters "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 253 271
+.%scope function check_bitmask_filters _check_bitmask_filters "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 253 271
 .%arg updates 56 updates_490_V$722
 .%arg xfers 52 xfers_490_V$723
 .%arg s0 54 s0_490_V$724
@@ -267,7 +267,7 @@
 .%var new_queues 0 new_queues_506 LIX
 .%scope end
 .%scope end
-.%scope function check_queues _check_queues "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 275 385
+.%scope function check_queues _check_queues "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 275 385
 .%arg queue_info_struct 38 queue_info_struct_507_V$865
 .%arg active_bmsk 45 active_bmsk_507_V$866
 .%arg pending_bmsk 45 pending_bmsk_507_V$867
@@ -283,12 +283,12 @@
 .%var qc_sig 19 qc_sig_507 LIX
 .%var ptr_inc 0 ptr_inc_507 LIX
 .%scope end
-.%scope function set_Qctl8bitQnum _set_Qctl8bitQnum "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 388 401
+.%scope function set_Qctl8bitQnum _set_Qctl8bitQnum "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qc.c" 388 401
 .%var addr 0 addr_520 LIX
 .%var ECCSramCntl10 0 ECCSramCntl10_520 LIX
 .%var sig 19 sig_520 LIX
 .%scope end
-.%scope function __qc_read ___qc_read "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 29 55
+.%scope function __qc_read ___qc_read "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 29 55
 .%arg pcie_isl 6 pcie_isl_521_V$8f9
 .%arg queue 0 queue_521_V$8fa
 .%arg ptr 66 ptr_521_V$8fb
@@ -299,14 +299,14 @@
 .%var queue_base_addr 0 queue_base_addr_521 LIX
 .%var offset 0 offset_521 LIX
 .%scope end
-.%scope function qc_read _qc_read "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 58 65
+.%scope function qc_read _qc_read "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 58 65
 .%arg pcie_isl 6 pcie_isl_529_V$907
 .%arg queue 0 queue_529_V$908
 .%arg ptr 66 ptr_529_V$909
 .%var xfer 0 xfer_529 LIR
 .%var sig 19 sig_529 LIX
 .%scope end
-.%scope function __qc_write ___qc_write "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 70 89
+.%scope function __qc_write ___qc_write "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 70 89
 .%arg pcie_isl 6 pcie_isl_530_V$90d
 .%arg queue 0 queue_530_V$90e
 .%arg value 69 value_530_V$90f
@@ -316,7 +316,7 @@
 .%var addr_hi 0 addr_hi_530 LIX
 .%var queue_base_addr 0 queue_base_addr_530 LIX
 .%scope end
-.%scope function qc_init_queue _qc_init_queue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 93 127
+.%scope function qc_init_queue _qc_init_queue "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 93 127
 .%arg pcie_isl 6 pcie_isl_535_V$915
 .%arg queue 0 queue_535_V$916
 .%arg cfg 47 cfg_535_V$917
@@ -328,7 +328,7 @@
 .%var s1 19 s1_535 LIX
 .%var s2 19 s2_535 LIX
 .%scope end
-.%scope function __qc_ping_queue ___qc_ping_queue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 131 148
+.%scope function __qc_ping_queue ___qc_ping_queue "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 131 148
 .%arg pcie_isl 6 pcie_isl_536_V$96f
 .%arg queue 0 queue_536_V$970
 .%arg event_data 0 event_data_536_V$971
@@ -338,7 +338,7 @@
 .%arg sig 21 sig_536_V$975
 .%var config_lo_tmp 70 config_lo_tmp_536 LIX
 .%scope end
-.%scope function qc_ping_queue _qc_ping_queue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 151 159
+.%scope function qc_ping_queue _qc_ping_queue "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 151 159
 .%arg pcie_isl 6 pcie_isl_539_V$983
 .%arg queue 0 queue_539_V$984
 .%arg event_data 0 event_data_539_V$985
@@ -346,7 +346,7 @@
 .%var xfer 0 xfer_539 LIW
 .%var sig 19 sig_539 LIX
 .%scope end
-.%scope function __qc_add_to_ptr ___qc_add_to_ptr "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 163 195
+.%scope function __qc_add_to_ptr ___qc_add_to_ptr "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 163 195
 .%arg pcie_isl 6 pcie_isl_540_V$989
 .%arg queue 0 queue_540_V$98a
 .%arg ptr 66 ptr_540_V$98b
@@ -358,7 +358,7 @@
 .%var val_str 73 val_str_540 LIX
 .%var ptr_offset 0 ptr_offset_540 LIX
 .%scope end
-.%scope function qc_add_to_ptr _qc_add_to_ptr "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 198 206
+.%scope function qc_add_to_ptr _qc_add_to_ptr "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\utils\_c/qcntl.c" 198 206
 .%arg pcie_isl 6 pcie_isl_547_V$99a
 .%arg queue 0 queue_547_V$99b
 .%arg ptr 66 ptr_547_V$99c

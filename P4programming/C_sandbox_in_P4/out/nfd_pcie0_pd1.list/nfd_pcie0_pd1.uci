@@ -826,15 +826,15 @@
 ; specified register/signal maybe or was used before being set.
 
 ; For Warning:
-;  Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out0[3] may be used before being set.
+;  c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out0[3] may be used before being set.
 ;  Path: 0, 5-48, 213-221, 49-61
 
 ; For Warning:
-;  Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out1[3] may be used before being set.
+;  c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out1[3] may be used before being set.
 ;  Path: 0, 5-48, 213-221, 49, 200-205, 222-225, 390-398, 226-238
 
 ; For Warning:
-;  Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out2[3] may be used before being set.
+;  c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out2[3] may be used before being set.
 ;  Path: 0, 5-48, 213-221, 49, 200-205, 222, 611-615, 619-626, 630-631, 
 ;     681-682, 847-855, 683, 834-839, 856, 1245-1249, 1253-1260, 1264-1265, 
 ;     1315-1316, 1481-1489, 1317, 1468-1473, 1490-1493, 1658-1666, 1494, 
@@ -842,17 +842,17 @@
 ;     1863-1864, 399-402, 567-575, 403-415
 
 ; For Warning:
-;  Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out1[3] may be used before being set.
+;  c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out1[3] may be used before being set.
 ;  Path: 0, 5-48, 213-221, 49, 200-205, 222, 611-615, 619-626, 630-631, 
 ;     681-682, 847-855, 683-695
 
 ; For Warning:
-;  Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out2[3] may be used before being set.
+;  c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out2[3] may be used before being set.
 ;  Path: 0, 5-48, 213-221, 49, 200-205, 222, 611-615, 619-626, 630-631, 
 ;     681-682, 847-855, 683, 834-839, 856-859, 1024-1032, 860-872
 
 ; For Warning:
-;  Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out0[3] may be used before being set.
+;  c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out0[3] may be used before being set.
 ;  Path: 0, 5-48, 213-221, 49, 200-205, 222, 611-615, 619-626, 630-631, 
 ;     681-682, 847-855, 683, 834-839, 856, 1245-1249, 1253-1260, 1264-1265, 
 ;     1315-1316, 1481-1489, 1317, 1468-1473, 1490-1493, 1658-1666, 1494, 
@@ -861,19 +861,19 @@
 ;     1033-1036, 1201-1209, 1037-1049
 
 ; For Warning:
-;  Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out2[3] may be used before being set.
+;  c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out2[3] may be used before being set.
 ;  Path: 0, 5-48, 213-221, 49, 200-205, 222, 611-615, 619-626, 630-631, 
 ;     681-682, 847-855, 683, 834-839, 856, 1245-1249, 1253-1260, 1264-1265, 
 ;     1315-1316, 1481-1489, 1317-1329
 
 ; For Warning:
-;  Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out0[3] may be used before being set.
+;  c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out0[3] may be used before being set.
 ;  Path: 0, 5-48, 213-221, 49, 200-205, 222, 611-615, 619-626, 630-631, 
 ;     681-682, 847-855, 683, 834-839, 856, 1245-1249, 1253-1260, 1264-1265, 
 ;     1315-1316, 1481-1489, 1317, 1468-1473, 1490-1493, 1658-1666, 1494-1506
 
 ; For Warning:
-;  Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out1[3] may be used before being set.
+;  c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_out_pd.uc(410) : WARNING: (4701) Write transfer register $dma_out1[3] may be used before being set.
 ;  Path: 0, 5-48, 213-221, 49, 200-205, 222, 611-615, 619-626, 630-631, 
 ;     681-682, 847-855, 683, 834-839, 856, 1245-1249, 1253-1260, 1264-1265, 
 ;     1315-1316, 1481-1489, 1317, 1468-1473, 1490-1493, 1658-1666, 1494, 

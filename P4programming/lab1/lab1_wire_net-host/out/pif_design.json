@@ -1,0 +1,110 @@
+{
+    "generic": {
+        "tables_info": {
+            "encap_tbl": {
+                "max_entries": 1, 
+                "allowed_actions": [
+                    "drop_act"
+                ], 
+                "name": "encap_tbl"
+            }
+        }, 
+        "action_info": {
+            "drop_act": {
+                "name": "drop_act", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }
+        }
+    }, 
+    "vendor": {
+        "register_info": {}, 
+        "backend_source_info": {
+            "date": "2021/10/15 11:08:04", 
+            "source_files": "lab1_wire_net-host.yml"
+        }, 
+        "counters_info": {}, 
+        "meter_info": {}, 
+        "frontend_source_info": {
+            "date": "2021/10/15 11:08:03", 
+            "source_files": [
+                "C:\\users\\permki\\Desktop\\PacedLinux\\P4programming\\lab1\\lab1_wire_net-host\\p4code.p4"
+            ]
+        }, 
+        "tables_info": {
+            "encap_tbl": {
+                "name": "encap_tbl", 
+                "constant_default": false, 
+                "matches": [], 
+                "allowed_actions": [
+                    "drop_act"
+                ], 
+                "id": 0, 
+                "max_entries": 1, 
+                "data_shift": 4, 
+                "rtsym": "_pif_actiondata_table_0_encap_tbl", 
+                "data_size": 16
+            }
+        }, 
+        "action_info": {
+            "drop_act": {
+                "timeoutno_field": "", 
+                "name": "drop_act", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 0, 
+                "tableno_field": "__pif_table_no"
+            }
+        }, 
+        "multicast": {
+            "table_rtsym": "_pif_mcast_table", 
+            "group_count": 16, 
+            "group_size": 16
+        }, 
+        "custom_errors": {}, 
+        "build_uuid": [
+            1536845823, 
+            2859484298, 
+            765989356, 
+            720771599
+        ], 
+        "digests_info": {}, 
+        "parser_value_set_info": {}
+    }
+}

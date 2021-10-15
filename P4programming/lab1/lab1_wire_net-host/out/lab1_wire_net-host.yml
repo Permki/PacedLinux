@@ -1,0 +1,118 @@
+##########################################
+# Header instance definitions            #
+##########################################
+
+"eth" :
+    type : header
+    fields : 
+        - "dst" : 48
+        - "src" : 48
+        - "etype" : 16
+
+"standard_metadata" :
+    type : metadata
+    fields : 
+        - "ingress_port" : 10
+        - "packet_length" : 14
+        - "egress_spec" : 16
+        - "egress_port" : 16
+        - "egress_instance" : 10
+        - "instance_type" : 4
+        - "clone_spec" : 32
+        - "parser_error_location" : 8
+        - "parser_status" : 3
+        - "_padding" : 7
+
+##########################################
+# Parse states                           #
+##########################################
+
+"start" :
+    type : parse_state
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\p4code.p4'
+    src_lineno : 11
+
+"eth_parse" :
+    type : parse_state
+    extracts :
+        - "eth"
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\p4code.p4'
+    src_lineno : 15
+
+##########################################
+# Parser                                 #
+##########################################
+
+parser :
+    type : parser
+    format : dot
+    start_state : "start"
+    implementation : >-
+        digraph {
+            start -> eth_parse [value="default", mask="none", order="0"]
+            eth_parse -> encap_tbl [value="default", mask="none", order="0"]
+        }
+
+##########################################
+# Action sets                            #
+##########################################
+
+"drop_act" :
+    type : action
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\p4code.p4'
+    src_lineno : 30
+    implementation : >-
+        drop();
+
+##########################################
+# Ingress and Egress tables              #
+##########################################
+
+"encap_tbl":
+    type : table
+    allowed_actions : 
+        - "drop_act"
+    src_filename : 'C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\p4code.p4'
+    src_lineno : 24
+
+##########################################
+# Ingress conditionals sets              #
+##########################################
+
+##########################################
+# Ingress control flow                   #
+##########################################
+
+ingress_flow:
+    type : control_flow
+    doc : "control flow for ingress"
+    format : dot
+    start_state : "encap_tbl"
+    implementation : >-
+        digraph {
+            encap_tbl -> exit_control_flow [action = always]
+        }
+
+##########################################
+# Processor layout                       #
+##########################################
+
+layout:
+    type : processor_layout
+    format : list
+    implementation :
+        - parser
+        - ingress
+
+##########################################
+# Source info                            #
+##########################################
+
+source_info :
+    type : source_info
+    date : "2021/10/15 11:08:03"
+    p4_version : "1.0"
+    source_files : 
+        - 'C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\p4code.p4'
+    output_file : 'lab1_wire_net-host.yml'
+

@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_280_V$4fd
 .%arg y 0 y_280_V$4fe
 .%var result 0 result_280 LIX
@@ -16,54 +16,54 @@
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
 .%var pkt 12 _pkt SEX
 .%var port_configs 21 _port_configs SEX
-.%scope function pif_global_metadata_init _pif_global_metadata_init "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 10 19
+.%scope function pif_global_metadata_init _pif_global_metadata_init "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 10 19
 .%arg parrep 25 parrep_287_V$501
 .%var standard_metadata 26 standard_metadata_287 LIX
 .%scope end
-.%scope function pif_global_get_stdmd_egress_spec _pif_global_get_stdmd_egress_spec "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 21 25
+.%scope function pif_global_get_stdmd_egress_spec _pif_global_get_stdmd_egress_spec "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 21 25
 .%arg parrep 25 parrep_293_V$503
 .%var standard_metadata 26 standard_metadata_293 LIX
 .%scope end
-.%scope function pif_global_get_stdmd_egress_port _pif_global_get_stdmd_egress_port "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 27 31
+.%scope function pif_global_get_stdmd_egress_port _pif_global_get_stdmd_egress_port "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 27 31
 .%arg parrep 25 parrep_294_V$506
 .%var standard_metadata 26 standard_metadata_294 LIX
 .%scope end
-.%scope function pif_global_set_stdmd_egress_port _pif_global_set_stdmd_egress_port "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 33 37
+.%scope function pif_global_set_stdmd_egress_port _pif_global_set_stdmd_egress_port "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 33 37
 .%arg parrep 25 parrep_295_V$509
 .%arg port_spec 0 port_spec_295_V$50a
 .%var standard_metadata 26 standard_metadata_295 LIX
 .%scope end
-.%scope function pif_global_set_stdmd_instance_type _pif_global_set_stdmd_instance_type "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 39 43
+.%scope function pif_global_set_stdmd_instance_type _pif_global_set_stdmd_instance_type "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 39 43
 .%arg parrep 25 parrep_297_V$50c
 .%arg instance_type 0 instance_type_297_V$50d
 .%var standard_metadata 26 standard_metadata_297 LIX
 .%scope end
-.%scope function pif_global_set_stdmd_egress_instance _pif_global_set_stdmd_egress_instance "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 45 49
+.%scope function pif_global_set_stdmd_egress_instance _pif_global_set_stdmd_egress_instance "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 45 49
 .%arg parrep 25 parrep_299_V$50f
 .%arg egress_instance 0 egress_instance_299_V$510
 .%var standard_metadata 26 standard_metadata_299 LIX
 .%scope end
-.%scope function pif_global_set_stdmd_parser_status _pif_global_set_stdmd_parser_status "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 51 57
+.%scope function pif_global_set_stdmd_parser_status _pif_global_set_stdmd_parser_status "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 51 57
 .%arg parrep 25 parrep_301_V$512
 .%arg error 0 error_301_V$513
 .%var standard_metadata 26 standard_metadata_301 LIX
 .%scope end
-.%scope function pif_global_set_stdmd_parser_error_location _pif_global_set_stdmd_parser_error_location "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 59 63
+.%scope function pif_global_set_stdmd_parser_error_location _pif_global_set_stdmd_parser_error_location "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 59 63
 .%arg parrep 25 parrep_303_V$515
 .%arg node 0 node_303_V$516
 .%var standard_metadata 26 standard_metadata_303 LIX
 .%scope end
-.%scope function pif_global_set_pktmd_nic_vlan _pif_global_set_pktmd_nic_vlan "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 65 67
+.%scope function pif_global_set_pktmd_nic_vlan _pif_global_set_pktmd_nic_vlan "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 65 67
 .%arg parrep 25 parrep_305_V$518
 .%scope end
-.%scope function pif_global_get_nic_rxoffload _pif_global_get_nic_rxoffload "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 69 71
+.%scope function pif_global_get_nic_rxoffload _pif_global_get_nic_rxoffload "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 69 71
 .%arg parrep 25 parrep_306_V$519
 .%scope end
-.%scope function pif_global_set_flow_id _pif_global_set_flow_id "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 72 74
+.%scope function pif_global_set_flow_id _pif_global_set_flow_id "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 72 74
 .%arg parrep 25 parrep_307_V$51a
 .%arg act_buf 28 act_buf_307_V$51b
 .%scope end
-.%scope function pif_global_get_wq_metawords _pif_global_get_wq_metawords "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 76 80
+.%scope function pif_global_get_wq_metawords _pif_global_get_wq_metawords "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_global.c" 76 80
 .%arg parrep 25 parrep_308_V$51c
 .%arg mw0 30 mw0_308_V$51d
 .%arg mw1 30 mw1_308_V$51e

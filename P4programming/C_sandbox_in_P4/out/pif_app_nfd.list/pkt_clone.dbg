@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_496_V$802
 .%arg y 0 y_496_V$803
 .%var result 0 result_496 LIX
@@ -22,29 +22,29 @@
 .%var pif_counter_ERROR_WAIT_BLM_BUF_ALLOC 27 _pif_counter_ERROR_WAIT_BLM_BUF_ALLOC SEX
 .%var pkt_clone_destination 28 _pkt_clone_destination SEX
 .%var ctm_credits 29 _ctm_credits SEX
-.%scope function save_pkt_info _save_pkt_info "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 365 373
+.%scope function save_pkt_info _save_pkt_info "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 365 373
 .%arg cls_ptr 30 cls_ptr_573_V$806
 .%var wr_pkt_info 32 wr_pkt_info_573 LIW
 .%scope end
-.%scope function retrieve_pkt_info _retrieve_pkt_info "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 375 384
+.%scope function retrieve_pkt_info _retrieve_pkt_info "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 375 384
 .%arg cls_ptr 30 cls_ptr_574_V$833
 .%var rd_pkt_info 32 rd_pkt_info_574 LIR
 .%scope end
-.%scope function save_parrep _save_parrep "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 391 419
+.%scope function save_parrep _save_parrep "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 391 419
 .%arg parrep 33 parrep_575_V$860
 .%arg cls_ptr 34 cls_ptr_575_V$861
 .%arg word_length 0 word_length_575_V$862
 .%var wr_buffer 35 wr_buffer_575 LIW
 .%var i 0 i_575 LIX
 .%scope end
-.%scope function retrieve_parrep _retrieve_parrep "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 421 449
+.%scope function retrieve_parrep _retrieve_parrep "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 421 449
 .%arg parrep 33 parrep_578_V$866
 .%arg cls_ptr 34 cls_ptr_578_V$867
 .%arg word_length 0 word_length_578_V$868
 .%var rd_buffer 36 rd_buffer_578 LIR
 .%var i 0 i_578 LIX
 .%scope end
-.%scope function copy_ctm_packet _copy_ctm_packet "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 97 155
+.%scope function copy_ctm_packet _copy_ctm_packet "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 97 155
 .%arg source_ctm_pkt_num 0 source_ctm_pkt_num_556_V$86c
 .%arg dest_ctm_pkt_num 0 dest_ctm_pkt_num_556_V$86d
 .%arg ctm_src_off 0 ctm_src_off_556_V$86e
@@ -65,7 +65,7 @@
 .%var to_copy_bytes 0 to_copy_bytes_559 LIX
 .%scope end
 .%scope end
-.%scope function copy_mu_buffer _copy_mu_buffer "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 161 218
+.%scope function copy_mu_buffer _copy_mu_buffer "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 161 218
 .%arg source_mu_ptr 37 source_mu_ptr_561_V$87f
 .%arg dest_mu_ptr 37 dest_mu_ptr_561_V$880
 .%arg byte_length 0 byte_length_561_V$881
@@ -85,7 +85,7 @@
 .%var to_copy_bytes 0 to_copy_bytes_564 LIX
 .%scope end
 .%scope end
-.%scope function pkt_clone _pkt_clone "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 223 357
+.%scope function pkt_clone _pkt_clone "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pkt_clone.c" 223 357
 .%arg source_ctm_pkt_num 0 source_ctm_pkt_num_566_V$891
 .%arg ctm_size 47 ctm_size_566_V$892
 .%arg source_mu_ptr 37 source_mu_ptr_566_V$893

@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_280_V$4b5
 .%arg y 0 y_280_V$4b6
 .%var result 0 result_280 LIX
@@ -14,11 +14,11 @@
 .%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
 .%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
-.%scope function pif_flcalc_verify _pif_flcalc_verify "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_flcalc.c" 6 11
+.%scope function pif_flcalc_verify _pif_flcalc_verify "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_flcalc.c" 6 11
 .%arg parrep 12 parrep_282_V$4b9
 .%var ctldata 13 ctldata_282 LIX
 .%scope end
-.%scope function pif_flcalc_update _pif_flcalc_update "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_flcalc.c" 13 17
+.%scope function pif_flcalc_update _pif_flcalc_update "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_flcalc.c" 13 17
 .%arg parrep 12 parrep_283_V$4bc
 .%var ctldata 13 ctldata_283 LIX
 .%scope end

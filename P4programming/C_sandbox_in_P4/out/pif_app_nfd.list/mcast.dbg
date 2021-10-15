@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_514_V$7ea
 .%arg y 0 y_514_V$7eb
 .%var result 0 result_514 LIX
@@ -24,7 +24,7 @@
 .%var pkt_clone_destination 31 _pkt_clone_destination SEX
 .%var pif_mcast_table 32 _pif_mcast_table SEX
 .%var mcast_group 35 _mcast_group SEX
-.%scope function mcast_grp_load _mcast_grp_load "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\mcast.c" 68 96
+.%scope function mcast_grp_load _mcast_grp_load "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\mcast.c" 68 96
 .%arg grp_id 0 grp_id_531_V$7ee
 .%arg grp_offset 0 grp_offset_531_V$7ef
 .%var rd_buffer 36 rd_buffer_531 LIR
@@ -32,15 +32,15 @@
 .%var i 38 i_531 LIX
 .%var first_val 38 first_val_531 LIX
 .%scope end
-.%scope function mcast_grp_retrieve_element _mcast_grp_retrieve_element "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\mcast.c" 98 126
+.%scope function mcast_grp_retrieve_element _mcast_grp_retrieve_element "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\mcast.c" 98 126
 .%arg grp_id 0 grp_id_533_V$7f8
 .%arg index 0 index_533_V$7f9
 .%scope end
-.%scope function mcast_table_init _mcast_table_init "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\mcast.c" 55 66
+.%scope function mcast_table_init _mcast_table_init "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\mcast.c" 55 66
 .%var wr_buffer 38 wr_buffer_529 LIW
 .%var i 0 i_529 LIX
 .%scope end
-.%scope function process_multicast _process_multicast "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\mcast.c" 129 232
+.%scope function process_multicast _process_multicast "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\mcast.c" 129 232
 .%arg mcast 39 mcast_537_V$7fe
 .%var egress_ports 38 egress_ports_537 LIX
 .%var egress_port 38 egress_port_537 LIX

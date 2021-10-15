@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_186 LIX
 .%scope end
 .%var nfp_cls_autopush_user_event 1 _nfp_cls_autopush_user_event SEX
@@ -14,7 +14,7 @@
 .%var BLM_NBI8_BLQ3_EMU_Q_BASE 11 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
 .%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 12 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 13 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
-.%scope function __mac_is_port_paused ___mac_is_port_paused "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflushuser.c" 24 39
+.%scope function __mac_is_port_paused ___mac_is_port_paused "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflushuser.c" 24 39
 .%arg port_subsys 14 port_subsys_189_V$2cc
 .%arg port_q 14 port_q_189_V$2cd
 .%arg xfr_port_bitmap 15 xfr_port_bitmap_189_V$2ce
@@ -23,7 +23,7 @@
 .%var count 0 count_189 LIX
 .%var temp_port 14 temp_port_189 LIX
 .%scope end
-.%scope function mac_is_port_paused _mac_is_port_paused "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflushuser.c" 41 57
+.%scope function mac_is_port_paused _mac_is_port_paused "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\macflush\libmacflushuser.c" 41 57
 .%arg subsys 0 subsys_190_V$2d6
 .%arg port 0 port_190_V$2d7
 .%var is_paused 14 is_paused_190 LIX

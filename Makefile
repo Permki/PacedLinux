@@ -25,3 +25,5 @@ language:
 compile:
 	make deb-pkg -j4 INSTALL_MOD_STRIP=1
 
+wine:
+	./wineinstall.sh

@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_325_V$4ce
 .%arg y 0 y_325_V$4cf
 .%var result 0 result_325 LIX
@@ -14,7 +14,7 @@
 .%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
 .%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
-.%scope function pif_mem_meter _pif_mem_meter "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 19 36
+.%scope function pif_mem_meter _pif_mem_meter "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 19 36
 .%arg mval 12 mval_327_V$4d2
 .%arg addr 13 addr_327_V$4d3
 .%arg colour 15 colour_327_V$4d4
@@ -23,13 +23,13 @@
 .%var high_addr 0 high_addr_327 LIX
 .%var low_addr 0 low_addr_327 LIX
 .%scope end
-.%scope function mult32_oflow0 _mult32_oflow0 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 42 61
+.%scope function mult32_oflow0 _mult32_oflow0 "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 42 61
 .%arg v0 0 v0_328_V$4db
 .%arg v1 0 v1_328_V$4dc
 .%var result 0 result_328 LIX
 .%var result_hi 0 result_hi_328 LIX
 .%scope end
-.%scope function update_meter_timers _update_meter_timers "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 64 167
+.%scope function update_meter_timers _update_meter_timers "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 64 167
 .%arg meter 17 meter_329_V$4e0
 .%var ctime 21 ctime_329 LIX
 .%var ctime_upper 0 ctime_upper_329 LIX
@@ -51,7 +51,7 @@
 .%var tmr_addr 23 tmr_addr_338 LIX
 .%scope end
 .%scope end
-.%scope function pif_meter_execute _pif_meter_execute "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 173 206
+.%scope function pif_meter_execute _pif_meter_execute "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_meter.c" 173 206
 .%arg meter 17 meter_339_V$510
 .%arg colour_in 15 colour_in_339_V$511
 .%arg tick 15 tick_339_V$512

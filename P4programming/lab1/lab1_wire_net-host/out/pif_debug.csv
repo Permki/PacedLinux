@@ -1,0 +1,5 @@
+"object_name","filename","lineno","listlabel"
+eth_parse,C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\p4code.p4,15,pif_parrep_state_eth_parse
+start,C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\p4code.p4,11,pif_parrep_state_start
+encap_tbl,C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\p4code.p4,24,pif_ctlflow_state_ingress_flow_encap_tbl
+drop_act,C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\p4code.p4,30,pif_action_state_drop_act

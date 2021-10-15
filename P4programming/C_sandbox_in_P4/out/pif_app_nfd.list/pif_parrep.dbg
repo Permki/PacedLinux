@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_241 LIX
 .%scope end
 .%var BLM_NBI8_BLQ0_EMU_QD_BASE 1 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
@@ -15,18 +15,18 @@
 .%var pkt 12 _pkt SEX
 .%var pif_pkt_info_spec 21 _pif_pkt_info_spec SEX
 .%var parrep 25 _parrep SEX
-.%scope function __hashmap_lock_release ___hashmap_lock_release "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\include\hashmap.h" 103 122
+.%scope function __hashmap_lock_release ___hashmap_lock_release "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\include\hashmap.h" 103 122
 .%arg lock 26 lock_255_V$720
 .%var ind 31 ind_255 LIX
 .%var addr_hi 0 addr_hi_255 LIX
 .%var addr_lo 0 addr_lo_255 LIX
 .%scope end
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_462_V$739
 .%arg y 0 y_462_V$73a
 .%var result 0 result_462 LIX
 .%scope end
-.%scope function pif_parrep_extract _pif_parrep_extract "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_parrep.c" 8 227
+.%scope function pif_parrep_extract _pif_parrep_extract "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_parrep.c" 8 227
 .%arg _pif_parrep 34 _pif_parrep_464_V$73d
 .%arg _pif_parrep_pktdata 35 _pif_parrep_pktdata_464_V$73e
 .%arg _pif_parrep_pktlen 0 _pif_parrep_pktlen_464_V$73f
@@ -89,7 +89,7 @@
 .%var _pif_fk 48 _pif_fk_489 LIX
 .%scope end
 .%scope end
-.%scope function pif_parrep_exceptions _pif_parrep_exceptions "Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_parrep.c" 230 233
+.%scope function pif_parrep_exceptions _pif_parrep_exceptions "C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\out\pif_parrep.c" 230 233
 .%arg _pif_parrep 34 _pif_parrep_490_V$76a
 .%arg _pif_pe_error 41 _pif_pe_error_490_V$76b
 .%arg _pif_parrep_fk_ptr 34 _pif_parrep_fk_ptr_490_V$76c

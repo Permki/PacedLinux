@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
 .%var nfp_cls_autopush_user_event 1 _nfp_cls_autopush_user_event SEX
@@ -68,23 +68,23 @@
 .%var wq_num_base 0 _wq_num_base SIX
 .%var dst_q 0 _dst_q SIX
 .%var seq_nums 32 _seq_nums SIX
-.%scope function nfd_cfg_bar_base _nfd_cfg_bar_base "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg.h" 273 319
+.%scope function nfd_cfg_bar_base _nfd_cfg_bar_base "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg.h" 273 319
 .%arg isl 0 isl_527_V$99f
 .%arg vid 0 vid_527_V$9a0
 .%var bar_base 33 bar_base_527 LIX
 .%scope end
-.%scope function nfd_flr_clr_bar _nfd_flr_clr_bar "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 91 119
+.%scope function nfd_flr_clr_bar _nfd_flr_clr_bar "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 91 119
 .%arg addr 33 addr_536_V$9a5
 .%var zero 34 zero_536 LIW
 .%var copied_bytes 0 copied_bytes_536 LIX
 .%scope end
-.%scope function nfd_flr_init_cfg_queue _nfd_flr_init_cfg_queue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 135 153
+.%scope function nfd_flr_init_cfg_queue _nfd_flr_init_cfg_queue "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 135 153
 .%arg pcie_isl 0 pcie_isl_541_V$9ad
 .%arg vid 0 vid_541_V$9ae
 .%arg event_type 0 event_type_541_V$9af
 .%var nfd_cfg_queue 35 nfd_cfg_queue_541 LIX
 .%scope end
-.%scope function nfd_flr_check_pf _nfd_flr_check_pf "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 363 396
+.%scope function nfd_flr_check_pf _nfd_flr_check_pf "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 363 396
 .%arg pcie_isl 0 pcie_isl_545_V$9b6
 .%arg flr_pend_status 39 flr_pend_status_545_V$9b7
 .%var seen_flr 0 seen_flr_545 LIR
@@ -95,7 +95,7 @@
 .%var xpb_sig 17 xpb_sig_545 LIX
 .%var pf_atomic_data 0 pf_atomic_data_545 LIX
 .%scope end
-.%scope function nfd_flr_check_vfs _nfd_flr_check_vfs "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 408 454
+.%scope function nfd_flr_check_vfs _nfd_flr_check_vfs "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 408 454
 .%arg pcie_isl 0 pcie_isl_548_V$9c1
 .%arg flr_pend_status 39 flr_pend_status_548_V$9c2
 .%arg flr_pend_vf 41 flr_pend_vf_548_V$9c3
@@ -110,19 +110,19 @@
 .%var new_flr 0 new_flr_548 LIX
 .%var new_flr_wr 44 new_flr_wr_548 LIW
 .%scope end
-.%scope function nfd_flr_write_cfg_msg _nfd_flr_write_cfg_msg "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 471 480
+.%scope function nfd_flr_write_cfg_msg _nfd_flr_write_cfg_msg "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 471 480
 .%arg isl_base 33 isl_base_551_V$9d1
 .%arg vnic 0 vnic_551_V$9d2
 .%var cfg_bar_msg 45 cfg_bar_msg_551 LIW
 .%scope end
-.%scope function nfd_flr_ack_pf _nfd_flr_ack_pf "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 491 515
+.%scope function nfd_flr_ack_pf _nfd_flr_ack_pf "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 491 515
 .%arg pcie_isl 0 pcie_isl_552_V$9d6
 .%var flr_data 0 flr_data_552 LIW
 .%var flr_addr 0 flr_addr_552 LIX
 .%var atomic_data 0 atomic_data_552 LIX
 .%var atomic_addr 40 atomic_addr_552 LIX
 .%scope end
-.%scope function nfd_flr_ack_vf _nfd_flr_ack_vf "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 527 556
+.%scope function nfd_flr_ack_vf _nfd_flr_ack_vf "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 527 556
 .%arg pcie_isl 0 pcie_isl_553_V$9db
 .%arg vf 0 vf_553_V$9dc
 .%var flr_data 0 flr_data_553 LIX
@@ -130,52 +130,52 @@
 .%var atomic_data 0 atomic_data_553 LIW
 .%var atomic_addr 40 atomic_addr_553 LIX
 .%scope end
-.%scope function send_interthread_sig _send_interthread_sig "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 270 281
+.%scope function send_interthread_sig _send_interthread_sig "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 270 281
 .%arg dst_me 0 dst_me_554_V$9e1
 .%arg ctx 0 ctx_554_V$9e2
 .%arg sig_no 0 sig_no_554_V$9e3
 .%var addr 0 addr_554 LIX
 .%scope end
-.%scope function _ffs __ffs "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 294 306
+.%scope function _ffs __ffs "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 294 306
 .%arg data 0 data_555_V$9e5
 .%var ret 17 ret_555 LIX
 .%scope end
-.%scope function _ring_enables_test __ring_enables_test "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 313 329
+.%scope function _ring_enables_test __ring_enables_test "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 313 329
 .%arg cfg_msg 46 cfg_msg_556_V$9e8
 .%var mod_queue 0 mod_queue_556 LIX
 .%var ret 17 ret_556 LIX
 .%scope end
-.%scope function _get_ring_sz __get_ring_sz "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 341 348
+.%scope function _get_ring_sz __get_ring_sz "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 341 348
 .%arg cfg_msg 46 cfg_msg_559_V$a00
 .%var ring_sz 4 ring_sz_559 LIX
 .%var offset 0 offset_559 LIX
 .%scope end
-.%scope function _bar_addr __bar_addr "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 353 358
+.%scope function _bar_addr __bar_addr "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 353 358
 .%arg bar 50 bar_560_V$a0e
 .%arg data 54 data_560_V$a0f
 .%var addr_tmp 0 addr_tmp_560 LIX
 .%scope end
-.%scope function nfd_cfg_setup_pf _nfd_cfg_setup_pf "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 368 405
+.%scope function nfd_cfg_setup_pf _nfd_cfg_setup_pf "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 368 405
 .%var addr_hi 0 addr_hi_561 LIX
 .%var bar_base_addr 0 bar_base_addr_561 LIX
 .%var bar_tmp 51 bar_tmp_561 LIX
 .%var bar 51 bar_561 LIW
 .%var sig 17 sig_561 LIX
 .%scope end
-.%scope function nfd_cfg_setup_vf _nfd_cfg_setup_vf "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 409 444
+.%scope function nfd_cfg_setup_vf _nfd_cfg_setup_vf "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 409 444
 .%var addr_hi 0 addr_hi_562 LIX
 .%var bar_base_addr 0 bar_base_addr_562 LIX
 .%var bar_tmp 55 bar_tmp_562 LIX
 .%var bar 55 bar_562 LIW
 .%var sig 17 sig_562 LIX
 .%scope end
-.%scope function nfd_cfg_pcie_monitor_stop _nfd_cfg_pcie_monitor_stop "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 729 764
+.%scope function nfd_cfg_pcie_monitor_stop _nfd_cfg_pcie_monitor_stop "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 729 764
 .%var addr_hi 0 addr_hi_572 LIX
 .%var addr_lo 0 addr_lo_572 LIX
 .%var chk_val 0 chk_val_572 LIR
 .%var chk_sig 17 chk_sig_572 LIX
 .%scope end
-.%scope function nfd_cfg_start_cfg_msg _nfd_cfg_start_cfg_msg "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 894 913
+.%scope function nfd_cfg_start_cfg_msg _nfd_cfg_start_cfg_msg "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 894 913
 .%arg cfg_msg 46 cfg_msg_584_V$a55
 .%arg cfg_sig_remote 58 cfg_sig_remote_584_V$a56
 .%arg next_me 0 next_me_584_V$a57
@@ -184,7 +184,7 @@
 .%var cfg_msg_wr 47 cfg_msg_wr_584 LIW
 .%var ring_addr 0 ring_addr_584 LIX
 .%scope end
-.%scope function nfd_cfg_next_flr _nfd_cfg_next_flr "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 930 1076
+.%scope function nfd_cfg_next_flr _nfd_cfg_next_flr "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 930 1076
 .%arg cfg_msg 46 cfg_msg_585_V$a85
 .%scope block 933 990
 .%var vid 0 vid_587 LIX
@@ -196,7 +196,7 @@
 .%var vf 17 vf_593 LIX
 .%scope end
 .%scope end
-.%scope function nfd_cfg_parse_msg _nfd_cfg_parse_msg "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 1091 1162
+.%scope function nfd_cfg_parse_msg _nfd_cfg_parse_msg "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 1091 1162
 .%arg cfg_msg 46 cfg_msg_600_V$ada
 .%arg comp 59 comp_600_V$adb
 .%var cfg_bar_data 60 cfg_bar_data_600 LIR
@@ -206,7 +206,7 @@
 .%var sz_off 0 sz_off_605 LIX
 .%scope end
 .%scope end
-.%scope function nfd_cfg_proc_msg _nfd_cfg_proc_msg "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 1179 1241
+.%scope function nfd_cfg_proc_msg _nfd_cfg_proc_msg "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 1179 1241
 .%arg cfg_msg 46 cfg_msg_613_V$b49
 .%arg queue 61 queue_613_V$b4a
 .%arg ring_sz 62 ring_sz_613_V$b4b
@@ -215,17 +215,17 @@
 .%var next_addr_off 0 next_addr_off_613 LIX
 .%var next_sz_off 0 next_sz_off_613 LIX
 .%scope end
-.%scope function nfd_cfg_next_queue _nfd_cfg_next_queue "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 1245 1269
+.%scope function nfd_cfg_next_queue _nfd_cfg_next_queue "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 1245 1269
 .%arg cfg_msg 46 cfg_msg_622_V$bf0
 .%arg queue 61 queue_622_V$bf1
 .%scope end
-.%scope function nfd_cfg_check_pcie_link _nfd_cfg_check_pcie_link "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 1281 1313
+.%scope function nfd_cfg_check_pcie_link _nfd_cfg_check_pcie_link "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 1281 1313
 .%var pcie_sts_raw 0 pcie_sts_raw_627 LIR
 .%var pcie_sts 0 pcie_sts_627 LIX
 .%var pcie_sts_addr 0 pcie_sts_addr_627 LIX
 .%var pcie_sts_sig 17 pcie_sts_sig_627 LIX
 .%scope end
-.%scope function reflect_data _reflect_data "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 262 290
+.%scope function reflect_data _reflect_data "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 262 290
 .%arg dst_me 0 dst_me_641_V$c50
 .%arg dst_xfer 0 dst_xfer_641_V$c51
 .%arg sig_no 0 sig_no_641_V$c52
@@ -235,7 +235,7 @@
 .%var count 0 count_641 LIX
 .%var indirect 66 indirect_641 LIX
 .%scope end
-.%scope function _notify __notify "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 462 564
+.%scope function _notify __notify "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 462 564
 .%arg complete 69 complete_645_V$c64
 .%arg served 69 served_645_V$c65
 .%arg input_ring 17 input_ring_645_V$c66
@@ -305,25 +305,25 @@
 .%var lso_sig_pair 75 lso_sig_pair_745 LIX
 .%scope end
 .%scope end
-.%scope function notify _notify "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 568 579
+.%scope function notify _notify "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 568 579
 .%arg side 17 side_760_V$f77
 .%scope end
-.%scope function distr_notify _distr_notify "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 598 642
+.%scope function distr_notify _distr_notify "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 598 642
 .%scope end
-.%scope function notify_status_setup _notify_status_setup "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/pci_in/notify_status.c" 51 58
+.%scope function notify_status_setup _notify_status_setup "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/pci_in/notify_status.c" 51 58
 .%scope end
-.%scope function notify_status _notify_status "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/pci_in/notify_status.c" 62 84
+.%scope function notify_status _notify_status "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/pci_in/notify_status.c" 62 84
 .%var bmsk_queue 0 bmsk_queue_390 LIX
 .%scope end
-.%scope function nfd_flr_init_pf_cfg_bar _nfd_flr_init_pf_cfg_bar "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 198 259
+.%scope function nfd_flr_init_pf_cfg_bar _nfd_flr_init_pf_cfg_bar "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 198 259
 .%arg pcie 0 pcie_542_V$f7c
 .%arg vid 0 vid_542_V$f7d
 .%scope end
-.%scope function nfd_flr_init_ctrl_cfg_bar _nfd_flr_init_ctrl_cfg_bar "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 270 298
+.%scope function nfd_flr_init_ctrl_cfg_bar _nfd_flr_init_ctrl_cfg_bar "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 270 298
 .%arg pcie 0 pcie_543_V$f7e
 .%arg vid 0 vid_543_V$f7f
 .%scope end
-.%scope function nfd_flr_init_vf_cfg_bar _nfd_flr_init_vf_cfg_bar "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 309 350
+.%scope function nfd_flr_init_vf_cfg_bar _nfd_flr_init_vf_cfg_bar "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_flr.c" 309 350
 .%arg vf_cfg_base 33 vf_cfg_base_544_V$f80
 .%arg pcie 0 pcie_544_V$f81
 .%arg vid 0 vid_544_V$f82
@@ -335,28 +335,28 @@
 .%var vf_cfg_rd 78 vf_cfg_rd_544 LIR
 .%var vf_cfg_wr 79 vf_cfg_wr_544 LIW
 .%scope end
-.%scope function _nfd_cfg_queue_setup __nfd_cfg_queue_setup "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 448 479
+.%scope function _nfd_cfg_queue_setup __nfd_cfg_queue_setup "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 448 479
 .%var nfd_cfg_queue 35 nfd_cfg_queue_563 LIX
 .%scope end
-.%scope function _nfd_cfg_init_vf_cfg_bar __nfd_cfg_init_vf_cfg_bar "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 485 526
+.%scope function _nfd_cfg_init_vf_cfg_bar __nfd_cfg_init_vf_cfg_bar "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 485 526
 .%arg vid 0 vid_564_V$f96
 .%var q_base 0 q_base_564 LIX
 .%var cfg 80 cfg_564 LIW
 .%var exn_lsc 0 exn_lsc_564 LIW
 .%var cfg2 81 cfg2_564 LIW
 .%scope end
-.%scope function nfd_cfg_setup _nfd_cfg_setup "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 645 678
+.%scope function nfd_cfg_setup _nfd_cfg_setup "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 645 678
 .%var vid 0 vid_567 LIX
 .%var ring 0 ring_567 LIX
 .%scope end
-.%scope function nfd_cfg_flr_setup _nfd_cfg_flr_setup "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 685 718
+.%scope function nfd_cfg_flr_setup _nfd_cfg_flr_setup "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 685 718
 .%var event_filter 82 event_filter_571 LIX
 .%var status 84 status_571 LIX
 .%var pcie_provider 0 pcie_provider_571 LIX
 .%var event_mask 0 event_mask_571 LIX
 .%var event_match 0 event_match_571 LIX
 .%scope end
-.%scope function nfd_cfg_check_flr_ap _nfd_cfg_check_flr_ap "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 777 833
+.%scope function nfd_cfg_check_flr_ap _nfd_cfg_check_flr_ap "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 777 833
 .%scope block 779 832
 .%var flr_sent 91 flr_sent_575 LIR
 .%var pcie_state_change_stat 0 pcie_state_change_stat_575 LIR
@@ -368,7 +368,7 @@
 .%var vf 17 vf_575 LIX
 .%scope end
 .%scope end
-.%scope function nfd_cfg_next_vnic _nfd_cfg_next_vnic "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 841 882
+.%scope function nfd_cfg_next_vnic _nfd_cfg_next_vnic "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg_internal.c" 841 882
 .%var queue 0 queue_579 LIX
 .%var vid 17 vid_579 LIX
 .%var ret 17 ret_579 LIX
@@ -378,11 +378,11 @@
 .%var qc_queue 0 qc_queue_581 LIX
 .%scope end
 .%scope end
-.%scope function notify_setup_shared _notify_setup_shared "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 298 311
+.%scope function notify_setup_shared _notify_setup_shared "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 298 311
 .%scope end
-.%scope function notify_setup _notify_setup "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 318 339
+.%scope function notify_setup _notify_setup "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 318 339
 .%scope end
-.%scope function main _main "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 646 686
+.%scope function main _main "c:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic\pci_in\notify.c" 646 686
 .%scope end
 .%type U4
 .%type S4 {

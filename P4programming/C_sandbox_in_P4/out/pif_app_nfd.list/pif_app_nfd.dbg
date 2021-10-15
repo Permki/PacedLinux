@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_257_V$a2a
 .%arg y 0 y_257_V$a2b
 .%var result 0 result_257 LIX
@@ -54,27 +54,27 @@
 .%var multi_rx_nbi_rxd 52 _multi_rx_nbi_rxd SER
 .%var multi_rx_state 0 _multi_rx_state SEX
 .%var flowkey_copy 64 _flowkey_copy SEX
-.%scope function nfd_cfg_bar_base _nfd_cfg_bar_base "Z:\home\permki\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg.h" 273 319
+.%scope function nfd_cfg_bar_base _nfd_cfg_bar_base "C:\NFP_SDK_6.1.0-preview\components\ng_nfd\me\blocks\vnic/shared/nfd_cfg.h" 273 319
 .%arg isl 0 isl_450_V$a2e
 .%arg vid 0 vid_450_V$a2f
 .%var bar_base 65 bar_base_450 LIX
 .%scope end
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_579 LIX
 .%scope end
-.%scope function __hashmap_lock_release ___hashmap_lock_release "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\include\hashmap.h" 103 122
+.%scope function __hashmap_lock_release ___hashmap_lock_release "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\include\hashmap.h" 103 122
 .%arg lock 66 lock_593_V$a35
 .%var ind 70 ind_593 LIX
 .%var addr_hi 0 addr_hi_593 LIX
 .%var addr_lo 0 addr_lo_593 LIX
 .%scope end
-.%scope function multi_rx_wait_signals _multi_rx_wait_signals "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 181 210
+.%scope function multi_rx_wait_signals _multi_rx_wait_signals "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 181 210
 .%arg sig_nfd 73 sig_nfd_624_V$a4e
 .%arg sig_nbi 73 sig_nbi_624_V$a4f
 .%arg state 0 state_624_V$a50
 .%var ret 44 ret_624 LIX
 .%scope end
-.%scope function forward _forward "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 219 302
+.%scope function forward _forward "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 219 302
 .%arg parrep 74 parrep_632_V$a53
 .%var sig_mac_paused 44 sig_mac_paused_632 LIX
 .%var port_bit 12 port_bit_632 LIX
@@ -90,17 +90,17 @@
 .%var port 0 port_636 LIX
 .%scope end
 .%scope end
-.%scope function load_fc_control _load_fc_control "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 310 320
+.%scope function load_fc_control _load_fc_control "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 310 320
 .%arg buf 75 buf_639_V$a60
 .%arg ig_len 44 ig_len_639_V$a61
 .%arg eg_len 44 eg_len_639_V$a62
 .%var control_buf 76 control_buf_639 LIX
 .%var control 76 control_639 LIW
 .%scope end
-.%scope function handle_error_packet _handle_error_packet "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 329 345
+.%scope function handle_error_packet _handle_error_packet "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 329 345
 .%arg reason 44 reason_640_V$a6f
 .%scope end
-.%scope function main _main "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 353 1302
+.%scope function main _main "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\pif_app_nfd.c" 353 1302
 .%var action_buffer 81 action_buffer_641 LIX
 .%var ready_ctxs 0 ready_ctxs_641 LIX
 .%var act_buf 82 act_buf_641 LIX

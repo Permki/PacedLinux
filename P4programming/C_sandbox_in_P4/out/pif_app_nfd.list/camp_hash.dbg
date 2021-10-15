@@ -1,8 +1,8 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_80 LIX
 .%scope end
-.%scope function camp_hash _camp_hash "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\src\camp_hash.c" 68 106
+.%scope function camp_hash _camp_hash "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\src\camp_hash.c" 68 106
 .%arg data 1 data_85_V$17
 .%arg length 0 length_85_V$18
 .%arg max_length 0 max_length_85_V$19
@@ -15,7 +15,7 @@
 .%var i 0 i_1239 LIX
 .%scope end
 .%scope end
-.%scope function camp_hash_init _camp_hash_init "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\src\camp_hash.c" 44 66
+.%scope function camp_hash_init _camp_hash_init "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\hashmap\src\camp_hash.c" 44 66
 .%scope end
 .%type U4
 .%type P2 2

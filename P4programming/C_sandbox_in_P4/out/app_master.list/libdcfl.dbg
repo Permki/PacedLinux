@@ -1,24 +1,24 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
 .%var dcfl_lkp_overflow_counter 1 _dcfl_lkp_overflow_counter SEX
 .%var dcfl_cross_overflow_counter 1 _dcfl_cross_overflow_counter SEX
 .%var dcfl_me_cfg 2 _dcfl_me_cfg SEX
-.%scope function dcfl_get_hdr_valid_val _dcfl_get_hdr_valid_val "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 282 292
+.%scope function dcfl_get_hdr_valid_val _dcfl_get_hdr_valid_val "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 282 292
 .%arg hdr_valid 22 hdr_valid_188_V$567
 .%arg localkey 23 localkey_188_V$568
 .%arg f_cfg 24 f_cfg_188_V$569
 .%var word 0 word_188 LIX
 .%scope end
-.%scope function dcfl_get_hdr_valid_val_from_mem _dcfl_get_hdr_valid_val_from_mem "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 295 310
+.%scope function dcfl_get_hdr_valid_val_from_mem _dcfl_get_hdr_valid_val_from_mem "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 295 310
 .%arg hdr_valid 22 hdr_valid_189_V$5aa
 .%arg key 25 key_189_V$5ab
 .%arg f_cfg 24 f_cfg_189_V$5ac
 .%var read_buf 27 read_buf_189 LIR
 .%var word 0 word_189 LIX
 .%scope end
-.%scope function dcfl_get_field_value _dcfl_get_field_value "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 314 366
+.%scope function dcfl_get_field_value _dcfl_get_field_value "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 314 366
 .%arg valid_val 28 valid_val_190_V$5ef
 .%arg value 29 value_190_V$5f0
 .%arg localkey 23 localkey_190_V$5f1
@@ -29,7 +29,7 @@
 .%var reg_offset 0 reg_offset_190 LIX
 .%var i 0 i_190 LIX
 .%scope end
-.%scope function dcfl_get_field_value_from_mem _dcfl_get_field_value_from_mem "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 369 427
+.%scope function dcfl_get_field_value_from_mem _dcfl_get_field_value_from_mem "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 369 427
 .%arg valid_val 28 valid_val_197_V$64c
 .%arg value 29 value_197_V$64d
 .%arg key 25 key_197_V$64e
@@ -41,7 +41,7 @@
 .%var reg_offset 0 reg_offset_197 LIX
 .%var i 0 i_197 LIX
 .%scope end
-.%scope function cmd_mem_lookup _cmd_mem_lookup "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/an.c" 156 197
+.%scope function cmd_mem_lookup _cmd_mem_lookup "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/an.c" 156 197
 .%arg xfer 31 xfer_428_V$696
 .%arg address 33 address_428_V$697
 .%arg count 0 count_428_V$698
@@ -52,7 +52,7 @@
 .%var low_addr 0 low_addr_429 LIX
 .%scope end
 .%scope end
-.%scope function dcfl_dlut_field_lookup _dcfl_dlut_field_lookup "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 147 178
+.%scope function dcfl_dlut_field_lookup _dcfl_dlut_field_lookup "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 147 178
 .%arg value 29 value_174_V$6a6
 .%arg field_lkp_base 0 field_lkp_base_174_V$6a7
 .%arg field_lkp_base_hi 0 field_lkp_base_hi_174_V$6a8
@@ -63,7 +63,7 @@
 .%var addr_hi 0 addr_hi_174 LIX
 .%var result 0 result_174 LIX
 .%scope end
-.%scope function dcfl_field_lookup _dcfl_field_lookup "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 182 278
+.%scope function dcfl_field_lookup _dcfl_field_lookup "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/field_lkp.c" 182 278
 .%arg labels 44 labels_175_V$6be
 .%arg valid_val 53 valid_val_175_V$6bf
 .%arg value 29 value_175_V$6c0
@@ -80,7 +80,7 @@
 .%var lbl 37 lbl_179 LIX
 .%scope end
 .%scope end
-.%scope function dcfl_an_final _dcfl_an_final "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/an.c" 16 153
+.%scope function dcfl_an_final _dcfl_an_final "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/an.c" 16 153
 .%arg labels_in1 44 labels_in1_413_V$7c1
 .%arg nlabel1 0 nlabel1_413_V$7c2
 .%arg labels_in2 44 labels_in2_413_V$7c3
@@ -106,7 +106,7 @@
 .%var priority_rule_idx 0 priority_rule_idx_413 LIX
 .%var prio_found 0 prio_found_413 LIX
 .%scope end
-.%scope function dcfl_an_lkp _dcfl_an_lkp "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/an.c" 200 260
+.%scope function dcfl_an_lkp _dcfl_an_lkp "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\_c/an.c" 200 260
 .%arg labels_in1 44 labels_in1_436_V$835
 .%arg nlabel1 0 nlabel1_436_V$836
 .%arg labels_in2 44 labels_in2_436_V$837
@@ -128,20 +128,20 @@
 .%var addr_stage_hi 1 addr_stage_hi_436 LIX
 .%var addr_stage 1 addr_stage_436 LIX
 .%scope end
-.%scope function dcfl_get_conf _dcfl_get_conf "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\libdcfl.c" 53 84
+.%scope function dcfl_get_conf _dcfl_get_conf "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\libdcfl.c" 53 84
 .%arg table 0 table_441_V$870
 .%arg custom_cfg 70 custom_cfg_441_V$871
 .%var active_buffer 0 active_buffer_441 LIR
 .%var cfg_ptr 71 cfg_ptr_441 LIX
 .%scope end
-.%scope function dcfl_sort_results _dcfl_sort_results "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\libdcfl.c" 94 121
+.%scope function dcfl_sort_results _dcfl_sort_results "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\libdcfl.c" 94 121
 .%arg results 44 results_443_V$875
 .%arg nresults 0 nresults_443_V$876
 .%var sorted 0 sorted_443 LIX
 .%var i 0 i_443 LIX
 .%var temp 0 temp_443 LIX
 .%scope end
-.%scope function dcfl_classify _dcfl_classify "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\libdcfl.c" 491 663
+.%scope function dcfl_classify _dcfl_classify "c:\NFP_SDK_6.1.0-preview\p4\components\dcfl\me\lib\dcfl\libdcfl.c" 491 663
 .%arg key 72 key_448_V$8bd
 .%arg table 0 table_448_V$8be
 .%arg label_set 44 label_set_448_V$8bf

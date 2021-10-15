@@ -1,11 +1,11 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function __rt_assert ___rt_assert "Z:\home\permki\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function __rt_assert ___rt_assert "C:\NFP_SDK_6.1.0-preview\components\flowenv\me\include\assert.h" 91 99
 .%var reg 0 reg_11 LIX
 .%scope end
-.%scope function fc_do_release _fc_do_release "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\fc.c" 38 49
+.%scope function fc_do_release _fc_do_release "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\fc.c" 38 49
 .%arg in_lock 1 in_lock_43_V$a1
 .%scope end
-.%scope function fc_do_lookup _fc_do_lookup "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\fc.c" 51 88
+.%scope function fc_do_lookup _fc_do_lookup "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\fc.c" 51 88
 .%arg flowkey 3 flowkey_44_V$aa
 .%arg flowkey_len 0 flowkey_len_44_V$ab
 .%arg pktlen 0 pktlen_44_V$ac
@@ -13,7 +13,7 @@
 .%arg timeout 0 timeout_44_V$ae
 .%var result 4 result_44 LIX
 .%scope end
-.%scope function fc_get_version _fc_get_version "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\fc.c" 92 95
+.%scope function fc_get_version _fc_get_version "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\common\src\fc.c" 92 95
 .%scope end
 .%type U4
 .%type S4 fc_lock_t{

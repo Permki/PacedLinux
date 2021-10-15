@@ -1,8 +1,8 @@
 "object_name","filename","lineno","listlabel"
-eth_parse,Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,30,pif_parrep_state_eth_parse
-start,Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,24,pif_parrep_state_start
-xlan_parse,Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,39,pif_parrep_state_xlan_parse
-encap_tbl,Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,50,pif_ctlflow_state_ingress_flow_encap_tbl
-encap_act,Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,76,pif_action_state_encap_act
-xlan_encap,Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,85,pif_action_state_xlan_encap
-drop_act,Z:\home\permki\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,60,pif_action_state_drop_act
+eth_parse,C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,30,pif_parrep_state_eth_parse
+start,C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,24,pif_parrep_state_start
+xlan_parse,C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,39,pif_parrep_state_xlan_parse
+encap_tbl,C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,50,pif_ctlflow_state_ingress_flow_encap_tbl
+encap_act,C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,76,pif_action_state_encap_act
+xlan_encap,C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,85,pif_action_state_xlan_encap
+drop_act,C:\users\permki\Desktop\PacedLinux\P4programming\C_sandbox_in_P4\p4_main.p4,60,pif_action_state_drop_act

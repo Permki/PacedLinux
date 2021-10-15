@@ -1,0 +1,129 @@
+.%scope file "C:\users\permki\Desktop\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\users\permki\Desktop\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%arg x 0 x_303_V$5bb
+.%arg y 0 y_303_V$5bc
+.%var result 0 result_303 LIX
+.%scope end
+.%var BLM_NBI8_BLQ0_EMU_QD_BASE 1 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_Q_BASE 3 _BLM_NBI8_BLQ0_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_QD_BASE 4 _BLM_NBI8_BLQ1_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_Q_BASE 5 _BLM_NBI8_BLQ1_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_QD_BASE 6 _BLM_NBI8_BLQ2_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_Q_BASE 7 _BLM_NBI8_BLQ2_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_QD_BASE 8 _BLM_NBI8_BLQ3_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
+.%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
+.%var pkt 12 _pkt SEX
+.%var pif_pkt_info_spec 21 _pif_pkt_info_spec SEX
+.%var pif_counter_OFFSET_TOO_LARGE_SHIFT 25 _pif_counter_OFFSET_TOO_LARGE_SHIFT SEX
+.%scope function handle_tier_0 _handle_tier_0 "C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\out\pif_deparse.c" 14 44
+.%arg parrep 26 parrep_350_V$5bf
+.%arg pktinfo 27 pktinfo_350_V$5c0
+.%arg pkt_byteoff 28 pkt_byteoff_350_V$5c1
+.%arg pkt_min_off 0 pkt_min_off_350_V$5c2
+.%var ctldata 30 ctldata_350 LIX
+.%var orig_len 0 orig_len_350 LIX
+.%var curr_len 0 curr_len_350 LIX
+.%scope end
+.%scope function pif_deparse _pif_deparse "C:\users\permki\Desktop\PacedLinux\P4programming\lab1\lab1_wire_net-host\out\pif_deparse.c" 46 86
+.%arg parrep 26 parrep_354_V$5c7
+.%arg pktinfo 27 pktinfo_354_V$5c8
+.%var pkt_byteoff 0 pkt_byteoff_354 LIX
+.%var pkt_min_off 0 pkt_min_off_354 LIX
+.%var ret 29 ret_354 LIX
+.%scope block 62 69
+.%var move_len 0 move_len_356 LIX
+.%scope end
+.%scope block 72 79
+.%var move_len 0 move_len_358 LIX
+.%scope end
+.%scope end
+.%type U4
+.%type A16 2
+.%type U1
+.%type A32768 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A41943040 2
+.%type A10485760 2
+.%type S28 pktio_meta{
+__unnamed 0 13;
+}
+.%type S28 {
+__unnamed 0 14;
+__raw 0 20;
+}
+.%type S28 {
+p_nbi 0 15;
+p_ctm_size 8:30:2 0;
+p_orig_len 8:16:14 0;
+p_offset 8:0:16 0;
+p_src 12:16:16 0;
+p_dst 12:0:16 0;
+p_seq 16:16:16 0;
+p_ro_ctx 16:11:5 0;
+p_is_gro_seq 16:10:1 0;
+p_rx_ipv4_csum_ok 16:9:1 0;
+p_rx_ipv4_csum_present 16:8:1 0;
+p_rx_l4_csum_ok 16:7:1 0;
+p_rx_l4_csum_present 16:6:1 0;
+p_rx_l4_tcp 16:5:1 0;
+p_rx_mac_matched 16:4:1 0;
+p_tunnel 16:3:1 0;
+resv4 16:0:3 0;
+__unnamed 20 19;
+p_vlan 24:16:16 0;
+resv3 24:0:16 0;
+}
+.%type S8 nbi_meta_pkt_info{
+__unnamed 0 16;
+}
+.%type S8 {
+__unnamed 0 17;
+__raw 0 18;
+}
+.%type S8 {
+isl 0:26:6 0;
+pnum 0:16:10 0;
+bls 0:14:2 0;
+len 0:0:14 0;
+split 4:31:1 0;
+resv0 4:29:2 0;
+muptr 4:0:29 0;
+}
+.%type A8 0
+.%type S4 {
+p_timestamp 0:0:32 0;
+}
+.%type A28 0
+.%type S8 pif_pkt_specific{
+__unnamed 0 22;
+}
+.%type S8 {
+__unnamed 0 23;
+_raw 0 24;
+}
+.%type S8 {
+resv3 0:24:8 0;
+trunc_len 0:10:14 0;
+pkt_pl_off 0:0:10 0;
+calc_fld_bmsk 4 0;
+}
+.%type A8 0
+.%type U8
+.%type P6 0
+.%type P2 12
+.%type P2 29
+.%type I4
+.%type P6 31
+.%type S4 pif_parrep_ctldata{
+valid 0:31:1 0;
+t0_valid 0:30:1 0;
+t0_dirty 0:29:1 0;
+t0_orig_len 0:28:1 0;
+}

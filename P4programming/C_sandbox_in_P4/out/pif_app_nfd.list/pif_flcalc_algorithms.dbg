@@ -1,5 +1,5 @@
-.%scope file "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
-.%scope function multiply_24x8 _multiply_24x8 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%scope file "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
 .%arg x 0 x_355_V$57d
 .%arg y 0 y_355_V$57e
 .%var result 0 result_355 LIX
@@ -17,21 +17,21 @@
 .%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 12 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
 .%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 13 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
 .%var pkt 14 _pkt SEX
-.%scope function pif_flcalc_csum16_update_lw _pif_flcalc_csum16_update_lw "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 517 539
+.%scope function pif_flcalc_csum16_update_lw _pif_flcalc_csum16_update_lw "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 517 539
 .%arg init 23 init_408_V$581
 .%arg val 0 val_408_V$582
 .%arg val_mask 0 val_mask_408_V$583
 .%arg is_rem 24 is_rem_408_V$584
 .%var sum32 0 sum32_408 LIX
 .%scope end
-.%scope function pif_flcalc_xor16_update_lw _pif_flcalc_xor16_update_lw "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 542 555
+.%scope function pif_flcalc_xor16_update_lw _pif_flcalc_xor16_update_lw "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 542 555
 .%arg init 23 init_411_V$587
 .%arg val 0 val_411_V$588
 .%arg val_mask 0 val_mask_411_V$589
 .%arg is_rem 24 is_rem_411_V$58a
 .%var xor16 23 xor16_411 LIX
 .%scope end
-.%scope function __pif_flcalc_csum16_var ___pif_flcalc_csum16_var "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 27 61
+.%scope function __pif_flcalc_csum16_var ___pif_flcalc_csum16_var "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 27 61
 .%arg in_sum32 0 in_sum32_357_V$58d
 .%arg cls_ptr 25 cls_ptr_357_V$58e
 .%arg cls_len 0 cls_len_357_V$58f
@@ -45,7 +45,7 @@
 .%var xfr_rd 26 xfr_rd_357 LIR
 .%var sig_rd 24 sig_rd_357 LIX
 .%scope end
-.%scope function __pif_flcalc_csum16_payload ___pif_flcalc_csum16_payload "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 74 106
+.%scope function __pif_flcalc_csum16_payload ___pif_flcalc_csum16_payload "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 74 106
 .%arg in_sum32 0 in_sum32_360_V$59b
 .%arg payload_base 27 payload_base_360_V$59c
 .%arg payload_offset 0 payload_offset_360_V$59d
@@ -58,7 +58,7 @@
 .%var xfr_rd 29 xfr_rd_360 LIR
 .%var sig_rd 24 sig_rd_360 LIX
 .%scope end
-.%scope function pif_flcalc_csum16 _pif_flcalc_csum16 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 108 181
+.%scope function pif_flcalc_csum16 _pif_flcalc_csum16 "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 108 181
 .%arg init 23 init_363_V$5a8
 .%arg lm_ptr 30 lm_ptr_363_V$5a9
 .%arg lm_len 0 lm_len_363_V$5aa
@@ -79,7 +79,7 @@
 .%var mu_offset 0 mu_offset_366 LIX
 .%scope end
 .%scope end
-.%scope function pif_flcalc_csum16_lmem _pif_flcalc_csum16_lmem "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 183 214
+.%scope function pif_flcalc_csum16_lmem _pif_flcalc_csum16_lmem "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 183 214
 .%arg init 23 init_372_V$5ba
 .%arg lm_ptr 31 lm_ptr_372_V$5bb
 .%arg lm_len 0 lm_len_372_V$5bc
@@ -89,7 +89,7 @@
 .%var val 0 val_372 LIX
 .%var sum32 0 sum32_372 LIX
 .%scope end
-.%scope function pif_flcalc_csum16_mem _pif_flcalc_csum16_mem "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 216 259
+.%scope function pif_flcalc_csum16_mem _pif_flcalc_csum16_mem "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 216 259
 .%arg init 23 init_377_V$5c3
 .%arg payld_offset 0 payld_offset_377_V$5c4
 .%arg payld_len 0 payld_len_377_V$5c5
@@ -104,7 +104,7 @@
 .%var mu_offset 0 mu_offset_377 LIX
 .%var pkt_buf 32 pkt_buf_377 LIX
 .%scope end
-.%scope function pif_flcalc_csum16_update _pif_flcalc_csum16_update "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 261 310
+.%scope function pif_flcalc_csum16_update _pif_flcalc_csum16_update "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 261 310
 .%arg init 23 init_381_V$5d1
 .%arg lm_old 30 lm_old_381_V$5d2
 .%arg lm_new 30 lm_new_381_V$5d3
@@ -118,7 +118,7 @@
 .%var csum16 23 csum16_381 LIX
 .%var sum32 0 sum32_381 LIX
 .%scope end
-.%scope function __pif_flcalc_xor16_var ___pif_flcalc_xor16_var "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 326 360
+.%scope function __pif_flcalc_xor16_var ___pif_flcalc_xor16_var "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 326 360
 .%arg in_xor16 23 in_xor16_388_V$5de
 .%arg cls_ptr 25 cls_ptr_388_V$5df
 .%arg cls_len 0 cls_len_388_V$5e0
@@ -132,7 +132,7 @@
 .%var xfr_rd 33 xfr_rd_388 LIR
 .%var sig_rd 24 sig_rd_388 LIX
 .%scope end
-.%scope function __pif_flcalc_xor16_payload ___pif_flcalc_xor16_payload "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 373 405
+.%scope function __pif_flcalc_xor16_payload ___pif_flcalc_xor16_payload "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 373 405
 .%arg in_xor16 23 in_xor16_391_V$5ec
 .%arg payload_base 27 payload_base_391_V$5ed
 .%arg payload_offset 0 payload_offset_391_V$5ee
@@ -145,7 +145,7 @@
 .%var xfr_rd 34 xfr_rd_391 LIR
 .%var sig_rd 24 sig_rd_391 LIX
 .%scope end
-.%scope function pif_flcalc_xor16 _pif_flcalc_xor16 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 407 471
+.%scope function pif_flcalc_xor16 _pif_flcalc_xor16 "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 407 471
 .%arg init 23 init_394_V$5f9
 .%arg lm_ptr 30 lm_ptr_394_V$5fa
 .%arg lm_len 0 lm_len_394_V$5fb
@@ -165,7 +165,7 @@
 .%var mu_offset 0 mu_offset_397 LIX
 .%scope end
 .%scope end
-.%scope function pif_flcalc_xor16_update _pif_flcalc_xor16_update "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 473 514
+.%scope function pif_flcalc_xor16_update _pif_flcalc_xor16_update "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 473 514
 .%arg init 23 init_402_V$60a
 .%arg lm_old 30 lm_old_402_V$60b
 .%arg lm_new 30 lm_new_402_V$60c
@@ -178,13 +178,13 @@
 .%var val16 23 val16_402 LIX
 .%var xor16 23 xor16_402 LIX
 .%scope end
-.%scope function __pif_flcalc_crc16_byte ___pif_flcalc_crc16_byte "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 572 584
+.%scope function __pif_flcalc_crc16_byte ___pif_flcalc_crc16_byte "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 572 584
 .%arg in_crc16 23 in_crc16_412_V$616
 .%arg dbyte 4 dbyte_412_V$617
 .%var out_crc16 23 out_crc16_412 LIX
 .%var ibyte 0 ibyte_412 LIX
 .%scope end
-.%scope function __pif_flcalc_crc16_xfr_buf ___pif_flcalc_crc16_xfr_buf "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 597 664
+.%scope function __pif_flcalc_crc16_xfr_buf ___pif_flcalc_crc16_xfr_buf "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 597 664
 .%arg in_crc16 23 in_crc16_413_V$61b
 .%arg xfr_buf 35 xfr_buf_413_V$61c
 .%arg xfr_len_b 0 xfr_len_b_413_V$61d
@@ -194,7 +194,7 @@
 .%var rem_b 0 rem_b_413 LIX
 .%var jump_idx 0 jump_idx_413 LIX
 .%scope end
-.%scope function __pif_flcalc_crc16_var ___pif_flcalc_crc16_var "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 675 702
+.%scope function __pif_flcalc_crc16_var ___pif_flcalc_crc16_var "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 675 702
 .%arg in_crc16 23 in_crc16_418_V$624
 .%arg cls_ptr 25 cls_ptr_418_V$625
 .%arg cls_len 0 cls_len_418_V$626
@@ -205,7 +205,7 @@
 .%var xfr_rd 36 xfr_rd_418 LIR
 .%var sig_rd 24 sig_rd_418 LIX
 .%scope end
-.%scope function __pif_flcalc_crc16_payload ___pif_flcalc_crc16_payload "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 714 741
+.%scope function __pif_flcalc_crc16_payload ___pif_flcalc_crc16_payload "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 714 741
 .%arg in_crc16 23 in_crc16_420_V$62f
 .%arg payload_base 27 payload_base_420_V$630
 .%arg payload_offset 0 payload_offset_420_V$631
@@ -216,7 +216,7 @@
 .%var xfr_rd 37 xfr_rd_420 LIR
 .%var sig_rd 24 sig_rd_420 LIX
 .%scope end
-.%scope function pif_flcalc_crc16 _pif_flcalc_crc16 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 743 802
+.%scope function pif_flcalc_crc16 _pif_flcalc_crc16 "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 743 802
 .%arg init 23 init_422_V$63a
 .%arg lm_ptr 30 lm_ptr_422_V$63b
 .%arg lm_len 0 lm_len_422_V$63c
@@ -234,7 +234,7 @@
 .%var mu_offset 0 mu_offset_425 LIX
 .%scope end
 .%scope end
-.%scope function pif_flcalc_crc16_lmem _pif_flcalc_crc16_lmem "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 804 837
+.%scope function pif_flcalc_crc16_lmem _pif_flcalc_crc16_lmem "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 804 837
 .%arg init 23 init_430_V$649
 .%arg lm_ptr 31 lm_ptr_430_V$64a
 .%arg lm_len_b 0 lm_len_b_430_V$64b
@@ -244,13 +244,13 @@
 .%var val 0 val_430 LIX
 .%var tmp 0 tmp_430 LIX
 .%scope end
-.%scope function __pif_flcalc_crc32_byte ___pif_flcalc_crc32_byte "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 854 867
+.%scope function __pif_flcalc_crc32_byte ___pif_flcalc_crc32_byte "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 854 867
 .%arg in_crc32 0 in_crc32_436_V$652
 .%arg dbyte 4 dbyte_436_V$653
 .%var out_crc32 0 out_crc32_436 LIX
 .%var ibyte 0 ibyte_436 LIX
 .%scope end
-.%scope function __pif_flcalc_crc32_xfr_buf ___pif_flcalc_crc32_xfr_buf "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 880 947
+.%scope function __pif_flcalc_crc32_xfr_buf ___pif_flcalc_crc32_xfr_buf "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 880 947
 .%arg in_crc32 0 in_crc32_437_V$657
 .%arg xfr_buf 35 xfr_buf_437_V$658
 .%arg xfr_len_b 0 xfr_len_b_437_V$659
@@ -260,7 +260,7 @@
 .%var rem_b 0 rem_b_437 LIX
 .%var jump_idx 0 jump_idx_437 LIX
 .%scope end
-.%scope function __pif_flcalc_crc32_var ___pif_flcalc_crc32_var "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 958 985
+.%scope function __pif_flcalc_crc32_var ___pif_flcalc_crc32_var "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 958 985
 .%arg in_crc32 0 in_crc32_442_V$660
 .%arg cls_ptr 25 cls_ptr_442_V$661
 .%arg cls_len 0 cls_len_442_V$662
@@ -271,7 +271,7 @@
 .%var xfr_rd 38 xfr_rd_442 LIR
 .%var sig_rd 24 sig_rd_442 LIX
 .%scope end
-.%scope function __pif_flcalc_crc32_payload ___pif_flcalc_crc32_payload "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 997 1024
+.%scope function __pif_flcalc_crc32_payload ___pif_flcalc_crc32_payload "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 997 1024
 .%arg in_crc32 0 in_crc32_444_V$66b
 .%arg payload_base 27 payload_base_444_V$66c
 .%arg payload_offset 0 payload_offset_444_V$66d
@@ -282,13 +282,13 @@
 .%var xfr_rd 39 xfr_rd_444 LIR
 .%var sig_rd 24 sig_rd_444 LIX
 .%scope end
-.%scope function pif_flcalc_crc32_reflect _pif_flcalc_crc32_reflect "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 1026 1039
+.%scope function pif_flcalc_crc32_reflect _pif_flcalc_crc32_reflect "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 1026 1039
 .%arg in_crc32 0 in_crc32_446_V$676
 .%var crc32 0 crc32_446 LIX
 .%var crc32_reflected 0 crc32_reflected_446 LIX
 .%var i 4 i_446 LIX
 .%scope end
-.%scope function pif_flcalc_crc32 _pif_flcalc_crc32 "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 1041 1100
+.%scope function pif_flcalc_crc32 _pif_flcalc_crc32 "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 1041 1100
 .%arg init 0 init_447_V$67b
 .%arg lm_ptr 30 lm_ptr_447_V$67c
 .%arg lm_len 0 lm_len_447_V$67d
@@ -306,7 +306,7 @@
 .%var mu_offset 0 mu_offset_450 LIX
 .%scope end
 .%scope end
-.%scope function pif_flcalc_crc32_lmem _pif_flcalc_crc32_lmem "Z:\home\permki\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 1102 1135
+.%scope function pif_flcalc_crc32_lmem _pif_flcalc_crc32_lmem "c:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_flcalc_algorithms.c" 1102 1135
 .%arg init 0 init_455_V$68a
 .%arg lm_ptr 31 lm_ptr_455_V$68b
 .%arg lm_len_b 0 lm_len_b_455_V$68c

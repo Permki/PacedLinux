@@ -1,0 +1,10 @@
+{'flowkey_sz_lw': 1,
+ 'lookup_fields': [],
+ 'metadata_fields': [],
+ 'metadata_packed': OrderedDict(),
+ 'metadata_packed_width': 0,
+ 'tier_hdr_map': {'eth': {'packed': OrderedDict(),
+                          'raw': OrderedDict(),
+                          'subfield_map': {},
+                          'total_width': 0}},
+ 'tier_hdrs': OrderedDict([(0, OrderedDict([('eth', {'total_width': 0, 'raw': OrderedDict(), 'subfield_map': {}, 'packed': OrderedDict()})]))])}
