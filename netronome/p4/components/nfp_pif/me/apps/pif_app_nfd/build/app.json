@@ -1,0 +1,1756 @@
+{
+  "name": "pif_app_nfd",
+  "chip": {
+    "minimum_revision": "0x10"
+  },
+  "vars": {
+    "PIFOUTDIR": "",
+    "PIFROOTDIR":                   "p4/components/nfp_pif",
+    "PROJECT": "",
+    "PIFAPPDIR":                    "me/apps/pif_app_nfd",
+    "PIFSHARED":                    "shared",
+    "PIFAPPCOMMONDIR":              "me/apps/common",
+    "PIFLIBDIR":                    "me/lib/pif",
+    "CFLOWTSTAMPLIBDIR" :           "me/lib/cflow_tstamp",
+    "LIBDIR" :                      "me/lib",
+    "MACFLUSHLIBDIR" :              "me/lib/macflush",
+    "HASHMAPLIBDIR":                "me/lib/hashmap",
+    "APP_MASTER_ME":                "i36.me11",
+    "NFD_SVC_ME":                   "i48.me2",
+    "NFD_PCIE0_SB_ME":              "i36.me8",
+    "NFD_PCIE0_PD0_ME":             "i36.me9",
+    "NFD_PCIE0_PD1_ME":             "i36.me7",
+    "NFD_PCIE0_PCI_OUT_ME0_ME":     "pcie0.me0",
+    "NFD_PCIE0_PCI_IN_GATHER_ME":   "pcie0.me1",
+    "NFD_PCIE0_PCI_IN_ISSUE0_ME":   "pcie0.me2",
+    "NFD_PCIE0_PCI_IN_ISSUE1_ME":   "pcie0.me3",
+    "NFD_PCIE0_NOTIFY_ME":          "i36.me6",
+    "NFD_PCIE1_SB_ME":              "i35.me9",
+    "NFD_PCIE1_PD0_ME":             "i35.me11",
+    "NFD_PCIE1_PD1_ME":             "i35.me10",
+    "NFD_PCIE1_PCI_OUT_ME0_ME":     "pcie1.me0",
+    "NFD_PCIE1_PCI_IN_GATHER_ME":   "pcie1.me1",
+    "NFD_PCIE1_PCI_IN_ISSUE0_ME":   "pcie1.me2",
+    "NFD_PCIE1_PCI_IN_ISSUE1_ME":   "pcie1.me3",
+    "NFD_PCIE1_NOTIFY_ME":          "i35.me8",
+    "NFD_PCIE2_SB_ME":              "i37.me9",
+    "NFD_PCIE2_PD0_ME":             "i37.me11",
+    "NFD_PCIE2_PD1_ME":             "i37.me10",
+    "NFD_PCIE2_PCI_OUT_ME0_ME":     "pcie2.me0",
+    "NFD_PCIE2_PCI_IN_GATHER_ME":   "pcie2.me1",
+    "NFD_PCIE2_PCI_IN_ISSUE0_ME":   "pcie2.me2",
+    "NFD_PCIE2_PCI_IN_ISSUE1_ME":   "pcie2.me3",
+    "NFD_PCIE2_NOTIFY_ME":          "i37.me8",
+    "NFD_PCIE3_SB_ME":              "i38.me9",
+    "NFD_PCIE3_PD0_ME":             "i38.me11",
+    "NFD_PCIE3_PD1_ME":             "i38.me10",
+    "NFD_PCIE3_PCI_OUT_ME0_ME":     "pcie3.me0",
+    "NFD_PCIE3_PCI_IN_GATHER_ME":   "pcie3.me1",
+    "NFD_PCIE3_PCI_IN_ISSUE0_ME":   "pcie3.me2",
+    "NFD_PCIE3_PCI_IN_ISSUE1_ME":   "pcie3.me3",
+    "NFD_PCIE3_NOTIFY_ME":          "i38.me8",
+    "NFD_SIG_SVC_ME_PCIE0":         "_nfd_cfg_sig_svc_me0",
+    "NFD_SIG_SVC_ME_PCIE1":         "_nfd_cfg_sig_svc_me1",
+    "NFD_SIG_SVC_ME_PCIE2":         "_nfd_cfg_sig_svc_me2",
+    "NFD_SIG_SVC_ME_PCIE3":         "_nfd_cfg_sig_svc_me3",
+    "NFD_SIG_APP_MASTER_PCIE0":     "nfd_cfg_sig_app_master0",
+    "NFD_SIG_APP_MASTER_PCIE1":     "nfd_cfg_sig_app_master1",
+    "NFD_SIG_APP_MASTER_PCIE2":     "nfd_cfg_sig_app_master2",
+    "NFD_SIG_APP_MASTER_PCIE3":     "nfd_cfg_sig_app_master3",
+    "RTU_NCTX": 8
+  },
+  "common": {
+    "defines": [
+    ],
+    "compiler": {
+      "flags": ["W3", "Qno_decl_volatile", "O2", "mIPOPT_nfp=2"]
+    },
+    "assembler": {
+    },
+    "linker": {
+      "flags": [
+        "rtsyms", "mip"
+      ],
+      "pico": {
+        "i8": "catamaran",
+        "i9": "catamaran"
+      }
+    }
+  },
+  "components": {
+    "pif_gen": {
+      "dir": "%(PIFOUTDIR)s",
+      "compiler": {
+        "dependencies": [
+          "pif_design.c",
+          "pif_design.h",
+          "pif_parrep.c",
+          "pif_parrep.h",
+          "pif_actions.c",
+          "pif_actions.h",
+          "pif_global.c",
+          "pif_global.h",
+          "pif_ctlflow.c",
+          "pif_ctlflow.h",
+          "pif_tables.c",
+          "pif_tables.h",
+          "pif_deparse.c",
+          "pif_digests.c",
+          "pif_digests.h",
+          "pif_meters.c",
+          "pif_meters.h",
+          "pif_registers.c",
+          "pif_registers.h",
+          "pif_pkt_recurse.c",
+          "pif_pkt_recurse.h",
+          "pif_pkt_clone.c",
+          "pif_pkt_clone.h",
+          "pif_flcalc.c",
+          "pif_flcalc.h",
+          "pif_field_lists.h",
+          "pif_parrep_pvs_sync.c"
+        ]
+      }
+    },
+    "pif_main_common": {
+      "dir": "%(PIFROOTDIR)s",
+      "compiler": {
+        "src": [
+          "%(PIFAPPCOMMONDIR)s/src/pif_app_nfd.c",
+          "%(PIFAPPCOMMONDIR)s/src/pkt_clone.c",
+          "%(PIFAPPCOMMONDIR)s/src/mcast.c",
+          "%(PIFAPPCOMMONDIR)s/src/pif_app_controller.c",
+          "%(CFLOWTSTAMPLIBDIR)s/src/cflow_tstamp.c"
+        ],
+        "include": [
+          "%(CFLOWTSTAMPLIBDIR)s/include"
+        ]
+      }
+    },
+    "pif_app_common": {
+      "dir": "%(PIFROOTDIR)s",
+      "compiler": {
+        "src": [
+          "%(PIFAPPCOMMONDIR)s/src/dcfl_init.c",
+          "%(PIFAPPCOMMONDIR)s/src/system_init.c"
+        ],
+        "include": [
+          "%(PIFAPPCOMMONDIR)s/include",
+          "%(PIFSHARED)s/include"
+        ]
+      },
+      "assembler": {
+        "include": [
+          "%(PIFAPPCOMMONDIR)s/include"
+        ]
+      }
+    },
+    "pif_app_flowcache": {
+      "dir": "%(PIFROOTDIR)s",
+      "requires": "flowcache",
+      "compiler": {
+        "src": [
+          "%(PIFAPPCOMMONDIR)s/src/fc.c"
+        ]
+      }
+    },
+    "hashmap": {
+      "dir": "%(PIFROOTDIR)s",
+      "compiler": {
+        "src": [
+          "%(HASHMAPLIBDIR)s/src/camp_hash.c"
+        ],
+        "include": [
+          "%(HASHMAPLIBDIR)s/include"
+        ]
+      },
+      "assembler": {
+        "include": [
+          "%(PIFAPPCOMMONDIR)s/include"
+        ]
+      }
+    },
+    "pif_app_cfg": {
+      "dir": "%(PIFROOTDIR)s",
+      "compiler": {
+        "forceinclude": [
+          "%(PIFAPPDIR)s/include/config.h"
+        ],
+        "dependencies": [
+          "%(PIFOUTDIR)s/pif_design.h"
+        ]
+      },
+      "assembler": {
+        "forceinclude": [
+          "%(PIFAPPDIR)s/include/config.h"
+        ],
+        "dependencies": [
+          "%(PIFOUTDIR)s/pif_design.h"
+        ]
+      }
+    },
+    "pif_app_lib": {
+      "dir": "%(PIFROOTDIR)s",
+      "compiler": {
+        "include": [
+          "%(PIFLIBDIR)s/include"
+        ],
+        "src": [
+          "%(PIFLIBDIR)s/src/mac_time_user.c",
+          "%(PIFLIBDIR)s/src/pif_action_common.c",
+          "%(PIFLIBDIR)s/src/pif_meter.c",
+          "%(PIFLIBDIR)s/src/pif_lookup.c",
+          "%(PIFLIBDIR)s/src/pif_pkt.c",
+          "%(PIFLIBDIR)s/src/pif_counters.c",
+          "%(PIFLIBDIR)s/src/pif_init.c",
+          "%(PIFLIBDIR)s/src/pif_flcalc_algorithms.c",
+          "%(PIFLIBDIR)s/src/pif_memops.c"
+        ]
+      },
+      "assembler": {
+        "include": [
+          "%(PIFAPPDIR)s/include"
+        ]
+      }
+    },
+    "pif_app_out": {
+      "dir": "%(PIFOUTDIR)s",
+      "compiler": {
+        "src": [
+          "pif_design.c",
+          "pif_parrep.c",
+          "pif_actions.c",
+          "pif_global.c",
+          "pif_ctlflow.c",
+          "pif_tables.c",
+          "pif_deparse.c",
+          "pif_digests.c",
+          "pif_meters.c",
+          "pif_registers.c",
+          "pif_pkt_recurse.c",
+          "pif_pkt_clone.c",
+          "pif_flcalc.c"
+        ]
+      }
+    },
+    "pif_app_out_incl": {
+      "dir": "%(PIFOUTDIR)s",
+      "compiler": {
+        "include": [
+          ".",
+          "callbackapi"
+        ]
+      },
+      "assembler": {
+        "include": [
+          "."
+        ]
+      }
+
+    },
+    "app_master": {
+      "dir": "%(PIFROOTDIR)s",
+      "compiler": {
+        "include": [
+          "%(PIFLIBDIR)s/include",
+          "%(PIFSHARED)s/include",
+          "%(PIFAPPCOMMONDIR)s/include",
+          "%(MACFLUSHLIBDIR)s"
+        ],
+        "src": ["%(PIFAPPDIR)s/src/app_master.c",
+                "%(PIFAPPCOMMONDIR)s/src/app_master_common.c",
+                "%(PIFLIBDIR)s/src/pif_init.c",
+                "%(PIFLIBDIR)s/src/mac_time.c",
+                "%(PIFOUTDIR)s/pif_digests.c",
+                "%(PIFOUTDIR)s/pif_parrep_pvs_sync.c",
+                "%(MACFLUSHLIBDIR)s/libmacflush.c"]
+      }
+    }
+  },
+  "targets": {
+    "pif_app_nfd": {
+      "list": "pif_app_nfd.list",
+      "type": "application",
+      "components": [
+        "pif_main_common",
+        "pif_app_common",
+        "pif_app_flowcache",
+        "pif_app_cfg",
+        "pif_app_lib",
+        "pif_app_lib_incl",
+        "pif_app_out",
+        "pif_app_out_incl",
+        "hashmap",
+        "flowenv",
+        "flowcache",
+        "dcfl",
+        "blm",
+        "pkt_lib",
+        "pktio_lib",
+        "gro",
+        "libnfd",
+        "standardlibrary",
+        "microc"
+      ],
+      "compiler": {
+        "flags": ["Qnctx=%(RTU_NCTX)s",
+                  "Qnctx_mode=%(RTU_NCTX)s",
+                  "Qnn_mode=1",
+                  "Qspill=3"],
+        "defines": ["PIF_APP_MASTER_ME=0x204",
+                    "HASHMAP_CAMPHASH"]
+      }
+    },
+    "app_master": {
+      "list": "app_master.list",
+      "type": "component",
+      "mes": [
+        "%(APP_MASTER_ME)s"
+      ],
+      "components": [
+        "app_master",
+        "pif_app_common",
+        "pif_app_cfg",
+        "pif_app_lib_incl",
+        "pif_app_out_incl",
+        "hashmap",
+        "flowcache",
+        "dcfl",
+        "flowenv",
+        "blm",
+        "pkt_lib",
+        "gro",
+        "libnfd",
+        "standardlibrary",
+        "microc"
+      ],
+      "compiler": {
+        "defines": [
+          "PKT_MOD_SCRIPT_INIT_CSR",
+          "GLOBAL_INIT",
+          "HASHMAP_CAMPHASH"
+        ],
+        "flags": ["Qnctx=8", "Qnctx_mode=8", "Qnn_mode=1", "Qspill=3"]
+      }
+    },
+    "flowcache_timeout_emu0": {
+      "list": "flowcache_timeout_emu0.list",
+      "type": "component",
+      "requires": "flowcache",
+      "components": [
+        "pif_app_common",
+        "pif_app_flowcache",
+        "pif_app_cfg",
+        "pif_app_out_incl",
+        "dcfl",
+        "flowenv",
+        "flowcache_timeout",
+        "standardlibrary",
+        "microc"
+      ],
+      "compiler": {
+        "flags": [
+          "Qnctx=8",
+          "Qnctx_mode=8",
+          "Qnn_mode=1",
+          "Qspill=3"
+        ]
+      }
+    },
+    "flowcache_timeout_emu1": {
+      "list": "flowcache_timeout_emu1.list",
+      "type": "component",
+      "requires": "flowcache",
+      "components": [
+        "pif_app_common",
+        "pif_app_flowcache",
+        "pif_app_cfg",
+        "pif_app_out_incl",
+        "dcfl",
+        "flowenv",
+        "flowcache_timeout",
+        "standardlibrary",
+        "microc"
+      ],
+      "compiler": {
+        "flags": [
+          "Qnctx=8",
+          "Qnctx_mode=8",
+          "Qnn_mode=1",
+          "Qspill=3"
+        ]
+      }
+    },
+    "flowcache_timeout_emu2": {
+      "list": "flowcache_timeout_emu2.list",
+      "type": "component",
+      "requires": "flowcache",
+      "components": [
+        "pif_app_common",
+        "pif_app_flowcache",
+        "pif_app_cfg",
+        "pif_app_out_incl",
+        "dcfl",
+        "flowenv",
+        "flowcache_timeout",
+        "standardlibrary",
+        "microc"
+      ],
+      "compiler": {
+        "defines": [ "FC_TIMEOUT_EMU=2"],
+        "flags": [
+          "Qnctx=8",
+          "Qnctx_mode=8",
+          "Qnn_mode=1",
+          "Qspill=3"
+        ]
+      }
+    },
+    "nfd_svc": {
+      "list": "nfd_svc.list",
+      "type": "component",
+      "requires": "libnfd",
+      "mes": [
+        "%(NFD_SVC_ME)s"
+      ],
+      "components": [
+        "pif_app_common_incl",
+        "pif_app_cfg",
+        "pif_app_lib_incl",
+        "pif_app_out_incl",
+        "nfd_svc",
+        "flowenv",
+        "blm",
+        "nfdpci",
+        "standardlibrary",
+        "microc"
+      ],
+      "compiler": {
+        "defines": [
+          "NFD_CFG_NEXT_ME0=\"__nfp_idstr2meid(\\\"%(APP_MASTER_ME)s\\\")\"",
+          "NFD_CFG_SIG_NEXT_ME0=\"%(NFD_SIG_APP_MASTER_PCIE0)s\"",
+          "NFD_CFG_NEXT_ME1=\"__nfp_idstr2meid(\\\"%(APP_MASTER_ME)s\\\")\"",
+          "NFD_CFG_SIG_NEXT_ME1=\"%(NFD_SIG_APP_MASTER_PCIE1)s\"",
+          "NFD_CFG_NEXT_ME2=\"__nfp_idstr2meid(\\\"%(APP_MASTER_ME)s\\\")\"",
+          "NFD_CFG_SIG_NEXT_ME2=\"%(NFD_SIG_APP_MASTER_PCIE2)s\"",
+          "NFD_CFG_NEXT_ME3=\"__nfp_idstr2meid(\\\"%(APP_MASTER_ME)s\\\")\"",
+          "NFD_CFG_SIG_NEXT_ME3=\"%(NFD_SIG_APP_MASTER_PCIE3)s\""
+        ],
+        "flags": ["Qnctx=8", "Qnctx_mode=8", "Qnn_mode=1"]
+      }
+    },
+    "nfd_pcie0_sb": {
+      "list": "nfd_pcie0_sb.list",
+      "type" : "component",
+      "requires": "libnfd",
+      "reuse_mes": true,
+      "components" : ["nfd_pcie_sb"],
+      "mes": [ "%(NFD_PCIE0_SB_ME)s" ],
+      "assembler": {
+        "defines": [
+          "NFD_CFG_SIG_NEXT_ME=\"%(NFD_SIG_SVC_ME_PCIE0)s\"",
+          "PCIE_ISL=0"
+        ]
+      }
+    },
+    "nfd_pcie0_pd0": {
+      "list": "nfd_pcie0_pd0.list",
+      "type": "component",
+      "requires": "libnfd",
+      "reuse_mes": true,
+      "components": [ "nfd_pcie_pd" ],
+      "mes": [ "%(NFD_PCIE0_PD0_ME)s" ],
+      "assembler": {
+        "defines": [
+          "NFD_OUT_STAGE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_SB_ME)s\\\")\"",
+          "PCIE_ISL=0"
+        ]
+      }
+    },
+    "nfd_pcie0_pd1": {
+      "list": "nfd_pcie0_pd1.list",
+      "type": "component",
+      "requires": "libnfd",
+      "reuse_mes": true,
+      "components": [ "nfd_pcie_pd" ],
+      "mes": [ "%(NFD_PCIE0_PD1_ME)s" ],
+      "assembler": {
+        "defines": [
+          "NFD_OUT_STAGE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_SB_ME)s\\\")\"",
+          "PCIE_ISL=0"
+        ]
+      }
+    },
+    "nfd_pcie0_pci_out_me0": {
+      "list": "nfd_pcie0_pci_out_me0.list",
+      "type": "component",
+      "requires": "libnfd",
+      "components": [ "nfd_pcie_pci_out_me" ],
+      "mes": [ "%(NFD_PCIE0_PCI_OUT_ME0_ME)s" ],
+      "compiler": {
+        "defines": [
+          "NFD_CFG_NEXT_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_SB_ME)s\\\")\"",
+          "PCIE_ISL=0"
+        ]
+      }
+    },
+    "nfd_pcie0_pci_in_gather": {
+      "list": "nfd_pcie0_pci_in_gather.list",
+      "type": "component",
+      "requires": "libnfd",
+      "mes": [ "%(NFD_PCIE0_PCI_IN_GATHER_ME)s" ],
+      "components": [ "nfd_pcie_pci_in_gather" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_DATA_DMA_ME0=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_PCI_IN_ISSUE0_ME)s\\\")\"",
+          "NFD_IN_DATA_DMA_ME1=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_PCI_IN_ISSUE1_ME)s\\\")\"",
+          "NFD_OUT_CACHE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_PCI_OUT_ME0_ME)s\\\")\"",
+          "PCIE_ISL=0"
+        ]
+      }
+    },
+    "nfd_pcie0_pci_in_issue0": {
+      "list": "nfd_pcie0_pci_in_issue0.list",
+      "type": "component",
+      "requires": "libnfd",
+      "mes": [ "%(NFD_PCIE0_PCI_IN_ISSUE0_ME)s" ],
+      "components": [ "nfd_pcie_pci_in_issue" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_NOTIFY_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_NOTIFY_ME)s\\\")\"",
+          "PCI_IN_ISSUE_DMA_IDX=0",
+          "PCIE_ISL=0"
+        ]
+      }
+    },
+    "nfd_pcie0_pci_in_issue1": {
+      "list": "nfd_pcie0_pci_in_issue1.list",
+      "type": "component",
+      "requires": "libnfd",
+      "mes": [ "%(NFD_PCIE0_PCI_IN_ISSUE1_ME)s" ],
+      "components": [ "nfd_pcie_pci_in_issue" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_NOTIFY_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_NOTIFY_ME)s\\\")\"",
+          "PCI_IN_ISSUE_DMA_IDX=1",
+          "PCIE_ISL=0"
+        ]
+      }
+    },
+    "nfd_pcie0_notify": {
+      "list": "nfd_pcie0_notify.list",
+      "type": "component",
+      "requires": "libnfd",
+      "components": [ "nfd_pcie_notify" ],
+      "mes": [ "%(NFD_PCIE0_NOTIFY_ME)s" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_DATA_DMA_ME0=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_PCI_IN_ISSUE0_ME)s\\\")\"",
+          "NFD_IN_DATA_DMA_ME1=\"__nfp_idstr2meid(\\\"%(NFD_PCIE0_PCI_IN_ISSUE1_ME)s\\\")\"",
+          "PCIE_ISL=0"
+        ]
+      }
+    },
+    "nfd_pcie1_sb": {
+      "list": "nfd_pcie1_sb.list",
+      "type" : "component",
+      "requires": "libnfd and (pcie_x2 or pcie_x4)",
+      "reuse_mes": true,
+      "components" : ["nfd_pcie_sb"],
+      "mes": [ ],
+      "assembler": {
+        "defines": [
+          "NFD_CFG_SIG_NEXT_ME=\"%(NFD_SIG_SVC_ME_PCIE1)s\"",
+          "PCIE_ISL=1"
+        ]
+      }
+    },
+    "nfd_pcie1_pd0": {
+      "list": "nfd_pcie1_pd0.list",
+      "type": "component",
+      "requires": "libnfd and (pcie_x2 or pcie_x4)",
+      "reuse_mes": true,
+      "components": [ "nfd_pcie_pd" ],
+      "mes": [ ],
+      "assembler": {
+        "defines": [
+          "NFD_OUT_STAGE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_SB_ME)s\\\")\"",
+          "PCIE_ISL=1"
+        ]
+      }
+    },
+    "nfd_pcie1_pd1": {
+      "list": "nfd_pcie1_pd1.list",
+      "type": "component",
+      "requires": "libnfd and (pcie_x2 or pcie_x4)",
+      "reuse_mes": true,
+      "components": [ "nfd_pcie_pd" ],
+      "mes": [ ],
+      "assembler": {
+        "defines": [
+          "NFD_OUT_STAGE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_SB_ME)s\\\")\"",
+          "PCIE_ISL=1"
+        ]
+      }
+    },
+    "nfd_pcie1_pci_out_me0": {
+      "list": "nfd_pcie1_pci_out_me0.list",
+      "type": "component",
+      "requires": "libnfd and (pcie_x2 or pcie_x4)",
+      "components": [ "nfd_pcie_pci_out_me" ],
+      "mes": [  ],
+      "compiler": {
+        "defines": [
+          "NFD_CFG_NEXT_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_SB_ME)s\\\")\"",
+          "PCIE_ISL=1"
+        ]
+      }
+    },
+    "nfd_pcie1_pci_in_gather": {
+      "list": "nfd_pcie1_pci_in_gather.list",
+      "type": "component",
+      "requires": "libnfd and (pcie_x2 or pcie_x4)",
+      "mes": [ ],
+      "components": [ "nfd_pcie_pci_in_gather" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_DATA_DMA_ME0=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_PCI_IN_ISSUE0_ME)s\\\")\"",
+          "NFD_IN_DATA_DMA_ME1=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_PCI_IN_ISSUE1_ME)s\\\")\"",
+          "NFD_OUT_CACHE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_PCI_OUT_ME0_ME)s\\\")\"",
+          "PCIE_ISL=1"
+        ]
+      }
+    },
+    "nfd_pcie1_pci_in_issue0": {
+      "list": "nfd_pcie1_pci_in_issue0.list",
+      "type": "component",
+      "requires": "libnfd and (pcie_x2 or pcie_x4)",
+      "mes": [ ],
+      "components": [ "nfd_pcie_pci_in_issue" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_NOTIFY_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_NOTIFY_ME)s\\\")\"",
+          "PCI_IN_ISSUE_DMA_IDX=0",
+          "PCIE_ISL=1"
+        ]
+      }
+    },
+    "nfd_pcie1_pci_in_issue1": {
+      "list": "nfd_pcie1_pci_in_issue1.list",
+      "type": "component",
+      "requires": "libnfd and (pcie_x2 or pcie_x4)",
+      "mes": [ ],
+      "components": [ "nfd_pcie_pci_in_issue" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_NOTIFY_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_NOTIFY_ME)s\\\")\"",
+          "PCI_IN_ISSUE_DMA_IDX=1",
+          "PCIE_ISL=1"
+        ]
+      }
+    },
+    "nfd_pcie1_notify": {
+      "list": "nfd_pcie1_notify.list",
+      "type": "component",
+      "requires": "libnfd and (pcie_x2 or pcie_x4)",
+      "components": [ "nfd_pcie_notify" ],
+      "mes": [ ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_DATA_DMA_ME0=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_PCI_IN_ISSUE0_ME)s\\\")\"",
+          "NFD_IN_DATA_DMA_ME1=\"__nfp_idstr2meid(\\\"%(NFD_PCIE1_PCI_IN_ISSUE1_ME)s\\\")\"",
+          "PCIE_ISL=1"
+        ]
+      }
+    },
+    "nfd_pcie2_sb": {
+      "list": "nfd_pcie2_sb.list",
+      "type" : "component",
+      "requires": "libnfd and pcie_x4",
+      "reuse_mes": true,
+      "components" : ["nfd_pcie_sb"],
+      "mes": [ ],
+      "assembler": {
+        "defines": [
+          "NFD_CFG_SIG_NEXT_ME=\"%(NFD_SIG_SVC_ME_PCIE2)s\"",
+          "PCIE_ISL=2"
+        ]
+      }
+    },
+    "nfd_pcie2_pd0": {
+      "list": "nfd_pcie2_pd0.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "reuse_mes": true,
+      "components": [ "nfd_pcie_pd" ],
+      "mes": [ ],
+      "assembler": {
+        "defines": [
+          "NFD_OUT_STAGE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_SB_ME)s\\\")\"",
+          "PCIE_ISL=2"
+        ]
+      }
+    },
+    "nfd_pcie2_pd1": {
+      "list": "nfd_pcie2_pd1.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "reuse_mes": true,
+      "components": [ "nfd_pcie_pd" ],
+      "mes": [ ],
+      "assembler": {
+        "defines": [
+          "NFD_OUT_STAGE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_SB_ME)s\\\")\"",
+          "PCIE_ISL=2"
+        ]
+      }
+    },
+    "nfd_pcie2_pci_out_me0": {
+      "list": "nfd_pcie2_pci_out_me0.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "components": [ "nfd_pcie_pci_out_me" ],
+      "mes": [  ],
+      "compiler": {
+        "defines": [
+          "NFD_CFG_NEXT_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_SB_ME)s\\\")\"",
+          "PCIE_ISL=2"
+        ]
+      }
+    },
+    "nfd_pcie2_pci_in_gather": {
+      "list": "nfd_pcie2_pci_in_gather.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "mes": [ ],
+      "components": [ "nfd_pcie_pci_in_gather" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_DATA_DMA_ME0=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_PCI_IN_ISSUE0_ME)s\\\")\"",
+          "NFD_IN_DATA_DMA_ME1=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_PCI_IN_ISSUE1_ME)s\\\")\"",
+          "NFD_OUT_CACHE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_PCI_OUT_ME0_ME)s\\\")\"",
+          "PCIE_ISL=2"
+        ]
+      }
+    },
+    "nfd_pcie2_pci_in_issue0": {
+      "list": "nfd_pcie2_pci_in_issue0.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "mes": [ ],
+      "components": [ "nfd_pcie_pci_in_issue" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_NOTIFY_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_NOTIFY_ME)s\\\")\"",
+          "PCI_IN_ISSUE_DMA_IDX=0",
+          "PCIE_ISL=2"
+        ]
+      }
+    },
+    "nfd_pcie2_pci_in_issue1": {
+      "list": "nfd_pcie2_pci_in_issue1.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "mes": [ ],
+      "components": [ "nfd_pcie_pci_in_issue" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_NOTIFY_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_NOTIFY_ME)s\\\")\"",
+          "PCI_IN_ISSUE_DMA_IDX=1",
+          "PCIE_ISL=2"
+        ]
+      }
+    },
+    "nfd_pcie2_notify": {
+      "list": "nfd_pcie2_notify.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "components": [ "nfd_pcie_notify" ],
+      "mes": [ ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_DATA_DMA_ME0=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_PCI_IN_ISSUE0_ME)s\\\")\"",
+          "NFD_IN_DATA_DMA_ME1=\"__nfp_idstr2meid(\\\"%(NFD_PCIE2_PCI_IN_ISSUE1_ME)s\\\")\"",
+          "PCIE_ISL=2"
+        ]
+      }
+    },
+    "nfd_pcie3_sb": {
+      "list": "nfd_pcie3_sb.list",
+      "type" : "component",
+      "requires": "libnfd and pcie_x4",
+      "reuse_mes": true,
+      "components" : ["nfd_pcie_sb"],
+      "mes": [ ],
+      "assembler": {
+        "defines": [
+          "NFD_CFG_SIG_NEXT_ME=\"%(NFD_SIG_SVC_ME_PCIE3)s\"",
+          "PCIE_ISL=3"
+        ]
+      }
+    },
+    "nfd_pcie3_pd0": {
+      "list": "nfd_pcie3_pd0.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "reuse_mes": true,
+      "components": [ "nfd_pcie_pd" ],
+      "mes": [ ],
+      "assembler": {
+        "defines": [
+          "NFD_OUT_STAGE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_SB_ME)s\\\")\"",
+          "PCIE_ISL=3"
+        ]
+      }
+    },
+    "nfd_pcie3_pd1": {
+      "list": "nfd_pcie3_pd1.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "reuse_mes": true,
+      "components": [ "nfd_pcie_pd" ],
+      "mes": [ ],
+      "assembler": {
+        "defines": [
+          "NFD_OUT_STAGE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_SB_ME)s\\\")\"",
+          "PCIE_ISL=3"
+        ]
+      }
+    },
+    "nfd_pcie3_pci_out_me0": {
+      "list": "nfd_pcie3_pci_out_me0.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "components": [ "nfd_pcie_pci_out_me" ],
+      "mes": [  ],
+      "compiler": {
+        "defines": [
+          "NFD_CFG_NEXT_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_SB_ME)s\\\")\"",
+          "PCIE_ISL=3"
+        ]
+      }
+    },
+    "nfd_pcie3_pci_in_gather": {
+      "list": "nfd_pcie3_pci_in_gather.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "mes": [ ],
+      "components": [ "nfd_pcie_pci_in_gather" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_DATA_DMA_ME0=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_PCI_IN_ISSUE0_ME)s\\\")\"",
+          "NFD_IN_DATA_DMA_ME1=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_PCI_IN_ISSUE1_ME)s\\\")\"",
+          "NFD_OUT_CACHE_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_PCI_OUT_ME0_ME)s\\\")\"",
+          "PCIE_ISL=3"
+        ]
+      }
+    },
+    "nfd_pcie3_pci_in_issue0": {
+      "list": "nfd_pcie3_pci_in_issue0.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "mes": [ ],
+      "components": [ "nfd_pcie_pci_in_issue" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_NOTIFY_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_NOTIFY_ME)s\\\")\"",
+          "PCI_IN_ISSUE_DMA_IDX=0",
+          "PCIE_ISL=3"
+        ]
+      }
+    },
+    "nfd_pcie3_pci_in_issue1": {
+      "list": "nfd_pcie3_pci_in_issue1.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "mes": [ ],
+      "components": [ "nfd_pcie_pci_in_issue" ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_NOTIFY_ME=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_NOTIFY_ME)s\\\")\"",
+          "PCI_IN_ISSUE_DMA_IDX=1",
+          "PCIE_ISL=3"
+        ]
+      }
+    },
+    "nfd_pcie3_notify": {
+      "list": "nfd_pcie3_notify.list",
+      "type": "component",
+      "requires": "libnfd and pcie_x4",
+      "components": [ "nfd_pcie_notify" ],
+      "mes": [ ],
+      "compiler": {
+        "defines": [
+          "NFD_IN_DATA_DMA_ME0=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_PCI_IN_ISSUE0_ME)s\\\")\"",
+          "NFD_IN_DATA_DMA_ME1=\"__nfp_idstr2meid(\\\"%(NFD_PCIE3_PCI_IN_ISSUE1_ME)s\\\")\"",
+          "PCIE_ISL=3"
+        ]
+      }
+    },
+    "blm0": {
+      "list": "blm0.list",
+      "type": "component",
+      "mes": [
+        "i48.me3"
+      ],
+      "components": [
+        "pif_app_common_incl",
+        "pif_app_cfg",
+        "pif_app_lib_incl",
+        "pif_app_out_incl",
+        "blm",
+        "blm0",
+        "standardlibrary",
+        "microcode"
+      ],
+      "assembler": {
+        "defines": [
+          "BLM_0_ISLAND_48",
+          "NBII=8",
+          "BLM_INSTANCE_ID=0",
+          "BLM_INIT_EMU_RINGS",
+          "BLM_BLQ_EMEM_TYPE=emem"
+        ],
+        "flags": [
+          "W3", "R", "C", "Of", "Os", "O",
+          "indirect_ref_format_nfp6000",
+          "third_party_addressing_40_bit",
+          "permit_dram_unaligned",
+          "preproc64",
+          "indirect_ref_format_nfp6000"
+        ]
+      }
+    },
+    "blm1": {
+      "list": "blm1.list",
+      "type": "component",
+      "components": [
+        "pif_app_common_incl",
+        "pif_app_cfg",
+        "pif_app_lib_incl",
+        "pif_app_out_incl",
+        "blm",
+        "blm1",
+        "standardlibrary",
+        "microcode"
+      ],
+      "assembler": {
+        "defines": [
+	      "BLM_1_ISLAND_49",
+          "NBII=9",
+          "BLM_INSTANCE_ID=1",
+          "BLM_BLQ_EMEM_TYPE=emem"
+        ],
+        "flags": [
+          "W3", "R", "C", "Of", "Os", "O",
+          "indirect_ref_format_nfp6000",
+          "third_party_addressing_40_bit",
+          "permit_dram_unaligned",
+          "preproc64",
+          "indirect_ref_format_nfp6000"
+        ]
+      }
+    },
+    "gro0": {
+      "list": "gro0.list",
+      "type": "component",
+      "requires": "gro",
+      "components": [
+        "pif_app_common_incl",
+        "pif_app_cfg",
+        "pif_app_lib_incl",
+        "pif_app_out_incl",
+        "gro_cfg",
+        "gro",
+        "gro0",
+        "standardlibrary",
+        "microcode"
+      ],
+      "assembler": {
+        "defines": [
+          "NFD_VERSION=0x03010000",
+          "NFP_LIB_ANY_NFAS_VERSION",
+          "GRO_BLOCK_NUM=0"
+        ],
+        "flags": [
+          "W3", "R", "C",
+          "indirect_ref_format_nfp6000",
+          "third_party_addressing_40_bit",
+          "permit_dram_unaligned",
+          "preproc64",
+          "indirect_ref_format_nfp6000",
+          "keep_unreachable_code",
+          "lm 0"
+        ]
+      }
+    },
+    "gro1": {
+      "list": "gro1.list",
+      "type": "component",
+      "requires": "gro",
+      "components": [
+        "pif_app_common_incl",
+        "pif_app_cfg",
+        "pif_app_lib_incl",
+        "pif_app_out_incl",
+        "gro_cfg",
+        "gro",
+        "gro0",
+        "standardlibrary",
+        "microcode"
+      ],
+      "assembler": {
+        "defines": [
+          "NFD_VERSION=0x03010000",
+          "NFP_LIB_ANY_NFAS_VERSION",
+          "GRO_BLOCK_NUM=1"
+        ],
+        "flags": [
+          "W3", "R", "C",
+          "indirect_ref_format_nfp6000",
+          "third_party_addressing_40_bit",
+          "permit_dram_unaligned",
+          "preproc64",
+          "indirect_ref_format_nfp6000",
+          "keep_unreachable_code",
+          "lm 0"
+        ]
+      }
+    },
+    "nbi_init_csr": {
+      "list": "nbi_init_csr.list",
+      "type": "component",
+      "components": [
+        "pif_app_common_incl",
+        "pif_app_cfg",
+        "pif_app_lib_incl",
+        "pif_app_out_incl",
+        "flowenv_init",
+        "nbi_init",
+        "standardlibrary",
+        "microcode"
+      ],
+      "assembler": {
+        "defines": [
+        ],
+        "flags": [
+          "W3", "R", "C",
+          "permit_dram_unaligned",
+          "preproc64",
+          "keep_unreachable_code",
+          "lm 0",
+          "codeless"
+        ]
+      }
+    }
+  },
+  "platforms": {
+    "bataan": {
+      "chip": {
+        "minimum_revision": "0x10",
+        "sku": "NFP-6480-1C-B0"
+      },
+      "common": {
+        "defines": [
+          "PLATFORM_PORT_SELECTION=CDP_PLATFORM",
+          "PIF_APP_CONFIG=PIF_APP_DEFAULT",
+          "NUM_NBI=2",
+          "NUM_IMU=2",
+          "NUM_EMU=2"
+        ],
+        "linker": {
+          "flags": [
+            "rtsyms", "mip"
+          ]
+        }
+      },
+      "targets": {
+        "pif_app_nfd": {
+          "mes": [
+            "i32.me0", "i33.me0", "i34.me0", "i35.me0", "i36.me0", "i37.me0", "i38.me0",
+            "i32.me1", "i33.me1", "i34.me1", "i35.me1", "i36.me1", "i37.me1", "i38.me1",
+            "i32.me2", "i33.me2", "i34.me2", "i35.me2", "i36.me2", "i37.me2", "i38.me2",
+            "i32.me3", "i33.me3", "i34.me3", "i35.me3", "i36.me3", "i37.me3", "i38.me3",
+            "i32.me4", "i33.me4", "i34.me4", "i35.me4", "i36.me4", "i37.me4", "i38.me4",
+            "i32.me5", "i33.me5", "i34.me5", "i35.me5", "i36.me5", "i37.me5", "i38.me5",
+            "i32.me6", "i33.me6", "i34.me6", "i35.me6",            "i37.me6", "i38.me6",
+            "i32.me7", "i33.me7", "i34.me7", "i35.me7",            "i37.me7", "i38.me7",
+            "i32.me8", "i33.me8", "i34.me8", "i35.me8",            "i37.me8", "i38.me8",
+            "i32.me9", "i33.me9", "i34.me9", "i35.me9",            "i37.me9", "i38.me9",
+            "i32.me10","i33.me10","i34.me10","i35.me10",           "i37.me10","i38.me10",
+            "i32.me11","i33.me11","i34.me11","i35.me11",           "i37.me11","i38.me11"
+          ]
+        },
+        "gro0": {
+          "mes": [
+            "i48.me0"
+          ]
+        },
+        "gro1": {
+          "mes": [
+            "i48.me1"
+          ]
+        },
+        "flowcache_timeout_emu0": {
+          "mes": [
+            "i49.me0"
+          ],
+          "compiler": {
+            "defines": [
+            "FC_TIMEOUT_EMU=0"
+            ]
+          }
+        },
+        "flowcache_timeout_emu1": {
+          "mes": [
+            "i49.me1"
+          ],
+          "compiler": {
+            "defines": [
+            "FC_TIMEOUT_EMU=1"
+            ]
+          }
+        },
+        "flowcache_timeout_emu2": {
+          "mes": [
+          ]
+        },
+        "blm1": {
+          "mes": [
+              "i49.me3"
+          ]
+        }
+      }
+    },
+    "hydrogen": {
+      "chip": {
+        "minimum_revision": "0x10",
+        "sku": "nfp-4xxxc-b0"
+      },
+      "common": {
+        "defines": [
+          "PLATFORM_PORT_SELECTION=H_PLATFORM",
+          "PIF_APP_CONFIG=PIF_APP_DEFAULT",
+          "NUM_IMU=1",
+          "NUM_EMU=1"
+        ],
+        "linker": {
+          "pico": {
+            "i8": "catamaran"
+          }
+        }
+      },
+      "targets": {
+        "pif_app_nfd": {
+          "mes": [
+            "i32.me0", "i33.me0", "i34.me0", "i35.me0", "i36.me0",
+            "i32.me1", "i33.me1", "i34.me1", "i35.me1", "i36.me1",
+            "i32.me2", "i33.me2", "i34.me2", "i35.me2", "i36.me2",
+            "i32.me3", "i33.me3", "i34.me3", "i35.me3", "i36.me3",
+            "i32.me4", "i33.me4", "i34.me4", "i35.me4", "i36.me4",
+            "i32.me5", "i33.me5", "i34.me5", "i35.me5", "i36.me5",
+            "i32.me6", "i33.me6", "i34.me6", "i35.me6",           
+            "i32.me7", "i33.me7", "i34.me7", "i35.me7",           
+            "i32.me8", "i33.me8", "i34.me8", "i35.me8",
+            "i32.me9", "i33.me9", "i34.me9", "i35.me9",
+            "i32.me10","i33.me10","i34.me10","i35.me10",
+            "i32.me11","i33.me11","i34.me11","i35.me11"
+          ]
+        },
+        "gro0": {
+          "mes": [
+            "i48.me0"
+          ]
+        },
+        "gro1": {
+          "mes": [
+            "i48.me1"
+          ]
+        },
+        "flowcache_timeout_emu0": {
+          "mes": [
+            "i36.me10"
+          ],
+          "compiler": {
+            "defines": [
+            "FC_TIMEOUT_EMU=0"
+            ]
+          }
+        },
+        "flowcache_timeout_emu1": {
+          "mes": [
+          ],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "flowcache_timeout_emu2": {
+          "mes": [
+          ],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "blm1": {
+          "mes": [
+          ]
+        }
+      }
+    },
+    "starfighter1": {
+      "chip": {
+        "minimum_revision": "0x10",
+        "sku": "NFP-6480-1C-B0"
+      },
+      "common": {
+        "defines": [
+          "PLATFORM_PORT_SELECTION=SF_PLATFORM",
+          "PIF_APP_CONFIG=PIF_APP_DEFAULT",
+          "NUM_IMU=2",
+          "NUM_EMU=2",
+          "PCIE_ISL_CNT=2"
+        ],
+        "linker": {
+          "flags": [
+            "rtsyms", "mip"
+          ]
+        }
+      },
+      "targets": {
+        "pif_app_nfd": {
+          "mes": [
+            "i32.me0", "i33.me0", "i34.me0", "i35.me0", "i36.me0", "i37.me0", "i38.me0",
+            "i32.me1", "i33.me1", "i34.me1", "i35.me1", "i36.me1", "i37.me1", "i38.me1",
+            "i32.me2", "i33.me2", "i34.me2", "i35.me2", "i36.me2", "i37.me2", "i38.me2",
+            "i32.me3", "i33.me3", "i34.me3", "i35.me3", "i36.me3", "i37.me3", "i38.me3",
+            "i32.me4", "i33.me4", "i34.me4", "i35.me4", "i36.me4", "i37.me4", "i38.me4",
+            "i32.me5", "i33.me5", "i34.me5", "i35.me5", "i36.me5", "i37.me5", "i38.me5",
+            "i32.me6", "i33.me6", "i34.me6", "i35.me6",            "i37.me6", "i38.me6",
+            "i32.me7", "i33.me7", "i34.me7", "i35.me7",            "i37.me7", "i38.me7",
+            "i32.me8", "i33.me8", "i34.me8",                       "i37.me8", "i38.me8",
+            "i32.me9", "i33.me9", "i34.me9",                       "i37.me9", "i38.me9",
+            "i32.me10","i33.me10","i34.me10",                      "i37.me10","i38.me10",
+            "i32.me11", "i33.me11","i34.me11",                     "i37.me11","i38.me11"
+          ]
+        },
+        "gro0": {
+          "mes": [ "i48.me0" ]
+        },
+        "gro1": {
+          "mes": [ "i48.me1" ]
+        },
+        "flowcache_timeout_emu0": {
+          "mes": [ "i49.me0" ],
+          "compiler": {
+            "defines": [
+            "FC_TIMEOUT_EMU=0"
+            ]
+          }
+        },
+        "flowcache_timeout_emu1": {
+          "mes": [ "i49.me1" ],
+          "compiler": {
+            "defines": [
+            "FC_TIMEOUT_EMU=1"
+            ]
+          }
+        },
+        "flowcache_timeout_emu2": {
+          "mes": []
+        },
+        "blm1": {
+          "mes": [ "i49.me3" ]
+        },
+        "nfd_pcie1_pd0": {
+          "mes": [ "%(NFD_PCIE1_PD0_ME)s" ]
+        },
+        "nfd_pcie1_pd1": {
+          "mes": [ "%(NFD_PCIE1_PD1_ME)s" ]
+        },
+        "nfd_pcie1_sb": {
+          "mes": [ "%(NFD_PCIE1_SB_ME)s" ]
+        },
+        "nfd_pcie1_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE1_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie1_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE1_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie1_pci_in_gather": {
+          "mes": [ "%(NFD_PCIE1_PCI_IN_GATHER_ME)s" ]
+        },
+        "nfd_pcie1_pci_in_issue0": {
+          "mes": [ "%(NFD_PCIE1_PCI_IN_ISSUE0_ME)s" ]
+        },
+        "nfd_pcie1_pci_in_issue1": {
+          "mes": [ "%(NFD_PCIE1_PCI_IN_ISSUE1_ME)s" ]
+        },
+        "nfd_pcie1_notify": {
+          "mes": [ "%(NFD_PCIE1_NOTIFY_ME)s" ]
+        }
+      }
+    },
+    "lithium": {
+      "chip": {
+        "minimum_revision": "0x10",
+        "sku": "nfp-4xxxc-b0"
+      },
+      "common": {
+        "defines": [
+          "PLATFORM_PORT_SELECTION=H_PLATFORM",
+          "PIF_APP_CONFIG=PIF_APP_DEFAULT",
+          "NUM_IMU=1",
+          "NUM_EMU=1"
+        ],
+        "linker": {
+          "pico": {
+            "i8": "catamaran"
+          }
+        }
+      },
+      "targets": {
+        "pif_app_nfd": {
+          "mes": [
+            "i32.me0", "i33.me0", "i34.me0", "i35.me0", "i36.me0",
+            "i32.me1", "i33.me1", "i34.me1", "i35.me1", "i36.me1",
+            "i32.me2", "i33.me2", "i34.me2", "i35.me2", "i36.me2",
+            "i32.me3", "i33.me3", "i34.me3", "i35.me3", "i36.me3",
+            "i32.me4", "i33.me4", "i34.me4", "i35.me4", "i36.me4",
+            "i32.me5", "i33.me5", "i34.me5", "i35.me5", "i36.me5",
+            "i32.me6", "i33.me6", "i34.me6", "i35.me6",           
+            "i32.me7", "i33.me7", "i34.me7", "i35.me7",           
+            "i32.me8", "i33.me8", "i34.me8", "i35.me8",
+            "i32.me9", "i33.me9", "i34.me9", "i35.me9",
+            "i32.me10","i33.me10","i34.me10","i35.me10",
+            "i32.me11","i33.me11","i34.me11","i35.me11"
+          ]
+        },
+        "gro0": {
+          "mes": [
+            "i48.me0"
+          ]
+        },
+        "gro1": {
+          "mes": [
+            "i48.me1"
+          ]
+        },
+        "flowcache_timeout_emu0": {
+          "mes": [
+            "i36.me10"
+          ],
+          "compiler": {
+            "defines": [
+            "FC_TIMEOUT_EMU=0"
+            ]
+          }
+        },
+        "flowcache_timeout_emu1": {
+          "mes": [
+          ],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "flowcache_timeout_emu2": {
+          "mes": [
+          ],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "blm1": {
+          "mes": [
+          ]
+        }
+      }
+    },
+    "beryllium": {
+      "chip": {
+        "minimum_revision": "0x10",
+        "sku": "nfp-4xxxc-b0"
+      },
+      "common": {
+        "defines": [
+          "PLATFORM_PORT_SELECTION=H_PLATFORM",
+          "PIF_APP_CONFIG=PIF_APP_DEFAULT",
+          "NUM_IMU=1",
+          "NUM_EMU=1"
+        ],
+        "linker": {
+          "pico": {
+            "i8": "catamaran"
+          }
+        }
+      },
+      "targets": {
+        "pif_app_nfd": {
+          "mes": [
+            "i32.me0", "i33.me0", "i34.me0", "i35.me0", "i36.me0",
+            "i32.me1", "i33.me1", "i34.me1", "i35.me1", "i36.me1",
+            "i32.me2", "i33.me2", "i34.me2", "i35.me2", "i36.me2",
+            "i32.me3", "i33.me3", "i34.me3", "i35.me3", "i36.me3",
+            "i32.me4", "i33.me4", "i34.me4", "i35.me4", "i36.me4",
+            "i32.me5", "i33.me5", "i34.me5", "i35.me5", "i36.me5",
+            "i32.me6", "i33.me6", "i34.me6", "i35.me6",           
+            "i32.me7", "i33.me7", "i34.me7", "i35.me7",           
+            "i32.me8", "i33.me8", "i34.me8", "i35.me8",
+            "i32.me9", "i33.me9", "i34.me9", "i35.me9",
+            "i32.me10","i33.me10","i34.me10","i35.me10",
+            "i32.me11","i33.me11","i34.me11","i35.me11"
+          ]
+        },
+        "gro0": {
+          "mes": [
+            "i48.me0"
+          ]
+        },
+        "gro1": {
+          "mes": [
+            "i48.me1"
+          ]
+        },
+        "flowcache_timeout_emu0": {
+          "mes": [
+            "i36.me10"
+          ],
+          "compiler": {
+            "defines": [
+            "FC_TIMEOUT_EMU=0"
+            ]
+          }
+        },
+        "flowcache_timeout_emu1": {
+          "mes": [
+          ],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "flowcache_timeout_emu2": {
+          "mes": [
+          ],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "blm1": {
+          "mes": [
+          ]
+        }
+      }
+    },
+    "carbon": {
+      "chip": {
+        "minimum_revision": "0x10",
+        "sku": "nfp-4xxxc-b0"
+      },
+      "common": {
+        "defines": [
+          "PLATFORM_PORT_SELECTION=H_PLATFORM",
+          "PIF_APP_CONFIG=PIF_APP_DEFAULT",
+          "NUM_IMU=1",
+          "NUM_EMU=1"
+        ],
+        "linker": {
+          "pico": {
+            "i8": "catamaran"
+          }
+        }
+      },
+      "targets": {
+        "pif_app_nfd": {
+          "mes": [
+            "i32.me0", "i33.me0", "i34.me0", "i35.me0", "i36.me0",
+            "i32.me1", "i33.me1", "i34.me1", "i35.me1", "i36.me1",
+            "i32.me2", "i33.me2", "i34.me2", "i35.me2", "i36.me2",
+            "i32.me3", "i33.me3", "i34.me3", "i35.me3", "i36.me3",
+            "i32.me4", "i33.me4", "i34.me4", "i35.me4", "i36.me4",
+            "i32.me5", "i33.me5", "i34.me5", "i35.me5", "i36.me5",
+            "i32.me6", "i33.me6", "i34.me6", "i35.me6",           
+            "i32.me7", "i33.me7", "i34.me7", "i35.me7",           
+            "i32.me8", "i33.me8", "i34.me8", "i35.me8",
+            "i32.me9", "i33.me9", "i34.me9", "i35.me9",
+            "i32.me10","i33.me10","i34.me10","i35.me10",
+            "i32.me11","i33.me11","i34.me11","i35.me11"
+          ]
+        },
+        "gro0": {
+          "mes": [
+            "i48.me0"
+          ]
+        },
+        "gro1": {
+          "mes": [
+            "i48.me1"
+          ]
+        },
+        "flowcache_timeout_emu0": {
+          "mes": [
+            "i36.me10"
+          ],
+          "compiler": {
+            "defines": [
+            "FC_TIMEOUT_EMU=0"
+            ]
+          }
+        },
+        "flowcache_timeout_emu1": {
+          "mes": [
+          ],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "flowcache_timeout_emu2": {
+          "mes": [
+          ],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "blm1": {
+          "mes": [
+          ]
+        }
+      }
+    },
+    "starfighter1:AMDA0998-0001:0": {
+      "chip": {
+        "minimum_revision": "0x10",
+        "sku": "AMDA0998-0001:0"
+      },
+      "common": {
+        "defines": [
+          "PLATFORM_PORT_SELECTION=H_PLATFORM",
+          "PIF_APP_CONFIG=PIF_APP_DEFAULT",
+          "NUM_IMU=1",
+          "NUM_EMU=1",
+          "PCIE_ISL_CNT=2"
+        ],
+        "linker": {
+          "pico": {
+            "i8": "catamaran"
+          }
+        }
+      },
+      "targets": {
+        "pif_app_nfd": {
+          "mes": [
+            "i32.me0", "i33.me0", "i34.me0", "i35.me0", "i36.me0", "i37.me0",
+            "i32.me1", "i33.me1", "i34.me1", "i35.me1", "i36.me1", "i37.me1",
+            "i32.me2", "i33.me2", "i34.me2", "i35.me2", "i36.me2", "i37.me2",
+            "i32.me3", "i33.me3", "i34.me3", "i35.me3", "i36.me3", "i37.me3",
+            "i32.me4", "i33.me4", "i34.me4", "i35.me4", "i36.me4", "i37.me4",
+            "i32.me5", "i33.me5", "i34.me5", "i35.me5", "i36.me5", "i37.me5",
+            "i32.me6", "i33.me6", "i34.me6", "i35.me6",            "i37.me6",
+            "i32.me7", "i33.me7", "i34.me7", "i35.me7",            "i37.me7",
+            "i32.me8", "i33.me8", "i34.me8",                       "i37.me8",
+            "i32.me9", "i33.me9", "i34.me9",                       "i37.me9",
+            "i32.me10","i33.me10","i34.me10",                      "i37.me10",
+            "i32.me11","i33.me11","i34.me11",                      "i37.me11"
+          ]
+        },
+        "gro0": {
+          "mes": [ "i48.me0" ]
+        },
+        "gro1": {
+          "mes": [ "i48.me1" ]
+        },
+        "flowcache_timeout_emu0": {
+          "mes": [ "i36.me10" ],
+          "compiler": {
+            "defines": [
+            "FC_TIMEOUT_EMU=0"
+            ]
+          }
+        },
+        "flowcache_timeout_emu1": {
+          "mes": [],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "flowcache_timeout_emu2": {
+          "mes": [],
+          "compiler": {
+            "defines": []
+          }
+        },
+        "blm1": {
+          "mes": []
+        },
+        "nfd_pcie1_pd0": {
+          "mes": [ "%(NFD_PCIE1_PD0_ME)s" ]
+        },
+        "nfd_pcie1_pd1": {
+          "mes": [ "%(NFD_PCIE1_PD1_ME)s" ]
+        },
+        "nfd_pcie1_sb": {
+          "mes": [ "%(NFD_PCIE1_SB_ME)s" ]
+        },
+        "nfd_pcie1_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE1_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie1_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE1_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie1_pci_in_gather": {
+          "mes": [ "%(NFD_PCIE1_PCI_IN_GATHER_ME)s" ]
+        },
+        "nfd_pcie1_pci_in_issue0": {
+          "mes": [ "%(NFD_PCIE1_PCI_IN_ISSUE0_ME)s" ]
+        },
+        "nfd_pcie1_pci_in_issue1": {
+          "mes": [ "%(NFD_PCIE1_PCI_IN_ISSUE1_ME)s" ]
+        },
+        "nfd_pcie1_notify": {
+          "mes": [ "%(NFD_PCIE1_NOTIFY_ME)s" ]
+        }
+      }
+    },
+    "bataan:AMDA0999-0001:0": {
+      "chip": {
+        "minimum_revision": "0x10",
+        "sku": "AMDA0999-0001:0"
+      },
+      "common": {
+        "defines": [
+          "PLATFORM_PORT_SELECTION=CDP_PLATFORM",
+          "PIF_APP_CONFIG=PIF_APP_DEFAULT",
+          "NUM_IMU=2",
+          "NUM_EMU=2",
+          "PCIE_ISL_CNT=4"
+        ],
+        "linker": {
+          "flags": [
+            "rtsyms", "mip"
+          ]
+        }
+      },
+      "targets": {
+        "pif_app_nfd": {
+          "mes": [
+            "i32.me0", "i33.me0", "i34.me0", "i35.me0", "i36.me0", "i37.me0", "i38.me0",
+            "i32.me1", "i33.me1", "i34.me1", "i35.me1", "i36.me1", "i37.me1", "i38.me1",
+            "i32.me2", "i33.me2", "i34.me2", "i35.me2", "i36.me2", "i37.me2", "i38.me2",
+            "i32.me3", "i33.me3", "i34.me3", "i35.me3", "i36.me3", "i37.me3", "i38.me3",
+            "i32.me4", "i33.me4", "i34.me4", "i35.me4", "i36.me4", "i37.me4", "i38.me4",
+            "i32.me5", "i33.me5", "i34.me5", "i35.me5", "i36.me5", "i37.me5", "i38.me5",
+            "i32.me6", "i33.me6", "i34.me6", "i35.me6",            "i37.me6", "i38.me6",
+            "i32.me7", "i33.me7", "i34.me7", "i35.me7",            "i37.me7", "i38.me7",
+            "i32.me8", "i33.me8", "i34.me8",                       
+            "i32.me9", "i33.me9", "i34.me9",                       
+            "i32.me10","i33.me10","i34.me10",                      
+            "i32.me11","i33.me11","i34.me11"                      
+          ]
+        },
+        "gro0": {
+          "mes": [ "i48.me0" ]
+        },
+        "gro1": {
+          "mes": [ "i48.me1" ]
+        },
+        "flowcache_timeout_emu0": {
+          "mes": [ "i49.me0" ],
+          "compiler": {
+            "defines": [ "FC_TIMEOUT_EMU=0" ]
+          }
+        },
+        "flowcache_timeout_emu1": {
+          "mes": [ "i49.me1" ],
+          "compiler": {
+            "defines": [ "FC_TIMEOUT_EMU=1" ]
+          }
+        },
+        "flowcache_timeout_emu2": {
+          "mes": []
+        },
+        "blm1": {
+          "mes": [ "i49.me3" ]
+        },
+        "nfd_pcie1_pd0": {
+          "mes": [ "%(NFD_PCIE1_PD0_ME)s" ]
+        },
+        "nfd_pcie1_pd1": {
+          "mes": [ "%(NFD_PCIE1_PD1_ME)s" ]
+        },
+        "nfd_pcie1_sb": {
+          "mes": [ "%(NFD_PCIE1_SB_ME)s" ]
+        },
+        "nfd_pcie1_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE1_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie1_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE1_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie1_pci_in_gather": {
+          "mes": [ "%(NFD_PCIE1_PCI_IN_GATHER_ME)s" ]
+        },
+        "nfd_pcie1_pci_in_issue0": {
+          "mes": [ "%(NFD_PCIE1_PCI_IN_ISSUE0_ME)s" ]
+        },
+        "nfd_pcie1_pci_in_issue1": {
+          "mes": [ "%(NFD_PCIE1_PCI_IN_ISSUE1_ME)s" ]
+        },
+        "nfd_pcie1_notify": {
+          "mes": [ "%(NFD_PCIE1_NOTIFY_ME)s" ]
+        },
+        "nfd_pcie2_pd0": {
+          "mes": [ "%(NFD_PCIE2_PD0_ME)s" ]
+        },
+        "nfd_pcie2_pd1": {
+          "mes": [ "%(NFD_PCIE2_PD1_ME)s" ]
+        },
+        "nfd_pcie2_sb": {
+          "mes": [ "%(NFD_PCIE2_SB_ME)s" ]
+        },
+        "nfd_pcie2_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE2_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie2_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE2_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie2_pci_in_gather": {
+          "mes": [ "%(NFD_PCIE2_PCI_IN_GATHER_ME)s" ]
+        },
+        "nfd_pcie2_pci_in_issue0": {
+          "mes": [ "%(NFD_PCIE2_PCI_IN_ISSUE0_ME)s" ]
+        },
+        "nfd_pcie2_pci_in_issue1": {
+          "mes": [ "%(NFD_PCIE2_PCI_IN_ISSUE1_ME)s" ]
+        },
+        "nfd_pcie2_notify": {
+          "mes": [ "%(NFD_PCIE2_NOTIFY_ME)s" ]
+        },
+        "nfd_pcie3_pd0": {
+          "mes": [ "%(NFD_PCIE3_PD0_ME)s" ]
+        },
+        "nfd_pcie3_pd1": {
+          "mes": [ "%(NFD_PCIE3_PD1_ME)s" ]
+        },
+        "nfd_pcie3_sb": {
+          "mes": [ "%(NFD_PCIE3_SB_ME)s" ]
+        },
+        "nfd_pcie3_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE3_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie3_pci_out_me0": {
+          "mes": [ "%(NFD_PCIE3_PCI_OUT_ME0_ME)s" ]
+        },
+        "nfd_pcie3_pci_in_gather": {
+          "mes": [ "%(NFD_PCIE3_PCI_IN_GATHER_ME)s" ]
+        },
+        "nfd_pcie3_pci_in_issue0": {
+          "mes": [ "%(NFD_PCIE3_PCI_IN_ISSUE0_ME)s" ]
+        },
+        "nfd_pcie3_pci_in_issue1": {
+          "mes": [ "%(NFD_PCIE3_PCI_IN_ISSUE1_ME)s" ]
+        },
+        "nfd_pcie3_notify": {
+          "mes": [ "%(NFD_PCIE3_NOTIFY_ME)s" ]
+        }
+      }
+    }
+  }
+}

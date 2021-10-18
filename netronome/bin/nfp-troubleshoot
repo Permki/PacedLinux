@@ -1,0 +1,55 @@
+#!/bin/sh
+
+REPORT=/dev/stdout
+export PATH=$PATH:$(dirname $(readlink -e $0))
+echo $PATH
+
+banner () {
+	echo "==============================================================="
+	echo "=" "$@"
+	echo "====                                                       ===="
+}
+
+report () {
+	echo ""
+	banner "$@" >>${REPORT}
+	"$@" >>${REPORT}
+}
+
+package_versions () {
+    if which dpkg >/dev/null 2>/dev/null; then
+        echo '"nfp*" dpkgs:'
+        dpkg -l 'nfp*'
+    elif which rpm >/dev/null 2>/dev/null; then
+        echo '"nfp*" rpms:'
+        rpm -qa 'nfp*'
+    fi
+}
+
+NFPS=""
+for d in /dev/nfp-cpp-*; do
+	if [ -e "$d" ]; then
+		NFPS="$NFPS "`echo $d | cut -d- -f3`
+	fi
+done
+
+# Per-NFP reports
+if [ -n "${NFPS}" ]; then
+	for n in $NFPS; do
+		report nfp-hwinfo -n $n
+		report nfp-arm -n $n -D
+		report nfp-pcie -n $n -i 0 -D
+	done
+fi
+
+banner "NFP Troubleshoot Report"
+echo "Generated: "`date`
+echo "Host: "`hostname -f`
+
+report package_versions
+report sudo lspci -vvv -d 19ee:
+report sudo lspci -vvv -t
+report cat /proc/cpuinfo
+report sudo dmidecode
+report sudo dmesg
+report ifconfig -a

@@ -1,0 +1,1026 @@
+# -*- mode: shell-script; -*-
+# Copyright (C) 2015 Netronome Systems, Inc.  All rights reserved.
+
+# Common shell functions for NFP firmware stop and reload
+
+if [ -z "$BASH" ]; then
+    echo "${BASH_SOURCE}: this shell script library is meant to be sourced by bash"
+    return
+fi
+
+NETRONOME_DIR=${NETRONOME_DIR:=/opt/netronome}
+export PATH=${NETRONOME_DIR}/bin:$PATH
+export LD_LIBRARY_PATH=${NETRONOME_DIR}/lib:$LD_LIBRARY_PATH
+CONFIG_DIR=${NETRONOME_DIR}/share/nbi
+
+SCRIPT_NAME=$(basename ${BASH_SOURCE})
+
+platform_reset(){
+    echo "${SCRIPT_NAME}: ${LINENO}: command 'reset' is not implemented for ${PLATFORM_CONFIG}, use 'stop'"
+    exit 1
+}
+
+#values that are set by the app script
+PRESTART_APP_MOD="" # name of function that app needs to run between firmware load and firmware start
+
+#sets NFP configurations based on model and part number
+config(){
+    POWERLIST_CRYPTO="crp_0 crp_1"
+    POWERLIST_FPC="fpc_0 fpc_1 fpc_2 fpc_3 fpc_4 fpc_5 fpc_6"
+    POWERLIST_ILA="ila_0 ila_1"
+    POWERLIST_IMU="imu_0 imu_1"
+    POWERLIST_NBI="nbi_0.core nbi_1.core"
+    POWERLIST_PCIE="pci_0 pci_1 pci_2 pci_3"
+
+    SERDES_012=${SERDES_012:='on'}
+    SERDES_345=${SERDES_345:='on'}
+    SERDES_678=${SERDES_678:='on'}
+    SERDES_91011=${SERDES_91011:='on'}
+
+    case "$MODEL" in
+        starfighter1)
+            if [ "$PART_NO" == "AMDA0998-0001" ]; then
+                #Sprite 1U mockup
+                PLATFORM_CONFIG="Sprite-1U-mockup"
+                NBI_LIST="0"
+                NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+                NBI_MAC8_JSON=${NBI_MAC8_JSON:=mac-1U-nxg4xx-10G.json}
+                NBI_TM8_JSON=${NBI_TM8_JSON:=tm-1U-nxg4xx-10G.json}
+                NBI8_SERDES="0x0000FF"
+                #1U mockup uses a starfighter, so use AMDA0058 phy tuning
+                NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0058R1.json}
+                SERDES_345='off'
+                SERDES_678='off'
+                PCIE_LIST="4 5"
+                PUSH_LB_ISLANDS="4 5 12 13 32 33 34 35 36 37 48"
+            else
+                PLATFORM_CONFIG="Starfighter"
+                NBI_LIST="0 1"
+                NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+                phy0type=$(nfp-hwinfo -n $NFP_NUM phy0.type | cut -d\= -f2)
+                if [ "$phy0type" == "CXP" ]; then
+                    NBI_MAC8_JSON=${NBI_MAC8_JSON:=sf1-1x100GE.json}
+                    NBI8_SERDES="0x0003FF"
+                    NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_1x100GE.json}
+                    NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0078R1.json}
+                else
+                    NBI_MAC8_JSON=${NBI_MAC8_JSON:=sf1-2x40GE.json}
+                    NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_2x40GE.json}
+                    NBI8_SERDES="0x0000FF"
+                    NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0058R1.json}
+                fi
+                SERDES_345='off'
+                SERDES_678='off'
+                NBI9_SERDES="0x0FF000"
+                NBI_DMA9_JSON=${NBI_DMA9_JSON:=nfp_nbi9_dma.json}
+                NBI_MAC9_JSON=${NBI_MAC9_JSON:=sf1-2x40GE-aux.json}
+                NBI_TM9_JSON=${NBI_TM9_JSON:=nfp_nbi_tm_2x40GE.json}
+                case "$PART_NO" in
+                    AMDA0058-0000) # Half power starfighter
+                        PCIE_LIST="4 5"
+                        PUSH_LB_ISLANDS="4 5 12 13 32 33 34 35 36 37 48"
+                        ;;
+                    *) # Other starfighters
+                        PCIE_LIST="4 5 6 7"
+                        PUSH_LB_ISLANDS="4 5 6 7 12 13 32 33 34 35 36 37 38 48 49"
+                esac
+            fi
+            ;;
+        starfighter2)
+            PLATFORM_CONFIG="Starfighter2"
+            NBI_LIST="0"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=sf2-1x40GE.json}
+            SERDES_345='off'
+            NBI8_SERDES="0x0000F0"
+            NBI9_SERDES="0x000000"
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0058R1.json}
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_2x40GE.json}
+            PCIE_LIST="4"
+            PUSH_LB_ISLANDS="4 12 13 32 33 34 35 36 37 48"
+            ;;
+        hydrogen)
+            PLATFORM_CONFIG="Hydrogen"
+            NBI_LIST="0"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=hy-1x40GE.json}
+            SERDES_345='off'
+            NBI8_SERDES="0x00000F"
+            NBI9_SERDES="0x000000"
+            if [ $ASSY_REV -ge 16 ]; then
+                NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0081R16.json}
+            else
+                NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0081R1.json}
+            fi
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_1x40GE.json}
+            PCIE_LIST="4"
+            PUSH_LB_ISLANDS="4 32 33 34 35 36 48"
+            ;;
+        lithium)
+            PLATFORM_CONFIG="Lithium"
+            NBI_LIST="0"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=li-2x10GE.json}
+            SERDES_345='off'
+            NBI8_SERDES="0x000011"
+            NBI9_SERDES="0x000000"
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0096R1.json}
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_2x10GE.json}
+            PCIE_LIST="4"
+            PUSH_LB_ISLANDS="4 32 33 34 35 36 48"
+            ;;
+        beryllium)
+            NBI_LIST="0"
+            SERDES_345='off'
+            NBI9_SERDES="0x000000"
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0097R1.json}
+            PCIE_LIST="4"
+            if [ "$PART_NO" == "AMDA0997-0001" ]; then
+                PLATFORM_CONFIG="Sprite nicmod mockup"
+                PUSH_LB_ISLANDS="4 32 33 34"
+                NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma_mockup.json}
+                NBI_MAC8_JSON=${NBI_MAC8_JSON:=nfp_nbi_mac_AMDA0997R0.json}
+                NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_nicmod_mockup.json}
+                NBI8_SERDES="0x0000FF"
+            else
+                PLATFORM_CONFIG="Beryllium"
+                PUSH_LB_ISLANDS="4 32 33 34 35 36 48"
+                NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+                case "$PART_NO" in
+                    AMDA0097-0003) # Beryllium 1x40GE
+                        NBI_MAC8_JSON=${NBI_MAC8_JSON:=be-1x40GE.json}
+                        NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_1x40GE.json}
+                        NBI8_SERDES="0x0000F0"
+                        ;;
+                    *) # Other Berylliums
+                        NBI_MAC8_JSON=${NBI_MAC8_JSON:=be-2x40GE.json}
+                        NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_2x40GE.json}
+                        NBI8_SERDES="0x0000FF"
+                esac
+            fi
+            ;;
+        pendragon)
+            PLATFORM_CONFIG="Pendragon"
+            NBI_LIST="0"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            SERDES_345='off'
+            NBI9_SERDES="0x000000"
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0098R1.json}
+            PCIE_LIST="4"
+            PUSH_LB_ISLANDS="4 32 33 34 35 36 48"
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=pd-6xIL.json}
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_pd.json}
+            NBI8_SERDES="0x0003ff"
+            ;;
+        carbon)
+            PLATFORM_CONFIG="Carbon"
+            NBI_LIST="0"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            SERDES_345='off'
+            NBI8_SERDES="0x0000ff"
+            NBI9_SERDES="0x000000"
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0099R1.json}
+            PCIE_LIST="4"
+            PUSH_LB_ISLANDS="4 12 13 32 33 34 35 36 48"
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=c-2x40GE.json}
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_c_2x40GE.json}
+            ;;
+        cobalt)
+            PLATFORM_CONFIG="cobalt"
+            NBI_LIST="0"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            SERDES_345='off'
+            NBI8_SERDES="0x0003ff"
+            NBI9_SERDES="0x000000"
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0104R0.json}
+            PCIE_LIST="4"
+            PUSH_LB_ISLANDS="4 12 13 32 33 34 35 36 37 48"
+            case "$PART_NO" in
+                AMDA0104-0001) # Cobalt 1x10GE
+                    NBI_MAC8_JSON=${NBI_MAC8_JSON:=co1-1x10GE.json}
+                    NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_co1_1x40GE.json}
+                    NBI8_SERDES="0x0000010F"
+                    ;;
+                *) # Other Cobalts
+                    NBI_MAC8_JSON=${NBI_MAC8_JSON:=co2-1x40GE.json}
+                    NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_co2_1x40GE.json}
+                    NBI8_SERDES="0x000000F1"
+            esac
+            ;;
+        cadmium)
+            PLATFORM_CONFIG="cadmium"
+            NBI_LIST="0"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            NBI8_SERDES="0x00100f"
+            SERDES_345='off'
+            NBI9_SERDES="0x000000"
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0104R0.json}
+            PCIE_LIST="4 5 6 7"
+            PUSH_LB_ISLANDS="4 5 6 7 32 33 34 35 36 37 48"
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=nfp_nbi_mac_AMDA0123.json}
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_ca_1x40GE.json}
+            NBI8_SERDES="0x00100F"
+            ;;
+        o2svp)
+            PLATFORM_CONFIG="o2svp"
+            NBI_LIST="0"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            NBI8_SERDES="0x00100f"
+            SERDES_345='off'
+            NBI9_SERDES="0x000000"
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0104R0.json}
+            PCIE_LIST="4 5 6 7"
+            PUSH_LB_ISLANDS="4 5 6 7 32 33 34 35 36 37 48"
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=nfp_nbi_mac_AMDA0126.json}
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_ca_1x40GE.json}
+            NBI8_SERDES="0x00100F"
+            ;;
+        sodium)
+            PLATFORM_CONFIG="Sodium"
+            NBI_LIST="0"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=fx-2x10GE.json}
+            SERDES_345='off'
+            NBI8_SERDES="0x000011"
+            NBI9_SERDES="0x000000"
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0119R1.json}
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_2x10GE.json}
+            PCIE_LIST="4"
+            PUSH_LB_ISLANDS="4 32 33 34 35 36 48"
+            ;;
+        kirtland)
+            PLATFORM_CONFIG="OSVP"
+            NBI_LIST="0"
+            SERDES_345='off'
+            NBI8_SERDES="0x0003FF"
+            NBI9_SERDES="0x000000"
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=sf1-1x100GE.json}
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0085R1.json}
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_cdp.json}
+            PCIE_LIST="4 5"
+            PUSH_LB_ISLANDS="4 5 12 13 32 33 34 35 36 37 48"
+            ;;
+	firehawk)
+            NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+            NBI_DMA9_JSON=${NBI_DMA9_JSON:=nfp_nbi9_dma.json}
+            NBI_MAC8_JSON=${NBI_MAC8_JSON:=sprite-nxg750-0.json}
+            NBI_MAC9_JSON=${NBI_MAC9_JSON:=sprite-nxg750-1.json}
+            NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0103R0.json}
+            NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_nxg750_0.json}
+            NBI_TM9_JSON=${NBI_TM9_JSON:=nfp_nbi_tm_nxg750_1.json}
+            NBI_LIST="0 1"
+            NBI8_SERDES="0x00FFFF"
+            NBI9_SERDES="0xFFF000"
+            PCIE_LIST="4 5 6 7"
+            PUSH_LB_ISLANDS="4 5 6 7 12 13 32 33 34 35 36 37 38 48 49"
+	    ;;
+        bataan)
+            if [ "$PART_NO" == "AMDA0999-0001" ]; then
+                #Sprite 2U mockup
+                PLATFORM_CONFIG="Sprite 2U mockup"
+                NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+                NBI_DMA9_JSON=${NBI_DMA9_JSON:=nfp_nbi9_dma.json}
+                NBI_MAC8_JSON=${NBI_MAC8_JSON:=mac-2U-nxg750-0.json}
+                NBI_MAC9_JSON=${NBI_MAC9_JSON:=mac-2U-nxg750-1.json}
+                NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0057R1.json}
+                NBI_TM8_JSON=${NBI_TM8_JSON:=tm-2U-nxg750-0.json}
+                NBI_TM9_JSON=${NBI_TM9_JSON:=tm-2U-nxg750-1.json}
+            else
+                PLATFORM_CONFIG="CDP"
+                NBI_DMA8_JSON=${NBI_DMA8_JSON:=nfp_nbi8_dma.json}
+                NBI_DMA9_JSON=${NBI_DMA9_JSON:=nfp_nbi9_dma.json}
+                NBI_MAC8_JSON=${NBI_MAC8_JSON:=cdp-1x100GE-2x10GE-3x40GE.json}
+                NBI_MAC9_JSON=${NBI_MAC9_JSON:=cdp-1x100GE-2x10GE-3x40GE.json}
+                NBI_MACPHY_JSON=${NBI_MACPHY_JSON:=nfp_nbi_phy_tuning_AMDA0057R1.json}
+                NBI_TM8_JSON=${NBI_TM8_JSON:=nfp_nbi_tm_cdp.json}
+                NBI_TM9_JSON=${NBI_TM9_JSON:=nfp_nbi_tm_cdp.json}
+            fi
+            NBI_LIST="0 1"
+            NBI8_SERDES="0xFFFFFF"
+            NBI9_SERDES="0xFFFFFF"
+            PCIE_LIST="4 5 6 7"
+            PUSH_LB_ISLANDS="4 5 6 7 12 13 32 33 34 35 36 37 38 48 49"
+
+            platform_reset(){
+                cdp-reset `cdp-flash-upgrade | grep AMDA`
+                # sleep for cdp-reset settling
+                state="none"
+                while [[ "$state" != "board.state=15" ]]
+                do
+                    sleep 1
+                    echo "${SCRIPT_NAME}: ${LINENO}: Waiting, $state"
+                    state=`nfp-hwinfo board.state`
+                done
+            }
+            ;;
+        *)
+    esac
+
+    if [ -n "${NBI_DMA8_JSON}" ]; then NBI_DMA8_JSON="${CONFIG_DIR}/${NBI_DMA8_JSON}"; fi
+    if [ -n "${NBI_DMA9_JSON}" ]; then NBI_DMA9_JSON="${CONFIG_DIR}/${NBI_DMA9_JSON}"; fi
+    if [ -n "${NBI_MAC8_JSON}" ]; then NBI_MAC8_JSON="${CONFIG_DIR}/${NBI_MAC8_JSON}"; fi
+    if [ -n "${NBI_MAC9_JSON}" ]; then NBI_MAC9_JSON="${CONFIG_DIR}/${NBI_MAC9_JSON}"; fi
+    if [ -n "${NBI_MACPHY_JSON}" ]; then NBI_MACPHY_JSON="${CONFIG_DIR}/${NBI_MACPHY_JSON}"; fi
+    if [ -n "${NBI_TM8_JSON}" ]; then NBI_TM8_JSON="${CONFIG_DIR}/${NBI_TM8_JSON}"; fi
+    if [ -n "${NBI_TM9_JSON}" ]; then NBI_TM9_JSON="${CONFIG_DIR}/${NBI_TM9_JSON}"; fi
+} #end config()
+
+SEPARATOR="${SCRIPT_NAME}: ${LINENO}:----------------------------------------------------------"
+
+# write_me_mailbox
+# writes a value to a mailbox on all MEs on all active ME islands
+# $1: Mailbox number (0 - 3)
+# $2: Value to write to mailbox
+write_me_mailbox()
+{
+    #get active ME islands
+    if [ -z "$PUSH_LB_ISLANDS" ]
+    then
+        echo "Error: invalid island configuration"
+        exit 1
+    fi
+    mei=""
+    all_islands='32 33 34 35 36 37 38'
+    for num in $all_islands
+    do
+        if [[ $PUSH_LB_ISLANDS = *"$num"* ]]
+        then
+            mei="$mei $num"
+        fi
+    done
+
+    #place new value into mailbox on each ME
+    for island in $mei
+    do
+        for me in {0..11}
+        do
+            nfp-reg -n $NFP_NUM mecsr:i$island.me$me.Mailbox$1.Mailbox=$2
+        done
+    done
+}
+
+check_mac_enabled()
+{
+    check_mac_reg()
+    {
+        regcheck="$(nfp-reg -n $NFP_NUM $1)"
+        if [ "$regcheck" != "$1=$2" ]; then
+            echo "${SCRIPT_NAME}: ${LINENO}: Register check failed, $1 should be $2"
+            echo "${SCRIPT_NAME}: ${LINENO}: actually $regcheck"
+            return 1
+        fi
+    }
+    nbi=$1
+    hydra=$2
+    ret='ok'
+    check_mac_reg xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacCoreClkEnHy${hydra} 0x1 || ret='FAILED'
+    check_mac_reg xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacHy${hydra}StatRst 0x0 || ret='FAILED'
+    check_mac_reg xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacRxRstCore 0x0 || ret='FAILED'
+    check_mac_reg xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacRxRstMpb 0x0 || ret='FAILED'
+    check_mac_reg xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacSerDesRst 0x0 || ret='FAILED'
+    check_mac_reg xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacTxRstCore 0x0 || ret='FAILED'
+    check_mac_reg xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacTxRstMpb 0x0 || ret='FAILED'
+    echo "${SCRIPT_NAME}: ${LINENO}: MAC Resets ${ret}..."
+    if [ $ret != 'ok' ]; then
+        return 1
+    fi
+}
+
+# Control Rx on all ports
+# param 1 nbi [0,1]
+# param 2 state [ifdown, ifup]
+# See API call nfp_nbi_mac_eth_write_cmdconfig()
+mac_rxctl()
+{
+    nbi=$1
+    state=$2
+
+    if [ "$MODEL" == "pendragon" ]; then
+        # FIXME need MAC API call specific call for Interlaken?
+        return
+    fi
+
+    if [ $nbi == "0" ]; then
+        if [ "$SERDES_012" == "on" ] && check_mac_enabled $nbi 0; then
+            echo "${SCRIPT_NAME}: ${LINENO}: ${state} MAC ${nbi} lanes 0-11 rxctl"
+            nfp -n ${NFP_NUM} -m mac -e set port ${state} ${nbi} 0-11
+        else
+            echo "${SCRIPT_NAME}: ${LINENO}: SKIPPING ${state} MAC ${nbi} lanes 0-11 rxctl on ${PLATFORM_CONFIG}"
+        fi
+        if [ "$SERDES_345" == "on" ] && check_mac_enabled $nbi 1; then
+            echo "${SCRIPT_NAME}: ${LINENO}: ${state} MAC ${nbi} lanes 12-23 rxctl"
+            nfp -n ${NFP_NUM} -m mac -e set port ${state} ${nbi} 12-23
+        else
+            echo "${SCRIPT_NAME}: ${LINENO}: SKIPPING ${state} MAC ${nbi} lanes 12-23 rxctl on ${PLATFORM_CONFIG}"
+        fi
+    fi
+    if [ $nbi == "1" ]; then
+        if [ "$SERDES_678" == "on" ] && check_mac_enabled $nbi 0; then
+            echo "${SCRIPT_NAME}: ${LINENO}: ${state} MAC ${nbi} lanes 0-11 rxctl"
+            nfp -n ${NFP_NUM} -m mac -e set port ${state} ${nbi} 0-11
+        else
+            echo "${SCRIPT_NAME}: ${LINENO}: SKIPPING ${state} MAC ${nbi} lanes 0-11 rxctl on ${PLATFORM_CONFIG}"
+        fi
+        if [ "$SERDES_91011" == "on" ] && check_mac_enabled $nbi 1; then
+            echo "${SCRIPT_NAME}: ${LINENO}: ${state} MAC ${nbi} lanes 12-23 rxctl"
+            nfp -n ${NFP_NUM} -m mac -e set port ${state} ${nbi} 12-23
+        else
+            echo "${SCRIPT_NAME}: ${LINENO}: SKIPPING ${state} MAC ${nbi} lanes 12-23 rxctl on ${PLATFORM_CONFIG}"
+        fi
+    fi
+}
+
+
+# Set channel pause watermarks for all channels
+# param 1 nbi [0,1]
+# param 2 value   (set to zero to generate pause frames)
+mac_chan_pwm_all()
+{
+    nbi=$1
+    value=$2
+    echo "${SCRIPT_NAME}: ${LINENO}: Set all channel pause watermarks MAC: ${nbi} PWM: ${value}"
+    nfp -n $NFP_NUM -m mac -e set channel hwm $nbi 0-127 $value
+}
+
+
+
+# Check the MAC Ingress & Egress free buffer counts
+# Returns zero if all at expected value.
+# Returns error code otherwise. [igeg|Mac Core|NBI]
+# param 1 nbi [0,1]
+mac_check_freebufs()
+{
+    nbi=$1
+    ret=0
+    # expected quiescent buffer counts when memory split
+    igsplit=1007
+    egsplit=495
+
+    split=$((`nfp-reg -n $NFP_NUM xpb:Nbi0IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacSysSupCtrl.SplitMemIG|cut -d '=' -f2`))
+    ig0=$((`nfp-reg -n $NFP_NUM xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.IgBufferCreditPoolCount.IgBufferCreditCount|cut -d '=' -f2`))
+    eg0=$((`nfp-reg -n $NFP_NUM xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.EgBufferCreditPoolCount.EgBufferCreditCount|cut -d '=' -f2`))
+    if [ $split == 1 ] ; then
+        ig1=$((`nfp-reg -n $NFP_NUM xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.IgBufferCreditPoolCount.IgBufferCreditCount1|cut -d '=' -f2`))
+        eg1=$((`nfp-reg -n $NFP_NUM xpb:Nbi${nbi}IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.EgBufferCreditPoolCount.EgBufferCreditCount1|cut -d '=' -f2`))
+        if [ $ig0 -lt $igsplit ] ; then
+            echo "${SCRIPT_NAME}: ${LINENO}: Core 0 Ingress buffers = $ig0 should be $igsplit"
+            ret=$((ret | 0x100 | nbi))
+        fi
+        if [ $eg0 -lt $egsplit ] ; then
+            echo "${SCRIPT_NAME}: ${LINENO}: Core 0 Egress buffers = $eg0 should be $egsplit"
+            ret=$((ret | 0x200 | nbi))
+        fi
+        if [ $ig1 -lt $igsplit ] ; then
+            echo "${SCRIPT_NAME}: ${LINENO}: Core 1 Ingress buffers = $ig1 should be $igsplit"
+            ret=$((ret | 0x110 | nbi))
+        fi
+        if [ $eg1 -lt $egsplit ] ; then
+            echo "${SCRIPT_NAME}: ${LINENO}: Core 1 Egress buffers = $eg1 should be $egsplit"
+            ret=$((ret | 0x210 | nbi))
+        fi
+    else
+        igsplit=$((igsplit + igsplit))
+        egsplit=$((egsplit + egsplit))
+        if [ $ig0 -lt $igsplit ] ; then
+            echo "${SCRIPT_NAME}: ${LINENO}: Core 0 Ingress buffers = $ig0 should be $igsplit"
+            ret=$((ret | 0x100 | nbi))
+        fi
+        if [ $eg0 -lt $egsplit ] ; then
+            echo "${SCRIPT_NAME}: ${LINENO}: Core 0 Egress buffers = $eg0 should be $egsplit"
+            ret=$((ret | 0x200 | nbi))
+        fi
+    fi
+    if [ $ret -eq 0 ] ; then
+        echo "${SCRIPT_NAME}: ${LINENO}: All MAC NBI $nbi packet memory buffers returned"
+    else
+        echo "${SCRIPT_NAME}: ${LINENO}: Failed $ret"
+    fi
+    return $ret
+}
+
+mac_init()
+{
+    if [ "$MODEL" == "pendragon" ] || [ "$MODEL" == "carbon" ] || [ "$MODEL" == "cobalt" ] || [ "$MODEL" == "cadmium" ] || [ "$MODEL" == "o2svp" ]; then
+        nfp-macinit -n $NFP_NUM -m0 -0 ${NBI_MAC8_JSON} -p ${NBI_MACPHY_JSON}
+        return
+    fi
+    if [ -n "${NBI_MAC8_JSON}" ]; then
+        nfp-macinit -n $NFP_NUM -m0 -0 ${NBI_MAC8_JSON} -p ${NBI_MACPHY_JSON} --hold-reset || exit 1
+        nfp-mactool -n $NFP_NUM -m0 -s "0x0" -p ${NBI8_SERDES}  --reset-rel || exit 1
+    fi
+    if [ -n "${NBI_MAC9_JSON}" ]; then
+        nfp-macinit -n $NFP_NUM -m1 -0 ${NBI_MAC9_JSON} -p ${NBI_MACPHY_JSON} --hold-reset || exit 1
+        nfp-mactool -n $NFP_NUM -m1 -s "0x0" -p ${NBI9_SERDES} --reset-rel || exit 1
+    fi
+}
+
+rx_adapt()
+{
+    if [ -n "${NBI_MAC8_JSON}" ]; then
+        sigdet=0
+        to=0
+        echo -n "Waiting for signal"
+        while [[ $sigdet -eq 0 &&  $to -lt 60 ]] ; do
+            echo -n "."
+            sigdet=$((`nfp-reg -n $NFP_NUM xpb:Nbi0IsldXpbMap.NbiTopXpbMap.MacGlbAdrMap.MacCsr.SerDesSigDetect|cut -d '=' -f 2`))
+            to=$((to + 1))
+            sleep 1
+        done
+        printf "0x%x\n" $sigdet
+        if [ "$MODEL" != "carbon" ] && [ "$MODEL" != "cobalt" ] || [ "$MODEL" != "cadmium" ] || [ "$MODEL" != "o2svp" ]; then
+            nfp-mactool -n $NFP_NUM -m0 -s ${NBI8_SERDES} -p ${NBI8_SERDES}  --reset-rel || exit 1
+        fi
+    fi
+    if [ -n "${NBI_MAC9_JSON}" ] && [ "$MODEL" != "starfighter1" ]; then
+        nfp-mactool -n $NFP_NUM -m1 -s ${NBI9_SERDES} -p ${NBI9_SERDES} --reset-rel || exit 1
+    fi
+}
+
+set_loopback()
+{
+    loopback_mask=$1
+    if [ -n "${NBI_MAC8_JSON}" ]; then
+        if [ "$SERDES_012" == 'on' ]; then
+            nfp-mactool -n $NFP_NUM -m0 -s 0x000fff --loopback=${loopback_mask} || exit 1
+        fi
+        if [ "$SERDES_345" == 'on' ]; then
+            nfp-mactool -n $NFP_NUM -m0 -s 0xfff000 --loopback=${loopback_mask} || exit 1
+        fi
+    fi
+    if [ -n "${NBI_MAC9_JSON}" ]; then
+        if [ "$SERDES_678" == 'on' ]; then
+            nfp-mactool -n $NFP_NUM -m1 -s 0x000fff --loopback=${loopback_mask} || exit 1
+        fi
+        if [ "$SERDES_91011" == 'on' ]; then
+            nfp-mactool -n $NFP_NUM -m1 -s 0xfff000 --loopback=${loopback_mask} || exit 1
+        fi
+    fi
+}
+
+# Clear the DMA BDSRAM. For debugging purposes
+nbi_dma_clear_bdsram()
+{
+    for i in ${NBI_LIST}; do
+        nbi=$(expr $i + 8)
+        nfp-reg -n $NFP_NUM nbi:i${nbi}.NbiDmaCpp.NbiDmaBDSRAM.NbiDmaBDSramEntry{0..4095}=0x0 || exit 1
+    done
+}
+
+nbi_dma_init()
+{
+    if [ -n "${NBI_DMA8_JSON}" ]; then
+        nfp -n $NFP_NUM init dma 0 ${NBI_DMA8_JSON} || exit 1
+    fi
+    if [ -n "${NBI_DMA9_JSON}" ]; then
+        nfp -n $NFP_NUM init dma 1 ${NBI_DMA9_JSON} || exit 1
+    fi
+}
+
+nbi_tm_init()
+{
+    if [ -n "${NBI_TM8_JSON}" ]; then
+        nfp-reg -n $NFP_NUM nbi:i8.NBITMCPP.TMBDSram.NbiBDSramEntry{0..4095}=0x0 || exit 1
+        nfp -n $NFP_NUM init tm 0 ${NBI_TM8_JSON} || exit 1
+    fi
+    if [ -n "${NBI_TM9_JSON}" ]; then
+        nfp-reg -n $NFP_NUM nbi:i9.NBITMCPP.TMBDSram.NbiBDSramEntry{0..4095}=0x0 || exit 1
+        nfp -n $NFP_NUM init tm 1 ${NBI_TM9_JSON} || exit 1
+    fi
+}
+
+nbi_pc_init()
+{
+    PC_XPB_INIT_ADDR[0]=0x0048290000
+    PC_XPB_INIT_ADDR[1]=0x0049290000
+
+    for i in ${NBI_LIST}; do
+        # NBI PC init
+        nfp-xpb -n $NFP_NUM ${PC_XPB_INIT_ADDR[$i]} 0x32ff0000 || exit 1
+        # Enable sequencer
+        nfp-reg -n $NFP_NUM xpb:Nbi${i}IsldXpbMap.NbiTopXpbMap.PktPreclassifier.Picoengine.PicoengineSetup.SequenceReplace=0x1
+    done
+}
+
+# Print the CTM buffer, packet credits and packet engine credits
+# param 1 nbi [0,1]
+nbi_check_dma_credits()
+{
+    nbi=$1
+    ret=0
+    pktcred=128
+    bufcred=63
+
+    # nfp -m dma -e show bp $nbi 0-7
+
+    for b in `seq 0 31` ; do
+        ctm=$((`nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.NbiDmaXpb.NbiDmaCsr.NbiDmaBpe${b}Cfg.Ctm|cut -d '=' -f 2`))
+        if [[ $ctm -ne 0 ]] ; then
+            ctmi=$((ctm - 32))
+            act=$((`nfp-reg -n $NFP_NUM xpb:Me${ctmi}IsldXpbMap.CTMXpbMap.MuPacketReg.MUPEActivePacketCount.Stats|cut -d '=' -f 2`))
+            if [[ $act -gt 0 ]] ; then
+                echo "${SCRIPT_NAME}: ${LINENO}: NBI $nbi CTM $ctmi Active count = $act should be 0"
+                ret=1
+            else
+                echo "${SCRIPT_NAME}: ${LINENO}: NBI $nbi CTM $ctmi Active count = $act"
+            fi
+
+            pc=$((`nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.NbiDmaXpb.NbiDmaCsr.NbiDmaBpe${b}Cfg.PktCredit|cut -d '=' -f 2`))
+            bc=$((`nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.NbiDmaXpb.NbiDmaCsr.NbiDmaBpe${b}Cfg.BufCredit|cut -d '=' -f 2`))
+
+            if [[ $pc -lt $pktcred ]] ; then
+                echo "${SCRIPT_NAME}: ${LINENO}: NBI $nbi BPE $b Packet credits = $pc should be $pktcred"
+                ret=1
+            fi
+            if [[ $bc -lt $bufcred ]] ; then
+                echo "${SCRIPT_NAME}: ${LINENO}: NBI $nbi BPE $b Buffer credits = $bc should be $bufcred"
+                ret=1
+            fi
+        fi
+    done
+    if [ $ret -eq 0 ] ; then
+        echo "${SCRIPT_NAME}: ${LINENO}: All NBI $nbi BPE buffers returned"
+    fi
+    return $ret
+
+}
+
+# Print the TM channel credits
+# param 1 nbi [0,1]
+nbi_check_tm_credits()
+{
+    nbi=$1
+    ret=0
+
+    limit=$((`nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.TrafficManager.TrafficManagerReg.MiniPktCreditConfig.CreditLimit|cut -d '=' -f 2`))
+    for c in `seq 0 127` ; do
+        cred=$((`nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.TrafficManager.TrafficManagerReg.MiniPktChannelCredit${c}.CreditCounter|cut -d '=' -f 2`))
+        if [[ $cred -lt $limit ]] ; then
+            echo "${SCRIPT_NAME}: ${LINENO}: NBI $nbi TM Channel $c credit count = $cred should be $limit"
+            ret=1
+        fi
+    done
+    if [ $ret -eq 0 ] ; then
+        echo "${SCRIPT_NAME}: ${LINENO}: All NBI $nbi TM Channel credits returned"
+    fi
+    return $ret
+
+}
+
+# Partial reset of MAC Gasket
+# param 1 nbi [0,1]
+# param 2 state [0, 1] 0=enabled; 1=reset
+#
+mac_gasket_reset()
+{
+    nbi=$1
+    state=$2
+    nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacTxRstMpb=${state}
+    nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacRxRstMpb=${state}
+    nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacTxRstCore=${state}
+    nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacRxRstCore=${state}
+    nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacHy0StatRst=${state}
+    nfp-reg -n $NFP_NUM xpbm:Nbi${nbi}IsldXpbmMap.Island.NbiTopXpbMap.MacGlbAdrMap.MacCsr.MacBlkReset.MacHy1StatRst=${state}
+}
+
+# Power off/on/reset selected islands
+# param 1 island list - (pass by name: "Pwrlist_*")
+# param 2 state [off, reset, on]
+island_power()
+{
+    island_list=$1[@]
+    state=$2
+    ilist=("${!island_list}")
+    for id in ${ilist} ; do
+        check=`nfp-power -n $NFP_NUM|grep $id`
+        if [[ $check == ${id}* ]] ; then
+            echo "${SCRIPT_NAME}: ${LINENO}: island_power - ${id}=${state}"
+            nfp-power -n $NFP_NUM ${id}=${state}
+        else
+            echo "${SCRIPT_NAME}: ${LINENO}: Island ${id} NOT present...skipping"
+        fi
+    done
+}
+
+# Power off/on/reset selected islands
+# param 1 island list - (pass by name "Pcie_melist_*")
+pcie_me_reset()
+{
+    me_list=$1[@]
+    state=$2
+    melist=("${!me_list}")
+    for id in ${melist} ; do
+        if nfp-power -n $NFP_NUM | grep ${id}.core=P0; then
+            echo "${SCRIPT_NAME}: ${LINENO}: pcie_me_reset - ${id}"
+            nfp-power -n $NFP_NUM ${id}.meg0=reset
+            nfp-power -n $NFP_NUM ${id}.meg1=reset
+            nfp-power -n $NFP_NUM ${id}.meg0=on
+            nfp-power -n $NFP_NUM ${id}.meg1=on
+        else
+            echo "${SCRIPT_NAME}: ${LINENO}: Island ${id} NOT powered...skipping"
+        fi
+    done
+}
+
+pcie_island_present()
+{
+    pci=$1
+    nfp-power -n $NFP_NUM pci_$(($pci - 4)) | grep pci_ > /dev/null
+    return $?
+}
+
+pcie_island_off()
+{
+    pci=$1
+    nfp-power -n $NFP_NUM pci_$(($pci - 4)) | grep -v P0 > /dev/null
+    return $?
+}
+
+# Reads DMA Hi, Med, Lo Avail on a pcie island.
+# Returns zero if all at expected value.
+# Returns error code otherwise. [QID|PCI]
+# param 1 pcie island [4-7]
+pcie_check_queues()
+{
+    pci=$1
+    ret=0
+    DmaHiQueAvail=0x40
+    DmaMedQueAvail=0x40
+    DmaLoQueAvail=0x80
+
+    if ! pcie_island_present $pci; then
+        echo "${SCRIPT_NAME}: ${LINENO}: PCI ${pci} NOT present...skipping queue check"
+        return 0
+    elif pcie_island_off $pci; then
+        echo "${SCRIPT_NAME}: ${LINENO}: PCI ${pci} NOT powered...skipping queue check"
+        return 0
+    fi
+    h=`nfp-reg -n $NFP_NUM pcie:i${pci}.PcieInternalTargets.DmaController.DMAQStatToPCI1.DmaHiQueAvail|cut -d '=' -f 2`
+    m=`nfp-reg -n $NFP_NUM pcie:i${pci}.PcieInternalTargets.DmaController.DMAQStatToPCI1.DmaMedQueAvail|cut -d '=' -f 2`
+    l=`nfp-reg -n $NFP_NUM pcie:i${pci}.PcieInternalTargets.DmaController.DMAQStatToPCI0.DmaLoQueAvail|cut -d '=' -f 2`
+    if [[ $h != $DmaHiQueAvail ]] ; then
+        echo PCIE Island $pci DmaHiQueAvail = $h should be $DmaHiQueAvail
+        ret=$((ret | 0x40 | pci))
+    fi
+    if [[ $m != $DmaMedQueAvail ]] ; then
+        echo PCIE Island $pci DmaMedQueAvail = $m should be $DmaMedQueAvail
+        ret=$((ret | 0x20 | pci))
+    fi
+    if [[ $l != $DmaLoQueAvail ]] ; then
+        echo PCIE Island $pci DmaLoQueAvail = $l should be $DmaLoQueAvail
+        ret=$((ret | 0x10 | pci))
+    fi
+    if [ $ret -eq 0 ] ; then
+        echo "${SCRIPT_NAME}: ${LINENO}: All PCIe $pci DMA queues are empty"
+    else
+        echo "${SCRIPT_NAME}: ${LINENO}: Failed $ret"
+    fi
+    return $ret
+}
+
+# Set Queue controller Read and Write pointers to zero.
+# All 256 queues are written
+# param 1 pcie island [4-7]
+pcie_zero_rw_ptrs()
+{
+    pci=$1
+    if ! pcie_island_present $pci; then
+        echo "${SCRIPT_NAME}: ${LINENO}: PCI ${pci} NOT present...skip zeroing pointers"
+        return 0
+    elif pcie_island_off $pci; then
+        echo "${SCRIPT_NAME}: ${LINENO}: PCI ${pci} NOT powered...skip zeroing pointers"
+        return 0
+    fi
+    nfp-reg -n $NFP_NUM pcie:i${pci}.PcieInternalTargets.Queue{0..255}.ConfigStatusLow=0x80000000
+    nfp-reg -n $NFP_NUM pcie:i${pci}.PcieInternalTargets.Queue{0..255}.ConfigStatusHigh=0x4000000
+}
+
+# Debug
+# Print the Queue controller Read and Write pointers.
+# param 1 pcie island [4-7]
+# param 2 queue number [0-255]
+pcie_print_rw_ptrs()
+{
+    pci=$1
+    if nfp-power -n $NFP_NUM pci_$(($pci - 4)) | grep -v P0; then
+        echo "${SCRIPT_NAME}: ${LINENO}: PCI ${pci} NOT powered...skip printing pointers"
+        return 0
+    fi
+    q=$2
+    nfp-reg -n $NFP_NUM pcie:i${pci}.PcieInternalTargets.Queue${q}.ConfigStatusLow.ReadPtr
+    nfp-reg -n $NFP_NUM pcie:i${pci}.PcieInternalTargets.Queue${q}.ConfigStatusHigh.WritePtr
+}
+
+# Procedures to initialize the NFP and load firmware
+app_start()
+{
+    if [ $# -lt 2 ]
+    then
+        Usage "Insufficient Parameters"
+    fi
+
+    nbi_dma_clear_bdsram
+
+    # Load firmware, but no start
+    nfp-nffw load -n $NFP_NUM --no-start $2 || exit 1
+    # Dump rtsym table
+    nfp-rtsym -n $NFP_NUM -L || exit 1
+    nbi_dma_init
+    nfp-nsp -N > /dev/null || nbi_tm_init
+    nbi_pc_init
+
+    if [ "$3" != 'rxctl' ]; then
+        nfp-nsp -N > /dev/null || mac_init
+    fi
+
+    if [ "$3" == 'loopback' ]; then
+        set_loopback 0x2
+    fi
+
+    # Enable EthCmdConfig arbiter so that any accesses are
+    # protected. These writes will start the Arbiter:
+    nfp-reg -n $NFP_NUM mecsr:i1.me3.Mailbox3.Mailbox=0xF5 # un-quiesce mailbox
+    if [ "$MODEL" != "carbon" ] && [ "$MODEL" != "cobalt" ] || [ "$MODEL" != "cadmium" ] || [ "$MODEL" != "o2svp" ]; then
+        nfp-reg -n $NFP_NUM mecsr:i1.me3.Mailbox2.Mailbox=0x1 # Disable port update based on gpio
+    fi
+    nfp-reg -n $NFP_NUM mecsr:i1.me3.Mailbox1.Mailbox=0x40 # This is GPIO poll interval in ME cycles
+    nfp-reg -n $NFP_NUM mecsr:i1.me3.Mailbox0.Mailbox=0x25 # Kick start signal
+
+    if [ "$3" == 'rxctl' ]; then
+        # set channel pause watermarks as desired by application
+        for nbi in ${NBI_LIST}; do
+            mac_chan_pwm_all ${nbi} 224
+        done
+        sleep 1
+    fi
+
+    # Perform RX adaptation
+    nfp-nsp -N > /dev/null || rx_adapt
+    sleep 5
+
+    echo "${SCRIPT_NAME}: ${LINENO}: Turn on Rx for all ports"
+    for nbi in ${NBI_LIST}; do
+        mac_rxctl ${nbi} ifup
+    done
+
+    sleep 5
+
+    # perform modifications needed before firmware start
+    if [ -n $PRESTART_APP_MOD ]
+    then
+        $PRESTART_APP_MOD
+    fi
+
+    # start ME's
+    nfp-nffw start -n $NFP_NUM || exit 1
+
+    POST_INIT_func
+
+    echo -e "${greenf}${invon}${APPLICATION} application initialized successfully, ready for traffic.${reset}"
+}
+
+# Procedures to bring an application to a graceful stop
+app_stop()
+{
+    # set channel pause watermarks to zero to generate pause frames
+    for nbi in ${NBI_LIST}; do
+        mac_chan_pwm_all ${nbi} 0
+    done
+    sleep 1
+
+    # Disable Rx on both NBIs without affecting link up
+    # Can replace with ifdown if links can be dropped
+    echo "${SCRIPT_NAME}: ${LINENO}: Turn off Rx for all ports"
+    for nbi in ${NBI_LIST}; do
+        mac_rxctl ${nbi} ifdown
+    done
+    sleep 1
+
+    nfp-nsp -R -n $NFP_NUM
+    sleep 1
+
+    # Check various NBI blocks (after resets)
+    ret=0
+    for nbi in ${NBI_LIST}; do
+        echo "${SCRIPT_NAME}: ${LINENO}: NBI${nbi}: Check that all buffers/credits have been returned..."
+        mac_check_freebufs ${nbi} || ret=$?
+
+        echo "${SCRIPT_NAME}: ${LINENO}: NBI${nbi}: Check that all TM credits have been returned..."
+        nbi_check_tm_credits ${nbi} || ret=$?
+
+        echo "${SCRIPT_NAME}: ${LINENO}: NBI${nbi}: Check that all DMA buffers/credits have been returned..."
+        nbi_check_dma_credits ${nbi} || ret=$?
+    done
+    if [ ${ret} != 0 ]; then
+        echo -e "${redf}${invon}${SCRIPT_NAME}: ${LINENO}: ERROR: reset did not complete successfully${reset}"
+        exit ${ret}
+    fi
+}
+
+Usage() {
+    echo
+    echo -e "\t ${yellowf}****** Error: $1 ****** ${reset}"
+    echo "Usage: $0 <start <mefw> [rxctl]| stop | restart <mefw>| reset >"
+    echo -e "\tstart   : Load ME fw and init MAC/TM/DMA"
+    echo -e "\t              - 'rxctl' option skips MAC init but enables RX"
+    echo -e "\tstop    : Unload ME fw and stop MAC interfaces"
+    echo -e "\trestart : stop & start"
+    echo -e "\treset   : Reset ${PLATFORM_CONFIG}"
+    echo
+    APP_SPECIFIC_Usage
+    exit 1
+}
+
+APP_SPECIFIC_Usage() {
+    true
+}
+
+APP_SPECIFIC_functions() {
+    true
+}
+
+POST_INIT_func() {
+    true
+}
+
+# This is the entry point from an application
+# How to use in an application script:
+# . /opt/netronome/bin/nfp-shutils.sh
+# APPLICATION="new application name"
+appctl()
+{
+    #determine which NFP will be loaded
+    while getopts "n:" opt; do
+        case $opt in
+            n)
+                NFP_NUM=$OPTARG
+                ;;
+            *)
+                echo "unrecognized option '$opt'"
+                exit 1
+        esac
+    done
+    for i in `seq 2 $OPTIND`; do
+        shift
+    done
+
+    #find model, part number, and assembly revision for given NFP
+    NFP_NUM=${NFP_NUM:=0}
+    MODEL=$(nfp-hwinfo -n $NFP_NUM assembly.model | cut -d\= -f2)
+    PART_NO=$(nfp-hwinfo -n $NFP_NUM assembly.partno | cut -d\= -f2)
+    ASSY_REV=$((10#`nfp-hwinfo -n $NFP_NUM assembly.revision | cut -d\= -f2`))
+
+    if [ -z "$MODEL" ]; then
+        echo "Update to a BSP >=2015.03.07"
+        exit 1
+    fi
+
+    #obtain the NFP configuration
+    config
+
+    #determine app control option
+    case "$1" in
+        start)
+            app_start $@
+            ;;
+        restart|reload)
+            if [ $# -lt 2 ]
+            then
+                Usage "Insufficient Parameters"
+            fi
+            app_stop $@
+            sleep 2
+            app_start $@
+            ;;
+        stop)
+            app_stop
+            ;;
+        reset)  # Used only for debug purposes
+            platform_reset $@
+            ;;
+        *)
+            APP_SPECIFIC_functions $@
+            Usage "Invalid option"
+    esac
+}
+
+#Text Formatting(color, bold, italics etc) sequences
+initTextFormatting()
+{
+    esc="\e"
+
+    blackf="${esc}[30m";   redf="${esc}[31m";    greenf="${esc}[32m"
+    yellowf="${esc}[33m"   bluef="${esc}[34m";   purplef="${esc}[35m"
+    cyanf="${esc}[36m";    whitef="${esc}[37m"
+
+    blackb="${esc}[40m";   redb="${esc}[41m";    greenb="${esc}[42m"
+    yellowb="${esc}[43m"   blueb="${esc}[44m";   purpleb="${esc}[45m"
+    cyanb="${esc}[46m";    whiteb="${esc}[47m"
+
+    boldon="${esc}[1m";    boldoff="${esc}[22m"
+    italicson="${esc}[3m"; italicsoff="${esc}[23m"
+    ulon="${esc}[4m";      uloff="${esc}[24m"
+    invon="${esc}[7m";     invoff="${esc}[27m"
+
+    reset="${esc}[0m"
+}

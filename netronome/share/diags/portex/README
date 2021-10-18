@@ -1,0 +1,169 @@
+Packages and Root directory
+===========================
+
+
+Apps are distributed as tgz or native packages like .deb (Ubuntu) and .rpm.
+
+1. Root dir = /opt/netronome/nfp6000-refapps (native packages)
+2. Root dir = ${HOME}/nfp6000-refapps (tgz extracted to home directory)
+
+
+Directory Structure:
+====================
+    nfp6000-refapps <======= Root directory
+    ├── blm
+    ├── build
+    ├── lib
+    ├── netro-kbuild
+    │   ├── arch
+    │   ├── defaults
+    │   ├── Kbuild
+    │   │   └── lxdialog
+    │   ├── platform
+    │   └── tools
+    ├── pcie
+    ├── portex
+    ├── power
+    ├── source-sink
+    └── wire
+
+Directory    | Description
+------------ | -----------
+blm          | Contains buffer list manager source
+build        | Contains outputs generated during build process
+lib          | Contains common library code for applications
+netro-kbuild | Contains kbuild sources
+pcie         | Contains PCIe DMA application sources
+portex		 | Contains port expander application sources
+power        | Contains power application sources
+source-sink  | Contains source-sink application sources
+wire         | Contains wire application sources
+
+
+Port Expander (portex) application
+=====================
+
+This application demostrates port expander functionality that multiplexes traffic between a single "internal" port
+and multiple "external" ports. The "internal" port is meant to serve as a connection to a main NFP that performs
+network processing, thus the port expander serves to increase the number of ports serviced by that NFP.
+The port expander will add DSA tags to all packet sent over the internal port and remove DSA tags from packets
+arriving from the internal port; these DSA tags are used for port identification by the main NFP.
+
+The port expander application firmware is similar in design and implementation to the wire application.
+
+Note:
+=====
+1. All commands must be executed with root permissions either by
+   logging in as user root or by using sudo.
+
+2. The environment variable PATH must include the directory
+   /opt/netronome/bin.
+
+   As user root export PATH:
+      # export PATH=/opt/netronome/bin:$PATH
+
+   If using sudo use the full path or set PATH in every command:
+      # sudo PATH=/opt/netronome/bin:$PATH <command>
+
+Build:
+======
+
+1. Please make sure the dependencies in <Root dir>/README are met.
+
+2. To determine what chip is present:
+   # /opt/netronome/bin/nfp-hwinfo|grep AMDA
+
+3. Change to <Root dir>
+    # cd <Root dir>
+
+4. Select the desired configuration. From Root directory, this can
+   be done either with one of the provided "defconfigs":
+    # make portex_amda0997_0001_defconfig
+   Or with the interactive menu:
+    # make menuconfig
+
+5. From Root directory, build the firmware with:
+    # make nffw
+
+6. A successful make will place ME firmware in
+   <Root dir>/build/wire/<platform>/<chip_sku>/<chip_rev>/portex.nffw
+
+        <platform> for example can be:  AMDA0997_0001
+        <chip_sku> for example can be:  NFP_4001_0N
+        <chip_rev> for example can be:  B0
+        Example nffw: portex.nffw
+
+    6.1 Find firmware that was built
+        # find build | grep nffw
+
+Running Port Expander application:
+=========================
+
+If built from a tarball:
+
+1. copy ME firmware from build process mentioned above to /opt/netronome/lib/firmware/
+
+2. copy <Root_dir>/portex/portexapp.sh to /opt/netronome/bin/
+
+3. start the port expander application:
+   # /opt/netronome/bin/portexapp.sh start
+
+If built from a deb or rpm package install use the path from step 6 above:
+
+4. start the port expander application:
+   # /opt/netronome/bin/portexapp.sh start
+
+This will load ME firmware and initialize MAC/NBI if needed
+
+5. You are now ready to send traffic
+
+6. To stop portex application:
+    # /opt/netronome/bin/portexapp.sh stop
+
+7. To restart port expander:
+    # /opt/netronome/bin/portexapp.sh restart
+
+Note: reset is not supported on Starfighter NICS.
+
+Statistics:
+==========
+
+Use 'nfp' CLI tool for statistics.
+
+Interactive use of the nfp tool is encouraged. Refer BSP ARM PRM for more
+details or for help enter:
+# /opt/netronome/bin/nfp -h
+
+1. Display MAC stats (clear-on-read)
+   # /opt/netronome/bin/nfp -m mac -e show port stats <nbi> <port> //port: 0-23
+
+2. Display NBI DMA stats (clear-on-read)
+   # /opt/netronome/bin/nfp -m dma -e show stats <nbi> //nbi:0,1
+
+    2.1 Display NBI DMA buffer pool state
+        # /opt/netronome/bin/nfp -m dma -e show bp <nbi> <bp> // bp: 0-7
+    2.2 Display NBI DMA buffer list queue state
+        # /opt/netronome/bin/nfp -m dma -e show blq <nbi> <blq> // blq: 0-3
+    2.3 Display NBI DMA buffer descriptor sram
+        # /opt/netronome/bin/nfp -m dma -e show bdsram <nbi> <entry> // entry: 0-4095
+
+3. Display Traffic manager queue state
+   # /opt/netronome/bin/nfp -m tm -e show qst <nbi> <qid> // qid: 0-1023
+
+    3.1 Display NBI TM buffer list queue state
+        # /opt/netronome/bin/nfp -m tm -e show blq <nbi> <blq> // blq: 0-3
+
+4. Display Preclassifier stats (clear-on-read)
+   # /opt/netronome/bin/nfp -m pc -e show stats <nbi>
+
+5. Display Packet modifier stats (clear-on-read)
+   # /opt/netronome/bin/nfp -m pm -e show stats <nbi>
+
+6. IF ENABLED: Display Wire stats
+   # /opt/netronome/bin/nfp -m wire -e show stats
+
+7. IF ENABLED: Clear Wire stats
+   # /opt/netronome/bin/nfp -m wire -e clear stats
+
+8. IF ENABLED: Display Buffer list manager stats
+   # /opt/netronome/bin/nfp -m blm -e show stats <nbi> <blq> // nbi: 0 or 1, blq: 0,1,2,3 or range as 0-3

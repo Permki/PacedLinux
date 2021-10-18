@@ -1,0 +1,432 @@
+{
+    "1m_GENERIC": {
+        "0": {
+            "rx": [0,7,14,0,7,4,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "1": {
+            "rx": [0,7,14,0,7,4,8,9,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "2": {
+            "rx": [0,7,11,0,7,4,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "3": {
+            "rx": [0,7,10,0,7,5,8,9,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "4": {
+            "rx": [0,7,10,0,7,6,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "5": {
+            "rx": [0,7,11,0,7,4,8,9,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "6": {
+            "rx": [0,7,9,0,7,4,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "7": {
+            "rx": [0,7,9,0,7,5,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "info": {
+            "ETH 10/40G compliance": "40GBASE-CR4",
+            "Encoding": "unspecified",
+            "Fibre Chan. Link/Len Tech": "",
+            "Fibre Chan. Trans. media": "",
+            "Fibre Chan. speed": "",
+            "Gigabit ETH compliance": "",
+            "ID": "QSFP+ (0x0d)",
+            "Notes": "",
+            "Product": "603020001",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "APF12420011A4T",
+            "Vendor": "Amphenol",
+            "connector": "No separable connector",
+            "ext. ID": "PowClass1"
+        },
+        "length": 1,
+        "oui": 5453,
+        "product": "sample",
+        "vendor": "sample"
+    },
+    "2m_GENERIC": {
+        "0": {
+            "rx": [0,7,14,0,7,4,8,8,0,1],
+            "tx": [3,19,3,0,1,0]
+        },
+        "1": {
+            "rx": [0,7,14,0,7,4,8,9,0,1],
+            "tx": [4,19,2,2,1,0]
+        },
+        "2": {
+            "rx": [0,7,11,0,7,4,8,8,0,1],
+            "tx": [4,21,3,2,1,0]
+        },
+        "3": {
+            "rx": [0,7,10,0,7,5,8,9,0,1],
+            "tx": [4,19,2,1,1,0]
+        },
+        "4": {
+            "rx": [0,7,10,0,7,6,8,8,0,1],
+            "tx": [4,20,3,0,1,0]
+        },
+        "5": {
+            "rx": [0,7,11,0,7,4,8,9,0,1],
+            "tx": [3,19,3,0,1,0]
+        },
+        "6": {
+            "rx": [0,7,9,0,7,4,8,8,0,1],
+            "tx": [4,19,2,2,1,0]
+        },
+        "7": {
+            "rx": [0,7,9,0,7,5,8,8,0,1],
+            "tx": [4,19,2,1,1,0]
+        },
+        "info": {
+	    "Product": "10119239-2020LF",
+	    "Ext. Check Code": "0x13",
+	    "Vendor": "FCI Electronics",
+	    "Fibre Chan. Trans. media": "TW",
+	    "ext. ID": "PowClass1",
+	    "Fibre Chan. Link/Len Tech.": "",
+	    "SAS/SATA compliance": "",
+	    "SONET compliance": "",
+	    "Fibre Chan. speed": "1200MBs 800MBs 400MBs 200MBs 100MBs",
+	    "connector": "No separable connector",
+	    "Base Check Code": "0xe4",
+	    "ETH 10/40G compliance": "40GBASE-CR4",
+	    "Encoding": "unspecified",
+	    "Serial": "CN1334QK202L0015",
+	    "Date Code": "130827",
+	    "ID": "QSFP+",
+	    "Gigabit ETH compliance": "1000BASE-T 1000BASE-CX"
+	},
+	"length": 2,
+        "oui": 5453,
+        "product": "generic",
+        "vendor": "generic"
+    },
+    "3m_GENERIC": {
+        "0": {
+            "rx": [0,7,14,0,7,4,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "1": {
+            "rx": [0,7,14,0,7,4,8,9,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "2": {
+            "rx": [0,7,11,0,7,4,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "3": {
+            "rx": [0,7,10,0,7,5,8,9,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "4": {
+            "rx": [0,7,10,0,7,6,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "5": {
+            "rx": [0,7,11,0,7,4,8,9,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "6": {
+            "rx": [0,7,9,0,7,4,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "7": {
+            "rx": [0,7,9,0,7,5,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "info": {
+            "ETH 10/40G compliance": "",
+            "Encoding": "",
+            "Fibre Chan. Link/Len Tech": "",
+            "Fibre Chan. Trans. media": "",
+            "Fibre Chan. speed": "",
+            "Gigabit ETH compliance": "",
+            "ID": "",
+            "Notes": "",
+            "Product": "",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "",
+            "Vendor": "",
+            "connector": "",
+            "ext. ID": ""
+        },
+        "length": 3,
+        "oui": 5453,
+        "product": "sample",
+        "vendor": "sample"
+    },
+    "4m_GENERIC": {
+        "0": {
+            "rx": [0,7,14,0,7,4,8,8,0,1],
+            "tx": [3,27,5,1,3,0]
+        },
+        "1": {
+            "rx": [0,7,14,0,7,4,8,9,0,1],
+            "tx": [5,20,2,1,2,0]
+        },
+        "2": {
+            "rx": [0,7,11,0,7,4,8,8,0,1],
+            "tx": [5,20,2,0,2,0]
+        },
+        "3": {
+            "rx": [0,7,10,0,7,5,8,9,0,1],
+            "tx": [5,20,2,1,2,0]
+        },
+        "4": {
+            "rx": [0,7,10,0,7,6,8,8,0,1],
+            "tx": [5,26,5,3,2,0]
+        },
+        "5": {
+            "rx": [0,7,11,0,7,4,8,9,0,1],
+            "tx": [4,19,1,3,3,0]
+        },
+        "6": {
+            "rx": [0,7,9,0,7,4,8,8,0,1],
+            "tx": [5,20,2,3,2,0]
+        },
+        "7": {
+            "rx": [0,7,9,0,7,5,8,8,0,1],
+            "tx": [5,20,2,2,2,0]
+        },
+        "info": {
+	    "Product": "10119239-4040LF",
+	    "Ext. Check Code": "0x17",
+	    "Vendor": "FCI Electronics",
+	    "Fibre Chan. Trans. media": "TW",
+	    "ext. ID": "PowClass1",
+	    "Fibre Chan. Link/Len Tech.": "",
+	    "SAS/SATA compliance": "",
+	    "SONET compliance": "",
+	    "Fibre Chan. speed": "1200MBs 800MBs 400MBs 200MBs 100MBs",
+	    "connector": "unknown",
+	    "Base Check Code": "0x00",
+	    "ETH 10/40G compliance": "40GBASE-CR4",
+	    "Encoding": "unspecified",
+	    "Serial": "CN1334QK404L0015",
+	    "Date Code": "130827",
+	    "ID": "unknown",
+	    "Gigabit ETH compliance": "1000BASE-T 1000BASE-CX"
+        },
+        "length": 4,
+        "oui": 5453,
+        "product": "generic",
+        "vendor": "generic"
+    },
+    "5m_GENERIC": {
+        "0": {
+            "rx": [0,7,14,0,7,4,8,8,0,1],
+            "tx": [4,20,2,1,2,0]
+        },
+        "1": {
+            "rx": [0,7,14,0,7,4,8,9,0,1],
+            "tx": [4,20,2,1,2,0]
+        },
+        "2": {
+            "rx": [0,7,11,0,7,4,8,8,0,1],
+            "tx": [4,20,2,3,2,0]
+        },
+        "3": {
+            "rx": [0,7,10,0,7,5,8,9,0,1],
+            "tx": [4,20,2,2,2,0]
+        },
+        "4": {
+            "rx": [0,7,10,0,7,6,8,8,0,1],
+            "tx": [4,20,2,1,2,0]
+        },
+        "5": {
+            "rx": [0,7,11,0,7,4,8,9,0,1],
+            "tx": [4,20,2,3,2,0]
+        },
+        "6": {
+            "rx": [0,7,9,0,7,4,8,8,0,1],
+            "tx": [4,20,2,1,2,0]
+        },
+        "7": {
+            "rx": [0,7,9,0,7,5,8,8,0,1],
+            "tx": [4,22,2,3,3,0]
+        },
+        "info": {
+            "ID": "QSFP+ (0x0d)",
+            "Notes": "",
+            "Product": "10093084-4050LF",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "CN1351QA504L0005",
+            "Vendor": "FCI Electronics"
+        },
+        "length": 5,
+        "oui": 5453,
+        "product": "sample",
+        "vendor": "sample"
+    },
+    "7m_GENERIC": {
+        "0": {
+            "rx": [0,7,14,0,7,4,8,8,0,1],
+            "tx": [5,20,2,3,2,0]
+        },
+        "1": {
+            "rx": [0,7,14,0,7,4,8,9,0,1],
+            "tx": [5,20,2,0,2,0]
+        },
+        "2": {
+            "rx": [0,7,11,0,7,4,8,8,0,1],
+            "tx": [5,20,2,2,2,0]
+        },
+        "3": {
+            "rx": [0,7,10,0,7,5,8,9,0,1],
+            "tx": [3,20,2,3,2,0]
+        },
+        "4": {
+            "rx": [0,7,10,0,7,6,8,8,0,1],
+            "tx": [4,20,2,1,2,0]
+        },
+        "5": {
+            "rx": [0,7,11,0,7,4,8,9,0,1],
+            "tx": [5,20,2,1,2,0]
+        },
+        "6": {
+            "rx": [0,7,9,0,7,4,8,8,0,1],
+            "tx": [4,20,2,1,2,0]
+        },
+        "7": {
+            "rx": [0,7,9,0,7,5,8,8,0,1],
+            "tx": [4,20,2,3,2,0]
+        },
+        "info": {
+            "ID": "QSFP+ (0x0d)",
+            "Notes": "",
+            "Product": "624410007",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "APF14420072D07",
+            "Vendor": "Amphenol",
+            "connector": "No separable connector",
+            "ext. ID": "PowClass1"
+        },
+        "length": 7,
+        "oui": 5453,
+        "product": "sample",
+        "vendor": "sample"
+    },
+    "DEFAULT": {
+        "0": {
+            "rx": [0,7,14,0,7,4,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "1": {
+            "rx": [0,7,14,0,7,4,8,9,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "2": {
+            "rx": [0,7,11,0,7,4,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "3": {
+            "rx": [0,7,10,0,7,5,8,9,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "4": {
+            "rx": [0,7,10,0,7,6,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "5": {
+            "rx": [0,7,11,0,7,4,8,9,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "6": {
+            "rx": [0,7,9,0,7,4,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "7": {
+            "rx": [0,7,9,0,7,5,8,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "info": {
+            "ETH 10/40G compliance": "",
+            "Encoding": "",
+            "Fibre Chan. Link/Len Tech": "",
+            "Fibre Chan. Trans. media": "",
+            "Fibre Chan. speed": "",
+            "Gigabit ETH compliance": "",
+            "ID": "",
+            "Notes": "",
+            "Product": "",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "",
+            "Vendor": "",
+            "connector": "",
+            "ext. ID": ""
+        },
+        "length": 100,
+        "oui": 5453,
+        "product": "generic",
+        "vendor": "generic"
+    },
+    "TIMBERCON": {
+        "0": {
+            "rx": [0,7,8,0,7,4,11,0,8,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "1": {
+            "rx": [0,7,8,0,7,4,11,0,8,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "2": {
+            "rx": [0,7,8,0,7,4,11,0,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "3": {
+            "rx": [0,7,8,0,7,4,9,0,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "4": {
+            "rx": [0,7,8,0,7,5,9,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "5": {
+            "rx": [0,7,9,0,7,4,8,10,1,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "6": {
+            "rx": [0,7,8,0,7,5,9,8,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "7": {
+            "rx": [0,7,9,0,7,5,8,10,0,1],
+            "tx": [3,26,8,2,1,0]
+        },
+        "info": {
+            "ETH 10/40G compliance": "",
+            "Encoding": "",
+            "Fibre Chan. Link/Len Tech": "",
+            "Fibre Chan. Trans. media": "",
+            "Fibre Chan. speed": "",
+            "Gigabit ETH compliance": "",
+            "ID": "",
+            "Notes": "Copper loopback module",
+            "Product": "EL-12-07002",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "",
+            "Vendor": "Timbercon",
+            "connector": "",
+            "ext. ID": ""
+        },
+        "length": 1,
+        "oui": 0,
+        "product": "EL-12-07002",
+        "vendor": "Timbercon"
+    }
+}

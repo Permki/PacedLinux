@@ -1,0 +1,117 @@
+#!/bin/bash
+
+# Copyright (C) 2017 Netronome. All rights reserved.
+# Note: This script is utilized best if a Netronome Nic is plugged in
+# Otherwise it will skip ARI checks.
+
+# USAGE: sudo ./nfp-support.sh
+
+if [ "$1" == "-h" ]; then
+  echo " "
+  echo "#####################################################"
+  echo "Program to check host compatibility for Netronome NICs"
+  echo "Usage: sudo ./`basename $0`"
+  echo "#####################################################"
+  echo " "
+  exit 0
+fi
+
+format=" %-10s %20s\t %20s\n"
+table_header="\n %-15s %15s %20s\n"
+
+function check_ari_support()
+{
+	#Check for known flags for no ARI support in the chipset
+	declare -a ari_netronome_nics
+        if [[ ! `which lspci 2>/dev/null` ]] ; then
+            printf "$format" "ARI" "FAIL" "Please install the package pci-utils"
+            return
+        fi
+        readarray -t ari_netronome_nics <<< "$(lspci -n -d 19ee: | cut -d ' ' -f 1)"
+        if [[ -z ${ari_netronome_nics} ]]; then
+            printf "$format" "ARI" "FAIL" "Pci bus shows no Netronome Nics" 
+            return
+        fi
+        for (( i=0; i<${#ari_netronome_nics[@]}; i++ )); do 
+            link_speed_lanes=`lspci -s ${ari_netronome_nics[$i]} -vvv | grep LnkSta: | cut -d ' ' -f2,4 | tr -d ','`
+            if [[  -z `lspci -s ${ari_netronome_nics[$i]} -vvv | grep ARIHierarchy\+` ]] ; then
+                printf "$format" "ARI" "${ari_netronome_nics[$i]} $link_speed_lanes" "ARI hierarchy not supported"
+            else
+                printf "$format" "ARI" "${ari_netronome_nics[$i]} $link_speed_lanes" "ARI hierarchy supported"
+            fi
+        done
+}
+
+function check_iommu_support ()
+{
+        # Check for iommu/VT-d
+        # iommu groups will not exist if VT-d is not enabled
+
+        find /sys/kernel/iommu_groups/* -type d &> /dev/null
+        if [ $? != 0 ]; then
+                printf "$format" "iommu/VT-d" "FAIL" "Either not supported or not enabled (in grub command line)"
+        else
+                printf "$format" "iommu/VT-d" "PASS" "N/A"
+        fi
+        echo " "
+
+        if [[ -z `dmesg | grep -i dmar` ]] ; then
+		printf "$format" "dmar" "FAIL" "DMAR not enabled"
+	elif [[ -z `dmesg | grep -i dmar | grep -E 'fault|error'` ]] ; then
+		printf "$format" "dmar" "PASS" "No faults"
+	else
+		printf "$format" "dmar" "FAIL" "DMAR fault"
+        fi
+}
+
+function get_bios_version()
+{
+        #Use dmidecode to get bios information
+        command -v dmidecode &>/dev/null
+        if [ $? -ne 0 ]; then
+            printf "$format" "BIOS" "FAIL" "Please install the package dmidecode"
+            exit 1
+        fi
+        version=$(dmidecode -s bios-version)
+        if [[ $version != *"Invalid"* ]] ; then
+            printf "$format" "BIOS" "PASS" $version
+        else
+            printf "$format" "BIOS" "FAIL" "Could not get BIOS information"
+        fi
+}
+
+function get_bmc_info()
+{
+        #Use ipmitool to get bios information
+        if [[ ! `which ipmitool 2>/dev/null` ]] ; then
+            printf "$format" "BMC" "FAIL" "ipmitool not installed on this host"
+            return
+        fi
+        `ipmitool bmc info` &> /dev/null
+        if [ $? != 0 ]; then
+		printf "$format" "BMC" "FAIL" "ERROR FETCHING INFO!"
+        else
+        	printf "$format" "BMC" "PASS" "PLEASE SEE BELOW"
+            	echo " " && echo "####BMC Info####" && ipmitool bmc info
+	fi
+        echo " "
+}
+
+if [[ $EUID -ne 0 ]]; then
+   echo "Please run this script as root (sudo)"
+   exit 1
+fi
+
+printf "$table_header" "ELEMENT" "RESULT" "VALUE"
+echo "======================================================\
+======================"
+
+#Write function names here
+check_ari_support
+echo " "
+check_iommu_support
+echo " "
+get_bios_version
+echo " "
+get_bmc_info
+

@@ -1,0 +1,360 @@
+#!/bin/bash
+
+TMP=`tempfile`
+on_exit () {
+	rm -f "${TMP}"
+}
+on_err () {
+	echo "Error on line $1: $2"
+	exit 1
+}
+trap on_exit EXIT
+trap 'on_err $LINENO $?' ERR
+
+usage () {
+	cat <<EOF
+Usage:
+
+nfp-nffw2ca <model> [options] filename.nffw [filename.ca]
+
+Model specification:
+  -a, --amda=MODEL   Use the specified Netronome AMDA board number simulation
+  -c, --chip=MODEL   Use the specified NFP chip simulation
+
+Options:
+  -z, --no-compress  Do not compress CA file
+  -h, --help         This help
+
+Chips:
+        NFP648A-1C-B0
+        NFP624A-0C-B0
+        NFP4000-0C-B0
+        NFP3240-0N-A2
+
+AMDAs:
+	AMDA0040-0001 rsvp
+	AMDA0051-0001 starfighter1
+	AMDA0081-0001 hydrogen
+	AMDA0096-0001 lithium
+	AMDA0097-0001 beryllium
+	AMDA0099-0001 carbon
+EOF
+}
+
+MODE=prep_chip
+CHIP=
+COMPRESS="-z"
+
+eval set -- $(getopt -o c:a:zhu --long amda::,chip::,no-compress,no-unload -- "$@")
+
+while true; do
+	case "$1" in
+		-c|--chip) shift; CHIP="$1"; MODE=prep_chip; shift ;;
+		-a|--amda) shift; CHIP="$1"; MODE=prep_chip; shift ;;
+		-z|--no-compress) COMPRESS=""; shift ;;
+		-h|--help) usage; exit 1 ;;
+		--) shift ; break ;;
+		*) echo "Invalid argument, see '$0 --help'"; exit 1;;
+	esac
+done
+
+if [ -z "${CHIP}" ]; then
+	usage
+	exit 1
+fi
+
+if [ -z "$1" ]; then
+	usage
+	exit 1
+fi
+
+FIRMWARE="$1"
+FIRMWARE_NAME=$(dirname "${FIRMWARE}")/$(basename "${FIRMWARE}" | rev | cut -d. -f2- | rev)
+CAFILE=""
+TRACE=""
+
+if [ -n "$2" ]; then
+	CAFILE="$2"
+	if [ -n "$3" ]; then
+		TRACE="$3"
+	fi
+fi
+
+if [ -z "${CAFILE}" ]; then
+	CAFILE="${FIRMWARE_NAME}.ca"
+fi
+
+if [ -z "${TRACE}" ]; then
+	TRACE="${FIRMWARE_NAME}.trace"
+fi
+
+# Clear the trace file, as we append to it
+rm -f ${TRACE}
+
+has_island () {
+	let island="$1 + 0"
+	if [ $island -gt 32 ]; then
+		let tmp="(($MODEL_IHI >> ($island - 32)) & 1) ^ 1"
+	else
+		let tmp="(($MODEL_ILO >> $island) & 1) ^ 1"
+	fi
+	return $tmp
+}
+
+prep_chip_nfp6000 () {
+
+	# arm.mem is located in the last emem that is large enough to hold it
+	ARM_BASE=0
+	ARM_SIZE=0x20000000
+	if [ ${EMU0_SIZE} -gt 512 ]; then
+		EMU0_TYPE=""
+		EMU0_BASE=0x2000000000
+		ARM_BASE=$(printf "0x%x" $(($EMU0_BASE + ($EMU0_SIZE << 20) - $ARM_SIZE)))
+	else
+		EMU0_TYPE="cache"
+		EMU0_BASE=0x9800000000
+	fi
+	if [ ${EMU1_SIZE} -gt 512 ]; then
+		EMU1_TYPE=""
+		EMU1_BASE=0x2800000000
+		ARM_BASE=$(printf "0x%x" $(($EMU1_BASE + ($EMU1_SIZE << 20) - $ARM_SIZE)))
+	else
+		EMU1_TYPE="cache"
+		EMU1_BASE=0x9900000000
+	fi
+	if [ ${EMU2_SIZE} -gt 512 ]; then
+		EMU1_TYPE=""
+		EMU2_BASE=0x3000000000
+		ARM_BASE=$(printf "0x%x" $(($EMU2_BASE + ($EMU2_SIZE << 20) - $ARM_SIZE)))
+	else
+		EMU2_TYPE="cache"
+		EMU2_BASE=0x9a00000000
+	fi
+
+	if [[ "$ARM_BASE" == "0" ]]; then
+		ARM_SIZE=0
+	else
+		ARM_SIZE=$(($ARM_SIZE >> 20))
+	fi
+
+	# Initialize as per miniloader
+	nfp-xpb 0x10a0004	0x00005288
+	nfp-xpb 0x10a0008	0x00002618
+	nfp-xpb 0x10a0018	0x00005cb0
+	nfp-xpb 0x10a001c	0x00007600
+	nfp-xpb 0x10a0024	0x00005184
+	nfp-xpb 0x10a0028	0x00002041
+	nfp-xpb 0x10a0030	0x00004300
+	nfp-xpb 0x10a0038	0x00002040
+	nfp-xpb 0x10a003c	0x00001000
+	nfp-xpb 0xa0004	0x00005288
+	nfp-xpb 0xa0008	0x00002618
+	nfp-xpb 0xa0018	0x00005cb0
+	nfp-xpb 0xa001c	0x00007600
+	nfp-xpb 0xa0024	0x00005184
+	nfp-xpb 0xa0028	0x00002041
+	nfp-xpb 0xa0030	0x00004300
+	nfp-xpb 0xa0038 0x00002040
+	nfp-xpb 0xa003c 0x00001000
+	nfp-cpp arm:0x00400144 ${MODEL_ID}
+	nfp-cpp arm:0x00400148 ${MODEL_HASH}
+	nfp-cpp arm:0x0040014c ${MODEL_ILO}
+	nfp-cpp arm:0x00400150 ${MODEL_IHI}
+	# Turn on ARM island
+	nfp-power arm=reset arm=on
+	# Load an empty hwinfo
+	nfp-hwinfo-cfg --config=${TMP} --load=/dev/stdin <<EOF
+board.state=0
+board.exec=bootloader.bin
+uart.baud=115200
+vpd=cpp:10:0:0:0
+ddr0.spd=ee2:0:0x50:0xf00
+ddr1.spd=ee2:0:0x50:0xf00
+ddr2.spd=ee2:0:0x50:0xf00
+ddr3.spd=ee2:0:0x50:0xf00
+ddr4.spd=none
+ddr5.spd=none
+emu2.type=cache
+ethm.mac=00:15:4d:0a:0b:13
+eth.mac=00:15:4d:0a:0b:14
+eth.macs=8
+assembly.model=${MODEL_NAME}
+assembly.partno=${MODEL_PART}
+assembly.revision=14
+assembly.serial=12345678
+assembly.vendor=Netronome
+ddr.speed=1866
+ddr0.mem.size=2048
+ddr1.mem.size=2048
+ddr2.mem.size=2048
+ddr3.mem.size=2048
+ddr0.mem.speed=1866
+ddr1.mem.speed=1866
+ddr2.mem.speed=1866
+ddr3.mem.speed=1866
+emu0.mem.size=${EMU0_SIZE}
+emu0.mem.base=${EMU0_BASE}
+emu0.type=${EMU0_TYPE}
+emu1.mem.size=${EMU1_SIZE}
+emu1.mem.base=${EMU1_BASE}
+emu1.type=${EMU1_TYPE}
+emu2.mem.size=${EMU2_SIZE}
+emu2.mem.base=${EMU2_BASE}
+emu2.type=${EMU2_TYPE}
+arm.mem.size=${ARM_SIZE}
+arm.mem.base=${ARM_BASE}
+phy0.media=Q
+phy1.media=Q
+pcie1.interface.vpd=ee2:0:0x57:0x00
+EOF
+
+	dd if=${TMP} bs=8 conv=sync status=none| nfp-cpp --raw --stdin arm:0
+	rm -f ${TMP}
+
+	nfp-power pci=off
+	nfp-power pci_0=reset pci_0=on
+	has_island 5 && nfp-power pci_1=reset pci_1=on
+	has_island 6 && nfp-power pci_2=reset pci_2=on
+	has_island 7 && nfp-power pci_3=reset pci_3=on
+
+	# Run preinit
+	nfp-bcfg-preinit --force -p
+
+	# Run boardconfig
+	nfp-bcfg-boardconfig --force -p
+
+	# Fake EMU0/EMU1/EMU2 initialization
+	nfp-power emu=reset emu=on
+	has_island 26 && nfp-power emu_2.ext=reset emu_2.ddr0=reset emu_2.ddr1=reset
+
+	# Fake a small amount of NBI initialization
+	nfp-reg -B xpb:Nbi0IsldXpbMap.NbiTopXpbMap.TrafficManager.TrafficManagerReg.TrafficManagerConfig=0x1940
+	has_island 9 && nfp-reg -B xpb:Nbi1IsldXpbMap.NbiTopXpbMap.TrafficManager.TrafficManagerReg.TrafficManagerConfig=0x1940
+
+	# Fake a CPLD version
+	nfp-cpp arm:0x0000403c38 0x8400
+
+	# Run platform init
+	nfp-bcfg-plt-nfp6000 --force -p
+
+	# Set DirAccWays to match emu cache mode
+	emu_types=("${EMU0_TYPE}" "${EMU1_TYPE}" "${EMU2_TYPE}")
+	for etpi in 0 1 2; do
+		( ! has_island $(($etpi + 24)) ) && continue
+		if [[ "${emu_types[etpi]}" == "cache" ]]; then
+			nfp-reg xpbm:emem${etpi}.Island.ExtMuXpbMap.MuConfigReg.ConfigCPP.DirAccWays=0xff
+		else
+			nfp-reg xpbm:emem${etpi}.Island.ExtMuXpbMap.MuConfigReg.ConfigCPP.DirAccWays=0
+		fi
+	done
+
+
+	# Fake nfp-nspd
+	nfp-cpp --stdin 7:4:0x8100000160 <<EOF
+0x8100000160:  0x00000000 0xdf97c080 0x2e70666e 0x00007073
+0x8100000170:  0x00000000 0x0a002000 0x000000d0 0x00000001
+EOF
+}
+
+prep_chip () {
+	case "${CHIP}" in
+	    NFP648A-1C-B0|AMDA0051-0001|starighter1)
+	   	MODEL_NAME="starfighter1"
+	   	MODEL_PART="AMDA0051-0001"
+	   	MODEL_CHIP=0x648a1c10
+		MODEL_ID=0x648a1c10
+		MODEL_HASH=0xe3d9a5e0
+		MODEL_ILO=0x370033f2
+		MODEL_IHI=0x0003007f
+	   	PREP_CHIP=prep_chip_nfp6000
+	   	EMU0_SIZE=4096
+	   	EMU1_SIZE=4096
+	   	EMU2_SIZE=3
+		;;
+	NFP624A-0C-B0|AMDA0058-0001)
+	   	MODEL_NAME="starfighter1"
+	   	MODEL_PART="AMDA0051-0001"
+	   	MODEL_CHIP=0x624a0c10
+		MODEL_ID=0x624a0c10
+		MODEL_HASH=0x26843312
+		MODEL_ILO=0x13003132
+		MODEL_IHI=0x0001003F
+	   	PREP_CHIP=prep_chip_nfp6000
+		;;
+	   NFP4000-0C-B0|AMDA0081-0001|hydrogen)
+	   	MODEL_NAME="hydrogen"
+	   	MODEL_PART="AMDA0081-0001"
+	   	MODEL_CHIP=0x40010010
+	   	MODEL_ID=0x40010081
+	   	MODEL_HASH=0xc96f1e8e
+	   	MODEL_ILO=0x13003112
+	   	MODEL_IHI=0x0001001f
+	   	PREP_CHIP=prep_chip_nfp6000
+	   	EMU0_SIZE=2048
+	   	EMU1_SIZE=3
+	   	EMU2_SIZE=0
+		;;
+	    AMDA0096-0001|lithium)
+	   	MODEL_NAME="lithium"
+	   	MODEL_PART="AMDA0096-0001"
+	   	MODEL_CHIP=0x40010010
+	   	MODEL_ID=0x40010096
+	   	MODEL_HASH=0xc96f1e8e
+	   	MODEL_ILO=0x13003112
+	   	MODEL_IHI=0x0001001f
+	   	PREP_CHIP=prep_chip_nfp6000
+	   	EMU0_SIZE=2048
+	   	EMU1_SIZE=3
+	   	EMU2_SIZE=0
+	    	;;
+	    AMDA0097-0001|beryllium)
+	   	MODEL_NAME="beryllium"
+	   	MODEL_PART="AMDA0097-0001"
+	   	MODEL_CHIP=0x40010010
+	   	MODEL_ID=0x40010096
+	   	MODEL_HASH=0xc96f1e8e
+	   	MODEL_ILO=0x13003112
+	   	MODEL_IHI=0x0001001f
+	   	PREP_CHIP=prep_chip_nfp6000
+	   	EMU0_SIZE=2048
+	   	EMU1_SIZE=3
+	   	EMU2_SIZE=0
+	    	;;
+	    AMDA0099-0001|carbon)
+	   	MODEL_NAME="carbon"
+	   	MODEL_PART="AMDA0099-0001"
+	   	MODEL_CHIP=0x40010010
+	   	MODEL_ID=0x40010096
+	   	MODEL_HASH=0xc96f1e8e
+	   	MODEL_ILO=0x13003112
+	   	MODEL_IHI=0x0001001f
+	   	PREP_CHIP=prep_chip_nfp6000
+	   	EMU0_SIZE=2048
+	   	EMU1_SIZE=3
+	   	EMU2_SIZE=0
+	    	;;
+	    *)
+		usage
+		exit 1
+		;;
+	esac
+
+	FILE=nfp-cpp-0.db
+	rm -f ${FILE}
+	NFP_CPP_TRANSPORT=file:${FILE}
+	NFP_CPP_FILE_MODEL=${MODEL_CHIP}
+	export NFP_CPP_TRANSPORT
+	export NFP_CPP_FILE_MODEL
+
+	${PREP_CHIP}
+}
+
+# Load the firmware
+rm -f ${TRACE}
+eval $MODE
+NFP_CPP_TRACE=${TRACE} nfp-nffw ${FIRMWARE} load
+
+nfp-ca ${COMPRESS} --encode ${TRACE} ${CAFILE}
+
+echo "Output firmware: ${CAFILE}"
+echo "NOTICE: NBI EthRxEna is NOT automatically set in this conversion!"

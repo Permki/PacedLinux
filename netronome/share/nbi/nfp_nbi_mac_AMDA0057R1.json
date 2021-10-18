@@ -1,0 +1,236 @@
+{
+    "chan_config":
+    {
+        "full_config": true,
+        "split_mem": true,
+        "egress_cmd_prepend_mask31_0": "0xffffffff",
+        "egress_cmd_prepend_mask63_32": "0xffffffff",
+        "egress_cmd_prepend_mask95_64": "0xffffffff",
+        "egress_cmd_prepend_mask127_96": "0xffffffff",
+        "pause_wm00_31": [
+            224, 224, 224, 224, 224, 224, 224, 224,
+            224, 224, 224, 224, 224, 224, 224, 224,
+            224, 224, 224, 224, 224, 224, 224, 224,
+            224, 224, 224, 224, 224, 224, 224, 224
+        ],
+        "pause_wm32_63": [
+            224, 224, 224, 224, 224, 224, 224, 224,
+            224, 224, 224, 224, 224, 224, 224, 224,
+            224, 224, 224, 224, 224, 224, 224, 224,
+            224, 224, 224, 224, 224, 224, 224, 224
+        ],
+        "pause_wm64_95": [
+            74, 74, 74, 74, 74, 74, 74, 74,
+            74, 74, 74, 74, 74, 74, 74, 74,
+            74, 74, 74, 74, 74, 74, 74, 74,
+            74, 74, 74, 74, 74, 74, 74, 74
+        ],
+        "pause_wm96_127": [
+            74, 74, 74, 74, 74, 74, 74, 74,
+            74, 74, 74, 74, 74, 74, 74, 74,
+            74, 74, 74, 74, 74, 74, 74, 74,
+            74, 74, 74, 74, 74, 74, 74, 74
+        ]
+    },
+    "enet_default":
+    {
+        "drop_delta": 31,
+        "highwater_mark": 896,
+        "egress_parser_skip_bytes": 0,
+        "ingress_parse_prepend_en": true,
+        "ingress_timestamp_prepend_en": true,
+        "lane_mode": "10G",
+        "link_timer": 100,
+        "frame_length": 10240,
+        "egress_port_rr": true,
+        "pause_pfc_comp": false,
+        "pcp_remap": [
+            0, 1, 2, 3, 3, 3, 3, 3
+        ],
+        "pcs_loopback": false,
+        "pfc_mode": false,
+        "promis_en": true,
+        "pad_en": true,
+        "sgmii_ena": false
+    },
+    "enet_ports": {
+        "0": {
+            "enabled": true,
+            "lane_mode": "100G",
+            "channel_base": 0,
+            "num_channels": 4,
+            "untagged_chan": 3
+        },
+        "1": {
+            "enabled": false,
+            "channel_base": 4,
+            "num_channels": 4,
+            "untagged_chan": 7
+        },
+        "2": {
+            "enabled": false,
+            "channel_base": 8,
+            "num_channels": 4,
+            "untagged_chan": 11
+        },
+        "3": {
+            "enabled": false,
+            "channel_base": 12,
+            "num_channels": 4,
+            "untagged_chan": 15
+        },
+        "4": {
+            "enabled": false,
+            "channel_base": 16,
+            "num_channels": 4,
+            "untagged_chan": 19
+        },
+        "5": {
+            "enabled": false,
+            "channel_base": 20,
+            "num_channels": 4,
+            "untagged_chan": 23
+        },
+        "6": {
+            "enabled": false,
+            "channel_base": 24,
+            "num_channels": 4,
+            "untagged_chan": 27
+        },
+        "7": {
+            "enabled": false,
+            "channel_base": 28,
+            "num_channels": 4,
+            "untagged_chan": 31
+        },
+        "8": {
+            "enabled": false,
+            "channel_base": 32,
+            "num_channels": 4,
+            "untagged_chan": 35
+        },
+        "9": {
+            "enabled": false,
+            "channel_base": 36,
+            "num_channels": 4,
+            "untagged_chan": 39
+        },
+        "10": {
+            "enabled": true,
+            "lane_mode": "10G",
+            "channel_base": 40,
+            "num_channels": 4,
+            "untagged_chan": 43
+        },
+        "11": {
+            "enabled": true,
+            "lane_mode": "10G",
+            "channel_base": 44,
+            "num_channels": 4,
+            "untagged_chan": 47
+        },
+        "12": {
+            "enabled": true,
+            "lane_mode": "40G",
+            "channel_base": 0,
+            "num_channels": 4,
+            "untagged_chan": 3,
+            "drop_delta": 10,
+            "highwater_mark": 298
+        },
+        "13": {
+            "enabled": false,
+            "channel_base": 4,
+            "num_channels": 4,
+            "untagged_chan": 7
+        },
+        "14": {
+            "enabled": false,
+            "channel_base": 8,
+            "num_channels": 4,
+            "untagged_chan": 11
+        },
+        "15": {
+            "enabled": false,
+            "channel_base": 12,
+            "num_channels": 4,
+            "untagged_chan": 15
+        },
+        "16": {
+            "enabled": true,
+            "lane_mode": "40G",
+            "channel_base": 16,
+            "num_channels": 4,
+            "untagged_chan": 19,
+            "drop_delta": 10,
+            "highwater_mark": 298
+        },
+        "17": {
+            "enabled": false,
+            "channel_base": 20,
+            "num_channels": 4,
+            "untagged_chan": 23
+        },
+        "18": {
+            "enabled": false,
+            "channel_base": 24,
+            "num_channels": 4,
+            "untagged_chan": 27
+        },
+        "19": {
+            "enabled": false,
+            "channel_base": 28,
+            "num_channels": 4,
+            "untagged_chan": 31
+        },
+        "20": {
+            "enabled": true,
+            "lane_mode": "40G",
+            "channel_base": 32,
+            "num_channels": 4,
+            "untagged_chan": 35,
+            "drop_delta": 10,
+            "highwater_mark": 298
+        },
+        "21": {
+            "enabled": false,
+            "channel_base": 36,
+            "num_channels": 4,
+            "untagged_chan": 39
+        },
+        "22": {
+            "enabled": false,
+            "lane_mode": "10G",
+            "channel_base": 40,
+            "num_channels": 4,
+            "untagged_chan": 43
+        },
+        "23": {
+            "enabled": false,
+            "lane_mode": "10G",
+            "channel_base": 44,
+            "num_channels": 4,
+            "untagged_chan": 47
+        }
+    },
+    "serdes_config": {
+        "0": {
+            "enabled": true
+        },
+        "1": {
+            "enabled": true
+        },
+        "2": {
+            "enabled": true
+        },
+        "3": {
+            "enabled": true
+        },
+        "4": {
+            "enabled": true
+        },
+        "5": {
+            "enabled": true
+        }
+    }
+}

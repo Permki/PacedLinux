@@ -1,0 +1,252 @@
+{
+    "chan_config":
+    {
+        "full_config": true,
+        "split_mem": true,
+        "egress_cmd_prepend_mask31_0": "0xffffffff",
+        "egress_cmd_prepend_mask63_32": "0xffffffff",
+        "egress_cmd_prepend_mask95_64": "0xffffffff",
+        "egress_cmd_prepend_mask127_96": "0xffffffff",
+        "pause_wm00_31": [
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75
+        ],
+        "pause_wm32_63": [
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75
+        ],
+        "pause_wm64_95": [
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75
+        ],
+        "pause_wm96_127": [
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75,
+            75, 75, 75, 75, 75, 75, 75, 75
+        ]
+    },
+    "enet_default":
+    {
+        "drop_delta": 3,
+        "highwater_mark": 80,
+        "ig_dq_dwrr_weight": 256,
+        "egress_parser_skip_bytes": 0,
+        "ingress_parse_prepend_en": true,
+        "ingress_timestamp_prepend_en": true,
+        "lane_mode": "OFF",
+        "num_channels": 0,
+        "pcp_remap": [
+            0, 0, 0, 0, 0, 0, 0, 0
+        ],
+        "frame_length": 10240,
+        "egress_port_rr": true,
+        "pause_pfc_comp": false,
+        "pcs_loopback": false,
+        "pfc_mode": false,
+        "promis_en": true,
+        "pad_en": true,
+        "link_timer": 100,
+        "sgmii_ena": false
+    },
+    "enet_ports": {
+        "0": {
+            "lane_mode": "1G",
+            "enabled": true,
+            "sgmii_ena": true,
+            "channel_base": 0,
+            "num_channels": 1,
+            "untagged_chan": 0
+        },
+        "1": {
+            "lane_mode": "1G",
+            "enabled": true,
+            "sgmii_ena": true,
+            "channel_base": 7,
+            "num_channels": 1,
+            "untagged_chan": 7
+        },
+        "2": {
+            "lane_mode": "1G",
+            "enabled": true,
+            "sgmii_ena": true,
+            "channel_base": 8,
+            "num_channels": 1,
+            "untagged_chan": 8
+        },
+        "3": {
+            "lane_mode": "1G",
+            "enabled": true,
+            "sgmii_ena": true,
+            "channel_base": 15,
+            "num_channels": 1,
+            "untagged_chan": 15
+        },
+        "4": {
+            "lane_mode": "10G",
+            "enabled": true,
+            "channel_base": 16,
+            "num_channels": 1,
+            "untagged_chan": 16
+        },
+        "5": {
+            "lane_mode": "10G",
+            "enabled": true,
+            "channel_base": 23,
+            "num_channels": 1,
+            "untagged_chan": 23
+        },
+        "6": {
+            "lane_mode": "10G",
+            "enabled": true,
+            "channel_base": 24,
+            "num_channels": 1,
+            "untagged_chan": 24
+        },
+        "7": {
+            "lane_mode": "10G",
+            "enabled": true,
+            "channel_base": 31,
+            "num_channels": 1,
+            "untagged_chan": 31
+        },
+        "8": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 32,
+            "num_channels": 1,
+            "untagged_chan": 32
+        },
+        "9": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 39,
+            "num_channels": 1,
+            "untagged_chan": 39
+        },
+        "10": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 40,
+            "num_channels": 1,
+            "untagged_chan": 40
+        },
+        "11": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 47,
+            "num_channels": 1,
+            "untagged_chan": 47
+        },
+        "12": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 0,
+            "num_channels": 1,
+            "untagged_chan": 0
+        },
+        "13": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 7,
+            "num_channels": 1,
+            "untagged_chan": 7
+        },
+        "14": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 8,
+            "num_channels": 1,
+            "untagged_chan": 8
+        },
+        "15": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 15,
+            "num_channels": 1,
+            "untagged_chan": 15
+        },
+        "16": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 16,
+            "num_channels": 1,
+            "untagged_chan": 16
+        },
+        "17": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 23,
+            "num_channels": 1,
+            "untagged_chan": 23
+        },
+        "18": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 24,
+            "num_channels": 1,
+            "untagged_chan": 24
+        },
+        "19": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 31,
+            "num_channels": 1,
+            "untagged_chan": 31
+        },
+        "20": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 32,
+            "num_channels": 1,
+            "untagged_chan": 32
+        },
+        "21": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 39,
+            "num_channels": 1,
+            "untagged_chan": 39
+        },
+        "22": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 40,
+            "num_channels": 1,
+            "untagged_chan": 40
+        },
+        "23": {
+            "lane_mode": "10G",
+            "enabled": false,
+            "channel_base": 47,
+            "num_channels": 1,
+            "untagged_chan": 47
+        }
+    },
+    "serdes_config": {
+        "0": {
+            "enabled": true
+        },
+        "1": {
+            "enabled": true
+        },
+        "2": {
+            "enabled": true
+        },
+        "3": {
+            "enabled": true
+        },
+        "4": {
+            "enabled": true
+        },
+        "5": {
+            "enabled": true
+        }
+    }
+}

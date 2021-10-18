@@ -1,0 +1,381 @@
+{
+    "global_config":
+    {
+        "mac_oobfc": false,
+        "l0_chan_map": "0x0",
+        "seq0_enable": true,
+        "schd_enable": true,
+        "shp_enable": false,
+        "chan_lvl_sel": true,
+        "num_seq": 16,
+        "l1_input_sel": true
+    },
+    "queue_config": {
+        "cluster0": {
+	    "start_q":  0,
+	    "end_q":  0, "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster1": {
+	    "start_q":  8,
+	    "end_q":  8,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster2": {
+	    "start_q": 16,
+	    "end_q": 16,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster3": {
+	    "start_q": 24,
+	    "end_q": 24,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster4": {
+	    "start_q": 32,
+	    "end_q": 32,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster5": {
+	    "start_q": 40,
+	    "end_q": 40,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster6": {
+	    "start_q": 48,
+	    "end_q": 48,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster7": {
+	    "start_q": 56,
+	    "end_q": 56,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster8": {
+	    "start_q": 64,
+	    "end_q": 64,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster9": {
+	    "start_q": 72,
+	    "end_q": 72,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster10": {
+	    "start_q": 80,
+	    "end_q": 80,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster11": {
+	    "start_q": 88,
+	    "end_q": 88,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster12": {
+	    "start_q": 96,
+	    "end_q": 96,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster13": {
+	    "start_q":104,
+	    "end_q":104,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster14": {
+	    "start_q":112,
+	    "end_q":112,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster15": {
+	    "start_q":120,
+	    "end_q":120,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster16": {
+	    "start_q":128,
+	    "end_q":128,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128, "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster17": {
+	    "start_q":136,
+	    "end_q":136,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster18": {
+	    "start_q":144,
+	    "end_q":144,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster19": {
+	    "start_q":152,
+	    "end_q":152,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster20": {
+	    "start_q":160,
+	    "end_q":160,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster21": {
+	    "start_q":168,
+	    "end_q":168,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster22": {
+	    "start_q":176,
+	    "end_q":176,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster23": {
+	    "start_q":184,
+	    "end_q":184,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster24": {
+	    "start_q":192,
+	    "end_q":192,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster25": {
+	    "start_q":200,
+	    "end_q":200,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster26": {
+	    "start_q":208,
+	    "end_q":208,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster27": {
+	    "start_q":216,
+	    "end_q":216,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster28": {
+	    "start_q":224,
+	    "end_q":224,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster29": {
+	    "start_q":232,
+	    "end_q":232,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster30": {
+	    "start_q":240,
+	    "end_q":240,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster31": {
+	    "start_q":248,
+	    "end_q":248,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":128,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster32": {
+	    "start_q":256,
+	    "end_q":256,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":512,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster33": {
+	    "start_q":312,
+	    "end_q":312,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":512,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster34": {
+	    "start_q":320,
+	    "end_q":320,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":512,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	},
+        "cluster35": {
+	    "start_q":376,
+	    "end_q":376,
+	    "q_enable":true,
+	    "q_drop_enable":true,
+	    "q_size":512,
+	    "q_red_enable" :false,
+	    "q_dma_thresh":"0x0",
+	    "q_drop_range":false
+	}
+    },
+
+   "minipkt_crdt_cfg":
+    {
+        "crdt_lim":64,
+        "minipkt_fc_mode":0,
+        "fp_crdt_lim":512
+    }
+
+}

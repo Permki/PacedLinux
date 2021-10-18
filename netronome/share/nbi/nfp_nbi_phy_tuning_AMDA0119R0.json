@@ -1,0 +1,126 @@
+{
+    "3m_GENERIC": {
+        "0": {
+            "rx": [0,7,12,0,7,8,10,8,8,1],
+            "tx": [5,22,2,3,3,0]
+        },
+        "4": {
+            "rx": [0,7,15,0,7,2,13,8,0,1],
+            "tx": [5,21,3,2,2,0]
+        },
+        "info": {
+            "ETH 10/40G compliance": "",
+            "Encoding": "",
+            "Fibre Chan. Link/Len Tech": "",
+            "Fibre Chan. Trans. media": "",
+            "Fibre Chan. speed": "",
+            "Gigabit ETH compliance": "",
+            "ID": "",
+            "Notes": "",
+            "Product": "",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "",
+            "Vendor": "",
+            "connector": "",
+            "ext. ID": ""
+        },
+        "length": 3,
+        "oui": 5453,
+        "product": "generic",
+        "vendor": "generic"
+    },
+    "5m_GENERIC": {
+        "0": {
+            "rx": [0,7,12,0,7,8,10,8,8,1],
+            "tx": [3,26,6,0,2,0]
+        },
+        "4": {
+            "rx": [0,7,15,0,7,2,13,8,0,1],
+            "tx": [4,21,2,0,3,0]
+        },
+        "info": {
+            "ETH 10/40G compliance": "",
+            "Encoding": "",
+            "Fibre Chan. Link/Len Tech": "",
+            "Fibre Chan. Trans. media": "",
+            "Fibre Chan. speed": "",
+            "Gigabit ETH compliance": "",
+            "ID": "",
+            "Notes": "",
+            "Product": "",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "",
+            "Vendor": "",
+            "connector": "",
+            "ext. ID": ""
+        },
+        "length": 5,
+        "oui": 5453,
+        "product": "generic",
+        "vendor": "generic"
+    },
+    "7m_GENERIC": {
+        "0": {
+            "rx": [0,7,12,0,7,8,10,8,8,1],
+            "tx": [4,26,0,1,6,0]
+        },
+        "4": {
+            "rx": [0,7,14,0,7,8,11,9,8,1],
+            "tx": [3,21,0,1,5,0]
+        },
+        "info": {
+            "ETH 10/40G compliance": "",
+            "Encoding": "",
+            "Fibre Chan. Link/Len Tech": "",
+            "Fibre Chan. Trans. media": "",
+            "Fibre Chan. speed": "",
+            "Gigabit ETH compliance": "",
+            "ID": "",
+            "Notes": "",
+            "Product": "",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "",
+            "Vendor": "",
+            "connector": "",
+            "ext. ID": ""
+        },
+        "length": 7,
+        "oui": 5453,
+        "product": "generic",
+        "vendor": "generic"
+    },
+    "DEFAULT": {
+        "0": {
+            "rx": [0,7,12,0,7,8,10,8,8,1],
+            "tx": [5,23,3,3,3,0]
+        },
+        "4": {
+            "rx": [0,7,14,0,7,8,11,9,8,1],
+            "tx": [5,23,3,1,3,0]
+        },
+        "info": {
+            "ETH 10/40G compliance": "",
+            "Encoding": "",
+            "Fibre Chan. Link/Len Tech": "",
+            "Fibre Chan. Trans. media": "",
+            "Fibre Chan. speed": "",
+            "Gigabit ETH compliance": "",
+            "ID": "",
+            "Notes": "",
+            "Product": "",
+            "SAS/SATA compliance": "",
+            "SONET compliance": "",
+            "Serial": "",
+            "Vendor": "",
+            "connector": "",
+            "ext. ID": ""
+        },
+        "length": 100,
+        "oui": 5453,
+        "product": "generic",
+        "vendor": "generic"
+    }
+}
