@@ -94,7 +94,7 @@
             }, 
             "targets": {
                 "": {
-                    "build_required": true, 
+                    "build_required": false, 
                     "input_files": {
                         "ext_obj_files": [], 
                         "obj_files": [], 
@@ -133,7 +133,7 @@
                     "tool": "p4compiler"
                 }, 
                 ".\\lab1_wire_net-host": {
-                    "build_required": true, 
+                    "build_required": false, 
                     "list_assignments": {
                         "i32.me0": [
                             "pif_app_nfd.list"

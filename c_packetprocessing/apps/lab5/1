@@ -1,4 +1,1 @@
- Initializing DMA-0 with config = ./init/nfp_nbi8_dma_i32_i33.json
-
- DMA Init complete
-
+Can't open NFP Device ID 0: No such device

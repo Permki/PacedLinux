@@ -136,19 +136,21 @@ export PATH
 
 
 function lgit() {
-    git add --all
-    git commit -am "$1"
-    git push
+    echo $(git add --all)
+    echo $(git commit -am "$1")
+    echo $(git push)
 }
 
 function serverstart(){
-    sudo systemctl start nfp-sdk6-rte
-    sudo systemctl start nfp-hwdbg-srv
+    echo $(sudo systemctl start nfp-sdk6-rte)
+    echo $(sudo systemctl start nfp-hwdbg-srv)
+    echo $(systemctl status nfp-sdk6-rte)
 }
 
 function serverstop(){
-    sudo systemctl stop nfp-sdk6-rte
-    sudo systemctl stop nfp-hwdbg-srv
+   echo $(sudo systemctl stop nfp-sdk6-rte)
+   echo $( sudo systemctl stop nfp-hwdbg-srv)
+   echo $(systemctl status nfp-sdk6-rte)
 }
 
 # INSTALLS #

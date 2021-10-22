@@ -507,10 +507,10 @@
 .%init _pif_version+56 0x0
 .%init _pif_version+60 0x0
 .%init _pif_qos_supported+0 0x1
-.%init _pif_design_uuid+0 0x5b9a67ff
-.%init _pif_design_uuid+4 0xaa70448a
-.%init _pif_design_uuid+8 0x2da811ec
-.%init _pif_design_uuid+12 0x2af61a0f
+.%init _pif_design_uuid+0 0x5b9a6897
+.%init _pif_design_uuid+4 0x8ada448a
+.%init _pif_design_uuid+8 0x318311ec
+.%init _pif_design_uuid+12 0x51b86ac0
 .%init _pif_actiondata_table_descs+0 0x0
 .%init _pif_actiondata_table_descs+4 0x0
 .%init _pif_actiondata_table_descs+8 0x0
