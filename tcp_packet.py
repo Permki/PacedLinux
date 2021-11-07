@@ -21,5 +21,5 @@ tcp_header += b'\xe6\x32\x00\x00' # Checksum | Urgent Pointer
 
 packet = ethernet + ip_header + tcp_header
 
-for x in range(1):
+for x in range(3):
     s.send(packet)

@@ -185,5 +185,12 @@ alias psend="sudo tcpreplay -i enp5s0np0 /home/permki/Desktop/udp_v2.pcap"
 alias shark="sudo tshark -x -i enp5s0np0"
 alias dump="sudo tcpdump -i enp5s0np0 -s 0"
 
-
+function nicfirmwarecopy(){
+	echo $(sudo rm -r /lib/firmware/netronome/*)
+	ls /lib/firmware/netronome/
+	echo $(sudo cp -r /home/permki/Desktop/nic-firmware/firmware/nffw/* /lib/firmware/netronome/)
+	ls /lib/firmware/netronome/
+	echo $(sudo cp /lib/firmware/netronome/nic/* /lib/firmware/netronome/)
+	ls /lib/firmware/netronome/
+}
 
