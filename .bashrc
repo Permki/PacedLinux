@@ -186,11 +186,11 @@ alias shark="sudo tshark -x -i enp5s0np0"
 alias dump="sudo tcpdump -i enp5s0np0 -s 0"
 
 function nicfirmwarecopy(){
-	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/
-    echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/"
-    sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/nic/
-    echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/nic/"
-    sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/sriov/    
-    echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/sriov/"
+	sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/
+    	echo "sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/"
+    	sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/nic/
+    	echo "sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/nic/"
+    	sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/sriov/    
+    	echo "sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/sriov/"
 }
 
