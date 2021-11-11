@@ -185,6 +185,10 @@ alias psend="sudo tcpreplay -i enp5s0np0 /home/permki/Desktop/udp_v2.pcap"
 alias shark="sudo tshark -x -i enp5s0np0"
 alias dump="sudo tcpdump -i enp5s0np0 -s 0"
 
+# NIC FIRMWARE MODS #
+
+alias compile="sudo make nic/nic_AMDA0096-0001_2x10.nffw"
+
 function nicfirmwarecopy(){
 	sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/
     	echo "sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/"
