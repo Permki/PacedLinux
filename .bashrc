@@ -176,6 +176,7 @@ alias searchword="grep -rnw . -e"
 alias searchfile="grep -iRl"
 alias reload="source /home/permki/.bashrc"
 alias paced="cd /home/permki/Desktop/PacedLinux"
+alias nic="cd /home/permki/Desktop/nic-firmware"
 
 # BOOTS #
 alias nboot="sudo grub-reboot Netronome_4.15 && sudo reboot now"
