@@ -205,5 +205,7 @@ function nicfirmwarecopy(){
     	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/nic/
 	echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/sriov/"
 	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/sriov/    
+	echo "sudo rmmod nfp && sudo modprobe nfp"
+	sudo rmmod nfp && sudo modprobe nfp
 }
 
