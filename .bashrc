@@ -174,6 +174,7 @@ alias bashrc='emacs ~/.bashrc &'
 alias open="xdg-open"
 alias searchword="grep -rnw . -e"
 alias searchfile="grep -iRl"
+alias reload="source /home/permki/.bashrc"
 
 # BOOTS #
 alias nboot="sudo grub-reboot Netronome_4.15 && sudo reboot now"
