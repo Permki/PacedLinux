@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Copyright (c) 2017 Netronome Systems, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-2-Clause
+
+depends() {
+    return 0
+}
+
+install() {
+    inst_simple /lib/udev/nfp-name-gen
+    inst_simple /lib/udev/rules.d/79-nfp.rules
+}
