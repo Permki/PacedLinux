@@ -187,7 +187,12 @@ alias dump="sudo tcpdump -i enp5s0np0 -s 0"
 
 # NIC FIRMWARE MODS #
 
-alias compile="sudo make nic/nic_AMDA0096-0001_2x10.nffw"
+function compile(){
+	sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/deps/flowenv.git/me/lib/pkt/libpkt.c /home/permki/Desktop/nic-firmware/flowenv.git/me/lib/pkt/
+	echo "sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/deps/flowenv.git/me/lib/pkt/libpkt.c /home/permki/Desktop/nic-firmware/flowenv.git/me/lib/pkt/"
+	sudo make nic/nic_AMDA0096-0001_2x10.nffw
+	echo "sudo make nic/nic_AMDA0096-0001_2x10.nffw"
+}
 
 function nicfirmwarecopy(){
 	sudo cp /home/permki/Desktop/PacedLinux/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/
