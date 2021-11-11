@@ -386,8 +386,6 @@ pkt_nbi_send(unsigned char isl, unsigned int pnum,
     csr0.__raw = 0;
     csr0.seqr = seqr;
     csr0.seq = seq;
-	
-	timing_loop(10000);
 
     local_csr_write(local_csr_cmd_indirect_ref_0, csr0.__raw);
 

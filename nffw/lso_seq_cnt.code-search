@@ -1,0 +1,196 @@
+# Query: lso_seq_cnt
+# ContextLines: 1
+
+66 results - 14 files
+
+deps/flowenv.git/me/lib/pktio/libpktio.c:
+  565  #ifdef NFP_NET_CFG_CTRL_LSO2
+  566:         pkt.p_tx_lso_seq = nfd_rxd->lso_seq_cnt;
+  567  #else
+
+deps/ng-nfd.git/me/blocks/vnic/nfd_in.uc:
+  106   *       +-+-+-+---------+---------------+-+-+---------------------------+
+  107:  *    2  |     flags     |  lso_seq_cnt  |L|S|           mss             |
+  108   *       +---------------+---------------+-+-+---------------------------+
+
+  150  #define NFD_IN_LSO_fld          2, 23, 0
+  151: #define NFD_IN_LSO_SEQ_CNT_fld  2, 23, 16
+  152  #define NFD_IN_LSO_END_fld      2, 15, 15
+
+deps/ng-nfd.git/me/blocks/vnic/pci_in.h:
+  262   *       +-+-+-+---------+---------------+-+-+---------------------------+
+  263:  *    2  |     flags     |  lso_seq_cnt  |L|S|           mss             |
+  264   *       +---------------+---------------+-+-+---------------------------+
+
+  293              unsigned int flags:8;       /**< Flags for the packet */
+  294:             unsigned int lso_seq_cnt:8; /**< LSO index/count for this series */
+  295              unsigned int lso_end:1;     /**< Last packet in a series of LSO packets */
+
+deps/ng-nfd.git/me/blocks/vnic/pci_in/issue_dma.c:
+   388          queue_data[bmsk_queue].lso_offhdr = 0;
+   389:         queue_data[bmsk_queue].lso_seq_cnt = 0;
+   390          queue_data[bmsk_queue].rid = NFD_CFG_PF_OFFSET;
+
+   428          queue_data[bmsk_queue].lso_offhdr = 0;
+   429:         queue_data[bmsk_queue].lso_seq_cnt = 0;
+   430          /* Leave RID configured after first set */
+
+   646                  <<NFD_IN_DMA_STATE_LSO_OFFHDR_shf] }
+   647:     __asm { alu[NFD_IN_Q_STATE_PTR[NFD_IN_DMA_STATE_LSO_SEQ_CNT_wrd],   \
+   648:                 NFD_IN_Q_STATE_PTR[NFD_IN_DMA_STATE_LSO_SEQ_CNT_wrd],   \
+   649:                 AND~, NFD_IN_DMA_STATE_LSO_SEQ_CNT_msk,                 \
+   650:                 <<NFD_IN_DMA_STATE_LSO_SEQ_CNT_shf] }
+   651      __asm { alu[NFD_IN_Q_STATE_PTR[NFD_IN_DMA_STATE_FLAGS_wrd],         \
+
+   867      unsigned int lso_req_wrd;                                                \
+   868:     unsigned int lso_seq_cnt;                                                \
+   869      unsigned int bytes_dmaed;                                                \
+
+   925                      <<NFD_IN_DMA_STATE_LSO_OFFHDR_shf] }                     \
+   926:         __asm { alu[NFD_IN_Q_STATE_PTR[NFD_IN_DMA_STATE_LSO_SEQ_CNT_wrd],    \
+   927:                     NFD_IN_Q_STATE_PTR[NFD_IN_DMA_STATE_LSO_SEQ_CNT_wrd],    \
+   928:                     AND~, NFD_IN_DMA_STATE_LSO_SEQ_CNT_msk,                  \
+   929:                     <<NFD_IN_DMA_STATE_LSO_SEQ_CNT_shf] }                    \
+   930          __asm { alu[NFD_IN_Q_STATE_PTR[NFD_IN_DMA_STATE_LSO_PAYLOAD_wrd],    \
+
+  1153      /* Load running variables from LM */                                     \
+  1154:     /* get queue_data[queue].lso_seq_cnt */                                  \
+  1155:     __asm { alu[lso_seq_cnt, NFD_IN_DMA_STATE_LSO_SEQ_CNT_msk, and,          \
+  1156:                 NFD_IN_Q_STATE_PTR[NFD_IN_DMA_STATE_LSO_SEQ_CNT_wrd],        \
+  1157:                 >>NFD_IN_DMA_STATE_LSO_SEQ_CNT_shf] }                        \
+  1158      /* get lso_payload_len */                                                \
+
+  1170      issued_tmp.__raw[2] = tx_desc.pkt##_pkt##.__raw[2];                      \
+  1171:     issued_tmp.lso_seq_cnt = lso_seq_cnt;                                    \
+  1172      issued_tmp.lso_end = 0;                                                  \
+
+  1287              /* We are starting a new buffer */                               \
+  1288:             /* Ensure we haven't exceeded NFD_IN_MAX_LSO_SEQ_CNT */          \
+  1289              /* and that the queue is still up. */                            \
+  1290:             lso_seq_cnt++;                                                   \
+  1291:             if ((lso_seq_cnt <= NFD_IN_MAX_LSO_SEQ_CNT) &&                   \
+  1292                  issue_dma_queue_state_bit_set_test(                          \
+
+  1362              issued_tmp.buf_addr = curr_buf;                                  \
+  1363:             issued_tmp.lso_seq_cnt = lso_seq_cnt;                            \
+  1364              /* send the lso pkt desc to the lso ring */                      \
+
+  1399                          <<NFD_IN_DMA_STATE_LSO_OFFHDR_shf] }                 \
+  1400:                 lso_seq_cnt = 0;                                             \
+  1401                  __asm {                                                      \
+
+  1501              issued_tmp.buf_addr = curr_buf;                                  \
+  1502:             issued_tmp.lso_seq_cnt = lso_seq_cnt;                            \
+  1503              issued_tmp.data_len = lso_offhdr + lso_payload_len;              \
+
+  1528                          <<NFD_IN_DMA_STATE_LSO_OFFHDR_shf] }                 \
+  1529:                     lso_seq_cnt = 0;                                         \
+  1530                      __asm { alu[                                             \
+
+  1602                  --, B, curr_buf] }                                           \
+  1603:     /* set queue_data[queue].lso_seq_cnt */                                  \
+  1604:     ctassert(NFD_IN_DMA_STATE_LSO_SEQ_CNT_shf == 8);                         \
+  1605:     ctassert(NFD_IN_DMA_STATE_LSO_SEQ_CNT_msk == 0xFF);                      \
+  1606:     __asm { ld_field[NFD_IN_Q_STATE_PTR[NFD_IN_DMA_STATE_LSO_SEQ_CNT_wrd],   \
+  1607:                      2, lso_seq_cnt, <<NFD_IN_DMA_STATE_LSO_SEQ_CNT_shf] }   \
+  1608      /* set lso_payload_len */                                                \
+
+deps/ng-nfd.git/me/blocks/vnic/shared/nfd_internal.h:
+  145  /* LSO defines */
+  146: /* Ring is sized to hold the worst case of (NFD_IN_MAX_LSO_SEQ_CNT + 1)
+  147   * descriptors per slot in nfd_in_issued_ringX.  Each descriptor is 16B.
+
+  160  
+  161: #ifndef NFD_IN_MAX_LSO_SEQ_CNT
+  162: #define NFD_IN_MAX_LSO_SEQ_CNT      64
+  163  #endif
+
+  410  #define NFD_IN_DMA_STATE_LSO_OFFHDR_wrd     0
+  411: #define NFD_IN_DMA_STATE_LSO_SEQ_CNT_msk    0xFF
+  412: #define NFD_IN_DMA_STATE_LSO_SEQ_CNT_shf    8
+  413: #define NFD_IN_DMA_STATE_LSO_SEQ_CNT_wrd    0
+  414  #define NFD_IN_DMA_STATE_RID_msk            0xFF
+
+  463                                             in progress. Used in issue_dma */
+  464:             unsigned int lso_seq_cnt:8; /* last sequence count for
+  465                                             lso segments sent to NFP.
+
+  513   *       +---------------+---------------+-+-+---------------------------+
+  514:  *    2  |     flags     |  lso_seq_cnt  |L|S|           mss             |
+  515   *       +---------------+---------------+-+-+---------------------------+
+
+  535              unsigned int flags:8;
+  536:             unsigned int lso_seq_cnt:8;
+  537              unsigned int lso_end:1;
+
+deps/ng-nfd.git/shared/nfd_internal.h:
+  145  /* LSO defines */
+  146: /* Ring is sized to hold the worst case of (NFD_IN_MAX_LSO_SEQ_CNT + 1)
+  147   * descriptors per slot in nfd_in_issued_ringX.  Each descriptor is 16B.
+
+  160  
+  161: #ifndef NFD_IN_MAX_LSO_SEQ_CNT
+  162: #define NFD_IN_MAX_LSO_SEQ_CNT      64
+  163  #endif
+
+  410  #define NFD_IN_DMA_STATE_LSO_OFFHDR_wrd     0
+  411: #define NFD_IN_DMA_STATE_LSO_SEQ_CNT_msk    0xFF
+  412: #define NFD_IN_DMA_STATE_LSO_SEQ_CNT_shf    8
+  413: #define NFD_IN_DMA_STATE_LSO_SEQ_CNT_wrd    0
+  414  #define NFD_IN_DMA_STATE_RID_msk            0xFF
+
+  463                                             in progress. Used in issue_dma */
+  464:             unsigned int lso_seq_cnt:8; /* last sequence count for
+  465                                             lso segments sent to NFP.
+
+  513   *       +---------------+---------------+-+-+---------------------------+
+  514:  *    2  |     flags     |  lso_seq_cnt  |L|S|           mss             |
+  515   *       +---------------+---------------+-+-+---------------------------+
+
+  535              unsigned int flags:8;
+  536:             unsigned int lso_seq_cnt:8;
+  537              unsigned int lso_end:1;
+
+firmware/apps/nic/pv.uc:
+  1489  
+  1490:     bitfield_extract__sz1(lso_seq, BF_AML(in_nfd_desc, NFD_IN_LSO_SEQ_CNT_fld))
+  1491      alu[lso_seq, lso_seq, -, 1]
+
+firmware/lib/nic_basic/pcie_desc.h:
+   87              unsigned flags:8;           /* TX Flags, see @PCIE_DESC_TX_* */
+   88:             unsigned lso_seq_cnt:8;     /* Segment #X of N total */
+   89              unsigned lso_end:1;         /* Last packet in a series of LSO packets */
+
+  107              unsigned flags:8;           /* Flags from TX descriptor */
+  108:             unsigned lso_seq_cnt:8;     /* Segment #X of N total */
+  109              unsigned lso_end:1;         /* Last pkt of LSO sequence */
+
+test/datapath/pv_init_nfd_lso_fixup_ipv4_end_test.uc:
+  54  alu[value, value, OR, 1, <<BF_L(NFD_IN_LSO_END_fld)]
+  55: alu[value, value, OR, 2, <<BF_L(NFD_IN_LSO_SEQ_CNT_fld)]
+  56  alu[value, value, OR, 1, <<BF_L(NFD_IN_LSO_MSS_fld)]
+
+test/datapath/pv_init_nfd_lso_fixup_ipv4_lso_disabled_test.uc:
+  47  alu[value, --, B, 0, <<BF_L(NFD_IN_FLAGS_TX_LSO_fld)]
+  48: alu[value, value, OR, 2, <<BF_L(NFD_IN_LSO_SEQ_CNT_fld)]
+  49  alu[value, value, OR, 1, <<BF_L(NFD_IN_LSO_MSS_fld)]
+
+test/datapath/pv_init_nfd_lso_fixup_ipv4_test.uc:
+  46  alu[value, --, B, 1, <<BF_L(NFD_IN_FLAGS_TX_LSO_fld)]
+  47: alu[value, value, OR, 2, <<BF_L(NFD_IN_LSO_SEQ_CNT_fld)]
+  48  alu[value, value, OR, 1, <<BF_L(NFD_IN_LSO_MSS_fld)]
+
+test/datapath/pv_init_nfd_lso_fixup_ipv6_end_test.uc:
+  55  alu[value, value, OR, 1, <<BF_L(NFD_IN_LSO_END_fld)]
+  56: alu[value, value, OR, 2, <<BF_L(NFD_IN_LSO_SEQ_CNT_fld)]
+  57  alu[value, value, OR, 1, <<BF_L(NFD_IN_LSO_MSS_fld)]
+
+test/datapath/pv_init_nfd_lso_fixup_ipv6_lso_disabled_test.uc:
+  46  alu[value, --, B, 0, <<BF_L(NFD_IN_FLAGS_TX_LSO_fld)]
+  47: alu[value, value, OR, 2, <<BF_L(NFD_IN_LSO_SEQ_CNT_fld)]
+  48  alu[value, value, OR, 1, <<BF_L(NFD_IN_LSO_MSS_fld)]
+
+test/datapath/pv_init_nfd_lso_fixup_ipv6_test.uc:
+  46  alu[value, --, B, 1, <<BF_L(NFD_IN_FLAGS_TX_LSO_fld)]
+  47: alu[value, value, OR, 2, <<BF_L(NFD_IN_LSO_SEQ_CNT_fld)]
+  48  alu[value, value, OR, 1, <<BF_L(NFD_IN_LSO_MSS_fld)]
