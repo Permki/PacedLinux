@@ -177,6 +177,7 @@ alias searchfile="grep -iRl"
 alias reload="source /home/permki/.bashrc"
 alias paced="cd /home/permki/Desktop/PacedLinux"
 alias nic="cd /home/permki/Desktop/nic-firmware"
+alias firm="cd /lib/firmware/netronome"
 
 # BOOTS #
 alias nboot="sudo grub-reboot Netronome_4.15 && sudo reboot now"
@@ -199,13 +200,17 @@ function compile(){
 }
 
 function nicfirmwarecopy(){
-	echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/"
-    	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/
-    	echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/nic/"
-    	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/nic/
-	echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/sriov/"
-	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* /lib/firmware/netronome/sriov/    
+	echo "sudo rm -f /lib/firmware/netronome/*.nffw"
+	sudo rm -f /lib/firmware/netronome/*.nffw
+	echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/flower/* /lib/firmware/netronome/"
+    	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/flower/* /lib/firmware/netronome/
+	linkfirmware
 	echo "sudo rmmod nfp && sudo modprobe nfp"
 	sudo rmmod nfp && sudo modprobe nfp
+	echo "update-initramfs -u"
+	update-initramfs -u
+}
+function linkfirmware(){
+	for firmware in $(ls firm/flower); do ln -sf firm/flower/$firmware $firmware; done
 }
 
