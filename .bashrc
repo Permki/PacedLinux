@@ -192,25 +192,16 @@ alias dump="sudo tcpdump -i enp5s0np0 -s 0"
 # NIC FIRMWARE MODS #
 
 function compile(){
-	echo "sudo cp  /home/permki/Desktop/nic-firmware/deps/flowenv.git/me/lib/pkt/libpkt.c /home/permki/Desktop/PacedLinux/nffw/"
-	sudo cp /home/permki/Desktop/nic-firmware/deps/flowenv.git/me/lib/pkt/libpkt.c /home/permki/Desktop/PacedLinux/nffw/
+	firmpath="/lib/firmware/netronome"
 	echo "sudo make nic/nic_AMDA0096-0001_2x10.nffw"
 	sudo make nic/nic_AMDA0096-0001_2x10.nffw
-	nicfirmwarecopy
-}
-
-function nicfirmwarecopy(){
-	echo "sudo rm -f /lib/firmware/netronome/*.nffw"
-	sudo rm -f /lib/firmware/netronome/*.nffw
-	echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/flower/* /lib/firmware/netronome/"
-    	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/flower/* /lib/firmware/netronome/
-	linkfirmware
+	echo "sudo rm -f $firmpath/*.nffw"
+	sudo rm -f $firmpath/*.nffw
+	echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nic/flower/* $firmpath/flower"
+    	sudo cp /home/permki/Desktop/nic-firmware/firmware/nic/flower/* $firmpath/flower
+	for firmware in $(ls $firmpath/flower); do ln -sf $firmpath/flower/$firmware $firmpath/$firmware; done
 	echo "sudo rmmod nfp && sudo modprobe nfp"
 	sudo rmmod nfp && sudo modprobe nfp
 	echo "sudo update-initramfs -u"
 	sudo update-initramfs -u
 }
-function linkfirmware(){
-	for firmware in $(ls /lib/firmware/netronome/flower); do ln -sf /lib/firmware/netronome/flower/$firmware $firmware; done
-}
-
