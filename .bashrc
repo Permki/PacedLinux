@@ -202,6 +202,6 @@ function compile(){
 	for firmware in $(ls $firmpath/flower); do sudo ln -sf $firmpath/flower/$firmware $firmpath/$firmware; done
 	echo "sudo rmmod nfp && sudo modprobe nfp"
 	sudo rmmod nfp && sudo modprobe nfp
-	echo "sudo update-initramfs -u"
-	sudo update-initramfs -u
+	echo "sudo update-initramfs -u -k /boot/initrd.img-4.15.18"
+	sudo update-initramfs -u -k /boot/initrd.img-4.15.18
 }
