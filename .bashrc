@@ -207,10 +207,10 @@ function nicfirmwarecopy(){
 	linkfirmware
 	echo "sudo rmmod nfp && sudo modprobe nfp"
 	sudo rmmod nfp && sudo modprobe nfp
-	echo "update-initramfs -u"
-	update-initramfs -u
+	echo "sudo update-initramfs -u"
+	sudo update-initramfs -u
 }
 function linkfirmware(){
-	for firmware in $(ls firm/flower); do ln -sf firm/flower/$firmware $firmware; done
+	for firmware in $(ls /lib/firmware/netronome/flower); do ln -sf /lib/firmware/netronome/flower/$firmware $firmware; done
 }
 
