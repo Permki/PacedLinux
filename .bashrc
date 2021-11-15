@@ -198,7 +198,7 @@ function compile(){
 	echo "sudo rm -f $firmpath/*.nffw"
 	sudo rm -f $firmpath/*.nffw
 	echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nic/flower/* $firmpath/flower"
-    	sudo cp /home/permki/Desktop/nic-firmware/firmware/nic/flower/* $firmpath/flower
+    	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* $firmpath/flower
 	for firmware in $(ls $firmpath/flower); do ln -sf $firmpath/flower/$firmware $firmpath/$firmware; done
 	echo "sudo rmmod nfp && sudo modprobe nfp"
 	sudo rmmod nfp && sudo modprobe nfp
