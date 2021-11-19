@@ -184,6 +184,7 @@ alias firm="cd /lib/firmware/netronome"
 # BOOTS #
 alias nboot="sudo grub-reboot Netronome_4.15 && sudo reboot now"
 alias pboot="sudo grub-reboot Netronome_4.20 && sudo reboot now"
+alias gboot="sudo grub-reboot Netronome_5.14 && sudo reboot now"
 
 # PINGS AND DUMPS #
 alias superping="sudo hping3 -i enp5s0np0 10.1.1.1 --fast"
