@@ -201,10 +201,21 @@ function compile(){
 	echo "sudo rm -f $firmpath/*.nffw"
 	sudo rm -f $firmpath/*.nffw
 	echo "sudo cp /home/permki/Desktop/nic-firmware/firmware/nic/flower/* $firmpath/flower"
-    	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* $firmpath/flower
-	for firmware in $(ls $firmpath/flower); do sudo ln -sf $firmpath/flower/$firmware $firmpath/$firmware; done
-	echo "sudo rmmod nfp && sudo modprobe nfp"
-	sudo rmmod nfp && sudo modprobe nfp
-	echo "sudo update-initramfs -u -k 4.15.18"
-	sudo update-initramfs -u -k 4.15.18
+	sudo cp /home/permki/Desktop/nic-firmware/firmware/nffw/nic/* $firmpath/flower
+	for firmware in $(ls $firmpath/flower); do echo "sudo ln -sf $firmpath/flower/$firmware $firmpath/$firmware"; sudo ln -sf $firmpath/flower/$firmware $firmpath/$firmware; done
+	echo "sudo modprobe -r nfp && sudo modprobe nfp"
+	sudo modprobe -r nfp && sudo modprobe nfp
+	ifupdown
+}
+function ifupdown(){
+	echo "sudo ifdown enp5s0np0"
+	sudo ifdown enp5s0np0
+	echo "sudo ifup enp5s0np0"
+	sudo ifup enp5s0np0
+}
+
+function limbo(){
+	echo "sudo modprobe -r nfp && sudo modprobe nfp"
+	sudo modprobe -r nfp && sudo modprobe nfp
+	ifupdown
 }
