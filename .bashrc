@@ -191,6 +191,8 @@ alias superping="sudo hping3 -i enp5s0np0 10.1.1.1 --fast"
 alias psend="sudo tcpreplay -i enp5s0np0 /home/permki/Desktop/udp_v2.pcap"
 alias shark="sudo tshark -x -i enp5s0np0"
 alias dump="sudo tcpdump -i enp5s0np0 -s 0"
+alias tcpsend="echo nisse | netcat 10.1.1.1 10000"
+alias tcplisten="netcat -l -p 10000"
 
 # NIC FIRMWARE MODS #
 
