@@ -1,0 +1,1 @@
+cmd_/home/permki/Desktop/PacedLinux/PacedCubicModule/tcp_cubic_paced.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/permki/Desktop/PacedLinux/PacedCubicModule/tcp_cubic_paced.ko /home/permki/Desktop/PacedLinux/PacedCubicModule/tcp_cubic_paced.o /home/permki/Desktop/PacedLinux/PacedCubicModule/tcp_cubic_paced.mod.o ;  true

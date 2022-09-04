@@ -42,6 +42,10 @@
 #define MS_MAX_OFF  128
 #endif
 
+
+
+#define MAX_SLEEP_TIME 1<<20 -1 /* As defined in me.h */
+
 /*
  * This operation is supplied as a function and not a macro because
  * experience with the 'nfcc' compiler has shown that a simple,
@@ -73,6 +77,21 @@ pkt_ctm_ptr40(unsigned char isl, unsigned int pnum, unsigned int off)
         (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
 
+
+
+void timing_loop(long microsecs){
+
+	long curr_time, sleep_time;
+	long last_time =  me_tsc_read();
+	long period = microsecs*633 ;
+	
+	while (period > MAX_SLEEP_TIME){
+		sleep(MAX_SLEEP_TIME);
+		period -= MAX_SLEEP_TIME;
+	}
+	sleep(period);
+	
+}
 
 /*
  * A 32-bit packet-address mode pointer in CTM is built as follows:
@@ -367,6 +386,7 @@ pkt_nbi_send(unsigned char isl, unsigned int pnum,
     csr0.__raw = 0;
     csr0.seqr = seqr;
     csr0.seq = seq;
+
     local_csr_write(local_csr_cmd_indirect_ref_0, csr0.__raw);
 
     /*
