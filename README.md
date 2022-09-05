@@ -10,5 +10,6 @@ Netronome debs are not kept here due to size.
 [c_packetprocessing](https://github.com/Permki/PacedLinux/tree/main/c_packetprocessing) contains micro-c projects delaying packets receiver side.\
 \
 See [Netronome NIC-firmware](https://github.com/Netronome/nic-firmware/) for details on compiling NIC firmware if needed. 
-For ordinary use of NIC-firmware this is not necessary.
+For ordinary use of NIC-firmware this is not necessary, but it is necessary for compiling and loading a modified version of the NIC-firmware.\
+Compiling NIC-firmware can be done by using the alias found in [.bashrc](https://github.com/Permki/PacedLinux/blob/main/.bashrc)\
 [tcp_packet.py](https://github.com/Permki/PacedLinux/blob/main/tcp_packet.py) contains a simple script for sending multiple packets. Used for testing pacing with micro-c found in [c_packetprocessing](https://github.com/Permki/PacedLinux/tree/main/c_packetprocessing)
