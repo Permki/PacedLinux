@@ -13,3 +13,5 @@ See [Netronome NIC-firmware](https://github.com/Netronome/nic-firmware/) for det
 For ordinary use of NIC-firmware this is not necessary, but it is necessary for compiling and loading a modified version of the NIC-firmware.\
 Compiling NIC-firmware can be done by using the function _compile()_ found in [.bashrc](https://github.com/Permki/PacedLinux/blob/main/.bashrc)\
 [tcp_packet.py](https://github.com/Permki/PacedLinux/blob/main/tcp_packet.py) contains a simple script for sending multiple packets. Used for testing pacing with micro-c found in [c_packetprocessing](https://github.com/Permki/PacedLinux/tree/main/c_packetprocessing). Remember to enable TSO (_ethtool -K ethInterface tso on_)
+
+I recommend joining the nfp-group hosted on Google. A nice place for discussions and questions regarding nfp-programming. Members of Netronome are also present: [NFP-group](https://groups.google.com/g/open-nfp)
