@@ -15,3 +15,5 @@ Compiling NIC-firmware can be done by using the function _compile()_ found in [.
 [tcp_packet.py](https://github.com/Permki/PacedLinux/blob/main/tcp_packet.py) contains a simple script for sending multiple packets. Used for testing pacing with micro-c found in [c_packetprocessing](https://github.com/Permki/PacedLinux/tree/main/c_packetprocessing). Remember to enable TSO (_ethtool -K ethInterface tso on_)
 
 I recommend joining the nfp-group hosted on Google. A nice place for discussions and questions regarding nfp-programming. Members of Netronome are also present: [NFP-group](https://groups.google.com/g/open-nfp)
+
+Starting RTE-service: [Troubleshooting RTE service](https://help.netronome.com/support/solutions/articles/36000152964-problems-starting-rte-service)
