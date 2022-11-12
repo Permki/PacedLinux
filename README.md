@@ -28,6 +28,7 @@ In that case, do
 sudo apt-get remove agilio-nfp-driver-dkms
 ```
 before doing the install. 
+
 Here is the whole install for the RTE (as I have used it):
 ```
 apt-get install libftdi1 libjansson4 build-essential \
