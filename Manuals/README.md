@@ -4,3 +4,6 @@
 [UG_nfp6000_devtools.pdf](https://github.com/Permki/PacedLinux/blob/main/Manuals/UG_nfp6000_devtools.pdf) \\
 
 [UG_nfp6000_nfas.pdf](https://github.com/Permki/PacedLinux/blob/main/Manuals/UG_nfp6000_nfas.pdf) has an overview of the Network Flow Assembler System (_NFAS_) used
+
+
+[NFP4000 silicon overview](https://www.netronome.com/static/app/img/products/silicon-solutions/WP_NFP4000_TOO.pdf)
