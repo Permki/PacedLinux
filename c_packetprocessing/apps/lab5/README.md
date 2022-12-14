@@ -1,5 +1,7 @@
 # Lab: "Packet Wire" in Micro-C
 
+# This has been modified to do header parsing and sleep for preliminary testing of pacing.
+
 This lab walk-through is a simple packet processing application that
 swaps vlan tags and counts various packets, using a single network
 port.
